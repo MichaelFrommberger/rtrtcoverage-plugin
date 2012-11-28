@@ -10,7 +10,7 @@ public class BranchTrace {
     /**
      * Type of the branch.
      */
-    private BranchTraceType type;
+    private String mark;
 
     /**
      * ID number of the branch.
@@ -18,18 +18,25 @@ public class BranchTrace {
     private String id;
 
     /**
-     * @return the type of the branch.
+     * @return a concatenation of mark+id.
      */
-    public final BranchTraceType getType() {
-        return type;
+    public final String getMarkId() {
+        return mark + id;
     }
 
     /**
-     * @param newType
+     * @return the type of the branch.
+     */
+    public final String getMark() {
+        return mark;
+    }
+
+    /**
+     * @param newMark
      *            of the branch
      */
-    public final void setType(final BranchTraceType newType) {
-        this.type = newType;
+    public final void setMark(final String newMark) {
+        this.mark = newMark;
     }
 
     /**

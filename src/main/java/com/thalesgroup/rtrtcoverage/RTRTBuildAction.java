@@ -1,38 +1,30 @@
 package com.thalesgroup.rtrtcoverage;
 
-import hudson.FilePath;
 import hudson.model.HealthReport;
 import hudson.model.HealthReportingAction;
 import hudson.model.Result;
 import hudson.model.AbstractBuild;
-import hudson.util.NullStream;
-import hudson.util.StreamTaskListener;
 
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.io.PrintStream;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.jvnet.localizer.Localizable;
 import org.kohsuke.stapler.StaplerProxy;
 
-import com.thalesgroup.rtrtcoverage.cioreader.CioAttributes;
-import com.thalesgroup.rtrtcoverage.cioreader.CioException;
-import com.thalesgroup.rtrtcoverage.cioreader.CioReader;
-import com.thalesgroup.rtrtcoverage.cioreader.CoverageElement;
-import com.thalesgroup.rtrtcoverage.cioreader.Ratio;
-import com.thalesgroup.rtrtcoverage.cioreader.ReportTag;
+import com.thalesgroup.rtrtcoverage.fdcreader.BranchType;
+import com.thalesgroup.rtrtcoverage.serializablerates.GlobalRate;
 
 /**
- * Build view extension by RTRT plugin. As {@link CoverageObject}, it retains
- * the overall coverage report.
+ * Build view extension by Emma plugin.
  *
- * @author Sebastien Barbier
- * @version 1.0
+ * As {@link CoverageObject}, it retains the overall coverage report.
+ *
+ * @author Kohsuke Kawaguchi
  */
 public final class RTRTBuildAction extends CoverageObject<RTRTBuildAction>
 implements HealthReportingAction, StaplerProxy {
@@ -43,66 +35,36 @@ implements HealthReportingAction, StaplerProxy {
     private final AbstractBuild<?, ?> owner;
 
     /**
-     * The report.
-     */
-    private transient WeakReference<CoverageReport> report;
-
-    /**
      * Non-null if the coverage has pass/fail rules.
      */
     private final Rule rule;
 
     /**
      * The thresholds that applied when this build was built.
+     * @TODO add ability to trend thresholds on the graph
      */
     private final RTRTHealthReportThresholds thresholds;
 
     /**
-     * Default Constructor.
-     *
-     * @param abOwner
-     *            the owner
-     * @param rRule
-     *            rule for failing the coverage report (according to some
-     *            ratios)
-     * @param ratios
-     *            the ratio of the coverage including: ratio for functions and
-     *            exits coverage, ratio for calls coverage, ratio for statement
-     *            blocks coverage, ratio for implicit blocks coverage, ratio for
-     *            decisions coverage, ratio for basic conditions coverage, ratio
-     *            for modified conditions coverage, ratio for multiple
-     *            conditions coverage.
-     * @param hrThresholds
-     *            the thresholds for weather reports
+     * The report.
      */
-    public RTRTBuildAction(final AbstractBuild<?, ?> abOwner, final Rule rRule,
-            final Ratio[] ratios, final RTRTHealthReportThresholds hrThresholds) {
-        this.owner = abOwner;
-        this.rule = rRule;
-        this.thresholds = hrThresholds;
-
-        final int sizeRatios = ReportTag.values().length;
-        if (ratios == null || ratios.length != sizeRatios) {
-            OWNLOGGER.log(Level.SEVERE, "Bad number of ratios");
-            return;
-        }
-
-        try {
-            for (int i = 0; i < sizeRatios; ++i) {
-                setRatio(i, ratios[i]);
-            }
-        } catch (final CioException e) {
-            OWNLOGGER.log(Level.SEVERE, "Bad number of ratios");
-        }
-    }
+    private transient WeakReference<CoverageReport> report;
 
     /**
-     * Get the owner.
-     *
-     * @return owner
+     * @param newOwner the owner
+     * @param newRule rule for failing the coverage report (according to some
+     *            ratios)
+     * @param globalRate a global rate
+     * @param newThresholds the thresholds for weather reports
      */
-    public AbstractBuild<?, ?> getOwner() {
-        return owner;
+    public RTRTBuildAction(final AbstractBuild<?, ?> newOwner,
+            final Rule newRule,
+            final GlobalRate globalRate,
+            final RTRTHealthReportThresholds newThresholds) {
+        this.owner = newOwner;
+        this.rule = newRule;
+        this.thresholds = newThresholds;
+        this.initRatios(globalRate);
     }
 
     /**
@@ -113,7 +75,6 @@ implements HealthReportingAction, StaplerProxy {
     public String getDisplayName() {
         return Messages.BuildAction_DisplayName();
     }
-
     /**
      * Display the icon.
      *
@@ -122,7 +83,6 @@ implements HealthReportingAction, StaplerProxy {
     public String getIconFileName() {
         return "graph.gif";
     }
-
     /**
      * Get the url name.
      *
@@ -135,132 +95,105 @@ implements HealthReportingAction, StaplerProxy {
     /**
      * Get the coverage {@link hudson.model.HealthReport}.
      *
-     * @return The health report or <code>null</code> if health reporting is
-     *         disabled.
+     * @return The health report or <code>null</code> if health reporting is disabled.
+     * @since 1.7
      */
     public HealthReport getBuildHealth() {
         if (thresholds == null) {
             // no thresholds => no report
             return null;
         }
-
         thresholds.ensureValid();
-        final int nbRatio = ReportTag.values().length;
         final int maxScore = 100;
+        final int nbRatio = 9;
         int score = maxScore;
         int percent;
-        final ArrayList<Localizable> reports = new ArrayList<Localizable>(
-                nbRatio);
-        if (getFunctionCoverage() != null
-                && getFunctionCoverage().isInitialized()
-                && thresholds.getMaxFunction() > 0) {
-            percent = getFunctionCoverage().getPercentage();
+        ArrayList<Localizable> reports = new ArrayList<Localizable>(nbRatio);
+        if (this.getFunctionCoverage() != null && this.getExitCoverage() != null && thresholds.getMaxFunction() > 0) {
+            percent = this.getFunctionAndExitCoverage().getPercentage();
             if (percent < thresholds.getMaxFunction()) {
-                reports.add(Messages._BuildAction_Functions(
-                        getFunctionCoverage(), percent));
+                reports.add(Messages._BuildAction_Functions(this.getFunctionAndExitCoverage(), percent));
             }
             score = updateHealthScore(score, thresholds.getMinFunction(),
                     percent, thresholds.getMaxFunction());
         }
-        if (getCallCoverage() != null && getCallCoverage().isInitialized()
-                && thresholds.getMaxCall() > 0) {
-            percent = getCallCoverage().getPercentage();
+        if (this.getCallCoverage() != null && thresholds.getMaxCall() > 0) {
+            percent = this.getCallCoverage().getPercentage();
             if (percent < thresholds.getMaxCall()) {
-                reports.add(Messages._BuildAction_Calls(getCallCoverage(),
-                        percent));
+                reports.add(Messages._BuildAction_Calls(this.getCallCoverage(), percent));
             }
-            score = updateHealthScore(score, thresholds.getMinCall(), percent,
-                    thresholds.getMaxCall());
+            score = updateHealthScore(score, thresholds.getMinCall(),
+                    percent, thresholds.getMaxCall());
         }
-        if (getStatementBlockCoverage() != null
-                && getStatementBlockCoverage().isInitialized()
-                && thresholds.getMaxStatBlock() > 0) {
-            percent = getStatementBlockCoverage().getPercentage();
+        if (this.getStatBlockCoverage() != null && thresholds.getMaxStatBlock() > 0) {
+            percent = this.getStatBlockCoverage().getPercentage();
             if (percent < thresholds.getMaxStatBlock()) {
-                reports.add(Messages._BuildAction_StatBlocks(
-                        getStatementBlockCoverage(), percent));
+                reports.add(Messages._BuildAction_StatBlocks(this.getStatBlockCoverage(), percent));
             }
             score = updateHealthScore(score, thresholds.getMinStatBlock(),
                     percent, thresholds.getMaxStatBlock());
         }
-        if (getImplicitBlockCoverage() != null
-                && getImplicitBlockCoverage().isInitialized()
-                && thresholds.getMaxImplBlock() > 0) {
-            percent = getImplicitBlockCoverage().getPercentage();
+        if (this.getImplBlockCoverage() != null && thresholds.getMaxImplBlock() > 0) {
+            percent = this.getImplBlockCoverage().getPercentage();
             if (percent < thresholds.getMaxImplBlock()) {
-                reports.add(Messages._BuildAction_ImplBlocks(
-                        getImplicitBlockCoverage(), percent));
+                reports.add(Messages._BuildAction_ImplBlocks(this.getImplBlockCoverage(), percent));
             }
             score = updateHealthScore(score, thresholds.getMinImplBlock(),
                     percent, thresholds.getMaxImplBlock());
         }
-        if (getDecisionCoverage() != null
-                && getDecisionCoverage().isInitialized()
-                && thresholds.getMaxDecision() > 0) {
-            percent = getDecisionCoverage().getPercentage();
+        if (this.getDecisionCoverage() != null && thresholds.getMaxDecision() > 0) {
+            percent = this.getDecisionCoverage().getPercentage();
             if (percent < thresholds.getMaxDecision()) {
-                reports.add(Messages._BuildAction_Decisions(
-                        getDecisionCoverage(), percent));
+                reports.add(Messages._BuildAction_Decisions(this.getDecisionCoverage(), percent));
             }
             score = updateHealthScore(score, thresholds.getMinDecision(),
                     percent, thresholds.getMaxDecision());
         }
-        if (getLoopCoverage() != null && getLoopCoverage().isInitialized()
-                && thresholds.getMaxLoop() > 0) {
-            percent = getLoopCoverage().getPercentage();
+        if (this.getLoopCoverage() != null && thresholds.getMaxLoop() > 0) {
+            percent = this.getLoopCoverage().getPercentage();
             if (percent < thresholds.getMaxLoop()) {
-                reports.add(Messages._BuildAction_Loops(getLoopCoverage(),
-                        percent));
+                reports.add(Messages._BuildAction_Loops(this.getLoopCoverage(), percent));
             }
-            score = updateHealthScore(score, thresholds.getMinLoop(), percent,
-                    thresholds.getMaxLoop());
+            score = updateHealthScore(score, thresholds.getMinLoop(),
+                    percent, thresholds.getMaxLoop());
         }
-        if (getBasicConditionCoverage() != null
-                && getBasicConditionCoverage().isInitialized()
-                && thresholds.getMaxBasicCond() > 0) {
-            percent = getBasicConditionCoverage().getPercentage();
+        if (this.getBasicCondCoverage() != null && thresholds.getMaxBasicCond() > 0) {
+            percent = this.getBasicCondCoverage().getPercentage();
             if (percent < thresholds.getMaxBasicCond()) {
-                reports.add(Messages._BuildAction_BasicConds(
-                        getBasicConditionCoverage(), percent));
+                reports.add(Messages._BuildAction_BasicConds(this.getBasicCondCoverage(), percent));
             }
             score = updateHealthScore(score, thresholds.getMinBasicCond(),
                     percent, thresholds.getMaxBasicCond());
         }
-        if (getModifiedConditionCoverage() != null
-                && getModifiedConditionCoverage().isInitialized()
-                && thresholds.getMaxModifCond() > 0) {
-            percent = getModifiedConditionCoverage().getPercentage();
+        if (this.getModifCondCoverage() != null && thresholds.getMaxModifCond() > 0) {
+            percent = this.getModifCondCoverage().getPercentage();
             if (percent < thresholds.getMaxModifCond()) {
-                reports.add(Messages._BuildAction_ModifConds(
-                        getModifiedConditionCoverage(), percent));
+                reports.add(Messages._BuildAction_ModifConds(this.getModifCondCoverage(), percent));
             }
             score = updateHealthScore(score, thresholds.getMinModifCond(),
                     percent, thresholds.getMaxModifCond());
         }
-        if (getMultipleConditionCoverage() != null
-                && getMultipleConditionCoverage().isInitialized()
-                && thresholds.getMaxMultCond() > 0) {
-            percent = getMultipleConditionCoverage().getPercentage();
+        if (this.getMultCondCoverage() != null && thresholds.getMaxMultCond() > 0) {
+            percent = this.getMultCondCoverage().getPercentage();
             if (percent < thresholds.getMaxMultCond()) {
-                reports.add(Messages._BuildAction_MultConds(
-                        getMultipleConditionCoverage(), percent));
+                reports.add(Messages._BuildAction_MultConds(this.getMultCondCoverage(), percent));
             }
             score = updateHealthScore(score, thresholds.getMinMultCond(),
                     percent, thresholds.getMaxMultCond());
         }
+
         if (score == maxScore) {
             reports.add(Messages._BuildAction_Perfect());
         }
         // Collect params and replace nulls with empty string
-        final Object[] args = reports.toArray(new Object[nbRatio + 1]);
-        for (int i = nbRatio; i >= 0; i--) {
+        final Object[] args = reports.toArray(new Object[BranchType.values().length + 1]);
+        for (int i = BranchType.values().length; i >= 0; i--) {
             if (args[i] == null) {
                 args[i] = "";
             }
         }
-
         String compilation = "";
-        for (int i = 0; i < nbRatio + 1; ++i) {
+        for (int i = 0; i < BranchType.values().length + 1; ++i) {
             compilation += args[i];
         }
 
@@ -281,9 +214,8 @@ implements HealthReportingAction, StaplerProxy {
      *            max value
      * @return the value to display
      */
-    private static int updateHealthScore(final int score, final int min,
-            final int value, final int max) {
-        final float perCent = 100.0f;
+    private static int updateHealthScore(final int score, final int min, final int value, final int max) {
+        final double hundred = 100.0;
         if (value >= max) {
             return score;
         }
@@ -291,7 +223,7 @@ implements HealthReportingAction, StaplerProxy {
             return 0;
         }
         assert max != min;
-        final int scaled = (int) (perCent * ((float) value - min) / (max - min));
+        final int scaled = (int) (hundred * ((float) value - min) / (max - min));
         if (scaled < score) {
             return scaled;
         }
@@ -308,6 +240,59 @@ implements HealthReportingAction, StaplerProxy {
     }
 
     /**
+     * Obtains the detailed {@link CoverageReport} instance.
+     *
+     * @return current coverage report
+     */
+    public synchronized CoverageReport getResult() {
+        if (report != null) {
+            final CoverageReport r = report.get();
+            if (r != null) {
+                return r;
+            }
+        }
+
+        // Import serialized rates
+        GlobalRate globalRate = null;
+        try {
+            FileInputStream fis = new FileInputStream(owner.getRootDir()
+                    + System.getProperty("file.separator")
+                    + "globalrate.dat");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            try {
+                globalRate = (GlobalRate) ois.readObject();
+            } finally {
+                try {
+                    ois.close();
+                } finally {
+                    fis.close();
+                }
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            cnfe.printStackTrace();
+        }
+
+        CoverageReport r = null;
+        if (globalRate != null) {
+            r = new CoverageReport(this, globalRate);
+        }
+        report = new WeakReference<CoverageReport>(r);
+        return r;
+
+    }
+
+    /**
+     * Get the owner.
+     *
+     * @return owner
+     */
+    public AbstractBuild<?, ?> getOwner() {
+        return owner;
+    }
+
+    /**
      * Get the build.
      *
      * @return the owner
@@ -317,85 +302,6 @@ implements HealthReportingAction, StaplerProxy {
         return owner;
     }
 
-    /**
-     * Obtain all the rtrt reports.
-     *
-     * @param file
-     *            the path where to find the rtrt report
-     * @return all the .cio file into the file path
-     * @throws IOException
-     *             if some error during reading path
-     * @throws InterruptedException
-     *             if some error during reading path
-     */
-    protected static FilePath[] getRTRTReports(final File file)
-            throws IOException, InterruptedException {
-        final FilePath path = new FilePath(file);
-
-        if (path.isDirectory()) {
-            return path.list("*CIO");
-        }
-
-        return null;
-    }
-
-    /**
-     * Obtains the detailed {@link CoverageReport} instance.
-     *
-     * @return current coverage report
-     */
-    public synchronized CoverageReport getResult() {
-
-        final File reportFolder = RTRTPublisher.getRTRTReport(owner);
-
-        if (report != null) {
-            final CoverageReport r = report.get();
-            if (r != null) {
-                return r;
-            }
-        }
-
-        try {
-
-            // Get the list of report files stored for this build
-            final FilePath[] reports = getRTRTReports(reportFolder);
-
-            final InputStream[] streams = new InputStream[2 * reports.length];
-            final String[] nameReports = new String[reports.length];
-            for (int i = 0; i < reports.length; i++) {
-                streams[2 * i] = reports[i].read();
-                streams[2 * i + 1] = reports[i].read();
-                nameReports[i] = reports[i].getName();
-            }
-
-            // Generate the report
-            // Change for master/slave configuration
-            final CoverageReport r = new CoverageReport(this, RTRTPublisher
-                    .getRTRTCodeSource(owner).getPath(), RTRTPublisher
-                    .getRTRTReport(owner).getPath(), streams, nameReports);
-
-            if (rule != null) {
-                // we change the report so that the FAILED flag is set correctly
-                OWNLOGGER.info("calculating failed packages based on " + rule);
-                rule.enforce(r, new StreamTaskListener(new NullStream()));
-            }
-
-            report = new WeakReference<CoverageReport>(r);
-            return r;
-        } catch (final InterruptedException e) {
-            OWNLOGGER.log(Level.WARNING, "Failed to load " + reportFolder, e);
-            return null;
-        } catch (final IOException e) {
-            OWNLOGGER.log(Level.WARNING, "Failed to load " + reportFolder, e);
-            return null;
-        }
-    }
-
-    /**
-     * Get the previous result.
-     *
-     * @return the previous result
-     */
     @Override
     public RTRTBuildAction getPreviousResult() {
         return getPreviousResult(owner);
@@ -408,8 +314,7 @@ implements HealthReportingAction, StaplerProxy {
      *            the top coverage build
      * @return previous BuildAction
      */
-    /* package */static RTRTBuildAction getPreviousResult(
-            final AbstractBuild<?, ?> start) {
+    /*package*/ static RTRTBuildAction getPreviousResult(final AbstractBuild<?, ?> start) {
         AbstractBuild<?, ?> b = start;
         while (true) {
             b = b.getPreviousBuild();
@@ -419,7 +324,7 @@ implements HealthReportingAction, StaplerProxy {
             if (b.getResult() == Result.FAILURE) {
                 continue;
             }
-            final RTRTBuildAction r = b.getAction(RTRTBuildAction.class);
+            RTRTBuildAction r = b.getAction(RTRTBuildAction.class);
             if (r != null) {
                 return r;
             }
@@ -427,7 +332,7 @@ implements HealthReportingAction, StaplerProxy {
     }
 
     /**
-     * Constructs the object from rtrtcoverage CIO report files.
+     * Constructs the object from rtrtcoverage global rate object.
      *
      * @param owner
      *            the build
@@ -435,91 +340,22 @@ implements HealthReportingAction, StaplerProxy {
      *            rule for failing ratios
      * @param thresholds
      *            for weather displays in Hudson
-     * @param files
-     *            all the report files
+     * @param globalRate
+     *            the global rate
      * @param logger
      *            log to the Hudson console for ui
      * @return the global coverage
-     * @throws IOException
-     *             if failed to parse the file.
-     * @throws CioException
-     *             if bad cio file
      */
     public static RTRTBuildAction load(final AbstractBuild<?, ?> owner,
-            final PrintStream logger, final Rule rule,
-            final RTRTHealthReportThresholds thresholds,
-            final FilePath... files) throws IOException, CioException {
-        Ratio[] ratios = null;
-        for (final FilePath f : files) {
-            if (logger != null) {
-                logger.println("[RTRTCoverage] [info]: coverage for "
-                        + f.getName());
-            }
-            final InputStream in1 = f.read();
-            final InputStream in2 = f.read();
-            try {
-                ratios = loadRatios(in1, in2, ratios, f.getName());
-            } finally {
-                in1.close();
-                in2.close();
-            }
-        }
-        return new RTRTBuildAction(owner, rule, ratios, thresholds);
-    }
-
-    /**
-     * Compute the ratio of the global coverage.
-     *
-     * @param in1
-     *            the .cio input stream
-     * @param in2
-     *            the .cio input stream
-     * @param r
-     *            the array of ratios to determine
-     * @param filename
-     *            the name of the .tio file.
-     * @return the array of ratios
-     * @throws IOException
-     *             if bad input
-     * @throws CioException
-     *             if bad .cio file
-     */
-    private static Ratio[] loadRatios(final InputStream in1,
-            final InputStream in2, Ratio[] r, final String filename)
-                    throws IOException, CioException {
-
-        final CioAttributes attributes = new CioAttributes(in1);
-        final CioReader reader = new CioReader(in2, filename.replace(".CIO",
-                ".TIO"));
-        final int maxRatios = ReportTag.values().length;
-
-        // head for the global coverage
-        if (r == null) {
-            r = new Ratio[maxRatios];
-            for (int i = 0; i < maxRatios; ++i) {
-                r[i] = new Ratio();
-            }
-        }
-
-        CoverageElement globalCoverage = new CoverageElement();
-        globalCoverage = reader.populateGlobalCoverage(
-                attributes.getAttributesFlags(),
-                attributes.getAttributesInformationFlags());
-
-        for (int i = 0; i < maxRatios; ++i) {
-            if (globalCoverage.isInitialized(i)) {
-                r[i].addValue(globalCoverage.getRatio(i));
-            }
-        }
-
-        return r;
-
+            final Rule rule,
+            final PrintStream logger,
+            final GlobalRate globalRate,
+            final RTRTHealthReportThresholds thresholds) {
+        return new RTRTBuildAction(owner, rule, globalRate, thresholds);
     }
 
     /**
      * Logger.
      */
-    private static final Logger OWNLOGGER = Logger
-            .getLogger(RTRTBuildAction.class.getName());
-
+    private static final Logger OWNLOGGER = Logger.getLogger(RTRTBuildAction.class.getName());
 }

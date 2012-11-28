@@ -19,24 +19,15 @@ public class FdcReaderTest {
         FileCoverageDefinition fileCovDef = new FileCoverageDefinition();
         fileCovDef = reader.read(new FilePath(new File(this.getClass()
                 .getResource("").getPath()
-                + "/LAME_APPLY_ACCELERATION_LAW.FDC")));
+                + "/SACO_RECEIVE_DATA.FDC")));
         Assert.assertEquals(
-                "D:\\JENKINS\\JOBS\\A400M\\WORKSPACE\\CDS_A400M_DEV\\LA\\LAME\\SRC",
+                "D:\\JENKINS\\JOBS\\A400M\\WORKSPACE\\CDS_A400M_DEV\\SA\\SACO\\SRC",
                 fileCovDef.getSourceDir());
-        Assert.assertEquals("Statement Blocks",
-                fileCovDef.getBranch(BranchDefinitionType.BLOCK, "4").getType().toString());
-        Assert.assertEquals("4",
-                fileCovDef.getBranch(BranchDefinitionType.BLOCK, "4").getId());
-        Assert.assertEquals("simple",
-                fileCovDef.getBranch(BranchDefinitionType.BLOCK, "4").getSubType());
-        Assert.assertEquals("lame_apply_acceleration_law",
-                fileCovDef.getBranch(BranchDefinitionType.BLOCK, "4").getFctName());
-        Assert.assertEquals("/then",
-                fileCovDef.getBranch(BranchDefinitionType.BLOCK, "4").getPath());
-        Assert.assertEquals(140,
-                fileCovDef.getBranch(BranchDefinitionType.BLOCK, "4").getStartLineNumber());
-        Assert.assertEquals(145,
-                fileCovDef.getBranch(BranchDefinitionType.BLOCK, "4").getEndLineNumber());
+
+        Assert.assertEquals(4, fileCovDef.getNodes().size());
+
+        Assert.assertEquals(87, fileCovDef.getNode("saco_receive_data").getBranchDefinitions().get(0).getLineNumber());
+
     }
 
     @Test
@@ -51,4 +42,5 @@ public class FdcReaderTest {
 
         Assert.assertEquals(ref, result);
     }
+
 }

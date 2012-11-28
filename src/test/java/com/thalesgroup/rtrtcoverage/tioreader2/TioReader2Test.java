@@ -5,11 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+
 import org.junit.Assert;
 import org.junit.Test;
-
-import com.thalesgroup.rtrtcoverage.tioreader2.TioException;
-import com.thalesgroup.rtrtcoverage.tioreader2.TioReader2;
 
 public class TioReader2Test {
 
@@ -42,13 +40,11 @@ public class TioReader2Test {
         }
         Assert.assertNotNull(testSuiteTrace.getTestTraces());
         Assert.assertEquals(14, testSuiteTrace.getTestTraces().size());
-        Assert.assertEquals("0", testSuiteTrace.getTestTraces().get(1)
-                .getFileTraces("41566919", "1e207343") // old : "91966514",
-                // "343702e1"
-                .get(0).getTraces().get(0).getId());
-        Assert.assertEquals(BranchTraceType.PROC, testSuiteTrace
+        Assert.assertEquals("13", testSuiteTrace.getTestTraces().get(2)
+                .getFileTraces("41566919", "1e207343").get(0).getTraces().get(7).getId());
+        Assert.assertEquals("TP", testSuiteTrace
                 .getTestTraces().get(1).getFileTraces("41566919", "1e207343")
-                .get(0).getTraces().get(0).getType());
+                .get(0).getTraces().get(0).getMark());
 
     }
 

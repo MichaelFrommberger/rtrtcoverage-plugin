@@ -53,7 +53,7 @@ extends AbstractReport<PARENT, SELF> {
      *            the parent of the current report
      */
     @Override
-    protected void setParent(final PARENT p) {
+    protected final void setParent(final PARENT p) {
         super.setParent(p);
         for (final CHILD c : children.values()) {
             c.setParent((SELF) this);
@@ -105,9 +105,9 @@ extends AbstractReport<PARENT, SELF> {
      *
      * @return true if at least one have function coverage
      */
-    public final boolean hasChildrenFunctionCoverage() {
+    public final boolean hasChildrenFunctionAndExitCoverage() {
         for (final CHILD child : getChildren().values()) {
-            if (child.hasFunctionCoverage()) {
+            if (child.hasFunctionAndExitCoverage()) {
                 return true;
             }
         }
@@ -135,7 +135,7 @@ extends AbstractReport<PARENT, SELF> {
      */
     public final boolean hasChildrenStatementBlockCoverage() {
         for (final CHILD child : getChildren().values()) {
-            if (child.hasStatementBlockCoverage()) {
+            if (child.hasStatBlockCoverage()) {
                 return true;
             }
         }
@@ -149,7 +149,7 @@ extends AbstractReport<PARENT, SELF> {
      */
     public final boolean hasChildrenImplicitBlockCoverage() {
         for (final CHILD child : getChildren().values()) {
-            if (child.hasImplicitBlockCoverage()) {
+            if (child.hasImplBlockCoverage()) {
                 return true;
             }
         }
@@ -191,7 +191,7 @@ extends AbstractReport<PARENT, SELF> {
      */
     public final boolean hasChildrenBasicConditionCoverage() {
         for (final CHILD child : getChildren().values()) {
-            if (child.hasBasicConditionCoverage()) {
+            if (child.hasBasicCondCoverage()) {
                 return true;
             }
         }
@@ -205,7 +205,7 @@ extends AbstractReport<PARENT, SELF> {
      */
     public final boolean hasChildrenModifiedConditionCoverage() {
         for (final CHILD child : getChildren().values()) {
-            if (child.hasModifiedConditionCoverage()) {
+            if (child.hasModifCondCoverage()) {
                 return true;
             }
         }
@@ -219,7 +219,7 @@ extends AbstractReport<PARENT, SELF> {
      */
     public final boolean hasChildrenMultipleConditionCoverage() {
         for (final CHILD child : getChildren().values()) {
-            if (child.hasMultipleConditionCoverage()) {
+            if (child.hasMultCondCoverage()) {
                 return true;
             }
         }

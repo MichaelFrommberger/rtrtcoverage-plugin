@@ -1,8 +1,11 @@
 package com.thalesgroup.rtrtcoverage.tusarexport;
 
+import hudson.FilePath;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,9 +18,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import com.thalesgroup.dtkit.util.converter.ConversionException;
-import com.thalesgroup.rtrtcoverage.fdcreader.BranchDefinitionType;
-import com.thalesgroup.rtrtcoverage.tracemerge.BranchCoverage;
 import com.thalesgroup.rtrtcoverage.tracemerge.FileCoverage;
+import com.thalesgroup.rtrtcoverage.tracemerge.IBranchCoverage;
+import com.thalesgroup.rtrtcoverage.tracemerge.NodeCoverage;
 import com.thalesgroup.rtrtcoverage.tusar.BranchCoverageComplexType;
 import com.thalesgroup.rtrtcoverage.tusar.BranchCoverageComplexType.Resource;
 import com.thalesgroup.rtrtcoverage.tusar.BranchCoverageComplexType.Resource.Line;
@@ -65,40 +68,37 @@ public class TusarExport {
                     + "\\"
                     + fileCov.getFileCoverageDefinition().getSourceName());
             final Map<Integer, Line> lineMap = new HashMap<Integer, Line>();
-            for (final BranchCoverage branchCov : fileCov.getBranches()) {
-                if (branchCov.getBranchDefinition().getType() == BranchDefinitionType.BLOCK
-                        || branchCov.getBranchDefinition().getType() == BranchDefinitionType.LOOP
-                        || branchCov.getBranchDefinition().getType() == BranchDefinitionType.PROC
-                        || branchCov.getBranchDefinition().getType() == BranchDefinitionType.CALL) {
-                    Line tusarLine = lineMap.get(branchCov
-                            .getBranchDefinition().getStartLineNumber());
+            for (NodeCoverage nodeCov : fileCov.getNodes()) {
+                for (IBranchCoverage branchCov : nodeCov.getAllGlobalCoverages()) {
+                    Line tusarLine = lineMap.get(branchCov.getLineNumber());
                     if (tusarLine == null) {
                         tusarLine = objFactory
                                 .createBranchCoverageComplexTypeResourceLine();
                         tusarLine
                         .setBranches(objFactory
                                 .createBranchCoverageComplexTypeResourceLineBranches());
-                        tusarLine.setNumber(String.valueOf(branchCov
-                                .getBranchDefinition().getStartLineNumber()));
-                        lineMap.put(branchCov.getBranchDefinition()
-                                .getStartLineNumber(), tusarLine);
+                        tusarLine.setNumber(String.valueOf(branchCov.getLineNumber()));
+                        lineMap.put(branchCov.getLineNumber(), tusarLine);
                         tusarLine.setNumberOfBranches("0");
                         tusarLine.setUncoveredBranches("0");
                     }
+
                     final Branch tusarBranch = objFactory
                             .createBranchCoverageComplexTypeResourceLineBranchesBranch();
-                    tusarBranch.setType(branchCov.getBranchDefinition()
-                            .getType().toString());
-                    tusarBranch.setName(branchCov.getBranchDefinition()
-                            .getName());
-                    if (branchCov.getHits() > 0) {
+                    if (branchCov.getType() != null) {
+                        tusarBranch.setType(branchCov.getType().toString());
+                    }
+                    tusarBranch.setName(nodeCov.getNodeName() + " "
+                            + branchCov.getMark() + " "
+                            + branchCov.getId());
+                    if (branchCov.isCovered()) {
                         tusarBranch.setCoverage("100");
                     } else {
                         tusarBranch.setCoverage("0");
                     }
                     tusarLine.setNumberOfBranches(String.valueOf(Integer
                             .parseInt(tusarLine.getNumberOfBranches()) + 1));
-                    if (branchCov.getHits() == 0) {
+                    if (!branchCov.isCovered()) {
                         tusarLine
                         .setUncoveredBranches(String.valueOf(Integer
                                 .parseInt(tusarLine
@@ -170,24 +170,35 @@ public class TusarExport {
      * @param outputFile
      *            a file where to save the .xml file corresponding to the tusar
      *            input
+     * @param buildDir
+     *            the buildDir where to store the tusar temporary file
+     * @throws InterruptedException an InterruptedException
+     * @throws IOException an IOException
      */
-    public final void export(final Tusar tusarData, final File outputFile) {
+    public final void export(final Tusar tusarData, final FilePath outputFile, final File buildDir)
+            throws IOException, InterruptedException {
+        File tusarTemp = new File(buildDir.getPath()
+                + System.getProperty("file.separator") + "tusartemp.xml");
         try {
             // XML and JAXB
-            marshaller.marshal(tusarData, new FileOutputStream(outputFile));
+            marshaller.marshal(tusarData, new FileOutputStream(tusarTemp));
 
         } catch (final FileNotFoundException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
             /* Showing the error into the Hudson console */
             throw new ConversionException("The file "
-                    + outputFile.getAbsolutePath() + " does not exist");
+                    + tusarTemp.getAbsolutePath() + " does not exist");
         } catch (final JAXBException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
             /* Showing the error into the Hudson console */
             throw new ConversionException(e.getMessage());
         }
+        if (tusarTemp.exists()) {
+            outputFile.copyFrom(new FilePath(tusarTemp));
+        }
+        tusarTemp.delete();
     }
 
     /**

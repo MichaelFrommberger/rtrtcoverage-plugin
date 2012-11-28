@@ -3,8 +3,9 @@ package com.thalesgroup.rtrtcoverage.fdcreader;
 import hudson.FilePath;
 
 import java.io.File;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,19 +16,63 @@ import java.util.Map;
 public class FileCoverageDefinition {
 
     /**
+     * A mapping between node name and a node.
+     */
+    private Map<String, NodeDefinition> nodeDefinitions;
+
+    /**
      * the name of the source file (*.C).
      */
-    private String sourceName = null;
+    private String sourceName;
 
     /**
      * the directory where is stored the source file.
      */
-    private String sourceDir = null;
+    private String sourceDir;
 
     /**
      * the key extracted from aug file.
      */
     private String key;
+
+    /**
+     * the crc extracted from aug file.
+     */
+    private String crc;
+
+    /**
+     * Path (from the build dir) of the fdc file linked to this file coverage definition.
+     */
+    private String fdcPath;
+
+    /**
+     * Default constructor.
+     */
+    public FileCoverageDefinition() {
+        nodeDefinitions = new HashMap<String, NodeDefinition>();
+    }
+
+    /**
+     * @param node a node definition.
+     */
+    public final void addNode(final NodeDefinition node) {
+        nodeDefinitions.put(node.getNodeName(), node);
+    }
+
+    /**
+     * @param nodeName the name of the wanted node.
+     * @return the node definition with the specified name.
+     */
+    public final NodeDefinition getNode(final String nodeName) {
+        return nodeDefinitions.get(nodeName);
+    }
+
+    /**
+     * @return a list of all the nodes.
+     */
+    public final List<NodeDefinition> getNodes() {
+        return new ArrayList<NodeDefinition>(nodeDefinitions.values());
+    }
 
     /**
      * @return key the key extracted from aug file
@@ -44,11 +89,6 @@ public class FileCoverageDefinition {
     }
 
     /**
-     * the crc extracted from aug file.
-     */
-    private String crc;
-
-    /**
      * @return the crc extracted from aug file
      */
     public final String getCrc() {
@@ -60,47 +100,6 @@ public class FileCoverageDefinition {
      */
     public final void setCrc(final String newCrc) {
         this.crc = newCrc;
-    }
-
-    /**
-     * the map of all the branches of this file.
-     */
-    private final Map<String, BranchDefinition> branchDefs;
-
-    /**
-     * Default constructor.
-     */
-    public FileCoverageDefinition() {
-        branchDefs = new HashMap<String, BranchDefinition>();
-    }
-
-    /**
-     * @param type
-     *            of the branch we are looking for
-     * @param id
-     *            of the branch we are looking for
-     * @return the branch definition corresponding to the type and id
-     */
-    public final BranchDefinition getBranch(final BranchDefinitionType type,
-            final String id) {
-        return branchDefs.get(type + id);
-    }
-
-    /**
-     * @return a collection of all the branches of this file (non ordered)
-     */
-    public final Collection<BranchDefinition> getBranches() {
-        return branchDefs.values();
-    }
-
-    /**
-     * Adds a branch to the map.
-     *
-     * @param branchDef
-     *            the branch to add
-     */
-    public final void addBranch(final BranchDefinition branchDef) {
-        branchDefs.put(branchDef.getType() + branchDef.getId(), branchDef);
     }
 
     /**
@@ -133,6 +132,20 @@ public class FileCoverageDefinition {
      */
     public final void setSourceDir(final String newSourceDir) {
         this.sourceDir = newSourceDir;
+    }
+
+    /**
+     * @return the fdc path.
+     */
+    public final String getFdcPath() {
+        return fdcPath;
+    }
+
+    /**
+     * @param newFdcPath a fdc path.
+     */
+    public final void setFdcPath(final String newFdcPath) {
+        this.fdcPath = newFdcPath;
     }
 
 }

@@ -9,7 +9,6 @@
 
       <h3>${%File Coverage Summary}</h3>
       <table border="1px" class="pane">
-    	<j:if test="${it.hasChildren()}">
   			<tr>
     		<th>${%name}</th>
     		<th>${%function}</th>
@@ -22,38 +21,39 @@
     		<th>${%modified_condition}</th>
     		<th>${%multiple_condition}</th>
   			</tr>
-		</j:if>
     	<tr>
       		<td>${it.name}</td>
       		${it.printNineCoverageColumns()}
     	</tr>
   	  </table>
 
-      <h3>${%Coverage Breakdown by Test}</h3>
-      <table border="1px" class="sortable pane">
-    	<j:if test="${it.hasChildren()}">
-  			<tr>
-    		<th>${%name}</th>
-    		<th>${%function}</th>
-    		<th>${%call}</th>
-    		<th>${%statement_blocks}</th>
-    		<th>${%implicit_blocks}</th>
-    		<th>${%decision}</th>
-    		<th>${%loop}</th>
-    		<th>${%basic_condition}</th>
-    		<th>${%modified_condition}</th>
-    		<th>${%multiple_condition}</th>
-  			</tr>
-		</j:if>
-    	<j:forEach var="c" items="${it.children.values()}">
-      	<tr>
-        	<td class="nowrap ${h.ifThenElse(c.failed,' red','')}" >
+      <j:if test="${it.hasChildren()}">
+        <h3>${%Coverage Breakdown by Test}</h3>
+            <table border="1px" class="sortable pane">
+    	
+  			   <tr>
+    		  <th>${%name}</th>
+    		  <th>${%function}</th>
+    		  <th>${%call}</th>
+    		  <th>${%statement_blocks}</th>
+    		  <th>${%implicit_blocks}</th>
+    		  <th>${%decision}</th>
+    		  <th>${%loop}</th>
+    		  <th>${%basic_condition}</th>
+    		  <th>${%modified_condition}</th>
+    		  <th>${%multiple_condition}</th>
+  			   </tr>
+		
+    	   <j:forEach var="c" items="${it.children.values()}">
+      	     <tr>
+        	   <td class="nowrap ${h.ifThenElse(c.failed,' red','')}" >
           		<a href="${h.ifThenElse(nolink!=null,null,c.name+'/')}"><st:out value="${c.name}"/></a>
-        	</td>	      
-        	${c.printNineCoverageColumns()}
-      	</tr>
-    	</j:forEach>
-      </table>
+        	   </td>	      
+        	   ${c.printNineCoverageColumns()}
+      	     </tr>
+    	   </j:forEach>
+          </table>
+      </j:if>
       
       <j:if test="${it.isSourceCodeLevel()}">
                 <j:choose>

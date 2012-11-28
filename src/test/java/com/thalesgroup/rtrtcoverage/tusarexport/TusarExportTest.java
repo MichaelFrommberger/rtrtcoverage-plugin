@@ -2,12 +2,9 @@ package com.thalesgroup.rtrtcoverage.tusarexport;
 
 import hudson.FilePath;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,17 +32,17 @@ public class TusarExportTest {
     public void exportTest() throws Exception {
         // Converter data input build
         final FilePath fdcPath = new FilePath(new File(this.getClass()
-                .getResource("SAMC_CROSSTALK_SEND_CAN_COMPATIBILITY.FDC")
+                .getResource("SACO_RECEIVE_DATA.FDC")
                 .getPath()));
         final File tioPath = new File(this.getClass()
-                .getResource("SAMC_CROSSTALK_SEND_CAN_COMPATIBILITY.TIO")
+                .getResource("SACO_RECEIVE_DATA.TIO")
                 .getPath());
         final CoverageTraceMerger coverageTraceMerger = new CoverageTraceMerger();
         final List<FileCoverageDefinition> fileCoverageDefs = new ArrayList<FileCoverageDefinition>();
         final FdcReader fdcReader = new FdcReader();
         final FileCoverageDefinition fileCovDef = fdcReader.read(fdcPath);
-        fileCovDef.setKey("374234");
-        fileCovDef.setCrc("6493821");
+        fileCovDef.setKey("4e721266");
+        fileCovDef.setCrc("797d07b2");
         fileCoverageDefs.add(fileCovDef);
         final List<TestSuiteTrace> traces = new ArrayList<TestSuiteTrace>();
         final FileInputStream ips = new FileInputStream(tioPath);
@@ -53,49 +50,50 @@ public class TusarExportTest {
         traces.add(tioReader.readTio());
         final List<FileCoverage> fileCovs = coverageTraceMerger.merge(
                 fileCoverageDefs, traces);
-
         // Converter test
-        final File outputFile = new File(this.getClass().getResource("")
+        final FilePath outputFile = new FilePath(new File(this.getClass().getResource("")
                 .getPath()
-                + "/test_tusar_output.xml");
-        final File refFile = new File(this.getClass().getResource("").getPath()
-                + "/test_tusar_ref.xml");
+                + "/test_tusar_output.xml"));
+        final FilePath refFile = new FilePath(new File(this.getClass().getResource("").getPath()
+                + "/test_tusar_ref.xml"));
         final TusarExport tusarExport = new TusarExport();
         final Tusar tusarData = tusarExport.convert(fileCovs);
-        tusarExport.export(tusarData, outputFile);
+        tusarExport.export(tusarData, outputFile, new File(this.getClass().getResource("").getPath()));
 
         Assert.assertTrue(filesMatch(refFile, outputFile));
     }
 
     /**
-     * Compares 2 xml files
-     * 
+     * Compares text content of 2 files
+     *
      * @param file1
      *            a text file to compare to file2
      * @param file2
      *            a text file to compare to file1
      * @return true if files contents are the same else return false
      * @throws IOException
-     * @throws ParserConfigurationException 
-     * @throws SAXException 
+     * @throws ParserConfigurationException
+     * @throws SAXException
      */
-    private boolean filesMatch(final File file1, final File file2)
+    private boolean filesMatch(final FilePath filepath1, final FilePath filepath2)
             throws IOException, ParserConfigurationException, SAXException {
+        File file1 = new File(filepath1.getRemote());
+        File file2 = new File(filepath2.getRemote());
 
-    	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-    	dbf.setNamespaceAware(true);
-    	dbf.setCoalescing(true);
-    	dbf.setIgnoringElementContentWhitespace(true);
-    	dbf.setIgnoringComments(true);
-    	DocumentBuilder db = dbf.newDocumentBuilder();
-    	
-    	Document doc1 = db.parse(file1);
-    	doc1.normalizeDocument();
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        dbf.setNamespaceAware(true);
+        dbf.setCoalescing(true);
+        dbf.setIgnoringElementContentWhitespace(true);
+        dbf.setIgnoringComments(true);
+        DocumentBuilder db = dbf.newDocumentBuilder();
 
-    	Document doc2 = db.parse(file2);
-    	doc2.normalizeDocument();
+        Document doc1 = db.parse(file1);
+        doc1.normalizeDocument();
 
-    	return doc1.isEqualNode(doc2);
+        Document doc2 = db.parse(file2);
+        doc2.normalizeDocument();
+
+        return (doc1.isEqualNode(doc2));
 
     }
 

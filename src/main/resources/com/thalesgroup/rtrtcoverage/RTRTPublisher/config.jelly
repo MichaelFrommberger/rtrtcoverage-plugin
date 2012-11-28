@@ -1,8 +1,4 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-  <f:entry title="${%entryCio.title}"
-           description="${%includesCio.description}">
-    <f:textbox name="rtrtcoverage.includesCio" value="${instance.includesCio}"/>
-  </f:entry>
   <f:entry title="${%entryTio.title}"
            description="${%includesTio.description}">
     <f:textbox name="rtrtcoverage.includesTio" value="${instance.includesTio}"/>
@@ -16,12 +12,20 @@
     		<f:textbox name="rtrtcoverage.augPattern" value="${instance.augPattern}"/>
    </f:entry>
 
-  <f:optionalBlock name="rtrtcoverage.mustTusarExport" 
-  title="${%optionalTusar.title}" checked="${instance.mustTusarExport}">
+  <f:optionalBlock name="rtrtcoverage.tusarExportInBuildDirRequired" 
+  title="${%optionalTusar.title}" checked="${instance.tusarExportInBuildDirRequired}">
 		<f:entry title="${%entryTusar.title}"
 				 description="${%entryTusar.description}">
-			<f:textbox name="rtrtcoverage.tusarExportPath" value="${instance.tusarExportPath}"/>
+			<f:textbox name="rtrtcoverage.tusarExportPathFromBuildDir" value="${instance.tusarExportPathFromBuildDir}"/>
 		</f:entry>
+  </f:optionalBlock>
+  
+    <f:optionalBlock name="rtrtcoverage.tusarExportInWorkspaceDirRequired" 
+  title="${%optionalTusarWorkspace.title}" checked="${instance.tusarExportInWorkspaceDirRequired}">
+        <f:entry title="${%entryTusarWorkspace.title}"
+                 description="${%entryTusarWorkspace.description}">
+            <f:textbox name="rtrtcoverage.tusarExportPathFromWorkspaceDir" value="${instance.tusarExportPathFromWorkspaceDir}"/>
+        </f:entry>
   </f:optionalBlock>
 
     <f:entry title="${%Health reporting}"

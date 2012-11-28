@@ -23,51 +23,6 @@ public final class SourceFileReport extends
 AggregatedReport<CoverageReport, SourceFileReport, TestReport> {
 
     /**
-     * Where to find the fdc files.
-     */
-    private String includesFdc;
-
-    /**
-     * Where to find the tio files.
-     */
-    private String includesTio;
-
-    /**
-     * The tio file where to find the coverage.
-     */
-    private String tioName;
-
-    /**
-     * Determine where to find the .fdc files.
-     *
-     * @param sIncludes
-     *            the path
-     */
-    public void setIncludesFdc(final String sIncludes) {
-        this.includesFdc = sIncludes;
-    }
-
-    /**
-     * Determine where to find the .tio files.
-     *
-     * @param sIncludes
-     *            the path
-     */
-    public void setIncludesTio(final String sIncludes) {
-        this.includesTio = sIncludes;
-    }
-
-    /**
-     * Determine the name of the tio file.
-     *
-     * @param sTioName
-     *            name of the tio file
-     */
-    public void setTioName(final String sTioName) {
-        this.tioName = sTioName;
-    }
-
-    /**
      * Give the contents of the source file. Coverage is painted on the lines.
      *
      * @return the painted source code.
@@ -81,7 +36,8 @@ AggregatedReport<CoverageReport, SourceFileReport, TestReport> {
             // Determine where the .tio files are located.
             final List<FilePath> paths = new ArrayList<FilePath>();
             final FilesMapping mapping =
-                    (new FileIdentitiesImport()).importXml(new File(getBuild().getRootDir() + "/file_identities.xml"));
+                    (new FileIdentitiesImport()).importXml(new File(getBuild().getRootDir()
+                            + System.getProperty("file.separator") + "file_identities.xml"));
             for (FilePath path : mapping.get(this.getName()).getAssociedTios()) {
                 paths.add(path);
             }
@@ -200,19 +156,5 @@ AggregatedReport<CoverageReport, SourceFileReport, TestReport> {
         }
         return buf.toString();
 
-    }
-
-    /**
-     * Determine if the file is a .tio file.
-     *
-     * @param f
-     *            the file to test
-     * @param name
-     *            the name of the file to compare
-     * @return <code>true</code> if it is a .tio file
-     */
-    private boolean isTioFile(final FilePath f, final String name) {
-        final String nameOfTioFile = f.getName().toUpperCase();
-        return nameOfTioFile.equals(name.toUpperCase());
     }
 }

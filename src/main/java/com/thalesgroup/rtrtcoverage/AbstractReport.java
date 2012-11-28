@@ -7,7 +7,6 @@ import hudson.util.TextFile;
 import java.io.File;
 import java.io.IOException;
 
-import com.thalesgroup.rtrtcoverage.cioreader.CoverageElement;
 
 /**
  * Base class of the coverage report tree, which maintains the details of the
@@ -24,11 +23,6 @@ public abstract class AbstractReport<PARENT extends AggregatedReport<?, PARENT, 
 extends CoverageObject<SELF> implements ModelObject {
 
     /**
-     * Name of the report.
-     */
-    private String name;
-
-    /**
      * Parent in the tree of the report.
      */
     private PARENT parent;
@@ -38,44 +32,6 @@ extends CoverageObject<SELF> implements ModelObject {
      */
     private String sourcePath;
 
-    /**
-     * Set the report with the given CoverageElement.
-     *
-     * @param cv
-     *            the coverage report
-     */
-    public final void addCoverage(final CoverageElement cv) {
-        cv.addTo(this);
-    }
-
-    /**
-     * Update the report with the given CoverageElement.
-     *
-     * @param cv
-     *            the coverage report
-     */
-    public final void updateCoverage(final CoverageElement cv) {
-        cv.updateTo(this);
-    }
-
-    /**
-     * Get the name of the coverage report.
-     *
-     * @return the name of the report
-     */
-    public final String getName() {
-        return name;
-    }
-
-    /**
-     * Give a name to the coverage report.
-     *
-     * @param nameReport
-     *            the name of the report
-     */
-    public final void setName(final String nameReport) {
-        this.name = nameReport;
-    }
 
     /**
      * The name to display in the gui.
@@ -83,7 +39,7 @@ extends CoverageObject<SELF> implements ModelObject {
      * @return the name to display
      */
     public final String getDisplayName() {
-        return name;
+        return getName();
     }
 
     /**
@@ -119,7 +75,7 @@ extends CoverageObject<SELF> implements ModelObject {
             if (p == null) {
                 return null;
             }
-            final SELF prev = (SELF) p.getChildren().get(name);
+            final SELF prev = (SELF) p.getChildren().get(getName());
             if (prev != null) {
                 return prev;
             }

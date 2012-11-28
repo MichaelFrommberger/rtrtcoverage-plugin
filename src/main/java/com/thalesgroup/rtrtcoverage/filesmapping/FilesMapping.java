@@ -6,17 +6,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.thalesgroup.rtrtcoverage.tioreader2.FileTrace;
 import com.thalesgroup.rtrtcoverage.tioreader2.TestSuiteTrace;
 import com.thalesgroup.rtrtcoverage.tioreader2.TestTrace;
 import com.thalesgroup.rtrtcoverage.tioreader2.TioException;
-import com.thalesgroup.rtrtcoverage.tioreader2.TioReader2;
 
 /**
  * Class allowing mapping between tio and fdc files.
- *
  * @author Bastien Reboulet
  */
 public class FilesMapping {
@@ -35,77 +32,62 @@ public class FilesMapping {
 
     /**
      * Build the mapping.
-     *
-     * @param tioDir
-     *            directory where all the tio files are located (generally in
-     *            the build dir)
-     * @param workspace
-     *            the workspace where we can find instrumented files
-     * @param augPattern
-     *            the ant-style pattern allowing to find instrumented files
-     *            (relative to the workspace)
-     * @throws IOException
-     *             an IOException
-     * @throws InterruptedException
-     *             an InterruptedException
-     * @throws FileIdentificationException
-     *             a FileIdentificationException
-     * @throws TioException
-     *             a TioException
+     * @param tioDir directory where all the tio files are located (generaly in the build dir)
+     * @param workspace the workspace where we can find instrumented files
+     * @param augPattern the ant-style pattern allowing to find instrumented files (relative to the workspace)
+     * @param tsts the list of test suite traces
+     * @throws IOException an IOException
+     * @throws InterruptedException an InterruptedException
+     * @throws FileIdentificationException a FileIdentificationException
+     * @throws TioException a TioException
      */
-    public final void build(final FilePath tioDir, final FilePath workspace,
-            final String augPattern) throws IOException, InterruptedException,
-            FileIdentificationException, TioException {
+    public final void build(final List<TestSuiteTrace> tsts,
+            final FilePath workspace,
+            final String augPattern,
+            final FilePath tioDir)
+                    throws IOException,
+                    InterruptedException,
+                    FileIdentificationException,
+                    TioException {
+
         FilePath[] augFiles = workspace.list(augPattern);
-        FilePath[] tioFiles = tioDir.list("**/*.TIO");
-        Map<String, FileIdentity> fileIds = new HashMap<String, FileIdentity>();
-        // build source filename <--> key/crc association
+
         for (FilePath augFile : augFiles) {
-            FileIdentity fi = InstrumentedFileParser.getFileIdentity(augFile,
-                    augPattern);
+            FileIdentity fi = InstrumentedFileParser.getFileIdentity(augFile, augPattern);
             if (fi != null) {
-                mapping.put(fi.getSourceFileName(), fi);
-                fileIds.put(fi.getKey() + fi.getCrc(), fi);
-            }
-        }
-        // collect tio files covering each source file
-        for (FilePath tioFile : tioFiles) {
-            for (String id : coveredFileIds(tioFile)) {
-                if (fileIds.containsKey(id)) {
-                    FileIdentity fileId = fileIds.get(id);
-                    if (!fileId.getAssociedTios().contains(tioFile)) {
-                        fileIds.get(id).getAssociedTios().add(tioFile);
+                for (TestSuiteTrace testSuiteTrace : tsts) {
+                    if (isTioFileContains(testSuiteTrace, fi.getKey(), fi.getCrc())) {
+                        fi.getAssociedTios().add(new FilePath(tioDir, testSuiteTrace.getName()));
                     }
                 }
+                mapping.put(fi.getSourceFileName(), fi);
             }
         }
     }
 
     /**
-     * @param tioFile
-     *            a tio file
-     * @return a list of all the "key+crc" strings contained in this tio file
-     * @throws IOException
-     *             an IOException
-     * @throws TioException
-     *             a TioException
+     * @param tst a test suite trace
+     * @param key a key
+     * @param crc a crc
+     * @return true if the input tio file contains one or more occurences of key/crc pair, else return false
+     * @throws IOException an IOException
+     * @throws TioException a TioException
      */
-    private List<String> coveredFileIds(final FilePath tioFile)
-            throws IOException, TioException {
-        List<String> coveredFileIds = new ArrayList<String>();
-        TioReader2 tioReader = new TioReader2(tioFile.read());
-        TestSuiteTrace tst = tioReader.readTio();
-        for (TestTrace testTrace : tst.getTestTraces()) {
-            for (FileTrace fileTrace : testTrace.getAllFileTraces()) {
-                coveredFileIds.add(fileTrace.getKey() + fileTrace.getCrc());
+    private boolean isTioFileContains(final TestSuiteTrace tst,
+            final String key,
+            final String crc)
+                    throws IOException, TioException {
+        for (TestTrace tt : tst.getTestTraces()) {
+            List<FileTrace> fileTraces = tt.getFileTraces(key, crc);
+            if ((fileTraces != null) && (fileTraces.size() != 0)) {
+                return true;
             }
         }
-        return coveredFileIds;
+        return false;
     }
 
     /**
-     * @param sourceFileName
-     *            a source file name
+     * @param sourceFileName a source file name
      * @return the FileIdentity corresponding to the source file name
      */
     public final FileIdentity get(final String sourceFileName) {
@@ -120,8 +102,7 @@ public class FilesMapping {
     }
 
     /**
-     * @param fileIdentities
-     *            a list of FileIdentity
+     * @param fileIdentities a list of FileIdentity
      */
     public final void setMapping(final List<FileIdentity> fileIdentities) {
         for (FileIdentity fi : fileIdentities) {
@@ -137,28 +118,21 @@ public class FilesMapping {
     }
 
     /**
-     * @param fm
-     *            a FilesMapping
-     * @return true if this FilesMapping contains the same mapping than fm, else
-     *         return false
+     * @param fm a FilesMapping
+     * @return true if this FilesMapping contains the same mapping than fm, else return false
      */
     public final boolean equals(final FilesMapping fm) {
         for (String mapKey : fm.getMap().keySet()) {
-            if (!this.mapping.get(mapKey).getKey()
-                    .contentEquals(fm.get(mapKey).getKey())
-                    || !this.mapping.get(mapKey).getCrc()
-                            .contentEquals(fm.get(mapKey).getCrc())
-                    || !this.mapping.get(mapKey).getAssociedTios()
-                            .containsAll(fm.get(mapKey).getAssociedTios())) {
+            if (!this.mapping.get(mapKey).getKey().contentEquals(fm.get(mapKey).getKey())
+                    || !this.mapping.get(mapKey).getCrc().contentEquals(fm.get(mapKey).getCrc())
+                    || !this.mapping.get(mapKey).getAssociedTios().containsAll(fm.get(mapKey).getAssociedTios())) {
                 return false;
             }
         }
         return true;
     }
 
-    /*
-     * (non-Javadoc)
-     *
+    /* (non-Javadoc)
      * @see java.lang.Object#hashCode()
      */
     @Override

@@ -5,7 +5,9 @@ import hudson.FilePath;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Parser of *.fdc file.
@@ -27,51 +29,151 @@ public class FdcReader {
         final BufferedReader bf = new BufferedReader(new FileReader(
                 fdcFile.getRemote()));
         String currentLineString = new String();
-        String first2letters = new String();
-        final FileCoverageDefinition fileCoverageDef = new FileCoverageDefinition();
+        FileCoverageDefinition fileCoverageDef = new FileCoverageDefinition();
+        fileCoverageDef.setFdcPath(fdcFile.getRemote());
+        NodeDefinition nodeDef = null;
+
+        boolean isInNode = false;
+        boolean isInPopup = false;
+        int currentLineNumber = 0;
+        int fileStartLineNumber = 0;
+
 
         // Read the *.fdc file only until "@RIK" token
         // No need to read further for the data we want
         currentLineString = bf.readLine();
-        while (!currentLineString.contains("@RIK")) {
-            first2letters = currentLineString.substring(0, 2);
-            if (first2letters.contentEquals("FC")) {
-                final LinkedList<String> parsedLine = customSplit(currentLineString);
-                parsedLine.remove();
-                fileCoverageDef.setSourceName(parsedLine.poll());
-                fileCoverageDef.setSourceDir(parsedLine.poll());
-            } else if (first2letters.contentEquals("BL")
-                    || first2letters.contentEquals("PR")
-                    || first2letters.contentEquals("AP")) {
-                final BranchDefinition branchDef = new BranchDefinition();
-                branchDef.setName(currentLineString.replace("\"", ""));
-                final LinkedList<String> parsedLine = customSplit(currentLineString);
-                parsedLine.remove();                                                        // 0 0
-                branchDef.setId(Integer.toHexString(Integer.parseInt(parsedLine.poll())));  // 1 1
-                branchDef.setSubType(parsedLine.poll());                                    // 2 2
-                branchDef.setFctName(parsedLine.poll());                                    // 3 3
-                if (first2letters.contentEquals("BL")) {
-                    branchDef.setPath(parsedLine.poll());                                   // 4
-                    if (branchDef.getSubType().contentEquals("simple")) {
-                        branchDef.setType(BranchDefinitionType.BLOCK);
-                    } else if (branchDef.getSubType().contentEquals("logical")) {
-                        branchDef.setType(BranchDefinitionType.LOOP);
+        while (currentLineString != null) {
+
+            if (currentLineString.contains("@POPUP@")) {
+                isInPopup = true;
+            }
+            if (currentLineString.contains("@/POPUP@")) {
+                isInPopup = false;
+            }
+            if (currentLineString.startsWith("FC")) {
+                fileCoverageDef.setSourceName(customSplit(currentLineString).get(1));
+                fileCoverageDef.setSourceDir(customSplit(currentLineString).get(2));
+            }
+            if (currentLineString.startsWith("NODE")) {
+                fileStartLineNumber = currentLineNumber;
+            }
+            if (currentLineString.contains("@NODE")) {
+                nodeDef = null;
+                nodeDef = new NodeDefinition();
+                nodeDef.setNodeName(getStringAfterToken(getStringsBetween(currentLineString, "@NODE", "@").get(0), "NAME="));
+                isInNode = true;
+            }
+            if (currentLineString.contains("@/NODE@")) {
+                fileCoverageDef.addNode(nodeDef);
+                isInNode = false;
+            }
+            if (isInNode) {
+                if (currentLineString.contains("@BRANCH")) {
+                    for (String str : getStringsBetween(currentLineString, "@BRANCH", "@")) {
+                        IBranchDefinition branch = null;
+                        if (convertToBranchDefinitionType(getStringAfterToken(str, "SUM=")) != BranchType.TE_MODIFIEDS) {
+                            branch = new SingleBranchDefinition();
+                        } else {
+                            branch = new MultipleBranchDefinition();
+                        }
+                        branch.setType(convertToBranchDefinitionType(getStringAfterToken(str, "SUM=")));
+                        branch.setId(getStringAfterToken(str, "ID="));
+                        branch.setMark(getStringAfterToken(str, "MARK="));
+                        branch.setLineNumber(currentLineNumber - fileStartLineNumber);
+                        nodeDef.addBranchDefinition(branch);
                     }
-                } else if (first2letters.contentEquals("PR")) {
-                    branchDef.setType(BranchDefinitionType.PROC);
-                } else if (first2letters.contentEquals("AP")) {
-                    branchDef.setType(BranchDefinitionType.CALL);
                 }
-                branchDef.setStartLineNumber(Integer.parseInt(parsedLine.poll()));          // 5 4
-                branchDef.setEndLineNumber(Integer.parseInt(parsedLine.poll()));            // 6 5
-                fileCoverageDef.addBranch(branchDef);
             }
             currentLineString = bf.readLine();
+            if (!isInPopup) {
+                currentLineNumber++;
+            }
         }
         bf.close();
+
+        // Build links between singles and multi branch
+        for (NodeDefinition node : fileCoverageDef.getNodes()) {
+            for (IBranchDefinition branchDef : node.getBranchDefinitions()) {
+                if (branchDef instanceof MultipleBranchDefinition) {
+                    for (String id : branchDef.getId().split("[&|]")) {
+                        MultipleBranchDefinition multiBranch = (MultipleBranchDefinition) branchDef;
+                        String markId = "TE" + id;
+                        if (!multiBranch.getSubBranchMarkIds().contains(markId)) {
+                            multiBranch.getSubBranchMarkIds().add(markId);
+                            for (IBranchDefinition branchDef2 : node.getBranchDefinitions()) {
+                                if (branchDef2.getMarkId().contentEquals(markId)) {
+                                    multiBranch.addSubBranch(branchDef2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         return fileCoverageDef;
     }
 
+    /**
+     * @param sum the "SUM=" value from a branch from an FDC file.
+     * @return the BranchType matching the SUM value.
+     */
+    private static BranchType convertToBranchDefinitionType(final String sum) {
+
+        if (sum.contentEquals("0")) {
+            return BranchType.TP_FUNCTIONS;
+        } else if (sum.contentEquals("1")) {
+            return BranchType.TP_EXITS;
+        } else if (sum.contentEquals("10")) {
+            return BranchType.TA_CALLS;
+        } else if (sum.contentEquals("20")) {
+            return BranchType.TB_STATEMENTS;
+        } else if (sum.contentEquals("21")) {
+            return BranchType.TB_IMPLICIT;
+        } else if (sum.contentEquals("22")) {
+            return BranchType.TB_LOOPS;
+        } else if (sum.contentEquals("30")) {
+            return BranchType.TE_BASICS;
+        } else if (sum.contentEquals("31")) {
+            return BranchType.TE_MODIFIEDS;
+        } else if (sum.contentEquals("32")) {
+            return BranchType.TE_MULTIPLES;
+        }
+        return null;
+    }
+
+    /**
+     * @param phrase a branch string (without @BRANCH markers).
+     * @param token the token before the value we want ("ID=", "MARK=", etc)
+     * @return the string right after the input token
+     */
+    private static String getStringAfterToken(final String phrase, final String token) {
+        String[] splitedPhrase = phrase.split(" ");
+        for (String word : splitedPhrase) {
+            if (word.contains(token)) {
+                return word.substring(token.length()).replaceAll("\"", "");
+            }
+        }
+        return "";
+    }
+
+    /**
+     * @param line a full line.
+     * @param token1 the start token.
+     * @param token2 the end token.
+     * @return a list of all the strings contained between specified tokens.
+     */
+    private static List<String> getStringsBetween(final String line, final String token1, final String token2) {
+        List<String> strings = new ArrayList<String>();
+        int lastIdx = 0;
+        lastIdx = line.indexOf(token1, lastIdx);
+        while (lastIdx != -1)  {
+            strings.add(line.substring(lastIdx + token1.length(),
+                    line.indexOf(token2, lastIdx + token1.length())).trim());
+            lastIdx = line.indexOf(token1, lastIdx + token1.length());
+        }
+        return strings;
+    }
 
     /**
      * Allows to split a line with a better behavior than default split method.
