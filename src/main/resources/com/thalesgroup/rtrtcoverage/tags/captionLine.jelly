@@ -1,0 +1,34 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:e="/com/thalesgroup/rtrtcoverage/tags">
+ <j:if test="${it.hasChildren()}">
+  <tr>
+    <th>${%name}</th>
+    <j:if test="${it.hasChildrenFunctionCoverage()}">
+    	<th>${%function}</th>
+    </j:if>
+    <j:if test="${it.hasChildrenCallCoverage()}">
+      <th>${%call}</th>
+    </j:if>
+    <j:if test="${it.hasChildrenStatementBlockCoverage()}">
+    <th>${%statement_blocks}</th>
+    </j:if>
+    <j:if test="${it.hasChildrenImplicitBlockCoverage()}">
+      <th>${%implicit_blocks}</th>
+    </j:if>
+    <j:if test="${it.hasChildrenDecisionCoverage()}">
+    <th>${%decision}</th>
+    </j:if>
+    <j:if test="${it.hasChildrenLoopCoverage()}">
+      <th>${%loop}</th>
+    </j:if>
+    <j:if test="${it.hasChildrenBasicConditionCoverage()}">
+      <th>${%basic_condition}</th>
+    </j:if>
+    <j:if test="${it.hasChildrenModifiedConditionCoverage()}">
+      <th>${%modified_condition}</th>
+    </j:if>
+    <j:if test="${it.hasChildrenMultipleConditionCoverage()}">
+      <th>${%multiple_condition}</th>
+    </j:if>
+  </tr>
+ </j:if>  
+</j:jelly>

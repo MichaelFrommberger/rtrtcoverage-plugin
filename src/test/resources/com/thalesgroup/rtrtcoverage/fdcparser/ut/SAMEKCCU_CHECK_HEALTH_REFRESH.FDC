@@ -1,0 +1,1175 @@
+VE 3.0d CCOV CMCDC #i3
+FC "SAMEKCCU_CHECK_HEALTH_REFRESH.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\SA\\SAME\\SAMEKCCU\\SRC\\"
+FD 1285925481
+TC PR RE AP BS BT BI BL CO CC
+CE 0 "samekccu_check_health_refresh" "par_l_side == (type-cast) ..." 103 103
+CE 2 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 108 108
+BL 0 simple "samekccu_check_health_refresh" /then/then 109 124
+BL 1 simple "samekccu_check_health_refresh" /then/else 126 128
+CE 4 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 129 129
+BL 2 simple "samekccu_check_health_refresh" /then/then 130 145
+BL 3 simple "samekccu_check_health_refresh" /then/else 147 149
+BL 4 simple "samekccu_check_health_refresh" /then 104 151
+CE 6 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 158 158
+BL 5 simple "samekccu_check_health_refresh" /else/then 159 175
+BL 6 simple "samekccu_check_health_refresh" /else/else 177 179
+CE 8 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 180 180
+BL 7 simple "samekccu_check_health_refresh" /else/then 181 197
+BL 8 simple "samekccu_check_health_refresh" /else/else 199 201
+BL 9 simple "samekccu_check_health_refresh" /else 154 202
+CE 10 "samekccu_check_health_refresh" "par_b_read_health_status == 0" 205 205
+BL 10 simple "samekccu_check_health_refresh" /then 206 209
+CE 12 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 212 212
+BL 11 simple "samekccu_check_health_refresh" /else/then 213 218
+BL 12 simple "samekccu_check_health_refresh" /else/else 220 222
+CE 14 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 223 223
+BL 13 simple "samekccu_check_health_refresh" /else/then 224 229
+BL 14 simple "samekccu_check_health_refresh" /else/else 231 233
+BL 15 simple "samekccu_check_health_refresh" /else 211 234
+CE 16 "samekccu_check_health_refresh" "loc_b_healthy_value == 0" 237 237
+CE 18 "samekccu_check_health_refresh" " ..." 240 240
+CE 20 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 243 243
+AP 0 "samekccu_check_health_refresh" "samekccu_media_source_activation" 245 245
+BL 16 simple "samekccu_check_health_refresh" /then/then/then 244 246
+BL 17 simple "samekccu_check_health_refresh" /then/then/else 248 250
+CE 22 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 251 251
+AP 1 "samekccu_check_health_refresh" "samekccu_media_source_activation" 253 253
+BL 18 simple "samekccu_check_health_refresh" /then/then/then 252 254
+BL 19 simple "samekccu_check_health_refresh" /then/then/else 256 258
+AP 2 "samekccu_check_health_refresh" "lbtm_off" 261 261
+BL 20 simple "samekccu_check_health_refresh" /then/then 241 262
+BL 21 simple "samekccu_check_health_refresh" /then/else 264 266
+BL 22 simple "samekccu_check_health_refresh" /then 238 272
+CE 24 "samekccu_check_health_refresh" " ..." 277 277
+CE 26 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 280 280
+CE 28 "samekccu_check_health_refresh" "loc_b_kccu_capt_fo == 1UL" 282 282
+AP 3 "samekccu_check_health_refresh" "send_kccu_health_failure" 285 285
+BL 23 simple "samekccu_check_health_refresh" /else/then/then/then 283 286
+AP 4 "samekccu_check_health_refresh" "send_kccu_health_failure" 290 290
+BL 24 simple "samekccu_check_health_refresh" /else/then/then/else 288 291
+BL 25 simple "samekccu_check_health_refresh" /else/then/then 281 292
+BL 26 simple "samekccu_check_health_refresh" /else/then/else 294 297
+CE 30 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 299 299
+CE 32 "samekccu_check_health_refresh" "loc_b_kccu_capt_fo == 1UL" 301 301
+AP 5 "samekccu_check_health_refresh" "send_kccu_health_failure" 304 304
+BL 27 simple "samekccu_check_health_refresh" /else/then/then/then 302 305
+AP 6 "samekccu_check_health_refresh" "send_kccu_health_failure" 309 309
+BL 28 simple "samekccu_check_health_refresh" /else/then/then/else 307 310
+BL 29 simple "samekccu_check_health_refresh" /else/then/then 300 311
+BL 30 simple "samekccu_check_health_refresh" /else/then/else 313 315
+BL 31 simple "samekccu_check_health_refresh" /else/then 278 316
+CE 34 "samekccu_check_health_refresh" " ..." 319 319
+AP 7 "samekccu_check_health_refresh" "lbtm_on" 322 322
+CE 36 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 331 331
+CE 38 "samekccu_check_health_refresh" "loc_b_locked_key != 1UL" 331 331
+CC 40 2 36 38 3 TTTFFX 1
+AP 8 "samekccu_check_health_refresh" "samekccu_media_source_deactivation" 333 333
+BL 32 simple "samekccu_check_health_refresh" /else/else/then/then 332 334
+BL 33 simple "samekccu_check_health_refresh" /else/else/then/else 336 338
+CE 43 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 339 339
+CE 45 "samekccu_check_health_refresh" "loc_b_locked_key != 1UL" 339 339
+CC 47 2 43 45 3 TTTFFX 1
+AP 9 "samekccu_check_health_refresh" "samekccu_media_source_deactivation" 341 341
+BL 34 simple "samekccu_check_health_refresh" /else/else/then/then 340 342
+BL 35 simple "samekccu_check_health_refresh" /else/else/then/else 344 346
+BL 36 simple "samekccu_check_health_refresh" /else/else/then 320 347
+AP 10 "samekccu_check_health_refresh" "lbtm_check" 352 352
+CE 50 "samekccu_check_health_refresh" "loc_e_return_confirm == ended" 356 356
+CE 52 "samekccu_check_health_refresh" "loc_b_power_off == 0UL" 357 357
+CC 54 2 50 52 3 TTTFFX 1
+CE 57 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 362 362
+CE 59 "samekccu_check_health_refresh" "loc_b_kccu_capt_fo == 1UL" 364 364
+AP 11 "samekccu_check_health_refresh" "send_kccu_health_failure" 369 369
+BL 37 simple "samekccu_check_health_refresh" /else/else/else/then/then/then 365 370
+AP 12 "samekccu_check_health_refresh" "send_kccu_health_failure" 376 376
+BL 38 simple "samekccu_check_health_refresh" /else/else/else/then/then/else 372 377
+BL 39 simple "samekccu_check_health_refresh" /else/else/else/then/then 363 378
+BL 40 simple "samekccu_check_health_refresh" /else/else/else/then/else 380 383
+CE 61 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 385 385
+CE 63 "samekccu_check_health_refresh" "loc_b_kccu_capt_fo == 1UL" 387 387
+AP 13 "samekccu_check_health_refresh" "send_kccu_health_failure" 392 392
+BL 41 simple "samekccu_check_health_refresh" /else/else/else/then/then/then 388 393
+AP 14 "samekccu_check_health_refresh" "send_kccu_health_failure" 399 399
+BL 42 simple "samekccu_check_health_refresh" /else/else/else/then/then/else 395 400
+BL 43 simple "samekccu_check_health_refresh" /else/else/else/then/then 386 401
+BL 44 simple "samekccu_check_health_refresh" /else/else/else/then/else 403 405
+AP 15 "samekccu_check_health_refresh" "lbtm_off" 408 408
+BL 45 simple "samekccu_check_health_refresh" /else/else/else/then 358 415
+CE 65 "samekccu_check_health_refresh" "loc_e_return_confirm == ended" 417 417
+BL 46 simple "samekccu_check_health_refresh" /else/else/else/else/then 418 421
+BL 47 simple "samekccu_check_health_refresh" /else/else/else/else/else 424 427
+BL 48 simple "samekccu_check_health_refresh" /else/else/else/else 417 427
+BL 49 simple "samekccu_check_health_refresh" /else/else/else 350 428
+BL 50 simple "samekccu_check_health_refresh" /else/else 319 428
+BL 51 simple "samekccu_check_health_refresh" /else 275 429
+CE 67 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 431 431
+CE 69 "samekccu_check_health_refresh" "par_l_side == (type-cast) ..." 434 434
+CE 71 "samekccu_check_health_refresh" "par_b_read_health_status == 1" 445 445
+BL 52 simple "samekccu_check_health_refresh" /then/then/then 446 450
+BL 53 simple "samekccu_check_health_refresh" /then/then/else 452 454
+CE 73 "samekccu_check_health_refresh" "loc_b_healthy_value" 457 457
+BL 54 simple "samekccu_check_health_refresh" /then/then/then 458 460
+BL 55 simple "samekccu_check_health_refresh" /then/then/else 462 464
+BL 56 simple "samekccu_check_health_refresh" /then/then 435 465
+CE 75 "samekccu_check_health_refresh" "par_b_read_health_status == 1" 480 480
+BL 57 simple "samekccu_check_health_refresh" /then/else/then 481 485
+BL 58 simple "samekccu_check_health_refresh" /then/else/else 487 489
+CE 77 "samekccu_check_health_refresh" "loc_b_healthy_value" 492 492
+BL 59 simple "samekccu_check_health_refresh" /then/else/then 493 495
+BL 60 simple "samekccu_check_health_refresh" /then/else/else 497 499
+BL 61 simple "samekccu_check_health_refresh" /then/else 468 500
+BL 62 simple "samekccu_check_health_refresh" /then 432 501
+BL 63 simple "samekccu_check_health_refresh" /else 503 505
+CE 79 "samekccu_check_health_refresh" "((type-cast)0) !=  ..." 506 506
+CE 81 "samekccu_check_health_refresh" "par_l_side == (type-cast) ..." 509 509
+CE 83 "samekccu_check_health_refresh" "par_b_read_health_status == 1" 520 520
+BL 64 simple "samekccu_check_health_refresh" /then/then/then 521 525
+BL 65 simple "samekccu_check_health_refresh" /then/then/else 527 529
+CE 85 "samekccu_check_health_refresh" "loc_b_healthy_value" 532 532
+BL 66 simple "samekccu_check_health_refresh" /then/then/then 533 535
+BL 67 simple "samekccu_check_health_refresh" /then/then/else 537 539
+BL 68 simple "samekccu_check_health_refresh" /then/then 510 540
+CE 87 "samekccu_check_health_refresh" "par_b_read_health_status == 1" 555 555
+BL 69 simple "samekccu_check_health_refresh" /then/else/then 556 560
+BL 70 simple "samekccu_check_health_refresh" /then/else/else 562 564
+CE 89 "samekccu_check_health_refresh" "loc_b_healthy_value" 567 567
+BL 71 simple "samekccu_check_health_refresh" /then/else/then 568 570
+BL 72 simple "samekccu_check_health_refresh" /then/else/else 572 574
+BL 73 simple "samekccu_check_health_refresh" /then/else 543 575
+BL 74 simple "samekccu_check_health_refresh" /then 507 576
+BL 75 simple "samekccu_check_health_refresh" /else 578 580
+PR 0 return "samekccu_check_health_refresh" 582 582
+PR 1 proc "samekccu_check_health_refresh" 92 583
+BL 76 simple "samekccu_check_health_refresh" / 92 583
+CE 91 "send_kccu_health_failure" "par_e_active_can ==  ..." 619 619
+CE 93 "send_kccu_health_failure" "par_e_module ==  ..." 622 622
+CE 95 "send_kccu_health_failure" "par_b_kccu_side" 625 625
+AP 16 "send_kccu_health_failure" "lbmem_cpy" 628 630
+AP 17 "send_kccu_health_failure" "lbmem_cpy" 632 634
+AP 18 "send_kccu_health_failure" "lbmem_cpy" 636 638
+AP 19 "send_kccu_health_failure" "lbfl_mng" 641 648
+BL 77 simple "send_kccu_health_failure" /then/then/then 626 649
+AP 20 "send_kccu_health_failure" "lbmem_cpy" 653 655
+AP 21 "send_kccu_health_failure" "lbmem_cpy" 657 659
+AP 22 "send_kccu_health_failure" "lbmem_cpy" 661 663
+AP 23 "send_kccu_health_failure" "lbfl_mng" 666 673
+BL 78 simple "send_kccu_health_failure" /then/then/else 651 674
+BL 79 simple "send_kccu_health_failure" /then/then 623 675
+CE 97 "send_kccu_health_failure" "par_b_kccu_side" 679 679
+AP 24 "send_kccu_health_failure" "lbmem_cpy" 682 684
+AP 25 "send_kccu_health_failure" "lbmem_cpy" 686 688
+AP 26 "send_kccu_health_failure" "lbmem_cpy" 690 692
+AP 27 "send_kccu_health_failure" "lbfl_mng" 695 702
+BL 80 simple "send_kccu_health_failure" /then/else/then 680 703
+AP 28 "send_kccu_health_failure" "lbmem_cpy" 707 709
+AP 29 "send_kccu_health_failure" "lbmem_cpy" 711 713
+AP 30 "send_kccu_health_failure" "lbmem_cpy" 715 717
+AP 31 "send_kccu_health_failure" "lbfl_mng" 720 727
+BL 81 simple "send_kccu_health_failure" /then/else/else 705 728
+BL 82 simple "send_kccu_health_failure" /then/else 677 729
+BL 83 simple "send_kccu_health_failure" /then 620 730
+CE 99 "send_kccu_health_failure" "par_e_module ==  ..." 733 733
+CE 101 "send_kccu_health_failure" "par_b_kccu_side" 736 736
+AP 32 "send_kccu_health_failure" "lbmem_cpy" 739 741
+AP 33 "send_kccu_health_failure" "lbmem_cpy" 743 745
+AP 34 "send_kccu_health_failure" "lbmem_cpy" 747 749
+AP 35 "send_kccu_health_failure" "lbfl_mng" 752 759
+BL 84 simple "send_kccu_health_failure" /else/then/then 737 760
+AP 36 "send_kccu_health_failure" "lbmem_cpy" 764 766
+AP 37 "send_kccu_health_failure" "lbmem_cpy" 768 770
+AP 38 "send_kccu_health_failure" "lbmem_cpy" 772 774
+AP 39 "send_kccu_health_failure" "lbfl_mng" 777 784
+BL 85 simple "send_kccu_health_failure" /else/then/else 762 785
+BL 86 simple "send_kccu_health_failure" /else/then 734 786
+CE 103 "send_kccu_health_failure" "par_b_kccu_side" 790 790
+AP 40 "send_kccu_health_failure" "lbmem_cpy" 793 795
+AP 41 "send_kccu_health_failure" "lbmem_cpy" 797 799
+AP 42 "send_kccu_health_failure" "lbmem_cpy" 801 803
+AP 43 "send_kccu_health_failure" "lbfl_mng" 806 813
+BL 87 simple "send_kccu_health_failure" /else/else/then 791 814
+AP 44 "send_kccu_health_failure" "lbmem_cpy" 818 820
+AP 45 "send_kccu_health_failure" "lbmem_cpy" 822 824
+AP 46 "send_kccu_health_failure" "lbmem_cpy" 826 828
+AP 47 "send_kccu_health_failure" "lbfl_mng" 831 838
+BL 88 simple "send_kccu_health_failure" /else/else/else 816 839
+BL 89 simple "send_kccu_health_failure" /else/else 788 840
+BL 90 simple "send_kccu_health_failure" /else 732 841
+PR 2 return "send_kccu_health_failure" 843 843
+PR 3 proc "send_kccu_health_failure" 611 844
+BL 91 simple "send_kccu_health_failure" / 611 844
+DC 1326238239
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="SAMEKCCU_CHECK_HEALTH_REFRESH.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\SA\SAME\SAMEKCCU\SRC\"
+  DATE=1285925481
+  CHECKSUM=1326238239
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="SAMEKCCU_CHECK_HEALTH_REFRESH.C"@@COMMENT@/******************************************************************************
+ **
+ **                                   ==============
+ **                                   IDENTIFICATION
+ **                                   ==============
+ **
+ **
+ **
+ **  Filename            : samekccu_check_health_refresh.c
+ **
+ **  Author/ Company     : A.CAMOU/ EUROGICIEL
+ **
+ **  Creation date       : 01/02/2004
+ **
+ **  Copyright statement : Copyright (C); 2004
+ **                        THALES Avionics
+ **
+ **  Module description  : Check the refresh of the HEALTHY STATUS message
+ **
+ *****************************************************************************/@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Project specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@/* MACS TYPES */@/COMMENT@
+@COMMENT@#include "COD_A653_API_COMMON.h"@/COMMENT@
+
+@COMMENT@/* SA TYPES */@/COMMENT@
+@COMMENT@#include "apsw_basic_types_c.h"@/COMMENT@
+
+@COMMENT@/* PLATFORM TYPES */@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU TYPES */@/COMMENT@
+@COMMENT@#include "lbfl.h"@/COMMENT@
+@COMMENT@#include "lbmem.h"@/COMMENT@
+@COMMENT@#include "sadi.h"@/COMMENT@
+@COMMENT@#include "sacr.h"@/COMMENT@
+@COMMENT@#include "same_fsc_error_desc_config.h"@/COMMENT@
+@COMMENT@#include "same_component_id_ifc.h"@/COMMENT@
+@COMMENT@#include "samekccu.h"@/COMMENT@
+@COMMENT@#include "same_kccu_health_ifc.h"@/COMMENT@
+@COMMENT@#include "same_pdu_ifc.h"@/COMMENT@
+@COMMENT@#include "same_event_dispatcher_conf.h"@/COMMENT@
+
+
+@COMMENT@#include "sarm.h"@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU PROTOTYPES */@/COMMENT@
+@COMMENT@#include "same_pdu_ifc_send.p"@/COMMENT@
+@COMMENT@#include "samekccu_media_source_activation.p"@/COMMENT@
+@COMMENT@#include "samekccu_media_source_deactivation.p"@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Module specific includes
+ *****************************************************************************/@/COMMENT@
+
+@COMMENT@#include "samekccu_check_health_refresh.p"@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Local file declarations
+ *****************************************************************************/@/COMMENT@
+static void send_kccu_health_failure(T_sacr_e_can_buses  par_e_active_can, T_same_e_kccu_module_type par_e_module, T_boolean par_b_kccu_side, T_same_mkb_health_message_format *par_pr_health_message);
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** void samekccu_check_health_refresh 
+ ***** 
+ ***** Description : Checks health refresh for either MKB or CCD
+ *****               If the healthy down and a key is locked then no deactivation of mkb media is done  
+ ***** 
+ ***** Input :
+ ***** 
+ *****              T_int32	par_l_side : Side monitored
+ ***** 
+ *****              T_boolean par_b_read_health_status : read status
+ ***** 
+ *****              T_same_mkb_health_message_format *par_pr_mkb_health_data : pointer to the mkb health message
+ *****              T_same_ccd_health_message_format *par_pr_ccd_health_data : pointer to the ccd health message
+ *****				(One of these pointers must be set to K_NULL_PTR)
+ *****				T_sacr_e_can_buses				 par_e_monitored_CAN_id : monitored can
+ ***** 
+ *****************************************************************************/@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="samekccu_check_health_refresh"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="samekccu_check_health_refresh"@samekccu_check_health_refresh@/BRANCH@ (T_int32	par_l_side,
+									T_boolean par_b_read_health_status,
+									T_same_mkb_health_message_format *par_pr_mkb_health_data,
+									T_same_ccd_health_message_format *par_pr_ccd_health_data,
+									T_sacr_e_can_buses				 par_e_monitored_CAN_id)
+@BRANCH MARK=TB ID=76 SUM=20@{
+	T_boolean 				loc_b_healthy_timeout_memorised_value = K_BOOL_FALSE; @COMMENT@/* Use this data to memorize when an healthy error is confirmed */@/COMMENT@
+	T_boolean				loc_b_healthy_value = K_SAME_KCCU_HEALTHY_OK;
+	T_boolean				loc_b_power_off= K_BOOL_FALSE;
+	T_boolean				loc_b_healthy_status_memorised_value = K_SAME_KCCU_HEALTHY_OK;
+	T_lib_timeout			loc_r_healthy_status_timeout;
+	T_lib_timeout_status	loc_e_return_confirm; 
+	T_boolean				loc_b_kccu_capt_fo; @COMMENT@/* set to true if KCCU left */@/COMMENT@
+	T_boolean				loc_b_locked_key = K_BOOL_FALSE;
+
+	@COMMENT@/* If par_l_side is LEFT side get KCCU CAPT data informations */@/COMMENT@	
+	@DECISION SUM=20+21 ID=4|9@if ( @POPUP@par_l_side == @ALT@K_SADI_LEFT_SIDE@-ALT@(T_int32)0x4C454654@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+	@BRANCH MARK=TB ID=4 SUM=20@{
+		@COMMENT@/* Set loc_b_kccu_capt_fo to true to indicate this is a KCCU CAPT */@/COMMENT@
+		loc_b_kccu_capt_fo = K_BOOL_TRUE;
+		
+		@DECISION SUM=20+21 ID=0|1@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_mkb_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@) 
+		@BRANCH MARK=TB ID=0 SUM=20@{
+			@COMMENT@/* Get healthy status timeout */@/COMMENT@
+			loc_r_healthy_status_timeout = r_same_mkb_capt_healthy_status_timeout;
+
+			@COMMENT@/* Set Healthy memorized value */@/COMMENT@
+			loc_b_healthy_status_memorised_value = b_same_mkb_capt_healthy_status_memorised_value;
+			
+			@COMMENT@/* Set Healthy memorized timeout */@/COMMENT@
+			loc_b_healthy_timeout_memorised_value = b_same_mkb_capt_healthy_timeout_memorised_value;
+
+			@COMMENT@/* Set power off old value */@/COMMENT@
+			loc_b_power_off = (T_boolean) ((r_samekccu_mkb_capt_health_status.uc_health_info1 & K_SAMEKCCU_POWER_OFF_F)  == K_SAMEKCCU_POWER_OFF_F);
+
+			@COMMENT@/* Get the current locked key status */@/COMMENT@
+			loc_b_locked_key = (T_boolean) ((par_pr_mkb_health_data->uc_health_info3 & K_SAMEKCCU_LOCKED_KEY_F)  == K_SAMEKCCU_LOCKED_KEY_F);
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=1 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+		@DECISION SUM=20+21 ID=2|3@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_ccd_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@) 
+		@BRANCH MARK=TB ID=2 SUM=20@{ 
+			@COMMENT@/* Get healthy status timeout */@/COMMENT@
+			loc_r_healthy_status_timeout = r_same_ccd_capt_healthy_status_timeout;
+			
+			@COMMENT@/* Set Healthy memorized value */@/COMMENT@
+			loc_b_healthy_status_memorised_value = b_same_ccd_capt_healthy_status_memorised_value;
+			
+			@COMMENT@/* Set Healthy memorized timeout */@/COMMENT@
+			loc_b_healthy_timeout_memorised_value = b_same_ccd_capt_healthy_timeout_memorised_value;
+
+			@COMMENT@/* Set power off old value */@/COMMENT@
+			loc_b_power_off = (T_boolean) ((r_samekccu_ccd_capt_health_status.uc_health_info1 & K_SAMEKCCU_POWER_OFF_F)  == K_SAMEKCCU_POWER_OFF_F);
+			
+			@COMMENT@/* Get the current locked key status */@/COMMENT@
+			loc_b_locked_key = (T_boolean) ((par_pr_ccd_health_data->uc_health_info3 & K_SAMEKCCU_LOCKED_KEY_F)  == K_SAMEKCCU_LOCKED_KEY_F);
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=3 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+
+	}@/BRANCH@
+	@COMMENT@/* else par_l_side is RIGHT side get KCCU FO data informations  */@/COMMENT@	
+	@BRANCH MARK=TB ID=9 SUM=20@else 
+	{
+		@COMMENT@/* Set loc_b_kccu_capt_fo to false to indicate this is a KCCU FO */@/COMMENT@
+		loc_b_kccu_capt_fo = K_BOOL_FALSE;
+
+		@DECISION SUM=20+21 ID=5|6@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_mkb_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=6 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=7 SUM=30@False@/BRANCH@@/POPUP@) 
+		@BRANCH MARK=TB ID=5 SUM=20@{
+			@COMMENT@/* Get healthy status timeout */@/COMMENT@
+			loc_r_healthy_status_timeout = r_same_mkb_fo_healthy_status_timeout;
+
+			@COMMENT@/* Set Healthy memorized value */@/COMMENT@
+			loc_b_healthy_status_memorised_value = b_same_mkb_fo_healthy_status_memorised_value;
+
+			@COMMENT@/* Set Healthy memorized timeout */@/COMMENT@
+			loc_b_healthy_timeout_memorised_value = b_same_mkb_fo_healthy_timeout_memorised_value;
+			
+			@COMMENT@/* Set power off old value */@/COMMENT@
+			loc_b_power_off = (T_boolean) ((r_samekccu_mkb_fo_health_status.uc_health_info1 & K_SAMEKCCU_POWER_OFF_F)  == K_SAMEKCCU_POWER_OFF_F);
+
+			@COMMENT@/* Get the current locked key status */@/COMMENT@
+			loc_b_locked_key = (T_boolean) ((par_pr_mkb_health_data->uc_health_info3 & K_SAMEKCCU_LOCKED_KEY_F)  == K_SAMEKCCU_LOCKED_KEY_F);
+
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=6 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+		@DECISION SUM=20+21 ID=7|8@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_ccd_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=8 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=9 SUM=30@False@/BRANCH@@/POPUP@) 
+		@BRANCH MARK=TB ID=7 SUM=20@{
+			@COMMENT@/* Get healthy status timeout */@/COMMENT@
+			loc_r_healthy_status_timeout = r_same_ccd_fo_healthy_status_timeout;
+
+			@COMMENT@/* Set Healthy memorized value */@/COMMENT@
+			loc_b_healthy_status_memorised_value = b_same_ccd_fo_healthy_status_memorised_value;
+
+			@COMMENT@/* Set Healthy memorized timeout */@/COMMENT@
+			loc_b_healthy_timeout_memorised_value = b_same_ccd_fo_healthy_timeout_memorised_value;
+			
+			@COMMENT@/* Set power off old value */@/COMMENT@
+			loc_b_power_off = (T_boolean) ((r_samekccu_ccd_fo_health_status.uc_health_info1 & K_SAMEKCCU_POWER_OFF_F)  == K_SAMEKCCU_POWER_OFF_F);
+
+			@COMMENT@/* Get the current locked key status */@/COMMENT@
+			loc_b_locked_key = (T_boolean) ((par_pr_ccd_health_data->uc_health_info3 & K_SAMEKCCU_LOCKED_KEY_F)  == K_SAMEKCCU_LOCKED_KEY_F);
+
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=8 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@@/DECISION@
+
+	@COMMENT@/* If No data is received get memorised value of the healthy status */@/COMMENT@
+	@DECISION SUM=20+21 ID=10|15@if (@POPUP@par_b_read_health_status == @ALT@K_SAME_DATA_NOT_AVAIL@-ALT@0@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=10 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=11 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+	@BRANCH MARK=TB ID=10 SUM=20@{
+		@COMMENT@/* Get the memorised healthy value */@/COMMENT@
+		loc_b_healthy_value = K_SAME_KCCU_HEALTHY_KO;
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=15 SUM=20@else
+	{
+		@DECISION SUM=20+21 ID=11|12@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_mkb_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=12 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=13 SUM=30@False@/BRANCH@@/POPUP@) 
+		@BRANCH MARK=TB ID=11 SUM=20@{
+			@COMMENT@/* Get healthy value */@/COMMENT@
+			loc_b_healthy_value = (T_boolean) (T_int32)  ((par_pr_mkb_health_data->uc_health_info1 & K_SAMEKCCU_HEALTHY_STATUS_F)  == K_SAMEKCCU_HEALTHY_STATUS_F);
+			@COMMENT@/* Get POWER_OFF value */@/COMMENT@
+			loc_b_power_off = (T_boolean)  ((par_pr_mkb_health_data->uc_health_info1 & K_SAMEKCCU_POWER_OFF_F)  == K_SAMEKCCU_POWER_OFF_F);
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=12 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+		@DECISION SUM=20+21 ID=13|14@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_ccd_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=14 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=15 SUM=30@False@/BRANCH@@/POPUP@) 
+		@BRANCH MARK=TB ID=13 SUM=20@{
+			@COMMENT@/* Get healthy value */@/COMMENT@
+			loc_b_healthy_value = (T_boolean) (T_int32)  ((par_pr_ccd_health_data->uc_health_info1 & K_SAMEKCCU_HEALTHY_STATUS_F)  == K_SAMEKCCU_HEALTHY_STATUS_F);
+			@COMMENT@/* Get POWER_OFF value */@/COMMENT@
+			loc_b_power_off = (T_boolean)  ((par_pr_ccd_health_data->uc_health_info1 & K_SAMEKCCU_POWER_OFF_F)  == K_SAMEKCCU_POWER_OFF_F);
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=14 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@@/DECISION@
+
+	@COMMENT@/* If no Healthy error is detected */@/COMMENT@
+	@DECISION SUM=20+21 ID=22|51@if (@POPUP@loc_b_healthy_value == @ALT@K_SAME_KCCU_HEALTHY_OK@-ALT@0@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=16 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=17 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+	@BRANCH MARK=TB ID=22 SUM=20@{	
+		@COMMENT@/* If the input healthy status value is moving from KO to OK */@/COMMENT@
+		@DECISION SUM=20+21 ID=20|21@if (@POPUP@loc_b_healthy_status_memorised_value == @ALT@K_SAME_KCCU_HEALTHY_KO@-ALT@1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=18 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=19 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)		
+		@BRANCH MARK=TB ID=20 SUM=20@{
+			@COMMENT@/* Media source activation */@/COMMENT@
+			@DECISION SUM=20+21 ID=16|17@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_mkb_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=20 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=21 SUM=30@False@/BRANCH@@/POPUP@) 
+			@BRANCH MARK=TB ID=16 SUM=20@{
+				@BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="samekccu_media_source_activation"@samekccu_media_source_activation@/JUMP@ (K_SAME_MKB_MODULE, par_l_side, par_e_monitored_CAN_id)@/BRANCH@;			
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=17 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+			@DECISION SUM=20+21 ID=18|19@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_ccd_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=22 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=23 SUM=30@False@/BRANCH@@/POPUP@) 
+			@BRANCH MARK=TB ID=18 SUM=20@{
+				@BRANCH MARK=TA ID=1 SUM=10@@JUMP NAME="samekccu_media_source_activation"@samekccu_media_source_activation@/JUMP@ (K_SAME_CCD_MODULE, par_l_side, par_e_monitored_CAN_id)@/BRANCH@;			
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=19 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+
+			@COMMENT@/* Stop the healthy status time */@/COMMENT@
+			@BRANCH MARK=TA ID=2 SUM=10@@JUMP NAME="lbtm_off"@lbtm_off@/JUMP@((T_lib_timeout *)&loc_r_healthy_status_timeout)@/BRANCH@;
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=21 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+
+		@COMMENT@/* Set Healthy status memorised value to K_SAME_KCCU_HEALTHY_OK */@/COMMENT@
+		loc_b_healthy_status_memorised_value = K_SAME_KCCU_HEALTHY_OK;
+
+		loc_b_healthy_timeout_memorised_value = K_BOOL_FALSE;
+	}@/BRANCH@
+	@COMMENT@/* Else Healthy error is detected */@/COMMENT@
+	@BRANCH MARK=TB ID=51 SUM=20@else 
+	{
+		@COMMENT@/* If memorised timeout */@/COMMENT@
+		@DECISION SUM=20+21 ID=31|50@if (@POPUP@loc_b_healthy_timeout_memorised_value@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=24 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=25 SUM=30@False@/BRANCH@@/POPUP@)
+		@BRANCH MARK=TB ID=31 SUM=20@{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+			@DECISION SUM=20+21 ID=25|26@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_ccd_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=26 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=27 SUM=30@False@/BRANCH@@/POPUP@) 
+			@BRANCH MARK=TB ID=25 SUM=20@{					
+					@DECISION SUM=20+21 ID=23|24@if (@POPUP@loc_b_kccu_capt_fo == @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=28 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=29 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+					@BRANCH MARK=TB ID=23 SUM=20@{
+						@COMMENT@/* Send the corresponding #CCD_FAILURE_FOR_BITE basic failure message to the equipment BITE */@/COMMENT@
+						@BRANCH MARK=TA ID=3 SUM=10@@JUMP NAME="send_kccu_health_failure"@send_kccu_health_failure@/JUMP@(par_e_monitored_CAN_id, K_SAME_CCD_MODULE , loc_b_kccu_capt_fo, (T_same_mkb_health_message_format *) &r_samekccu_ccd_capt_health_status)@/BRANCH@;
+					}@/BRANCH@
+					@BRANCH MARK=TB ID=24 SUM=20@else
+					{
+						@COMMENT@/* Send the corresponding #CCD_FAILURE_FOR_BITE basic failure message to the equipment BITE */@/COMMENT@
+						@BRANCH MARK=TA ID=4 SUM=10@@JUMP NAME="send_kccu_health_failure"@send_kccu_health_failure@/JUMP@(par_e_monitored_CAN_id, K_SAME_CCD_MODULE , loc_b_kccu_capt_fo, (T_same_mkb_health_message_format *) &r_samekccu_ccd_fo_health_status)@/BRANCH@;
+					}@/BRANCH@@/DECISION@
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=26 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+				;
+			}@/BRANCH@@/DECISION@
+
+			@DECISION SUM=20+21 ID=29|30@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_mkb_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=30 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=31 SUM=30@False@/BRANCH@@/POPUP@) 
+			@BRANCH MARK=TB ID=29 SUM=20@{				
+					@DECISION SUM=20+21 ID=27|28@if (@POPUP@loc_b_kccu_capt_fo == @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=32 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=33 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+					@BRANCH MARK=TB ID=27 SUM=20@{					
+						@COMMENT@/* Send the corresponding #MKB_FAILURE_FOR_BITE basic failure message to the equipment BITE */@/COMMENT@
+						@BRANCH MARK=TA ID=5 SUM=10@@JUMP NAME="send_kccu_health_failure"@send_kccu_health_failure@/JUMP@(par_e_monitored_CAN_id, K_SAME_MKB_MODULE , loc_b_kccu_capt_fo, &r_samekccu_mkb_capt_health_status)@/BRANCH@;
+					}@/BRANCH@
+					@BRANCH MARK=TB ID=28 SUM=20@else
+					{
+						@COMMENT@/* Send the corresponding #MKB_FAILURE_FOR_BITE basic failure message to the equipment BITE */@/COMMENT@
+						@BRANCH MARK=TA ID=6 SUM=10@@JUMP NAME="send_kccu_health_failure"@send_kccu_health_failure@/JUMP@(par_e_monitored_CAN_id, K_SAME_MKB_MODULE , loc_b_kccu_capt_fo, &r_samekccu_mkb_fo_health_status)@/BRANCH@;
+					}@/BRANCH@@/DECISION@
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=30 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=50 SUM=20@else		
+		@COMMENT@/* If the input healthy status value is moving from OK to KO */@/COMMENT@
+		@DECISION SUM=20+21 ID=36|49@if (@POPUP@loc_b_healthy_status_memorised_value==@ALT@K_SAME_KCCU_HEALTHY_OK@-ALT@0@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=34 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=35 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+		@BRANCH MARK=TB ID=36 SUM=20@{
+			@COMMENT@/* Start up the healthy status time */@/COMMENT@
+			@BRANCH MARK=TA ID=7 SUM=10@@JUMP NAME="lbtm_on"@lbtm_on@/JUMP@((T_lib_timeout *) &loc_r_healthy_status_timeout)@/BRANCH@;
+
+			@COMMENT@/* Set HEALTHY STATUS to OK */@/COMMENT@
+			loc_b_healthy_value = K_SAME_KCCU_HEALTHY_OK;
+
+			@COMMENT@/* Memorize healthy error */@/COMMENT@
+			loc_b_healthy_status_memorised_value = K_SAME_KCCU_HEALTHY_KO;
+
+			@COMMENT@/* MEDIA source deactivation */@/COMMENT@
+			@DECISION SUM=20+21 ID=32|33@if (@POPUP@(@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_mkb_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=36 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=37 SUM=30@False@/BRANCH@@/POPUP@) && (@POPUP@loc_b_locked_key != @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=38 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=39 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=40&42 SUM=31@((type-cast)0) != par_pr_mkb_health_data@/BRANCH@ needs
+      @BRANCH MARK=TE ID=40 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=42 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=40&41 SUM=31@loc_b_locked_key != 1UL@/BRANCH@ needs
+      @BRANCH MARK=TE ID=40 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=41 SUM=32@TF@/BRANCH@=F@/POPUP@)
+			@BRANCH MARK=TB ID=32 SUM=20@{
+				@BRANCH MARK=TA ID=8 SUM=10@@JUMP NAME="samekccu_media_source_deactivation"@samekccu_media_source_deactivation@/JUMP@ (K_SAME_MKB_MODULE, par_l_side,par_e_monitored_CAN_id )@/BRANCH@;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=33 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+			@DECISION SUM=20+21 ID=34|35@if (@POPUP@(@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_ccd_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=43 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=44 SUM=30@False@/BRANCH@@/POPUP@)  && (@POPUP@loc_b_locked_key != @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=45 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=46 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=47&49 SUM=31@((type-cast)0) != par_pr_ccd_health_data@/BRANCH@ needs
+      @BRANCH MARK=TE ID=47 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=49 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=47&48 SUM=31@loc_b_locked_key != 1UL@/BRANCH@ needs
+      @BRANCH MARK=TE ID=47 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=48 SUM=32@TF@/BRANCH@=F@/POPUP@)
+			@BRANCH MARK=TB ID=34 SUM=20@{
+				@BRANCH MARK=TA ID=9 SUM=10@@JUMP NAME="samekccu_media_source_deactivation"@samekccu_media_source_deactivation@/JUMP@ (K_SAME_CCD_MODULE, par_l_side, par_e_monitored_CAN_id)@/BRANCH@;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=35 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+		@COMMENT@/* Else the input healthy status value is still KO */@/COMMENT@
+		@BRANCH MARK=TB ID=49 SUM=20@else
+		{
+			@COMMENT@/* Check if the healthy status time is out */@/COMMENT@
+			loc_e_return_confirm = @BRANCH MARK=TA ID=10 SUM=10@@JUMP NAME="lbtm_check"@lbtm_check@/JUMP@(loc_r_healthy_status_timeout)@/BRANCH@;
+
+			@COMMENT@/* If the FO healthy status time is out : healthy status value is KO for 100 ms 
+			   and if the #MKB_MANUAL_SWITCH_OFF / #CCD_MANUAL_SWITCH_OFF is K_BOOL_FALSE */@/COMMENT@
+			@DECISION SUM=20+21 ID=45|48@if (@POPUP@(@POPUP@loc_e_return_confirm == ended@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=50 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=51 SUM=30@False@/BRANCH@@/POPUP@) && 
+				(@POPUP@loc_b_power_off == @ALT@K_BOOL_FALSE@-ALT@0UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=52 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=53 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=54&56 SUM=31@loc_e_return_confirm == ended@/BRANCH@ needs
+      @BRANCH MARK=TE ID=54 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=56 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=54&55 SUM=31@loc_b_power_off == 0UL@/BRANCH@ needs
+      @BRANCH MARK=TE ID=54 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=55 SUM=32@TF@/BRANCH@=F@/POPUP@)
+			@BRANCH MARK=TB ID=45 SUM=20@{
+				@COMMENT@/* Set HEALTHY STATUS to KO */@/COMMENT@
+				loc_b_healthy_value = K_SAME_KCCU_HEALTHY_KO;
+
+				@DECISION SUM=20+21 ID=39|40@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_ccd_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=57 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=58 SUM=30@False@/BRANCH@@/POPUP@) 
+				@BRANCH MARK=TB ID=39 SUM=20@{					
+					@DECISION SUM=20+21 ID=37|38@if (@POPUP@loc_b_kccu_capt_fo == @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=59 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=60 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+					@BRANCH MARK=TB ID=37 SUM=20@{
+						@COMMENT@/* Set Healthy status to KO in the global variable */@/COMMENT@
+						r_samekccu_ccd_capt_health_status.uc_health_info1 |= K_SAMEKCCU_HEALTHY_STATUS_F;
+						@COMMENT@/* Send the corresponding #CCD_FAILURE_FOR_BITE basic failure message to the equipment BITE */@/COMMENT@
+						@BRANCH MARK=TA ID=11 SUM=10@@JUMP NAME="send_kccu_health_failure"@send_kccu_health_failure@/JUMP@(par_e_monitored_CAN_id, K_SAME_CCD_MODULE , loc_b_kccu_capt_fo, (T_same_mkb_health_message_format *) &r_samekccu_ccd_capt_health_status)@/BRANCH@;
+					}@/BRANCH@
+					@BRANCH MARK=TB ID=38 SUM=20@else
+					{
+						@COMMENT@/* Set Healthy status to KO in the global variable */@/COMMENT@
+						r_samekccu_ccd_fo_health_status.uc_health_info1 |= K_SAMEKCCU_HEALTHY_STATUS_F;						
+						@COMMENT@/* Send the corresponding #CCD_FAILURE_FOR_BITE basic failure message to the equipment BITE */@/COMMENT@
+						@BRANCH MARK=TA ID=12 SUM=10@@JUMP NAME="send_kccu_health_failure"@send_kccu_health_failure@/JUMP@(par_e_monitored_CAN_id, K_SAME_CCD_MODULE , loc_b_kccu_capt_fo, (T_same_mkb_health_message_format *) &r_samekccu_ccd_fo_health_status)@/BRANCH@;
+					}@/BRANCH@@/DECISION@
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=40 SUM=20@else
+				{
+					@COMMENT@/* Nothing to do */@/COMMENT@
+					;
+				}@/BRANCH@@/DECISION@
+
+				@DECISION SUM=20+21 ID=43|44@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_mkb_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=61 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=62 SUM=30@False@/BRANCH@@/POPUP@) 
+				@BRANCH MARK=TB ID=43 SUM=20@{				
+					@DECISION SUM=20+21 ID=41|42@if (@POPUP@loc_b_kccu_capt_fo == @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=63 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=64 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+					@BRANCH MARK=TB ID=41 SUM=20@{					
+						@COMMENT@/* Set Healthy status to KO in the global variable */@/COMMENT@
+						r_samekccu_mkb_capt_health_status.uc_health_info1 |= K_SAMEKCCU_HEALTHY_STATUS_F;						
+						@COMMENT@/* Send the corresponding #MKB_FAILURE_FOR_BITE basic failure message to the equipment BITE */@/COMMENT@
+						@BRANCH MARK=TA ID=13 SUM=10@@JUMP NAME="send_kccu_health_failure"@send_kccu_health_failure@/JUMP@(par_e_monitored_CAN_id, K_SAME_MKB_MODULE , loc_b_kccu_capt_fo, &r_samekccu_mkb_capt_health_status)@/BRANCH@;
+					}@/BRANCH@
+					@BRANCH MARK=TB ID=42 SUM=20@else
+					{
+						@COMMENT@/* Set Healthy status to KO in the global variable */@/COMMENT@
+						r_samekccu_mkb_fo_health_status.uc_health_info1 |= K_SAMEKCCU_HEALTHY_STATUS_F;
+						@COMMENT@/* Send the corresponding #MKB_FAILURE_FOR_BITE basic failure message to the equipment BITE */@/COMMENT@
+						@BRANCH MARK=TA ID=14 SUM=10@@JUMP NAME="send_kccu_health_failure"@send_kccu_health_failure@/JUMP@(par_e_monitored_CAN_id, K_SAME_MKB_MODULE , loc_b_kccu_capt_fo, &r_samekccu_mkb_fo_health_status)@/BRANCH@;
+					}@/BRANCH@@/DECISION@
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=44 SUM=20@else
+				{
+					@COMMENT@/* Nothing to do */@/COMMENT@
+				}@/BRANCH@@/DECISION@
+
+				@COMMENT@/* Stop the FO healthy status time */@/COMMENT@
+				@BRANCH MARK=TA ID=15 SUM=10@@JUMP NAME="lbtm_off"@lbtm_off@/JUMP@((T_lib_timeout *) &loc_r_healthy_status_timeout)@/BRANCH@;
+
+				@COMMENT@/* set memorised value to K_SAME_KCCU_HEALTHY_KO */@/COMMENT@
+				loc_b_healthy_status_memorised_value = K_SAME_KCCU_HEALTHY_KO;
+
+				@COMMENT@/* Set memorised timeout to K_BOOL_TRUE */@/COMMENT@
+				loc_b_healthy_timeout_memorised_value = K_BOOL_TRUE;
+			}@/BRANCH@
+			@COMMENT@/* Else if the FO healthy status time is  out and the #MKB_MANUAL_SWITCH_OFF is K_BOOL_TRUE */@/COMMENT@
+			@BRANCH MARK=TB ID=48 SUM=20@else @DECISION SUM=20+21 ID=46|47@if (@POPUP@loc_e_return_confirm == ended@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=65 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=66 SUM=30@False@/BRANCH@@/POPUP@) 
+			@BRANCH MARK=TB ID=46 SUM=20@{
+				@COMMENT@/* Set the healthy status value at K_SAME_KCCU_HEALTHY_KO */@/COMMENT@
+				loc_b_healthy_value = K_SAME_KCCU_HEALTHY_KO;
+			}@/BRANCH@	
+			@COMMENT@/* Else the FO healthy status time is not out or the #MKB_MANUAL_SWITCH_OFF is K_BOOL_TRUE */@/COMMENT@
+			@BRANCH MARK=TB ID=47 SUM=20@else
+			{
+				@COMMENT@/* Set the healthy status value at K_SAME_KCCU_HEALTHY_OK */@/COMMENT@
+				loc_b_healthy_value = K_SAME_KCCU_HEALTHY_OK;
+			}@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@
+		}@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@
+	}@/BRANCH@@/DECISION@
+
+	@DECISION SUM=20+21 ID=62|63@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_mkb_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=67 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=68 SUM=30@False@/BRANCH@@/POPUP@) 
+	@BRANCH MARK=TB ID=62 SUM=20@{
+		@COMMENT@/* If par_l_side is LEFT side */@/COMMENT@	
+		@DECISION SUM=20+21 ID=56|61@if ( @POPUP@par_l_side == @ALT@K_SADI_LEFT_SIDE@-ALT@(T_int32)0x4C454654@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=69 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=70 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+		@BRANCH MARK=TB ID=56 SUM=20@{
+			@COMMENT@/* Set Healthy memorized value */@/COMMENT@
+			b_same_mkb_capt_healthy_status_memorised_value = loc_b_healthy_status_memorised_value;
+
+			@COMMENT@/* Set KCCU healthy status timeout */@/COMMENT@
+			r_same_mkb_capt_healthy_status_timeout = loc_r_healthy_status_timeout;
+
+			@COMMENT@/* Set Healthy memorized timeout */@/COMMENT@
+			b_same_mkb_capt_healthy_timeout_memorised_value = loc_b_healthy_timeout_memorised_value;
+		
+			@DECISION SUM=20+21 ID=52|53@if (@POPUP@par_b_read_health_status == @ALT@K_SAME_DATA_AVAIL@-ALT@1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=71 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=72 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+			@BRANCH MARK=TB ID=52 SUM=20@{
+				r_samekccu_mkb_capt_health_status.uc_health_info1 = par_pr_mkb_health_data->uc_health_info1;
+				r_samekccu_mkb_capt_health_status.uc_health_info2 = par_pr_mkb_health_data->uc_health_info2;
+				r_samekccu_mkb_capt_health_status.uc_health_info3 = par_pr_mkb_health_data->uc_health_info3;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=53 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+	
+			@COMMENT@/* Set MKB CAPT HEALTHY STATUS values */@/COMMENT@
+			@DECISION SUM=20+21 ID=54|55@if (@POPUP@loc_b_healthy_value@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=73 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=74 SUM=30@False@/BRANCH@@/POPUP@)
+			@BRANCH MARK=TB ID=54 SUM=20@{
+				r_samekccu_mkb_capt_health_status.uc_health_info1 |= K_SAMEKCCU_HEALTHY_STATUS_F;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=55 SUM=20@else
+			{
+				r_samekccu_mkb_capt_health_status.uc_health_info1 &= ~K_SAMEKCCU_HEALTHY_STATUS_F;
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+		@COMMENT@/* else par_l_side is RIGHT side */@/COMMENT@	
+		@BRANCH MARK=TB ID=61 SUM=20@else 
+		{
+			@COMMENT@/* Set Healthy memorized value */@/COMMENT@
+			b_same_mkb_fo_healthy_status_memorised_value = loc_b_healthy_status_memorised_value;
+		
+			@COMMENT@/* Set KCCU healthy status timeout */@/COMMENT@
+			r_same_mkb_fo_healthy_status_timeout = loc_r_healthy_status_timeout;
+
+			@COMMENT@/* Set Healthy memorized timeout */@/COMMENT@
+			b_same_mkb_fo_healthy_timeout_memorised_value = loc_b_healthy_timeout_memorised_value;
+
+
+			@COMMENT@/* Update Healthy message data */@/COMMENT@
+			@DECISION SUM=20+21 ID=57|58@if (@POPUP@par_b_read_health_status == @ALT@K_SAME_DATA_AVAIL@-ALT@1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=75 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=76 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+			@BRANCH MARK=TB ID=57 SUM=20@{
+				r_samekccu_mkb_fo_health_status.uc_health_info1 = par_pr_mkb_health_data->uc_health_info1;
+				r_samekccu_mkb_fo_health_status.uc_health_info2 = par_pr_mkb_health_data->uc_health_info2;
+				r_samekccu_mkb_fo_health_status.uc_health_info3 = par_pr_mkb_health_data->uc_health_info3;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=58 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+
+			@COMMENT@/* Set healthy status */@/COMMENT@
+			@DECISION SUM=20+21 ID=59|60@if (@POPUP@loc_b_healthy_value@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=77 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=78 SUM=30@False@/BRANCH@@/POPUP@)
+			@BRANCH MARK=TB ID=59 SUM=20@{
+				r_samekccu_mkb_fo_health_status.uc_health_info1 |= K_SAMEKCCU_HEALTHY_STATUS_F;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=60 SUM=20@else
+			{
+				r_samekccu_mkb_fo_health_status.uc_health_info1 &= ~K_SAMEKCCU_HEALTHY_STATUS_F;
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=63 SUM=20@else
+	{
+		@COMMENT@/* Nothing to do */@/COMMENT@
+	}@/BRANCH@@/DECISION@
+	@DECISION SUM=20+21 ID=74|75@if (@ALT@K_NULL_PTR@-ALT@@POPUP@((T_ptr)0)@/ALT@ != par_pr_ccd_health_data@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=79 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=80 SUM=30@False@/BRANCH@@/POPUP@) 
+	@BRANCH MARK=TB ID=74 SUM=20@{
+		@COMMENT@/* If par_l_side is LEFT side */@/COMMENT@	
+		@DECISION SUM=20+21 ID=68|73@if ( @POPUP@par_l_side == @ALT@K_SADI_LEFT_SIDE@-ALT@(T_int32)0x4C454654@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=81 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=82 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+		@BRANCH MARK=TB ID=68 SUM=20@{
+			@COMMENT@/* Set Healthy memorized value */@/COMMENT@
+			b_same_ccd_capt_healthy_status_memorised_value = loc_b_healthy_status_memorised_value;
+
+			@COMMENT@/* Set KCCU healthy status timeout */@/COMMENT@
+			r_same_ccd_capt_healthy_status_timeout = loc_r_healthy_status_timeout;
+
+			@COMMENT@/* Set Healthy memorized timeout */@/COMMENT@
+			b_same_ccd_capt_healthy_timeout_memorised_value = loc_b_healthy_timeout_memorised_value;
+		
+			@DECISION SUM=20+21 ID=64|65@if (@POPUP@par_b_read_health_status == @ALT@K_SAME_DATA_AVAIL@-ALT@1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=83 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=84 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+			@BRANCH MARK=TB ID=64 SUM=20@{
+				r_samekccu_ccd_capt_health_status.uc_health_info1 = par_pr_ccd_health_data->uc_health_info1;
+				r_samekccu_ccd_capt_health_status.uc_health_info2 = par_pr_ccd_health_data->uc_health_info2;
+				r_samekccu_ccd_capt_health_status.uc_health_info3 = par_pr_ccd_health_data->uc_health_info3;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=65 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+	
+			@COMMENT@/* Set ccd CAPT HEALTHY STATUS values */@/COMMENT@
+			@DECISION SUM=20+21 ID=66|67@if (@POPUP@loc_b_healthy_value@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=85 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=86 SUM=30@False@/BRANCH@@/POPUP@)
+			@BRANCH MARK=TB ID=66 SUM=20@{
+				r_samekccu_ccd_capt_health_status.uc_health_info1 |= K_SAMEKCCU_HEALTHY_STATUS_F;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=67 SUM=20@else
+			{
+				r_samekccu_ccd_capt_health_status.uc_health_info1 &= ~K_SAMEKCCU_HEALTHY_STATUS_F;
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+		@COMMENT@/* else par_l_side is RIGHT side */@/COMMENT@	
+		@BRANCH MARK=TB ID=73 SUM=20@else 
+		{
+			@COMMENT@/* Set Healthy memorized value */@/COMMENT@
+			b_same_ccd_fo_healthy_status_memorised_value = loc_b_healthy_status_memorised_value;
+		
+			@COMMENT@/* Set KCCU healthy status timeout */@/COMMENT@
+			r_same_ccd_fo_healthy_status_timeout = loc_r_healthy_status_timeout;
+
+			@COMMENT@/* Set Healthy memorized timeout */@/COMMENT@
+			b_same_ccd_fo_healthy_timeout_memorised_value = loc_b_healthy_timeout_memorised_value;
+
+
+			@COMMENT@/* Update Healthy message data */@/COMMENT@
+			@DECISION SUM=20+21 ID=69|70@if (@POPUP@par_b_read_health_status == @ALT@K_SAME_DATA_AVAIL@-ALT@1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=87 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=88 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+			@BRANCH MARK=TB ID=69 SUM=20@{
+				r_samekccu_ccd_fo_health_status.uc_health_info1 = par_pr_ccd_health_data->uc_health_info1;
+				r_samekccu_ccd_fo_health_status.uc_health_info2 = par_pr_ccd_health_data->uc_health_info2;
+				r_samekccu_ccd_fo_health_status.uc_health_info3 = par_pr_ccd_health_data->uc_health_info3;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=70 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+
+			@COMMENT@/* Set healthy status */@/COMMENT@
+			@DECISION SUM=20+21 ID=71|72@if (@POPUP@loc_b_healthy_value@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=89 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=90 SUM=30@False@/BRANCH@@/POPUP@)
+			@BRANCH MARK=TB ID=71 SUM=20@{
+				r_samekccu_ccd_fo_health_status.uc_health_info1 |= K_SAMEKCCU_HEALTHY_STATUS_F;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=72 SUM=20@else
+			{
+				r_samekccu_ccd_fo_health_status.uc_health_info1 &= ~K_SAMEKCCU_HEALTHY_STATUS_F;
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=75 SUM=20@else
+	{
+		@COMMENT@/* Nothing to do */@/COMMENT@
+	}@/BRANCH@@/DECISION@
+
+	@BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=76@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** static void send_kccu_health_failure 
+ ***** 
+ ***** Description : Send the corresponding #CCD_FAILURE_FOR_BITE or 
+ *****				 #MKB_FAILURE_FOR_BITE basic failure message according 
+ *****				 to the side and CAN BUS.	
+ ***** 
+ ***** Input :
+ *****
+ *****				T_sacr_e_can_buses par_active_can  : CAN BUS active
+ ***** 
+ *****              T_same_e_kccu_module_type	par_e_module : CAPT or CCD module type
+ ***** 
+ *****              T_boolean par_b_kccu_side : KCCU side
+ *****			
+ *****				T_same_mkb_health_message_format *par_pr_health_message : healthy message	
+ ***** 
+ ***** Output : 
+ ***** 
+ *****				none.
+ *****
+ ***** 
+ *****************************************************************************/@/COMMENT@
+static void @NODE TYPE=FUNCTION NAME="send_kccu_health_failure"@@BRANCH MARK=TP ID=3 SUM=0@@LINK NAME="send_kccu_health_failure"@send_kccu_health_failure@/BRANCH@(T_sacr_e_can_buses  par_e_active_can, T_same_e_kccu_module_type par_e_module, T_boolean par_b_kccu_side, T_same_mkb_health_message_format *par_pr_health_message )
+@BRANCH MARK=TB ID=91 SUM=20@{
+
+	@COMMENT@/* declaration oflocal table containing : */@/COMMENT@
+	@COMMENT@/* - sn (16 bits), */@/COMMENT@
+	@COMMENT@/* - pn (K_SAME_MAX_CHAR_KCCU_SN_PN * 8 bits) */@/COMMENT@
+	@COMMENT@/* - locked_key_matrix (K_SAME_MAX_CHAR_KCCU_LKM * 8 bits) */@/COMMENT@
+	T_uint8 loc_tuc_sn_pn_and_locked_key_matrix[2 + K_SAME_MAX_CHAR_KCCU_SN_PN + K_SAME_MAX_CHAR_KCCU_LKM];
+
+	@DECISION SUM=20+21 ID=83|90@if (@POPUP@par_e_active_can == K_SACR_CAN_PRIMARY@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=91 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=92 SUM=30@False@/BRANCH@@/POPUP@)
+	@BRANCH MARK=TB ID=83 SUM=20@{
+		
+		@DECISION SUM=20+21 ID=79|82@if (@POPUP@par_e_module == K_SAME_MKB_MODULE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=93 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=94 SUM=30@False@/BRANCH@@/POPUP@)
+		@BRANCH MARK=TB ID=79 SUM=20@{
+			@COMMENT@/* If this is KCCU CAPT LRU */@/COMMENT@
+			@DECISION SUM=20+21 ID=77|78@if (@POPUP@par_b_kccu_side@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=95 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=96 SUM=30@False@/BRANCH@@/POPUP@)
+			@BRANCH MARK=TB ID=77 SUM=20@{
+				@COMMENT@/* copy PN into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=16 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ (loc_tuc_sn_pn_and_locked_key_matrix, 
+					r_same_kccu_sn_pn_value.tuc_mkb_capt_pn, 
+					sizeof (r_same_kccu_sn_pn_value.tuc_mkb_capt_pn) )@/BRANCH@;
+				@COMMENT@/* copy SN into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=17 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN]), 
+					(T_uint8 *) &r_same_kccu_sn_pn_value.us_mkb_capt_sn, 
+					sizeof (r_same_kccu_sn_pn_value.us_mkb_capt_sn) )@/BRANCH@;
+				@COMMENT@/* copy locked key matrix into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=18 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN+2]), 
+					r_same_kccu_sn_pn_value.tuc_mkb_capt_locked_key_matrix, 
+					sizeof (r_same_kccu_sn_pn_value.tuc_mkb_capt_locked_key_matrix) )@/BRANCH@; 
+
+				@COMMENT@/* Send MKB_CAPT_BUS11 HEALTH failure message */@/COMMENT@
+				@BRANCH MARK=TA ID=19 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ (R_SAME_FSC_ERR_CONFIG,
+							K_SAME_FSC_ERR_HEALTH_MKB_CAPT_BUS11,
+							K_SAME_SAMEKCCU_CHECK_HEALTH_REFRESH_COMPONENT_ID_ATT,
+							par_pr_health_message->uc_health_info1, 
+							par_pr_health_message->uc_health_info2,
+							par_pr_health_message->uc_health_info3,
+							loc_tuc_sn_pn_and_locked_key_matrix,
+							sizeof(loc_tuc_sn_pn_and_locked_key_matrix))@/BRANCH@;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=78 SUM=20@else
+			{
+				@COMMENT@/* copy PN into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=20 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ (loc_tuc_sn_pn_and_locked_key_matrix, 
+					r_same_kccu_sn_pn_value.tuc_mkb_fo_pn, 
+					sizeof (r_same_kccu_sn_pn_value.tuc_mkb_fo_pn) )@/BRANCH@;
+				@COMMENT@/* copy SN into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=21 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN]), 
+					(T_uint8 *) &r_same_kccu_sn_pn_value.us_mkb_fo_sn, 
+					sizeof (r_same_kccu_sn_pn_value.us_mkb_fo_sn) )@/BRANCH@; 
+				@COMMENT@/* copy locked key matrix into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=22 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN+2]), 
+					r_same_kccu_sn_pn_value.tuc_mkb_fo_locked_key_matrix, 
+					sizeof (r_same_kccu_sn_pn_value.tuc_mkb_fo_locked_key_matrix) )@/BRANCH@; 
+
+				@COMMENT@/* Send MKB_FO_BUS21 HEALTH failure message */@/COMMENT@
+				@BRANCH MARK=TA ID=23 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ (R_SAME_FSC_ERR_CONFIG,
+							K_SAME_FSC_ERR_HEALTH_MKB_FO_BUS21,
+							K_SAME_SAMEKCCU_CHECK_HEALTH_REFRESH_COMPONENT_ID_ATT,
+							par_pr_health_message->uc_health_info1, 
+							par_pr_health_message->uc_health_info2,
+							par_pr_health_message->uc_health_info3,
+							loc_tuc_sn_pn_and_locked_key_matrix,
+							sizeof(loc_tuc_sn_pn_and_locked_key_matrix))@/BRANCH@;
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=82 SUM=20@else
+		{
+				@COMMENT@/* If this is KCCU CAPT LRU */@/COMMENT@
+				@DECISION SUM=20+21 ID=80|81@if (@POPUP@par_b_kccu_side@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=97 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=98 SUM=30@False@/BRANCH@@/POPUP@)
+				@BRANCH MARK=TB ID=80 SUM=20@{
+					@COMMENT@/* copy PN into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=24 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ (loc_tuc_sn_pn_and_locked_key_matrix, 
+						r_same_kccu_sn_pn_value.tuc_ccd_capt_pn, 
+						sizeof (r_same_kccu_sn_pn_value.tuc_ccd_capt_pn) )@/BRANCH@;
+					@COMMENT@/* copy SN into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=25 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN]), 
+						(T_uint8 *) &r_same_kccu_sn_pn_value.us_ccd_capt_sn, 
+						sizeof (r_same_kccu_sn_pn_value.us_ccd_capt_sn) )@/BRANCH@; 
+					@COMMENT@/* copy locked key matrix into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=26 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN+2]), 
+						r_same_kccu_sn_pn_value.tuc_ccd_capt_locked_key_matrix, 
+						sizeof (r_same_kccu_sn_pn_value.tuc_ccd_capt_locked_key_matrix) )@/BRANCH@; 
+
+					@COMMENT@/* Send CCD_CAPT_BUS11 HEALTH failure message */@/COMMENT@
+					@BRANCH MARK=TA ID=27 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ (R_SAME_FSC_ERR_CONFIG,
+						K_SAME_FSC_ERR_HEALTH_CCD_CAPT_BUS11,
+						K_SAME_SAMEKCCU_CHECK_HEALTH_REFRESH_COMPONENT_ID_ATT,
+						par_pr_health_message->uc_health_info1, 
+						par_pr_health_message->uc_health_info2,
+						par_pr_health_message->uc_health_info3,
+						loc_tuc_sn_pn_and_locked_key_matrix,
+						sizeof(loc_tuc_sn_pn_and_locked_key_matrix))@/BRANCH@;
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=81 SUM=20@else
+				{
+					@COMMENT@/* copy PN into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=28 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ (loc_tuc_sn_pn_and_locked_key_matrix, 
+						r_same_kccu_sn_pn_value.tuc_ccd_fo_pn, 
+						sizeof (r_same_kccu_sn_pn_value.tuc_ccd_fo_pn) )@/BRANCH@;
+					@COMMENT@/* copy SN into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=29 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN]), 
+						(T_uint8 *) &r_same_kccu_sn_pn_value.us_ccd_fo_sn, 
+						sizeof (r_same_kccu_sn_pn_value.us_ccd_fo_sn) )@/BRANCH@; 
+					@COMMENT@/* copy locked key matrix into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=30 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN+2]), 
+						r_same_kccu_sn_pn_value.tuc_ccd_fo_locked_key_matrix, 
+						sizeof (r_same_kccu_sn_pn_value.tuc_ccd_fo_locked_key_matrix) )@/BRANCH@; 
+
+					@COMMENT@/* Send CCD_FO_BUS21 HEALTH failure message */@/COMMENT@
+					@BRANCH MARK=TA ID=31 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ (R_SAME_FSC_ERR_CONFIG,
+						K_SAME_FSC_ERR_HEALTH_CCD_FO_BUS21,
+						K_SAME_SAMEKCCU_CHECK_HEALTH_REFRESH_COMPONENT_ID_ATT,
+						par_pr_health_message->uc_health_info1, 
+						par_pr_health_message->uc_health_info2,
+						par_pr_health_message->uc_health_info3,
+						loc_tuc_sn_pn_and_locked_key_matrix,
+						sizeof(loc_tuc_sn_pn_and_locked_key_matrix))@/BRANCH@;
+				}@/BRANCH@@/DECISION@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=90 SUM=20@else @COMMENT@/* SECONDARY BUS */@/COMMENT@
+	{
+		@DECISION SUM=20+21 ID=86|89@if (@POPUP@par_e_module == K_SAME_MKB_MODULE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=99 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=100 SUM=30@False@/BRANCH@@/POPUP@)
+		@BRANCH MARK=TB ID=86 SUM=20@{
+			@COMMENT@/* If this is KCCU CAPT LRU */@/COMMENT@
+			@DECISION SUM=20+21 ID=84|85@if (@POPUP@par_b_kccu_side@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=101 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=102 SUM=30@False@/BRANCH@@/POPUP@)
+			@BRANCH MARK=TB ID=84 SUM=20@{
+				@COMMENT@/* copy PN into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=32 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ (loc_tuc_sn_pn_and_locked_key_matrix, 
+					r_same_kccu_sn_pn_value.tuc_mkb_capt_pn, 
+					sizeof (r_same_kccu_sn_pn_value.tuc_mkb_capt_pn) )@/BRANCH@;
+				@COMMENT@/* copy SN into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=33 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN]), 
+					(T_uint8 *) &r_same_kccu_sn_pn_value.us_mkb_capt_sn, 
+					sizeof (r_same_kccu_sn_pn_value.us_mkb_capt_sn) )@/BRANCH@; 
+				@COMMENT@/* copy locked key matrix into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=34 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN+2]), 
+					r_same_kccu_sn_pn_value.tuc_mkb_capt_locked_key_matrix, 
+					sizeof (r_same_kccu_sn_pn_value.tuc_mkb_capt_locked_key_matrix) )@/BRANCH@; 
+
+				@COMMENT@/* Send MKB_CAPT_BUS12 HEALTH failure message */@/COMMENT@
+				@BRANCH MARK=TA ID=35 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ (R_SAME_FSC_ERR_CONFIG,
+							K_SAME_FSC_ERR_HEALTH_MKB_CAPT_BUS12,
+							K_SAME_SAMEKCCU_CHECK_HEALTH_REFRESH_COMPONENT_ID_ATT,
+							par_pr_health_message->uc_health_info1, 
+							par_pr_health_message->uc_health_info2,
+							par_pr_health_message->uc_health_info3,
+							loc_tuc_sn_pn_and_locked_key_matrix,
+							sizeof(loc_tuc_sn_pn_and_locked_key_matrix))@/BRANCH@;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=85 SUM=20@else
+			{
+				@COMMENT@/* copy PN into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=36 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ (loc_tuc_sn_pn_and_locked_key_matrix, 
+					r_same_kccu_sn_pn_value.tuc_mkb_fo_pn, 
+					sizeof (r_same_kccu_sn_pn_value.tuc_mkb_fo_pn) )@/BRANCH@;
+				@COMMENT@/* copy SN into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=37 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN]), 
+					(T_uint8 *) &r_same_kccu_sn_pn_value.us_mkb_fo_sn, 
+					sizeof (r_same_kccu_sn_pn_value.us_mkb_fo_sn) )@/BRANCH@; 
+				@COMMENT@/* copy locked key matrix into local table */@/COMMENT@
+				@BRANCH MARK=TA ID=38 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN+2]), 
+					r_same_kccu_sn_pn_value.tuc_mkb_fo_locked_key_matrix, 
+					sizeof (r_same_kccu_sn_pn_value.tuc_mkb_fo_locked_key_matrix) )@/BRANCH@; 
+
+				@COMMENT@/* Send MKB_FO_BUS22 HEALTH failure message */@/COMMENT@
+				@BRANCH MARK=TA ID=39 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ (R_SAME_FSC_ERR_CONFIG,
+							K_SAME_FSC_ERR_HEALTH_MKB_FO_BUS22,
+							K_SAME_SAMEKCCU_CHECK_HEALTH_REFRESH_COMPONENT_ID_ATT,
+							par_pr_health_message->uc_health_info1, 
+							par_pr_health_message->uc_health_info2,
+							par_pr_health_message->uc_health_info3,
+							loc_tuc_sn_pn_and_locked_key_matrix,
+							sizeof(loc_tuc_sn_pn_and_locked_key_matrix))@/BRANCH@;
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=89 SUM=20@else
+		{
+				@COMMENT@/* If this is KCCU CAPT LRU */@/COMMENT@
+				@DECISION SUM=20+21 ID=87|88@if (@POPUP@par_b_kccu_side@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=103 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=104 SUM=30@False@/BRANCH@@/POPUP@)
+				@BRANCH MARK=TB ID=87 SUM=20@{
+					@COMMENT@/* copy PN into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=40 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ (loc_tuc_sn_pn_and_locked_key_matrix, 
+						r_same_kccu_sn_pn_value.tuc_ccd_capt_pn, 
+						sizeof (r_same_kccu_sn_pn_value.tuc_ccd_capt_pn) )@/BRANCH@;
+					@COMMENT@/* copy SN into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=41 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN]), 
+						(T_uint8 *) &r_same_kccu_sn_pn_value.us_ccd_capt_sn, 
+						sizeof (r_same_kccu_sn_pn_value.us_ccd_capt_sn) )@/BRANCH@; 
+					@COMMENT@/* copy locked key matrix into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=42 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN+2]), 
+						r_same_kccu_sn_pn_value.tuc_ccd_capt_locked_key_matrix, 
+						sizeof (r_same_kccu_sn_pn_value.tuc_ccd_capt_locked_key_matrix) )@/BRANCH@; 
+
+					@COMMENT@/* Send CCD_CAPT_BUS12 HEALTH failure message */@/COMMENT@
+					@BRANCH MARK=TA ID=43 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ (R_SAME_FSC_ERR_CONFIG,
+						K_SAME_FSC_ERR_HEALTH_CCD_CAPT_BUS12,
+						K_SAME_SAMEKCCU_CHECK_HEALTH_REFRESH_COMPONENT_ID_ATT,
+						par_pr_health_message->uc_health_info1, 
+						par_pr_health_message->uc_health_info2,
+						par_pr_health_message->uc_health_info3,
+						loc_tuc_sn_pn_and_locked_key_matrix,
+						sizeof(loc_tuc_sn_pn_and_locked_key_matrix))@/BRANCH@;
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=88 SUM=20@else
+				{
+					@COMMENT@/* copy PN into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=44 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ (loc_tuc_sn_pn_and_locked_key_matrix, 
+						r_same_kccu_sn_pn_value.tuc_ccd_fo_pn, 
+						sizeof (r_same_kccu_sn_pn_value.tuc_ccd_fo_pn) )@/BRANCH@;
+					@COMMENT@/* copy SN into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=45 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN]), 
+						(T_uint8 *) &r_same_kccu_sn_pn_value.us_ccd_fo_sn, 
+						sizeof (r_same_kccu_sn_pn_value.us_ccd_fo_sn) )@/BRANCH@; 
+					@COMMENT@/* copy locked key matrix into local table */@/COMMENT@
+					@BRANCH MARK=TA ID=46 SUM=10@@JUMP NAME="lbmem_cpy"@lbmem_cpy@/JUMP@ ((T_uint8 *) &(loc_tuc_sn_pn_and_locked_key_matrix[K_SAME_MAX_CHAR_KCCU_SN_PN+2]), 
+						r_same_kccu_sn_pn_value.tuc_ccd_fo_locked_key_matrix, 
+						sizeof (r_same_kccu_sn_pn_value.tuc_ccd_fo_locked_key_matrix) )@/BRANCH@; 
+
+					@COMMENT@/* Send CCD_FO_BUS22 HEALTH failure message */@/COMMENT@
+					@BRANCH MARK=TA ID=47 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ (R_SAME_FSC_ERR_CONFIG,
+						K_SAME_FSC_ERR_HEALTH_CCD_FO_BUS22,
+						K_SAME_SAMEKCCU_CHECK_HEALTH_REFRESH_COMPONENT_ID_ATT,
+						par_pr_health_message->uc_health_info1, 
+						par_pr_health_message->uc_health_info2,
+						par_pr_health_message->uc_health_info3,
+						loc_tuc_sn_pn_and_locked_key_matrix,
+						sizeof(loc_tuc_sn_pn_and_locked_key_matrix))@/BRANCH@;
+				}@/BRANCH@@/DECISION@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@@/DECISION@
+
+	@BRANCH MARK=TP ID=2 SUM=1@return;@SHORTCUT MARK=TB ID=91@@/BRANCH@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

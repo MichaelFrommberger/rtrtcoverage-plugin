@@ -1,0 +1,207 @@
+VE 3.0d CCOV CMCDC #i3
+FC "SAME_SEND_MEDIA_GND_CONFIG.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\SA\\SAME\\SRC\\"
+FD 1285925482
+TC PR RE AP BS BT BI BL CO CC
+AP 0 "same_send_media_gnd_config" "sadi_get_du_side" 78 78
+CA 0 "same_send_media_gnd_config" "case (type-cast)0x4C454654" 83 83
+BL 0 simple "same_send_media_gnd_config" /case 83 83
+AP 1 "same_send_media_gnd_config" "same_pdu_ifc_send" 89 91
+AP 2 "same_send_media_gnd_config" "same_pdu_ifc_send" 95 97
+CA 1 "same_send_media_gnd_config" "case (type-cast)0x3343" 101 101
+CA 2 "same_send_media_gnd_config" "case (type-cast)0x52494748" 102 102
+BL 1 simple "same_send_media_gnd_config" /case 102 102
+AP 3 "same_send_media_gnd_config" "same_pdu_ifc_send" 109 111
+AP 4 "same_send_media_gnd_config" "same_pdu_ifc_send" 115 117
+CA 3 "same_send_media_gnd_config" "case (type-cast)0x4D494444" 120 120
+BL 2 simple "same_send_media_gnd_config" /case 120 120
+AP 5 "same_send_media_gnd_config" "same_pdu_ifc_send" 126 128
+AP 6 "same_send_media_gnd_config" "same_pdu_ifc_send" 132 134
+AP 7 "same_send_media_gnd_config" "same_pdu_ifc_send" 138 140
+CA 4 "same_send_media_gnd_config" "case (type-cast)0x46544553" 143 143
+BL 3 simple "same_send_media_gnd_config" /case 143 143
+CA 5 "same_send_media_gnd_config" "default" 149 149
+BL 4 simple "same_send_media_gnd_config" /default 149 149
+PR 0 return "same_send_media_gnd_config" 156 156
+PR 1 proc "same_send_media_gnd_config" 73 157
+BL 5 simple "same_send_media_gnd_config" / 73 157
+DC 589067575
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="SAME_SEND_MEDIA_GND_CONFIG.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\SA\SAME\SRC\"
+  DATE=1285925482
+  CHECKSUM=589067575
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="SAME_SEND_MEDIA_GND_CONFIG.C"@@COMMENT@/******************************************************************************
+ **
+ **                                   ==============
+ **                                   IDENTIFICATION
+ **                                   ==============
+ **
+ **
+ **
+ **  Filename            : same_send_media_gnd_config.c
+ **
+ **  Author/ Company     : T.Nguyen / THALES Services
+ **
+ **  Creation date       : 06/12/2005
+ **
+ **  Copyright statement : Copyright (C); 2005
+ **                        THALES Avionics
+ **
+ **  Module description  : System Application MEdia management
+ **                           Manage the sending of media source selection 
+ **                           and event dispatcher GND mode configuration 
+ **
+ *****************************************************************************/@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Project specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@/* MACS TYPES */@/COMMENT@
+@COMMENT@#include "COD_A653_API_COMMON.h"@/COMMENT@
+
+
+@COMMENT@/* SA TYPES */@/COMMENT@
+@COMMENT@#include "apsw_basic_types_c.h"@/COMMENT@
+
+
+@COMMENT@/* PLATFORM TYPES */@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU TYPES */@/COMMENT@
+@COMMENT@#include "sadi.h"@/COMMENT@
+@COMMENT@#include "same_pdu_ifc.h"@/COMMENT@
+@COMMENT@#include "sacr.h"@/COMMENT@
+@COMMENT@#include "same_event_dispatcher_conf.h"@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU PROTOTYPES */@/COMMENT@
+@COMMENT@#include "same_pdu_ifc_send.p"@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Module specific includes
+ *****************************************************************************/@/COMMENT@
+
+@COMMENT@#include "same_send_media_gnd_config.p"@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Local file declarations
+ *****************************************************************************/@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** void same_send_media_gnd_config
+ ***** 
+ ***** Description :    Send GND mode media source selection configuration 
+ *****                  Send event dispatcher configuration
+ ***** 
+ ***** Input :          none 
+ ***** 
+ ***** Output :         none
+ ***** 
+ *****************************************************************************/@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="same_send_media_gnd_config"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="same_send_media_gnd_config"@same_send_media_gnd_config@/BRANCH@(void)
+@BRANCH MARK=TB ID=5 SUM=20@{
+    T_uint32    loc_ul_du_side;
+    T_uint32    loc_ul_msg_size;
+
+    @COMMENT@/* Get the DU side */@/COMMENT@
+    @BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="sadi_get_du_side"@sadi_get_du_side@/JUMP@(&loc_ul_du_side)@/BRANCH@;
+
+
+    @DECISION SUM=20+21 ID=0|1|2|3|4@switch(loc_ul_du_side)
+    {
+        @BRANCH MARK=TB ID=0 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=0 SUM=30@case K_SADI_LEFT_SIDE :@/BRANCH@@/BRANCH@
+            {
+                @COMMENT@/* Send media source selection */@/COMMENT@
+                loc_ul_msg_size =  sizeof(R_SAME_MEDIA_SOURCE_SELECTION_GND_LEFT.msg_id) +
+                                   sizeof(R_SAME_MEDIA_SOURCE_SELECTION_GND_LEFT.media_sources_nb) +
+                                   sizeof(typ_r_media_source_select_info) * R_SAME_MEDIA_SOURCE_SELECTION_GND_LEFT.media_sources_nb;
+                @BRANCH MARK=TA ID=1 SUM=10@@JUMP NAME="same_pdu_ifc_send"@same_pdu_ifc_send@/JUMP@(l_same_media_config_qport_id,
+                            (MESSAGE_ADDR_TYPE *)&R_SAME_MEDIA_SOURCE_SELECTION_GND_LEFT,
+                            (MESSAGE_SIZE_TYPE) loc_ul_msg_size)@/BRANCH@;
+                
+                @COMMENT@/* Send event dispatcher configuration */@/COMMENT@
+                loc_ul_msg_size = sizeof(typ_r_event_dispatcher_msg);
+                @BRANCH MARK=TA ID=2 SUM=10@@JUMP NAME="same_pdu_ifc_send"@same_pdu_ifc_send@/JUMP@(l_same_media_config_qport_id,
+                            (MESSAGE_ADDR_TYPE *)&R_SAME_EVENT_DISPATCHER_MSG_GND_LEFT,
+                            (MESSAGE_SIZE_TYPE) loc_ul_msg_size)@/BRANCH@;
+
+            }
+            break;@SHORTCUT MARK=TB ID=0@
+        @BRANCH NO@@BRANCH MARK=TE ID=1 SUM=30@case K_SADI_3C_SIDE:@/BRANCH@@/BRANCH@
+        @BRANCH MARK=TB ID=1 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=2 SUM=30@case K_SADI_RIGHT_SIDE:@/BRANCH@@/BRANCH@
+            {
+
+                @COMMENT@/* Send media source selection */@/COMMENT@
+                loc_ul_msg_size =  sizeof(R_SAME_MEDIA_SOURCE_SELECTION_GND_RIGHT.msg_id) +
+                                   sizeof(R_SAME_MEDIA_SOURCE_SELECTION_GND_RIGHT.media_sources_nb) +
+                                   sizeof(typ_r_media_source_select_info) * R_SAME_MEDIA_SOURCE_SELECTION_GND_RIGHT.media_sources_nb;
+                @BRANCH MARK=TA ID=3 SUM=10@@JUMP NAME="same_pdu_ifc_send"@same_pdu_ifc_send@/JUMP@(l_same_media_config_qport_id,
+                            (MESSAGE_ADDR_TYPE *)&R_SAME_MEDIA_SOURCE_SELECTION_GND_RIGHT,
+                            (MESSAGE_SIZE_TYPE) loc_ul_msg_size)@/BRANCH@;
+
+                @COMMENT@/* Send event dispatcher configuration */@/COMMENT@
+                loc_ul_msg_size = sizeof(typ_r_event_dispatcher_msg);
+                @BRANCH MARK=TA ID=4 SUM=10@@JUMP NAME="same_pdu_ifc_send"@same_pdu_ifc_send@/JUMP@(l_same_media_config_qport_id,
+                            (MESSAGE_ADDR_TYPE *)&R_SAME_EVENT_DISPATCHER_MSG_GND_RIGHT,
+                            (MESSAGE_SIZE_TYPE) loc_ul_msg_size)@/BRANCH@;
+            }
+            break;@SHORTCUT MARK=TB ID=0@
+        @BRANCH MARK=TB ID=2 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=3 SUM=30@case K_SADI_MIDDLE_SIDE:@/BRANCH@@/BRANCH@
+            {
+                @COMMENT@/* Send media source selection */@/COMMENT@
+                loc_ul_msg_size = sizeof(R_SAME_MEDIA_SOURCE_SELECTION_MIDDLE.msg_id) +
+                                  sizeof(R_SAME_MEDIA_SOURCE_SELECTION_MIDDLE.media_sources_nb) +
+                                  sizeof(typ_r_media_source_select_info) * R_SAME_MEDIA_SOURCE_SELECTION_MIDDLE.media_sources_nb;
+                @BRANCH MARK=TA ID=5 SUM=10@@JUMP NAME="same_pdu_ifc_send"@same_pdu_ifc_send@/JUMP@(l_same_media_config_qport_id,
+                            (MESSAGE_ADDR_TYPE *)&R_SAME_MEDIA_SOURCE_SELECTION_MIDDLE,
+                            (MESSAGE_SIZE_TYPE) loc_ul_msg_size)@/BRANCH@;
+
+                @COMMENT@/* Send event dispatcher configuration */@/COMMENT@
+                loc_ul_msg_size = sizeof(typ_r_event_dispatcher_msg);
+                @BRANCH MARK=TA ID=6 SUM=10@@JUMP NAME="same_pdu_ifc_send"@same_pdu_ifc_send@/JUMP@(l_same_media_config_qport_id,
+                            (MESSAGE_ADDR_TYPE *)&R_SAME_EVENT_DISPATCHER_MSG_GND_LEFT,
+                            (MESSAGE_SIZE_TYPE) loc_ul_msg_size)@/BRANCH@;
+
+                @COMMENT@/* Send event dispatcher configuration */@/COMMENT@
+                loc_ul_msg_size = sizeof(typ_r_event_dispatcher_msg);
+                @BRANCH MARK=TA ID=7 SUM=10@@JUMP NAME="same_pdu_ifc_send"@same_pdu_ifc_send@/JUMP@(l_same_media_config_qport_id,
+                            (MESSAGE_ADDR_TYPE *)&R_SAME_EVENT_DISPATCHER_MSG_GND_RIGHT,
+                            (MESSAGE_SIZE_TYPE) loc_ul_msg_size)@/BRANCH@;
+            }
+            break;@SHORTCUT MARK=TB ID=0@
+        @BRANCH MARK=TB ID=3 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=4 SUM=30@case K_SADI_FTE_SIDE:@/BRANCH@@/BRANCH@
+            {
+                @COMMENT@/* Nothing to do : no media */@/COMMENT@
+            }
+            break;@SHORTCUT MARK=TB ID=0@
+
+        @BRANCH MARK=TB ID=4 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=5 SUM=30@default:@/BRANCH@@/BRANCH@
+            {
+                @COMMENT@/* Nothing to do : invalid DU position */@/COMMENT@
+            }
+            break;@SHORTCUT MARK=TB ID=0@
+    }@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/DECISION@
+
+    @BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=5@@/BRANCH@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

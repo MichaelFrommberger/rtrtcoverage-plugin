@@ -1,0 +1,78 @@
+VE 3.0d CCOV CMCDC #i3
+FC "SAMEMED_INIT.C" "V:\\CDS_A400M_DEV\\SA\\SAME\\SAMEMED\\SRC\\"
+FD 1292262856
+TC PR RE AP BS BT BI BL CO CC
+AP 0 "samemed_init" "sadi_get_local_du_id" 160 160
+AP 1 "samemed_init" "sadi_get_du_side" 161 161
+AP 2 "samemed_init" "lbtm_init" 164 165
+CE 0 "samemed_init" "loc_du_side == (type-cast) ..." 204 204
+BL 0 simple "samemed_init" /then 205 208
+BL 1 simple "samemed_init" /else 210 213
+CE 2 "samemed_init" "loc_i < 3UL" 216 216
+CE 4 "samemed_init" "loc_du_id != loc_local_du_id" 222 222
+AP 3 "samemed_init" "samc_msg_port_create" 225 230
+CE 6 "samemed_init" "loc_apex_return_code != NO_ERROR" 231 231
+AP 4 "samemed_init" "lbfl_mng" 234 241
+BL 2 simple "samemed_init" /for/then/then 232 244
+BL 3 simple "samemed_init" /for/then/else 246 248
+BL 4 simple "samemed_init" /for/then 223 249
+BL 5 simple "samemed_init" /for/else 251 254
+BL 6 simple "samemed_init" /for 217 255
+BL 7 logical "samemed_init" /for/0 216 255
+BL 8 logical "samemed_init" /for/1 216 255
+BL 9 logical "samemed_init" /for/2+ 216 255
+AP 5 "samemed_init" "samc_msg_port_create" 258 263
+CE 8 "samemed_init" "loc_apex_return_code != NO_ERROR" 264 264
+AP 6 "samemed_init" "lbfl_mng" 267 274
+BL 10 simple "samemed_init" /then 265 276
+BL 11 simple "samemed_init" /else 278 280
+PR 0 return "samemed_init" 282 282
+PR 1 proc "samemed_init" 151 283
+BL 12 simple "samemed_init" / 151 283
+DC 1300047202
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="SAMEMED_INIT.C"
+  DIR="V:\CDS_A400M_DEV\SA\SAME\SAMEMED\SRC\"
+  DATE=1292262856
+  CHECKSUM=1300047202
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="SAMEMED_INIT.C"@@COMMENT@/******************************************************************************
+ **
+ **                                   ==============
+ **                                   IDENTIFICATION
+ **                                   ==============
+ **
+ **
+ **
+ **  Filename            : samemed_init.c
+ **
+ **  Author/ Company     : THALES SERVICES
+ **
+ **  Creation date       : 14/06/2006
+ **
+ **  Copyright statement : Copyright (C); 2006
+ **                        THALES Avionics
+ **
+ **  Module description  : Media Behavior:
+ **						   Initialization for data needed by SAMEMED
+ **
+ *****************************************************************************/@/COMMENT@
+
+// Bad Token: end of file into it
+@COM

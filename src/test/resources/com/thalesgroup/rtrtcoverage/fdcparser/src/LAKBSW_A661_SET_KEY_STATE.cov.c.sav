@@ -1,0 +1,1429 @@
+/* Rational Test RealTime C Instrumentor 2002.05.21.468.004 */
+/* Build Number: 282.001*/
+/* Copyright(C) 2002 Rational Software Corporation. All rights reserved. */
+/*   Date : 09-Oct-02 19:21 */
+/*     OS : ms-dos */
+
+#define ATL_C_INSTRUMENTOR
+
+#define USE_ATC 1
+
+#define ATC_INFORMATION 0
+
+#include "D:\Viewsnap\IC_CDS_A400M\CDS_A400M_DEV\..\build_tools_cds_a400m_L3.1\DESK_CompilationChain/TDP/GNU\lib\TP.h"
+
+#define _ATC_INIT_CONST_COMPOUND_STUFF
+
+_ATC_DECLARE_PROC(1,2)
+_ATC_DECLARE_BLOC(1,5)
+_ATC_DECLARE(1,0x725B2E2DUL,0x2A45426FUL,2,_ATC_TAB_PROC(1),0,0,5,_ATC_TAB_BLOC(1),0,0)
+
+# 1 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Src/LAKBSW_A661_SET_KEY_STATE.c"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_BASIC_TYPES.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_BASIC_CONST.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                 
+
+                                              
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    
+                                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    
+                                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 224 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_BASIC_CONST.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 41 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_BASIC_TYPES.h"
+
+
+
+
+
+
+
+
+
+typedef signed char        T_lakbsw_char8;
+typedef unsigned char      T_lakbsw_uchar8;
+
+typedef signed short int   T_lakbsw_int16;
+
+typedef unsigned short int T_lakbsw_uint16;
+
+typedef signed long int    T_lakbsw_int32;
+
+typedef unsigned long int  T_lakbsw_uint32;
+
+typedef enum
+{
+    K_LAKBSW_BOOL_FALSE = 0UL,
+    K_LAKBSW_BOOL_TRUE = 1UL
+} T_lakbsw_bool;
+
+
+typedef enum
+{
+  K_KEY_INDEX_NONE = 0,
+  K_KEY_INDEX_ENT,
+  K_KEY_INDEX_ARROWRIGHT,
+  K_KEY_INDEX_ARROWLEFT,
+  K_KEY_INDEX_ESC,
+  K_KEY_INDEX_SP,
+  K_KEY_INDEX_PLUSMINUS,
+  K_KEY_INDEX_POINT,
+  K_KEY_INDEX_SLASH,
+  K_KEY_INDEX_0,
+  K_KEY_INDEX_1,
+  K_KEY_INDEX_2,
+  K_KEY_INDEX_3,
+  K_KEY_INDEX_4,
+  K_KEY_INDEX_5,
+  K_KEY_INDEX_6,
+  K_KEY_INDEX_7,
+  K_KEY_INDEX_8,
+  K_KEY_INDEX_9,
+  K_KEY_INDEX_A,
+  K_KEY_INDEX_B,
+  K_KEY_INDEX_C,
+  K_KEY_INDEX_D,
+  K_KEY_INDEX_E,
+  K_KEY_INDEX_F,
+  K_KEY_INDEX_G,
+  K_KEY_INDEX_H,
+  K_KEY_INDEX_I,
+  K_KEY_INDEX_J,
+  K_KEY_INDEX_K,
+  K_KEY_INDEX_L,
+  K_KEY_INDEX_M,
+  K_KEY_INDEX_N,
+  K_KEY_INDEX_O,
+  K_KEY_INDEX_P,
+  K_KEY_INDEX_Q,
+  K_KEY_INDEX_R,
+  K_KEY_INDEX_S,
+  K_KEY_INDEX_T,
+  K_KEY_INDEX_U,
+  K_KEY_INDEX_V,
+  K_KEY_INDEX_W,
+  K_KEY_INDEX_X,
+  K_KEY_INDEX_Y,
+  K_KEY_INDEX_Z,
+  K_KEY_INDEX_CLR,
+
+  
+  K_NUM_KEYS
+}
+T_lakbsw_key_id;
+
+
+
+
+
+typedef struct
+{
+  T_lakbsw_uint32 ul_key_id; 
+  T_lakbsw_uint16 us_style_set_norm; 
+  T_lakbsw_uint16 us_style_set_high; 
+  T_lakbsw_uint16 us_style_set_post; 
+  T_lakbsw_key_id e_up_key;    
+  T_lakbsw_key_id e_down_key;  
+  T_lakbsw_key_id e_right_key; 
+  T_lakbsw_key_id e_left_key;  
+} T_lakbsw_key_information;
+
+
+typedef struct
+{
+  T_lakbsw_uchar8  uc_block_ident;
+  T_lakbsw_uchar8  uc_layer_ident;
+  T_lakbsw_uint16  us_context_number;
+  T_lakbsw_uint32  ul_block_size;
+} T_lakbsw_a661_block_header;
+
+
+typedef struct
+{
+  T_lakbsw_uchar8  uc_block_end;
+  T_lakbsw_uchar8  uc_unused_pad;
+  T_lakbsw_uint16  us_unused_pad;
+} T_lakbsw_a661_block_footer;
+
+
+typedef struct
+{
+  T_lakbsw_uint16  us_command;
+  T_lakbsw_uint16  us_command_size;
+  T_lakbsw_uint16  us_widget_ident;
+  T_lakbsw_uint16  us_unused_pad1;
+  T_lakbsw_uint16  us_param_ident;
+  T_lakbsw_uint16  us_unused_pad2;
+  T_lakbsw_uint32  ul_param_value1;
+  T_lakbsw_uint32  ul_param_value2;
+} T_a661_block_set_xy;
+
+
+typedef struct
+{
+  T_lakbsw_uint16  us_command;
+  T_lakbsw_uint16  us_command_size;
+  T_lakbsw_uint16  us_widget_ident;
+  T_lakbsw_uint16  us_unused_pad;
+  T_lakbsw_uint16  us_param_1;
+  T_lakbsw_uint16  us_param_2;
+} T_a661_block_set_par_2byte;
+# 179 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_BASIC_TYPES.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 28 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Src/LAKBSW_A661_SET_KEY_STATE.c"
+# 1 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_LOCAL_VAR.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_BASIC_CONST.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 28 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_LOCAL_VAR.h"
+# 1 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_BASIC_TYPES.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 29 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_LOCAL_VAR.h"
+
+
+
+
+
+
+
+
+
+
+
+
+extern T_lakbsw_uint32 ul_lakbsw_prev_cycle_count;
+extern T_lakbsw_int32  l_lakbsw_post_focus_timer;
+
+
+extern T_lakbsw_bool b_lakbsw_prev_ccd_click;
+
+
+extern T_lakbsw_key_id  e_lakbsw_highlighted_key;
+extern T_lakbsw_key_id  e_lakbsw_prev_highlighted_key;
+extern T_lakbsw_bool    b_lakbsw_pf_timer_elapsed;
+extern T_lakbsw_int32   l_lakbsw_ccd_sum_dx;
+extern T_lakbsw_int32   l_lakbsw_ccd_sum_dy;
+extern T_lakbsw_key_information r_lakbsw_key_table[K_NUM_KEYS];
+
+
+extern T_lakbsw_key_id  e_lakbsw_keystroke;
+
+
+extern T_lakbsw_bool b_lakbsw_do_swkb_positioning;
+extern T_lakbsw_bool b_lakbsw_swkb_position;
+
+
+extern T_lakbsw_uint32 ul_lakbsw_threshold_swkb_pos;
+
+extern T_lakbsw_uint32 ul_lakbsw_top_pos_x;
+extern T_lakbsw_uint32 ul_lakbsw_top_pos_y;
+extern T_lakbsw_uint32 ul_lakbsw_bottom_pos_x;
+extern T_lakbsw_uint32 ul_lakbsw_bottom_pos_y;
+
+extern T_lakbsw_int32 l_lakbsw_threshold_up;
+extern T_lakbsw_int32 l_lakbsw_threshold_down;
+extern T_lakbsw_int32 l_lakbsw_threshold_right;
+extern T_lakbsw_int32 l_lakbsw_threshold_left;
+
+# 76 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_LOCAL_VAR.h"
+
+
+
+
+
+
+
+
+
+
+# 29 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Src/LAKBSW_A661_SET_KEY_STATE.c"
+
+
+
+
+# 1 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_A661_SET_KEY_STATE.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_BASIC_TYPES.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 28 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_A661_SET_KEY_STATE.h"
+
+
+
+
+
+
+
+
+
+extern void lakbsw_a661_set_key_state( T_lakbsw_key_id  par_e_key_id,
+                                       T_lakbsw_uint32  par_ul_state,
+                                       T_lakbsw_char8  *par_pc_a661_buffer,
+                                       T_lakbsw_uint32 *par_pul_a661_size );
+
+# 43 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Interface/LAKBSW_A661_SET_KEY_STATE.h"
+
+
+
+
+
+
+
+
+
+
+# 34 "D:/Viewsnap/IC_CDS_A400M/CDS_A400M_DEV/LA/Lakbdsw/Src/LAKBSW_A661_SET_KEY_STATE.c"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void lakbsw_a661_set_key_state( T_lakbsw_key_id  par_e_key_id,
+                                T_lakbsw_uint32  par_ul_state,
+                                T_lakbsw_char8  *par_pc_a661_buffer,
+                                T_lakbsw_uint32 *par_pul_a661_size )
+{_ATC_LINK(1);{_ATC_PROC(1,1);{_ATC_BLOC(1,4);{
+ 
+  T_a661_block_set_par_2byte *loc_pr_block_set_par_2byte;
+  T_lakbsw_uint16 loc_us_new_style_set;
+
+  
+  loc_pr_block_set_par_2byte = (T_a661_block_set_par_2byte*)par_pc_a661_buffer;
+
+  
+
+  loc_pr_block_set_par_2byte->us_command      = (T_lakbsw_uint16)0xCA02;
+  loc_pr_block_set_par_2byte->us_command_size
+     = (T_lakbsw_uint16)sizeof(T_a661_block_set_par_2byte);
+  loc_pr_block_set_par_2byte->us_unused_pad   = (T_lakbsw_uint16)0;
+
+  
+  switch( par_ul_state )
+  {
+  case 1UL:{_ATC_BLOC(1,0);
+    
+
+    loc_us_new_style_set = r_lakbsw_key_table[par_e_key_id].us_style_set_norm;}
+    break;
+  case 2UL:{_ATC_BLOC(1,1);
+    
+
+    loc_us_new_style_set = r_lakbsw_key_table[par_e_key_id].us_style_set_high;}
+    break;
+  case 3UL:{_ATC_BLOC(1,2);
+    
+
+    loc_us_new_style_set = r_lakbsw_key_table[par_e_key_id].us_style_set_post;}
+    break;
+  default:{_ATC_BLOC(1,3);
+    
+
+    loc_us_new_style_set = r_lakbsw_key_table[par_e_key_id].us_style_set_norm;}
+    break;
+  }
+  
+
+  
+  loc_pr_block_set_par_2byte->us_widget_ident
+           = (T_lakbsw_uint16)r_lakbsw_key_table[par_e_key_id].ul_key_id;
+
+    
+  loc_pr_block_set_par_2byte->us_param_1  = (T_lakbsw_uint16)0xB4B0;
+         
+  
+  
+  loc_pr_block_set_par_2byte->us_param_2 = loc_us_new_style_set;
+  
+  
+  *par_pul_a661_size
+    = (T_lakbsw_uint32)loc_pr_block_set_par_2byte->us_command_size;
+  
+
+  {_ATC_PROC(1,0);return;}
+}}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

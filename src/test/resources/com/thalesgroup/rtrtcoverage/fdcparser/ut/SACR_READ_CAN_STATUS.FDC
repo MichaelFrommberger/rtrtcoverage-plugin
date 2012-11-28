@@ -1,0 +1,443 @@
+VE 3.0d CCOV CMCDC #i3
+FC "SACR_READ_CAN_STATUS.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\SA\\SACR\\SRC\\"
+FD 1285925459
+TC PR RE AP BS BT BI BL CO CC
+AP 0 "sacr_read_can_status" "sadi_get_local_du_id" 123 123
+AP 1 "sacr_read_can_status" "sacr_get_comm_id" 126 126
+CE 0 "sacr_read_can_status" "loc_pr_comm_id != ((type-cast)0)" 128 128
+CE 2 "sacr_read_can_status" "loc_l_loop_index < 8UL" 136 136
+CE 4 "sacr_read_can_status" "loc_b_end_chart == 0UL" 137 137
+CC 6 2 2 4 3 TTTFFX 1
+CE 9 "sacr_read_can_status" "loc_pr_comm_can_id_in->l_por ..." 139 139
+CE 11 "sacr_read_can_status" "loc_pr_comm_can_id_in->ul_du ..." 140 140
+CC 13 2 9 11 3 TTTFFX 1
+AP 2 "sacr_read_can_status" "READ_SAMPLING_MESSAGE" 143 147
+CE 16 "sacr_read_can_status" "loc_te_apex_return[ ..." 149 149
+CE 18 "sacr_read_can_status" "loc_tl_apex_size[ ..." 151 151
+AP 3 "sacr_read_can_status" "lbfl_mng" 154 161
+BL 0 simple "sacr_read_can_status" /then/while/then/then/then 152 163
+BL 1 simple "sacr_read_can_status" /then/while/then/then/else 165 168
+BL 2 simple "sacr_read_can_status" /then/while/then/then 150 169
+CE 20 "sacr_read_can_status" "loc_te_apex_return[ ..." 170 170
+BL 3 simple "sacr_read_can_status" /then/while/then/else/then 171 174
+AP 4 "sacr_read_can_status" "lbfl_mng" 178 185
+BL 4 simple "sacr_read_can_status" /then/while/then/else/else 176 186
+BL 5 simple "sacr_read_can_status" /then/while/then/else 170 186
+BL 6 simple "sacr_read_can_status" /then/while/then 142 190
+BL 7 simple "sacr_read_can_status" /then/while/else 192 194
+BL 8 simple "sacr_read_can_status" /then/while 138 195
+BL 9 logical "sacr_read_can_status" /then/while/0 136 195
+BL 10 logical "sacr_read_can_status" /then/while/1 136 195
+BL 11 logical "sacr_read_can_status" /then/while/2+ 136 195
+BL 12 simple "sacr_read_can_status" /then 129 196
+AP 5 "sacr_read_can_status" "lbfl_mng" 200 207
+BL 13 simple "sacr_read_can_status" /else 198 208
+AP 6 "sacr_read_can_status" "sacr_get_chart_failure" 211 211
+CE 22 "sacr_read_can_status" "loc_l_loop_index >= 0" 216 216
+CE 24 "sacr_read_can_status" "loc_r_state_chart. ..." 219 219
+AP 7 "sacr_read_can_status" "lbfl_mng" 222 229
+BL 14 simple "sacr_read_can_status" /while/then 220 230
+AP 8 "sacr_read_can_status" "sacr_check_du_failure" 235 238
+BL 15 simple "sacr_read_can_status" /while/else 233 239
+BL 16 simple "sacr_read_can_status" /while 217 243
+BL 17 logical "sacr_read_can_status" /while/0 216 243
+BL 18 logical "sacr_read_can_status" /while/1 216 243
+BL 19 logical "sacr_read_can_status" /while/2+ 216 243
+AP 9 "sacr_read_can_status" "sadi_get_du_side" 246 246
+AP 10 "sacr_read_can_status" "sacr_get_active_can" 249 249
+CE 26 "sacr_read_can_status" "loc_e_active_can ==  ..." 252 252
+AP 11 "sacr_read_can_status" "sacr_check_failure" 255 255
+CE 28 "sacr_read_can_status" "sacr_check_failure ( ..." 255 255
+AP 12 "sacr_read_can_status" "same_detect_kccu_validity" 258 258
+CE 30 "sacr_read_can_status" "loc_b_read_status == 1UL" 260 260
+AP 13 "sacr_read_can_status" "sacr_switch_active_can" 263 263
+BL 20 simple "sacr_read_can_status" /then/then/then 261 264
+BL 21 simple "sacr_read_can_status" /then/then/else 266 268
+BL 22 simple "sacr_read_can_status" /then/then 256 269
+BL 23 simple "sacr_read_can_status" /then/else 271 273
+BL 24 simple "sacr_read_can_status" /then 253 274
+AP 14 "sacr_read_can_status" "same_detect_kccu_validity" 280 280
+CE 32 "sacr_read_can_status" "loc_b_read_status == 1UL" 282 282
+AP 15 "sacr_read_can_status" "sacr_switch_active_can" 285 285
+BL 25 simple "sacr_read_can_status" /else/then 283 286
+BL 26 simple "sacr_read_can_status" /else/else 288 290
+BL 27 simple "sacr_read_can_status" /else 276 291
+CE 34 "sacr_read_can_status" "e_sacr_monitored_CAN_index = ..." 294 294
+BL 28 simple "sacr_read_can_status" /then 295 297
+BL 29 simple "sacr_read_can_status" /else 299 301
+PR 0 return "sacr_read_can_status" 303 303
+PR 1 proc "sacr_read_can_status" 99 304
+BL 30 simple "sacr_read_can_status" / 99 304
+DC 805774704
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="SACR_READ_CAN_STATUS.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\SA\SACR\SRC\"
+  DATE=1285925459
+  CHECKSUM=805774704
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="SACR_READ_CAN_STATUS.C"@@COMMENT@/******************************************************************************
+ **
+ **                                   ==============
+ **                                   IDENTIFICATION
+ **                                   ==============
+ **
+ **
+ **
+ **  Filename            : sacr_read_can_status.c
+ **
+ **  Author/ Company     : S.METAYER / EUROGICIEL
+ **
+ **  Creation date       : 22/04/2004
+ **
+ **  Copyright statement : Copyright (C); 2004
+ **                        THALES Avionics
+ **
+ **  Module description  : System Application Can Redundancy
+ **						   - Monitores the active CAN bus subscriber
+ **						   - Manage the switching between the two CAN BUS. 	
+ **
+ *****************************************************************************/@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Project specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@/* MACS TYPES */@/COMMENT@
+@COMMENT@#include "COD_A653_API_COMMON.h"@/COMMENT@
+
+
+@COMMENT@/* SA TYPES */@/COMMENT@
+@COMMENT@#include "apsw_basic_types_c.h"@/COMMENT@
+
+@COMMENT@/* PLATFORM TYPES */@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU TYPES */@/COMMENT@
+@COMMENT@#include "sadi.h"@/COMMENT@
+@COMMENT@#include "samc.h"@/COMMENT@
+@COMMENT@#include "lbtm.h"@/COMMENT@
+@COMMENT@#include "lbfl.h"@/COMMENT@
+@COMMENT@#include "sacr_fsc_error_desc_config.h"@/COMMENT@
+@COMMENT@#include "sasc.h"@/COMMENT@
+@COMMENT@#include "sacr.h"@/COMMENT@
+@COMMENT@#include "sacr_data_ifc.h"@/COMMENT@
+@COMMENT@#include "sacr_comm.h"@/COMMENT@
+@COMMENT@#include "sacr_failure_chart.h"@/COMMENT@
+
+@COMMENT@/* CALLED CSU PROTOTYPES */@/COMMENT@
+@COMMENT@#include "sacr_get_active_can.p"@/COMMENT@
+@COMMENT@#include "sacr_get_chart_failure.p"@/COMMENT@
+@COMMENT@#include "sacr_get_comm_id.p"@/COMMENT@
+@COMMENT@#include "sacr_check_du_failure.p"@/COMMENT@
+@COMMENT@#include "sacr_check_failure.p"@/COMMENT@
+@COMMENT@#include "sacr_switch_active_can.p"@/COMMENT@
+@COMMENT@#include "same_detect_kccu_validity.p"@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Module specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@#include "sacr_read_can_status.p"@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Local file declarations
+ *****************************************************************************/@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** void sacr_read_can_status
+ ***** 
+ ***** Description :
+ *****
+ *****				 According to the CAN topology monitores a CAN bus subscriber.
+ *****				 If the monitored message for this suscriber is confirmed failed 
+ *****				 for more than 200 ms, the variable #y_CAN_BUSx_FAILURE related 
+ *****				 to the failure on this CAN bus shall be set to 1. Else this
+ *****				 variable is set to 0.
+ *****
+ *****				 For a primary CAN BUS active : 
+ *****					If the  DU not detect any valid subscribers on the BUS and
+ *****					detects at least one suscriber on the secondary CAN BUS, 
+ *****					switch to secondary CAN BUS
+ *****					
+ *****				 For a secondary CAN BUS active :  
+ *****					If the DU detects at least the CCD and the KBD part valid on the 
+ *****					primary CAN BUS, then this DU switch to the primary CAN BUS 
+ *****				  	
+ ***** 
+ ***** Input :
+ *****				none
+ ***** 
+ ***** Output : 
+ *****				none
+ ***** 
+ *****************************************************************************/@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="sacr_read_can_status"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="sacr_read_can_status"@sacr_read_can_status@/BRANCH@(void)
+@BRANCH MARK=TB ID=30 SUM=20@{
+	T_sadi_du_id				loc_e_local_du_id;
+	T_boolean					loc_b_read_status;
+
+	T_int32						loc_l_loop_index;
+	T_boolean					loc_b_end_chart;
+
+	T_uint32					loc_ul_du_side;
+
+	T_sacr_comm_id				*loc_pr_comm_id;
+	T_sacr_comm_id_in			*loc_pr_comm_can_id_in;
+
+	T_sasc_message_format		loc_tr_sasc_message;
+	MESSAGE_SIZE_TYPE			loc_tl_apex_size[K_SACR_NB_MAX_COMM_IN];
+	VALIDITY_TYPE				loc_te_apex_validity[K_SACR_NB_MAX_COMM_IN];
+	RETURN_CODE_TYPE			loc_te_apex_return[K_SACR_NB_MAX_COMM_IN];
+
+	T_sacr_e_can_buses			loc_e_active_can;
+	T_sacr_failure_chart		loc_r_state_chart;
+
+	@COMMENT@/* CAN ports index increase from 0 to K_SACR_NB_MAX_COMM_IN */@/COMMENT@
+	loc_l_loop_index = 0;
+
+	@COMMENT@/* Get the local DU ID */@/COMMENT@
+	@BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="sadi_get_local_du_id"@sadi_get_local_du_id@/JUMP@(&loc_e_local_du_id)@/BRANCH@;
+
+	@COMMENT@/* Get the APEX id to use to read message from DUs */@/COMMENT@
+	loc_pr_comm_id = @BRANCH MARK=TA ID=1 SUM=10@@JUMP NAME="sacr_get_comm_id"@sacr_get_comm_id@/JUMP@(e_sacr_monitored_CAN_index)@/BRANCH@;
+
+	@DECISION SUM=20+21 ID=12|13@if (@POPUP@loc_pr_comm_id != @ALT@K_NULL_PTR@-ALT@((T_ptr)0)@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+	@BRANCH MARK=TB ID=12 SUM=20@{
+		@COMMENT@/* Initialize pointer loc_pr_comm_id_in to address of table of input APEX port ID */@/COMMENT@
+		@COMMENT@/* loc_pr_comm_can_id_in can't be equal to NULL because of T_sacr_comm_id definition */@/COMMENT@
+		loc_pr_comm_can_id_in = loc_pr_comm_id->tr_comm_can_in;
+		@COMMENT@/* for other DUs, read CAN ports */@/COMMENT@
+		loc_b_end_chart = K_BOOL_FALSE;
+		
+		@POPUP@while@-POPUP@loop branches :
+@BRANCH MARK=TB ID=9 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=10 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=11 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ ( @POPUP@(@POPUP@loc_l_loop_index < @ALT@K_SACR_NB_MAX_COMM_IN@-ALT@8UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@@/ALT@) &&
+			(@POPUP@loc_b_end_chart == @ALT@K_BOOL_FALSE@-ALT@0UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=6&8 SUM=31@loc_l_loop_index < 8UL@/BRANCH@ needs
+      @BRANCH MARK=TE ID=6 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=8 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=6&7 SUM=31@loc_b_end_chart == 0UL@/BRANCH@ needs
+      @BRANCH MARK=TE ID=6 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=7 SUM=32@TF@/BRANCH@=F@/POPUP@ )
+		@BRANCH MARK=TB ID=8 SUM=20@{
+			@DECISION SUM=20+21 ID=6|7@if ( @POPUP@(@POPUP@loc_pr_comm_can_id_in->l_port_id != -1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=9 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=10 SUM=30@False@/BRANCH@@/POPUP@) &&
+				(@POPUP@loc_pr_comm_can_id_in->ul_du_id != K_SADI_DU_NONE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=11 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=12 SUM=30@False@/BRANCH@@/POPUP@)@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=13&15 SUM=31@loc_pr_comm_can_id_in->l_port_id != -1@/BRANCH@ needs
+      @BRANCH MARK=TE ID=13 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=15 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=13&14 SUM=31@loc_pr_comm_can_id_in->ul_du_id != K_SADI_DU_NONE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=13 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=14 SUM=32@TF@/BRANCH@=F@/POPUP@ )
+				
+			@BRANCH MARK=TB ID=6 SUM=20@{
+				@BRANCH MARK=TA ID=2 SUM=10@@JUMP NAME="READ_SAMPLING_MESSAGE"@READ_SAMPLING_MESSAGE@/JUMP@(loc_pr_comm_can_id_in->l_port_id,
+					(MESSAGE_ADDR_TYPE) &loc_tr_sasc_message,
+					&loc_tl_apex_size[loc_l_loop_index],
+					&loc_te_apex_validity[loc_l_loop_index],
+					&loc_te_apex_return[loc_l_loop_index])@/BRANCH@;
+				
+				@DECISION SUM=20+21 ID=2|5@if(@POPUP@loc_te_apex_return[loc_l_loop_index] == NO_ERROR@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=16 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=17 SUM=30@False@/BRANCH@@/POPUP@)
+				@BRANCH MARK=TB ID=2 SUM=20@{
+					@DECISION SUM=20+21 ID=0|1@if (@POPUP@loc_tl_apex_size[loc_l_loop_index] != sizeof(T_sasc_message_format)@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=18 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=19 SUM=30@False@/BRANCH@@/POPUP@)
+					@BRANCH MARK=TB ID=0 SUM=20@{
+						@COMMENT@/* Error : Msg size is not correct */@/COMMENT@
+						@BRANCH MARK=TA ID=3 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ ( R_SACR_FSC_ERR_CONFIG,
+							K_SACR_FSC_ERR_SASC_ERR_SIZE,
+							K_SACR_READ_CAN_STATUS_ATT,
+							(T_uint32)sizeof(T_sasc_message_format),
+							(T_uint32)loc_tl_apex_size[loc_l_loop_index],
+							0,
+							K_NULL_PTR,
+							0)@/BRANCH@;
+						
+					}@/BRANCH@
+					@BRANCH MARK=TB ID=1 SUM=20@else
+					{
+						@COMMENT@/* Nothing to do */@/COMMENT@
+						;
+					}@/BRANCH@@/DECISION@
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=5 SUM=20@else @DECISION SUM=20+21 ID=3|4@if(@POPUP@loc_te_apex_return[loc_l_loop_index] == NO_ACTION@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=20 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=21 SUM=30@False@/BRANCH@@/POPUP@)
+				@BRANCH MARK=TB ID=3 SUM=20@{
+					@COMMENT@/* Nothing to do */@/COMMENT@
+					;
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=4 SUM=20@else
+				{
+					@COMMENT@/* Raise a fatal error */@/COMMENT@
+					@BRANCH MARK=TA ID=4 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@(R_SACR_FSC_ERR_CONFIG,
+						K_LBFL_E_GNERR_SERV_SAMPLING_PORT_READ,
+						K_SACR_READ_CAN_STATUS_ATT,
+						(T_uint32)loc_te_apex_return[loc_l_loop_index],
+						(T_uint32)loc_te_apex_validity[loc_l_loop_index],
+						0,
+						K_NULL_PTR,
+						0)@/BRANCH@;
+				}@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@
+				
+				loc_l_loop_index++;
+				loc_pr_comm_can_id_in++;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=7 SUM=20@else
+			{
+				loc_b_end_chart = K_BOOL_TRUE;
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=13 SUM=20@else
+	{
+		@COMMENT@/* Raise an error */@/COMMENT@
+		@BRANCH MARK=TA ID=5 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@(R_SACR_FSC_ERR_CONFIG,
+			K_LBFL_E_GNERR_SERV_NULL_PT,
+			K_SACR_READ_CAN_STATUS_ATT,
+			0,
+			0,
+			0,
+			K_NULL_PTR,
+			0)@/BRANCH@;
+	}@/BRANCH@@/DECISION@
+	
+	@COMMENT@/* Get the chart to check the CAN failure state */@/COMMENT@
+	@BRANCH MARK=TA ID=6 SUM=10@@JUMP NAME="sacr_get_chart_failure"@sacr_get_chart_failure@/JUMP@(e_sacr_monitored_CAN_index, loc_e_local_du_id, &loc_r_state_chart)@/BRANCH@;
+
+	loc_l_loop_index--;
+	loc_pr_comm_can_id_in--;
+	
+	@POPUP@while@-POPUP@loop branches :
+@BRANCH MARK=TB ID=17 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=18 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=19 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (@POPUP@loc_l_loop_index >= 0@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=22 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=23 SUM=30@False@/BRANCH@@/POPUP@)
+	@BRANCH MARK=TB ID=16 SUM=20@{
+		@COMMENT@/* Check if all parameters are defined */@/COMMENT@
+		@DECISION SUM=20+21 ID=14|15@if (@POPUP@loc_r_state_chart.tr_monitoring_value[loc_l_loop_index].pb_sacr_fail_value == @ALT@K_NULL_PTR@-ALT@((T_ptr)0)@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=24 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=25 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+		@BRANCH MARK=TB ID=14 SUM=20@{
+			@COMMENT@/* Raise a fatal error */@/COMMENT@
+			@BRANCH MARK=TA ID=7 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@(R_SACR_FSC_ERR_CONFIG,
+				K_LBFL_E_GNERR_SERV_NULL_PT,
+				K_SACR_READ_CAN_STATUS_ATT,
+				0,
+				0,
+				0,
+				K_NULL_PTR,
+				0)@/BRANCH@;
+		}@/BRANCH@
+		@COMMENT@/* No error */@/COMMENT@
+		@BRANCH MARK=TB ID=15 SUM=20@else
+		{
+			@COMMENT@/* Update both local CAN status value */@/COMMENT@
+			@BRANCH MARK=TA ID=8 SUM=10@@JUMP NAME="sacr_check_du_failure"@sacr_check_du_failure@/JUMP@(&loc_r_state_chart.tr_monitoring_value[loc_l_loop_index],
+				loc_te_apex_return[loc_l_loop_index],
+				loc_te_apex_validity[loc_l_loop_index],
+				loc_pr_comm_can_id_in->ul_du_id)@/BRANCH@;
+		}@/BRANCH@@/DECISION@
+		
+		loc_l_loop_index--;
+		loc_pr_comm_can_id_in--;
+	}@/BRANCH@
+
+	@COMMENT@/* Get the DU SIDE */@/COMMENT@
+	@BRANCH MARK=TA ID=9 SUM=10@@JUMP NAME="sadi_get_du_side"@sadi_get_du_side@/JUMP@(&loc_ul_du_side)@/BRANCH@;
+
+	@COMMENT@/* Get the active CAN */@/COMMENT@
+	@BRANCH MARK=TA ID=10 SUM=10@@JUMP NAME="sacr_get_active_can"@sacr_get_active_can@/JUMP@(&loc_e_active_can)@/BRANCH@;
+
+	@COMMENT@/* CAN redundancy */@/COMMENT@
+	@DECISION SUM=20+21 ID=24|27@if (@POPUP@loc_e_active_can == K_SACR_CAN_PRIMARY@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=26 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=27 SUM=30@False@/BRANCH@@/POPUP@)
+	@BRANCH MARK=TB ID=24 SUM=20@{
+		@COMMENT@/* if there's a failure, try to switch to the secondary CAN */@/COMMENT@
+		@DECISION SUM=20+21 ID=22|23@if (@POPUP@@BRANCH MARK=TA ID=11 SUM=10@@JUMP NAME="sacr_check_failure"@sacr_check_failure@/JUMP@(loc_e_local_du_id, loc_ul_du_side)@/BRANCH@ == @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=28 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=29 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+		@BRANCH MARK=TB ID=22 SUM=20@{
+			@COMMENT@/* Detection of valid CCD part and KBD part on the secondary CAN */@/COMMENT@
+			loc_b_read_status = @BRANCH MARK=TA ID=12 SUM=10@@JUMP NAME="same_detect_kccu_validity"@same_detect_kccu_validity@/JUMP@ (loc_ul_du_side, K_SACR_CAN_SECONDARY)@/BRANCH@;
+
+			@DECISION SUM=20+21 ID=20|21@if (@POPUP@loc_b_read_status == @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=30 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=31 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+			@BRANCH MARK=TB ID=20 SUM=20@{
+				loc_e_active_can = K_SACR_CAN_SECONDARY;
+				@BRANCH MARK=TA ID=13 SUM=10@@JUMP NAME="sacr_switch_active_can"@sacr_switch_active_can@/JUMP@(loc_e_active_can)@/BRANCH@;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=21 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=23 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=27 SUM=20@else
+	{
+		@COMMENT@/* Try to return to the primary CAN as soon as posible */@/COMMENT@
+
+		@COMMENT@/* Detection of valid CCD part and KBD part on the primary CAN */@/COMMENT@
+		loc_b_read_status = @BRANCH MARK=TA ID=14 SUM=10@@JUMP NAME="same_detect_kccu_validity"@same_detect_kccu_validity@/JUMP@ (loc_ul_du_side, K_SACR_CAN_PRIMARY)@/BRANCH@;
+
+		@DECISION SUM=20+21 ID=25|26@if ( @POPUP@loc_b_read_status == @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=32 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=33 SUM=30@False@/BRANCH@@/POPUP@@/ALT@ )
+		@BRANCH MARK=TB ID=25 SUM=20@{
+			loc_e_active_can = K_SACR_CAN_PRIMARY;
+			@BRANCH MARK=TA ID=15 SUM=10@@JUMP NAME="sacr_switch_active_can"@sacr_switch_active_can@/JUMP@(loc_e_active_can)@/BRANCH@;
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=26 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@@/DECISION@
+
+	@COMMENT@/* Next monitoring is the other CAN */@/COMMENT@
+	@DECISION SUM=20+21 ID=28|29@if (@POPUP@e_sacr_monitored_CAN_index == K_SACR_MONITORED_CAN_ONE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=34 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=35 SUM=30@False@/BRANCH@@/POPUP@)
+	@BRANCH MARK=TB ID=28 SUM=20@{
+		e_sacr_monitored_CAN_index = K_SACR_MONITORED_CAN_TWO;
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=29 SUM=20@else
+	{
+		e_sacr_monitored_CAN_index	= K_SACR_MONITORED_CAN_ONE;
+	}@/BRANCH@@/DECISION@
+
+	@BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=30@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+@/NODE /RIK@

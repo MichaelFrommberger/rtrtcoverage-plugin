@@ -1,0 +1,801 @@
+VE 3.0d CCOV CMCDC #i3
+FC "SACO_GET_CDS_SYSTEM_IDENTIFICATION.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\SA\\SACO\\SRC\\"
+FD 1285925458
+TC PR RE AP BS BT BI BL CO CC
+CE 0 "saco_get_cds_system_identification" "par_e_side == K_SACO_SIDE_LEFT" 166 166
+BL 0 simple "saco_get_cds_system_identification" /then 167 170
+CE 2 "saco_get_cds_system_identification" "par_e_side == K_SACO_SIDE_RIGHT" 171 171
+BL 1 simple "saco_get_cds_system_identification" /else/then 172 175
+BL 2 simple "saco_get_cds_system_identification" /else/else 177 180
+BL 3 simple "saco_get_cds_system_identification" /else 171 180
+CE 4 "saco_get_cds_system_identification" "loc_ul_du_index <= loc_ul_du_max" 184 184
+CE 6 "saco_get_cds_system_identification" "tr_saco_global_du_identifier ..." 187 188
+AP 0 "saco_get_cds_system_identification" "add_string_to_table" 192 195
+AP 1 "saco_get_cds_system_identification" "add_string_to_table" 197 200
+CE 8 "saco_get_cds_system_identification" "loc_l_j <  ..." 218 218
+CA 10 "saco_get_cds_system_identification" "case K_SACO_DU_HW_PN_I" 224 224
+CA 11 "saco_get_cds_system_identification" "case K_SACO_DU_SW_PN_I" 225 225
+BL 4 simple "saco_get_cds_system_identification" /for/then/for/case 225 225
+AP 2 "saco_get_cds_system_identification" "add_string_to_table" 227 231
+CA 12 "saco_get_cds_system_identification" "case K_SACO_DU_HW_SN_I" 234 234
+BL 5 simple "saco_get_cds_system_identification" /for/then/for/case 234 234
+CA 13 "saco_get_cds_system_identification" "default" 239 239
+BL 6 simple "saco_get_cds_system_identification" /for/then/for/default 239 239
+AP 3 "saco_get_cds_system_identification" "add_string_to_table" 241 245
+CE 14 "saco_get_cds_system_identification" "loc_l_j == K_SACO_DU_HW_PN_I" 250 250
+AP 4 "saco_get_cds_system_identification" "add_string_to_table" 252 256
+BL 7 simple "saco_get_cds_system_identification" /for/then/for/then 251 257
+CE 16 "saco_get_cds_system_identification" "loc_l_j != K_SACO_DU_HW_SN_I" 258 258
+AP 5 "saco_get_cds_system_identification" "check_msg_size_for_dlcs" 263 263
+BL 8 simple "saco_get_cds_system_identification" /for/then/for/else/then 259 266
+BL 9 simple "saco_get_cds_system_identification" /for/then/for/else/else 268 270
+BL 10 simple "saco_get_cds_system_identification" /for/then/for/else 258 270
+CE 18 "saco_get_cds_system_identification" "loc_l_j != K_SACO_DU_HW_SN_I" 274 274
+AP 6 "saco_get_cds_system_identification" "get_identification_name" 277 277
+AP 7 "saco_get_cds_system_identification" "add_string_to_table" 278 282
+BL 11 simple "saco_get_cds_system_identification" /for/then/for/then 275 283
+BL 12 simple "saco_get_cds_system_identification" /for/then/for/else 285 287
+BL 13 simple "saco_get_cds_system_identification" /for/then/for 220 288
+BL 14 logical "saco_get_cds_system_identification" /for/then/for/0 218 288
+BL 15 logical "saco_get_cds_system_identification" /for/then/for/1 218 288
+BL 16 logical "saco_get_cds_system_identification" /for/then/for/2+ 218 288
+BL 17 simple "saco_get_cds_system_identification" /for/then 189 289
+BL 18 simple "saco_get_cds_system_identification" /for/else 291 293
+BL 19 simple "saco_get_cds_system_identification" /for 186 294
+BL 20 logical "saco_get_cds_system_identification" /for/0 183 294
+BL 21 logical "saco_get_cds_system_identification" /for/1 183 294
+BL 22 logical "saco_get_cds_system_identification" /for/2+ 183 294
+CE 20 "saco_get_cds_system_identification" "par_e_side == K_SACO_SIDE_LEFT" 298 298
+AP 8 "saco_get_cds_system_identification" "add_equipment_system_identification" 300 307
+AP 9 "saco_get_cds_system_identification" "add_equipment_system_identification" 308 315
+BL 23 simple "saco_get_cds_system_identification" /then 299 316
+CE 22 "saco_get_cds_system_identification" "par_e_side == K_SACO_SIDE_RIGHT" 317 317
+AP 10 "saco_get_cds_system_identification" "add_equipment_system_identification" 319 326
+AP 11 "saco_get_cds_system_identification" "add_equipment_system_identification" 327 334
+BL 24 simple "saco_get_cds_system_identification" /else/then 318 335
+AP 12 "saco_get_cds_system_identification" "add_equipment_system_identification" 338 345
+AP 13 "saco_get_cds_system_identification" "add_equipment_system_identification" 346 353
+AP 14 "saco_get_cds_system_identification" "add_equipment_system_identification" 354 361
+BL 25 simple "saco_get_cds_system_identification" /else/else 337 362
+BL 26 simple "saco_get_cds_system_identification" /else 317 362
+CE 24 "saco_get_cds_system_identification" "loc_ul_table_index % 2 != 0" 365 365
+AP 15 "saco_get_cds_system_identification" "check_msg_size_for_dlcs" 369 369
+BL 27 simple "saco_get_cds_system_identification" /then 366 372
+BL 28 simple "saco_get_cds_system_identification" /else 374 376
+AP 16 "saco_get_cds_system_identification" "lbstr_cpy" 401 401
+AP 17 "saco_get_cds_system_identification" "lbstr_len" 402 402
+PR 0 return "saco_get_cds_system_identification" 407 407
+PR 1 proc "saco_get_cds_system_identification" 150 408
+BL 29 simple "saco_get_cds_system_identification" / 150 408
+AP 18 "add_string_to_table" "lbstr_len" 440 440
+AP 19 "add_string_to_table" "check_msg_size_for_dlcs" 444 445
+AP 20 "add_string_to_table" "lbstr_cpy" 450 451
+PR 2 return "add_string_to_table" 454 454
+PR 3 proc "add_string_to_table" 436 455
+BL 30 simple "add_string_to_table" / 436 455
+CE 26 "add_equipment_system_identification" "par_pr_equipment_identifiers ..." 493 493
+AP 21 "add_equipment_system_identification" "add_string_to_table" 497 500
+AP 22 "add_equipment_system_identification" "add_string_to_table" 503 506
+AP 23 "add_equipment_system_identification" "add_string_to_table" 514 517
+AP 24 "add_equipment_system_identification" "add_string_to_table" 520 523
+AP 25 "add_equipment_system_identification" "check_msg_size_for_dlcs" 528 529
+BL 31 simple "add_equipment_system_identification" /then 494 532
+BL 32 simple "add_equipment_system_identification" /else 534 536
+PR 4 return "add_equipment_system_identification" 537 537
+PR 5 proc "add_equipment_system_identification" 492 538
+BL 33 simple "add_equipment_system_identification" / 492 538
+AP 26 "get_identification_name" "lbstr_cpy" 566 567
+CE 28 "get_identification_name" "loc_ul_index < 9 * 10" 569 569
+CE 30 "get_identification_name" "TR_SACO_FUNCTIONAL_DESIGNATI ..." 571 572
+CE 32 "get_identification_name" "TR_SACO_FUNCTIONAL_DESIGNATI ..." 573 574
+CC 34 2 30 32 3 TTTFFX 1
+AP 27 "get_identification_name" "lbstr_cpy" 576 577
+BL 34 simple "get_identification_name" /for/then 575 578
+BL 35 simple "get_identification_name" /for/else 580 582
+BL 36 simple "get_identification_name" /for 570 583
+BL 37 logical "get_identification_name" /for/0 569 583
+BL 38 logical "get_identification_name" /for/1 569 583
+BL 39 logical "get_identification_name" /for/2+ 569 583
+PR 6 return "get_identification_name" 584 584
+PR 7 proc "get_identification_name" 560 585
+BL 40 simple "get_identification_name" / 560 585
+CE 37 "check_msg_size_for_dlcs" "par_pul_msg_size >  ..." 606 606
+AP 28 "check_msg_size_for_dlcs" "lbfl_mng" 609 616
+BL 41 simple "check_msg_size_for_dlcs" /then 607 617
+BL 42 simple "check_msg_size_for_dlcs" /else 619 621
+PR 8 return "check_msg_size_for_dlcs" 623 623
+PR 9 proc "check_msg_size_for_dlcs" 604 624
+BL 43 simple "check_msg_size_for_dlcs" / 604 624
+DC 537042891
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="SACO_GET_CDS_SYSTEM_IDENTIFICATION.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\SA\SACO\SRC\"
+  DATE=1285925458
+  CHECKSUM=537042891
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="SACO_GET_CDS_SYSTEM_IDENTIFICATION.C"@@COMMENT@/******************************************************************************
+ **
+ **                                   ==============
+ **                                   IDENTIFICATION
+ **                                   ==============
+ **
+ **
+ **
+ **  Filename            : saco_get_cds_system_identification.c
+ **
+ **  Author/ Company     : THALES SERVICES
+ **
+ **  Creation date       : 12/01/04
+ **
+ **  Copyright statement : Copyright (C); 2006
+ **                        THALES Avionics
+ **
+ **  Module description  : service of SACO that provides the CDS system 
+ **                        identification data.
+ **							
+ **						   See definition of the message in the documents
+ **						   "definition of the AFDX interface with DLCS",
+ **						   ABD100.1.4 §4.5.6.5. 	
+ **
+ **
+ ******************************************************************************
+
+/******************************************************************************
+ **                           Project specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@/* MACS TYPES */@/COMMENT@
+@COMMENT@#include "COD_A653_API_COMMON.h"@/COMMENT@
+
+@COMMENT@/* SA TYPES */@/COMMENT@
+@COMMENT@#include "apsw_basic_types_c.h"@/COMMENT@
+
+
+@COMMENT@/* PLATFORM TYPES */@/COMMENT@
+@COMMENT@#include "TYP_R_START_INFO.t"@/COMMENT@
+@COMMENT@#include "TYP_R_BLOCK_STATUS.t"@/COMMENT@
+@COMMENT@#include "FDCK_MAX_NB_SN_DESCRIPTION.h"@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU TYPES */@/COMMENT@
+@COMMENT@#include "lbfl.h"@/COMMENT@
+@COMMENT@#include "cfeb_biteindexcte.h"@/COMMENT@
+@COMMENT@#include "saco_defs.h"@/COMMENT@
+@COMMENT@#include "saco_cds_identifier_ifc.h"@/COMMENT@
+@COMMENT@#include "saco_cds_system_identification_ifc.h"@/COMMENT@
+@COMMENT@#include "saco_fsc_error_desc_config.h"@/COMMENT@
+@COMMENT@#include "saco_component_id_ifc.h"@/COMMENT@
+@COMMENT@#include "sadi.h"@/COMMENT@
+@COMMENT@#include "same.h"@/COMMENT@
+@COMMENT@#include "saco_identifiers.h"@/COMMENT@
+
+@COMMENT@/* CALLED CSU PROTOTYPES */@/COMMENT@
+@COMMENT@#include "LBSTR_LEN.p"@/COMMENT@
+@COMMENT@#include "LBSTR_CPY.p"@/COMMENT@
+@COMMENT@#include "LBSTR_CAT.p"@/COMMENT@
+@COMMENT@#include "LBMEM_CPY.p"@/COMMENT@
+@COMMENT@/******************************************************************************
+ **                           Module specific includes
+ *****************************************************************************/@/COMMENT@
+
+@COMMENT@#include "saco_get_cds_system_identification.p"@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Local file declarations
+ *****************************************************************************/@/COMMENT@
+
+static const T_saco_lru_name TR_SACO_LRU_NAME_TABLE[K_SACO_MAX_NB_LRU] =
+{
+	@COMMENT@/* lru functional designation for the definition of LRU NAMES */@/COMMENT@			
+	{K_SACO_DU_OL_LRU_NAME},
+	{K_SACO_DU_IL_LRU_NAME},
+	{K_SACO_DU_LL_LRU_NAME},
+	{K_SACO_DU_CL_LRU_NAME},
+	{K_SACO_DU_CR_LRU_NAME},
+	{K_SACO_DU_OR_LRU_NAME},
+	{K_SACO_DU_IR_LRU_NAME},
+	{K_SACO_DU_LR_LRU_NAME},
+    {K_SACO_DU_3C_LRU_NAME},
+	{K_SACO_KCCU_CAPT_LRU_NAME},
+	{K_SACO_KCCU_FO_LRU_NAME},
+    {K_SACO_GCP_CAPT_LRU_NAME},
+    {K_SACO_GCP_FO_LRU_NAME},
+	{K_SACO_MKB_3C_LRU_NAME},
+    {K_SACO_CCD_3C_LRU_NAME},
+    {K_SACO_DCP_3C_LRU_NAME}
+};
+
+@COMMENT@/* Index of KCCU LRU name in the table */@/COMMENT@
+@COMMENT@#define K_SACO_KCCU_CAPT_E	K_SACO_DU_3C_E+1 @/COMMENT@
+@COMMENT@#define K_SACO_KCCU_FO_E	K_SACO_DU_3C_E+2@/COMMENT@
+
+@COMMENT@/* Index of GCP LRU name in the table */@/COMMENT@
+@COMMENT@#define K_SACO_GCP_CAPT_E	K_SACO_DU_3C_E+3 @/COMMENT@
+@COMMENT@#define K_SACO_GCP_FO_E     K_SACO_DU_3C_E+4@/COMMENT@
+
+@COMMENT@/* Index of 3C equipment LRU name in the table */@/COMMENT@
+@COMMENT@#define K_SACO_MKB_3C_E 	K_SACO_DU_3C_E+5@/COMMENT@
+@COMMENT@#define K_SACO_CCD_3C_E     K_SACO_DU_3C_E+6@/COMMENT@
+@COMMENT@#define K_SACO_DCP_3C_E     K_SACO_DU_3C_E+7@/COMMENT@
+
+static void	get_identification_name (T_uint32 par_ul_identifier_type, T_uint32 par_ul_du_index, T_uint8 *par_puc_identification_name);
+
+static void check_msg_size_for_dlcs(T_uint32 par_pul_msg_size,T_uint32 par_ul_max_size_of_msg);
+
+static void add_string_to_table (
+                          T_uint8  *par_puc_table,
+                          T_uint32 *par_pul_table_index,
+                          T_uint8  *par_puc_added_string,
+                          T_uint32 par_ul_max_size);
+
+static void add_equipment_system_identification (
+    T_uint16           *par_pus_nb_lru,
+    T_uint8            *par_puc_cds_system_identification, 
+	T_uint32           par_ul_max_size_of_msg,
+	T_uint32           *par_pul_table_index,
+	T_int8             *par_pc_eqpt_lru_name, 
+    T_saco_identifiers *par_pr_equipment_identifiers,
+    T_int8             *par_tuc_eqpt_see_amdt_plate);
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** void saco_get_cds_system_identification
+ ***** 
+ ***** Description : service of SACO that provides the CDS system identification data
+ *****	 Form the message system identification with :
+ *****		- Set the second part of the message (SW PN, HW PN, SN, UADFx_VERSION)
+ *****		- Set the first part of the message (message length, number of LRU..)
+ ***** 
+ ***** Input:
+ ***** 
+ *****   T_uint32 par_ul_max_size_buffer_in: size max of buffer in.
+ ***** 
+ ***** 
+ ***** Output:
+ *****   
+ *****   T_uint8 par_tuc_cds_system_identification[]: system identification datas
+ *****
+ *****   T_uint32 *par_pul_msg_size: message size
+ ***** 
+ *****************************************************************************/@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="saco_get_cds_system_identification"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="saco_get_cds_system_identification"@saco_get_cds_system_identification@/BRANCH@(
+        T_saco_side_id par_e_side,
+        T_uint8 par_tuc_cds_system_identification[],
+        T_uint32 par_ul_max_size_buffer_in,
+        T_uint32 *par_pul_msg_size)
+@BRANCH MARK=TB ID=29 SUM=20@{
+	T_int32		loc_l_j;
+	T_uint32	loc_ul_du_index;
+	T_uint32	loc_ul_du_min;
+	T_uint32	loc_ul_du_max;
+	T_uint32	loc_ul_table_index;
+	T_uint16	*loc_pus_msg_info;
+	T_uint32	loc_ul_msg_size;
+	T_uint8		loc_tuc_identification_name[K_SACO_MAX_CHAR_FUNCT_DESIGN_NAME];
+	T_uint16	loc_us_nb_lru=0;
+	
+	@COMMENT@/* Initialize table index (start after message header) */@/COMMENT@
+	loc_ul_table_index = K_SACO_CDS_SYS_IDENT_OFFSET_FIRST_LRU_IDENT;
+	
+    loc_us_nb_lru = 0;
+	
+    @DECISION SUM=20+21 ID=0|3@if (@POPUP@par_e_side == K_SACO_SIDE_LEFT@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@)
+    @BRANCH MARK=TB ID=0 SUM=20@{
+        loc_ul_du_min = K_SACO_DU_OL_E;
+        loc_ul_du_max = K_SACO_DU_CL_E;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=3 SUM=20@else @DECISION SUM=20+21 ID=1|2@if (@POPUP@par_e_side == K_SACO_SIDE_RIGHT@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@)
+    @BRANCH MARK=TB ID=1 SUM=20@{
+        loc_ul_du_min = K_SACO_DU_CR_E;
+        loc_ul_du_max = K_SACO_DU_LR_E;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=2 SUM=20@else
+    {
+        loc_ul_du_min = K_SACO_DU_3C_E;
+        loc_ul_du_max = K_SACO_DU_3C_E;
+    }@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@
+	@COMMENT@/* For each DU LRU */@/COMMENT@
+    @COMMENT@/*******************/@/COMMENT@
+	@POPUP@for@-POPUP@loop branches :
+@BRANCH MARK=TB ID=20 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=21 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=22 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (loc_ul_du_index = loc_ul_du_min ;
+         @POPUP@loc_ul_du_index <= loc_ul_du_max@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@ ;
+         loc_ul_du_index ++)
+	@BRANCH MARK=TB ID=19 SUM=20@{
+        @DECISION SUM=20+21 ID=17|18@if (@POPUP@tr_saco_global_du_identifiers[loc_ul_du_index].r_load_identifier.b_load_pn_validity
+            == @ALT@K_SACO_DATA_AVAIL@-ALT@0@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=6 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=7 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+		@BRANCH MARK=TB ID=17 SUM=20@{
+            loc_us_nb_lru ++;
+            @COMMENT@/* LRU name */@/COMMENT@
+            @BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="add_string_to_table"@add_string_to_table@/JUMP@ (par_tuc_cds_system_identification,
+                                 &loc_ul_table_index,
+                                 (T_uint8 *) TR_SACO_LRU_NAME_TABLE[loc_ul_du_index].tuc_lru_name,
+                                 par_ul_max_size_buffer_in)@/BRANCH@;
+			@COMMENT@/* HW Serial Number */@/COMMENT@
+            @BRANCH MARK=TA ID=1 SUM=10@@JUMP NAME="add_string_to_table"@add_string_to_table@/JUMP@ (par_tuc_cds_system_identification,
+                                 &loc_ul_table_index,
+                                 tr_saco_global_du_identifiers[loc_ul_du_index].r_data_file_identifier.tr_sn_pn_value[K_SACO_DU_HW_SN_I].tuc_du_identifier_sn_pn,
+                                 par_ul_max_size_buffer_in)@/BRANCH@;
+
+			@COMMENT@/* Set number of identifiers (max number of identifier - serial number identifier) */@/COMMENT@
+			loc_pus_msg_info = (T_uint16 *) &par_tuc_cds_system_identification[loc_ul_table_index];
+@COMMENT@@COMMENT@#ifdef TARGET_RELEASE@/COMMENT@
+			*loc_pus_msg_info = K_SACO_MAX_NB_DU_IDENTIFIERS - 1;
+@/COMMENT@@COMMENT@#else@/COMMENT@
+            @COMMENT@/* PATCH EBTF: can read only 10 identifiers */@/COMMENT@
+            *loc_pus_msg_info = K_SACO_MAX_NB_DU_IDENTIFIERS - 2;
+@COMMENT@#endif@/COMMENT@
+			loc_ul_table_index++;
+			loc_ul_table_index++;
+			
+			@COMMENT@/* Copy DU identifiers values of each DU */@/COMMENT@
+@COMMENT@@COMMENT@#ifdef TARGET_RELEASE@/COMMENT@
+			for (loc_l_j=K_SACO_DU_HW_PN_I; loc_l_j < K_SACO_MAX_NB_DU_IDENTIFIERS; loc_l_j++)
+@/COMMENT@@COMMENT@#else@/COMMENT@
+            @COMMENT@/* PATCH EBTF: can read only 10 identifiers */@/COMMENT@
+			@POPUP@for@-POPUP@loop branches :
+@BRANCH MARK=TB ID=14 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=15 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=16 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (loc_l_j=K_SACO_DU_HW_PN_I; @POPUP@loc_l_j < K_SACO_MAX_NB_DU_IDENTIFIERS - 1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=8 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=9 SUM=30@False@/BRANCH@@/POPUP@; loc_l_j++)
+@COMMENT@#endif@/COMMENT@
+			@BRANCH MARK=TB ID=13 SUM=20@{
+				@COMMENT@/** Identification **/@/COMMENT@
+				@DECISION SUM=20+21 ID=4|5|6@switch (loc_l_j)
+				{
+				@BRANCH NO@@BRANCH MARK=TE ID=10 SUM=30@case K_SACO_DU_HW_PN_I :@/BRANCH@@/BRANCH@
+				@BRANCH MARK=TB ID=4 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=11 SUM=30@case K_SACO_DU_SW_PN_I :@/BRANCH@@/BRANCH@
+                    @COMMENT@/* HW Part Number or SW Part Number */@/COMMENT@
+                    @BRANCH MARK=TA ID=2 SUM=10@@JUMP NAME="add_string_to_table"@add_string_to_table@/JUMP@ (
+                        par_tuc_cds_system_identification,
+                        &loc_ul_table_index,
+                        tr_saco_global_du_identifiers[loc_ul_du_index].r_data_file_identifier.tr_sn_pn_value[loc_l_j].tuc_du_identifier_sn_pn,
+                        par_ul_max_size_buffer_in)@/BRANCH@;
+					break;
+					
+				@BRANCH MARK=TB ID=5 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=12 SUM=30@case K_SACO_DU_HW_SN_I :@/BRANCH@@/BRANCH@
+					@COMMENT@/* HW Serial Number: already sent */@/COMMENT@
+                    @COMMENT@/* Nothing to do */@/COMMENT@
+					break;
+					
+				@BRANCH MARK=TB ID=6 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=13 SUM=30@default :@/BRANCH@@/BRANCH@ @COMMENT@/* UADFx */@/COMMENT@
+                    @COMMENT@/* UADF identifier */@/COMMENT@
+                    @BRANCH MARK=TA ID=3 SUM=10@@JUMP NAME="add_string_to_table"@add_string_to_table@/JUMP@ (
+                        par_tuc_cds_system_identification,
+                        &loc_ul_table_index,
+                        tr_saco_global_du_identifiers[loc_ul_du_index].r_load_identifier.tr_load_pn_value[loc_l_j].tuc_part_number,
+                        par_ul_max_size_buffer_in)@/BRANCH@;
+					break;
+				}@/BRANCH@@/BRANCH@@/BRANCH@@/DECISION@
+				
+				@COMMENT@/** Amendment **/@/COMMENT@
+				@DECISION SUM=20+21 ID=7|10@if (@POPUP@loc_l_j == K_SACO_DU_HW_PN_I@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=14 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=15 SUM=30@False@/BRANCH@@/POPUP@)
+				@BRANCH MARK=TB ID=7 SUM=20@{
+                    @BRANCH MARK=TA ID=4 SUM=10@@JUMP NAME="add_string_to_table"@add_string_to_table@/JUMP@ (
+                        par_tuc_cds_system_identification,
+                        &loc_ul_table_index,
+                        tr_saco_global_du_amendment[loc_ul_du_index].tuc_amendment,
+                        par_ul_max_size_buffer_in)@/BRANCH@;
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=10 SUM=20@else @DECISION SUM=20+21 ID=8|9@if (@POPUP@loc_l_j != K_SACO_DU_HW_SN_I@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=16 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=17 SUM=30@False@/BRANCH@@/POPUP@)
+				@BRANCH MARK=TB ID=8 SUM=20@{
+					@COMMENT@/* amendment is not transmited */@/COMMENT@
+					par_tuc_cds_system_identification[loc_ul_table_index] = 0;
+					@COMMENT@/* Robustness check: chek if message to send is not too big for buffer given as input parameter */@/COMMENT@
+					@BRANCH MARK=TA ID=5 SUM=10@@JUMP NAME="check_msg_size_for_dlcs"@check_msg_size_for_dlcs@/JUMP@(loc_ul_table_index+1,par_ul_max_size_buffer_in)@/BRANCH@;
+					@COMMENT@/* Increment the table index */@/COMMENT@
+					loc_ul_table_index++;
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=9 SUM=20@else
+				{
+					@COMMENT@/* Nothing to do */@/COMMENT@
+				}@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@
+				
+				@COMMENT@/** Identification name (functional designation) **/@/COMMENT@
+				@COMMENT@/* Equal to 0 for DU hardware because already sent */@/COMMENT@
+				@DECISION SUM=20+21 ID=11|12@if (@POPUP@loc_l_j != K_SACO_DU_HW_SN_I@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=18 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=19 SUM=30@False@/BRANCH@@/POPUP@) 
+				@BRANCH MARK=TB ID=11 SUM=20@{
+					@COMMENT@/* Get the identification name (functional designation) */@/COMMENT@
+					@BRANCH MARK=TA ID=6 SUM=10@@JUMP NAME="get_identification_name"@get_identification_name@/JUMP@ (loc_l_j, loc_ul_du_index, loc_tuc_identification_name)@/BRANCH@;
+                    @BRANCH MARK=TA ID=7 SUM=10@@JUMP NAME="add_string_to_table"@add_string_to_table@/JUMP@ (
+                        par_tuc_cds_system_identification,
+                        &loc_ul_table_index,
+                        loc_tuc_identification_name,
+                        par_ul_max_size_buffer_in)@/BRANCH@;
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=12 SUM=20@else
+				{
+					@COMMENT@/* Nothing to do */@/COMMENT@
+				}@/BRANCH@@/DECISION@
+			}@/BRANCH@
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=18 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do : No data received from the DU */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+	
+    @COMMENT@/* For each equipment LRU */@/COMMENT@
+    @COMMENT@/**************************/@/COMMENT@
+    @DECISION SUM=20+21 ID=23|26@if (@POPUP@par_e_side == K_SACO_SIDE_LEFT@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=20 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=21 SUM=30@False@/BRANCH@@/POPUP@)
+    @BRANCH MARK=TB ID=23 SUM=20@{
+	    @BRANCH MARK=TA ID=8 SUM=10@@JUMP NAME="add_equipment_system_identification"@add_equipment_system_identification@/JUMP@ (
+            &loc_us_nb_lru,
+            par_tuc_cds_system_identification,
+		    par_ul_max_size_buffer_in,
+		    &loc_ul_table_index, 
+		    K_SACO_KCCU_CAPT_LRU_NAME, 
+		    &(r_saco_eqpt_identifiers [K_SACO_SIDE_LEFT][K_SACO_EQPT_CCD]),
+            K_SACO_KCCU_SEE_AMDT_PLATE)@/BRANCH@;
+	    @BRANCH MARK=TA ID=9 SUM=10@@JUMP NAME="add_equipment_system_identification"@add_equipment_system_identification@/JUMP@ (
+            &loc_us_nb_lru,
+            par_tuc_cds_system_identification,
+		    par_ul_max_size_buffer_in,
+		    &loc_ul_table_index, 
+		    K_SACO_GCP_CAPT_LRU_NAME, 
+		    &(r_saco_eqpt_identifiers [K_SACO_SIDE_LEFT][K_SACO_EQPT_DCP]),
+            K_SACO_GCP_SEE_AMDT_PLATE)@/BRANCH@;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=26 SUM=20@else @DECISION SUM=20+21 ID=24|25@if (@POPUP@par_e_side == K_SACO_SIDE_RIGHT@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=22 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=23 SUM=30@False@/BRANCH@@/POPUP@)
+    @BRANCH MARK=TB ID=24 SUM=20@{
+	    @BRANCH MARK=TA ID=10 SUM=10@@JUMP NAME="add_equipment_system_identification"@add_equipment_system_identification@/JUMP@ (
+            &loc_us_nb_lru,
+            par_tuc_cds_system_identification,
+		    par_ul_max_size_buffer_in,
+		    &loc_ul_table_index, 
+		    K_SACO_KCCU_FO_LRU_NAME, 
+		    &(r_saco_eqpt_identifiers [K_SACO_SIDE_RIGHT][K_SACO_EQPT_CCD]),
+            K_SACO_KCCU_SEE_AMDT_PLATE)@/BRANCH@;
+	    @BRANCH MARK=TA ID=11 SUM=10@@JUMP NAME="add_equipment_system_identification"@add_equipment_system_identification@/JUMP@ (
+            &loc_us_nb_lru,
+            par_tuc_cds_system_identification,
+		    par_ul_max_size_buffer_in,
+		    &loc_ul_table_index, 
+		    K_SACO_GCP_FO_LRU_NAME, 
+		    &(r_saco_eqpt_identifiers [K_SACO_SIDE_RIGHT][K_SACO_EQPT_DCP]),
+            K_SACO_GCP_SEE_AMDT_PLATE)@/BRANCH@;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=25 SUM=20@else
+    {
+	    @BRANCH MARK=TA ID=12 SUM=10@@JUMP NAME="add_equipment_system_identification"@add_equipment_system_identification@/JUMP@ (
+            &loc_us_nb_lru,
+            par_tuc_cds_system_identification,
+		    par_ul_max_size_buffer_in,
+		    &loc_ul_table_index, 
+		    K_SACO_MKB_3C_LRU_NAME, 
+		    &(r_saco_eqpt_identifiers [K_SACO_SIDE_3CM][K_SACO_EQPT_MKB]),
+            K_SACO_KCCU_SEE_AMDT_PLATE)@/BRANCH@;
+	    @BRANCH MARK=TA ID=13 SUM=10@@JUMP NAME="add_equipment_system_identification"@add_equipment_system_identification@/JUMP@ (
+            &loc_us_nb_lru,
+            par_tuc_cds_system_identification,
+		    par_ul_max_size_buffer_in,
+		    &loc_ul_table_index, 
+		    K_SACO_CCD_3C_LRU_NAME, 
+		    &(r_saco_eqpt_identifiers [K_SACO_SIDE_3CM][K_SACO_EQPT_CCD]),
+            K_SACO_KCCU_SEE_AMDT_PLATE)@/BRANCH@;
+	    @BRANCH MARK=TA ID=14 SUM=10@@JUMP NAME="add_equipment_system_identification"@add_equipment_system_identification@/JUMP@ (
+            &loc_us_nb_lru,
+            par_tuc_cds_system_identification,
+		    par_ul_max_size_buffer_in,
+		    &loc_ul_table_index, 
+		    K_SACO_DCP_3C_LRU_NAME, 
+		    &(r_saco_eqpt_identifiers [K_SACO_SIDE_3CM][K_SACO_EQPT_DCP]),
+            K_SACO_GCP_SEE_AMDT_PLATE)@/BRANCH@;
+    }@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@
+	
+	@COMMENT@/* Check table alignment on 16 bits word */@/COMMENT@
+	@DECISION SUM=20+21 ID=27|28@if (@POPUP@loc_ul_table_index % 2 != 0@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=24 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=25 SUM=30@False@/BRANCH@@/POPUP@)
+	@BRANCH MARK=TB ID=27 SUM=20@{
+		par_tuc_cds_system_identification[loc_ul_table_index] = 0;
+		@COMMENT@/* Robustness check: check if message to send is not too big for buffer given as input parameter */@/COMMENT@
+		@BRANCH MARK=TA ID=15 SUM=10@@JUMP NAME="check_msg_size_for_dlcs"@check_msg_size_for_dlcs@/JUMP@(loc_ul_table_index+1,par_ul_max_size_buffer_in)@/BRANCH@;
+		@COMMENT@/* Increment the table index */@/COMMENT@
+		loc_ul_table_index++;
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=28 SUM=20@else
+	{
+		@COMMENT@/* Nothing to do */@/COMMENT@
+	}@/BRANCH@@/DECISION@
+	
+	
+	@COMMENT@/* return total message size */@/COMMENT@
+	*par_pul_msg_size = loc_ul_table_index;
+	
+	@COMMENT@/* Memorize message size in bytes not including message length field) */@/COMMENT@
+	loc_ul_msg_size = loc_ul_table_index - sizeof(T_uint16);
+	
+	@COMMENT@/* Set begin of the CDS SYSTEM IDENTIFICATION Message */@/COMMENT@
+	loc_ul_table_index = 0;
+	
+	@COMMENT@/* msg length not including itself in bytes */@/COMMENT@
+	*((T_uint16*) &par_tuc_cds_system_identification[loc_ul_table_index]) = (T_uint16) loc_ul_msg_size;
+	loc_ul_table_index += sizeof(T_uint16);
+	
+	@COMMENT@/* table length including itself in nb 16 bits words */@/COMMENT@
+	*((T_uint32*) &par_tuc_cds_system_identification[loc_ul_table_index]) = loc_ul_msg_size / sizeof(T_uint16);
+	loc_ul_table_index += sizeof(T_uint32);
+	
+	@COMMENT@/* table coding version */@/COMMENT@
+	*((T_uint16*) &par_tuc_cds_system_identification[loc_ul_table_index]) = K_SACO_TABLE_VERSION_CODING;
+	loc_ul_table_index += sizeof(T_uint16);
+	
+	@COMMENT@/* Bite index coding */@/COMMENT@
+	@BRANCH MARK=TA ID=16 SUM=10@@JUMP NAME="lbstr_cpy"@lbstr_cpy@/JUMP@ ( (T_int8 *) &par_tuc_cds_system_identification[loc_ul_table_index], K_CFEB_BITE_INDEX)@/BRANCH@;
+	loc_ul_table_index += @BRANCH MARK=TA ID=17 SUM=10@@JUMP NAME="lbstr_len"@lbstr_len@/JUMP@(K_CFEB_BITE_INDEX)@/BRANCH@;
+	
+	@COMMENT@/* number of LRU */@/COMMENT@
+	*((T_uint16*) &par_tuc_cds_system_identification[loc_ul_table_index]) = loc_us_nb_lru;
+	
+	@BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=29@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** void add_string_to_table 
+ ***** 
+ ***** Description : Add a string and its length to a table, 
+ *****               checking if the table max size is not reached.
+ ***** 
+ ***** Input :
+ ***** 
+ *****   T_uint8  *par_puc_added_string: string to be addded
+ ***** 
+ *****   T_uint32 par_ul_max_size: the table max size
+ ***** 
+ ***** 
+ ***** Input/Output : 
+ *****
+ *****   T_uint8  *par_puc_table : the table where the string is added
+ ***** 
+ *****   T_uint32 *par_pul_table_index : current index of the table,
+ *****     incremented when the string is added.
+ ***** 
+ *****************************************************************************/@/COMMENT@
+static void @NODE TYPE=FUNCTION NAME="add_string_to_table"@@BRANCH MARK=TP ID=3 SUM=0@@LINK NAME="add_string_to_table"@add_string_to_table@/BRANCH@ (T_uint8  *par_puc_table,
+                                 T_uint32 *par_pul_table_index,
+                                 T_uint8  *par_puc_added_string,
+                                 T_uint32 par_ul_max_size)
+@BRANCH MARK=TB ID=30 SUM=20@{
+	T_uint8		loc_uc_nb_char;
+    
+	@COMMENT@/* Set Number of characters used for next string */@/COMMENT@ 
+	loc_uc_nb_char = (T_uint8) @BRANCH MARK=TA ID=18 SUM=10@@JUMP NAME="lbstr_len"@lbstr_len@/JUMP@ (par_puc_added_string)@/BRANCH@;
+
+	@COMMENT@/* Robustness check: chek if message to send is not too big for buffer 
+     * given as input parameter */@/COMMENT@
+	@BRANCH MARK=TA ID=19 SUM=10@@JUMP NAME="check_msg_size_for_dlcs"@check_msg_size_for_dlcs@/JUMP@ (*par_pul_table_index + 1 + loc_uc_nb_char,
+                             par_ul_max_size)@/BRANCH@;
+
+	par_puc_table [*par_pul_table_index] = loc_uc_nb_char;
+	
+	@COMMENT@/* Set string value */@/COMMENT@
+	@BRANCH MARK=TA ID=20 SUM=10@@JUMP NAME="lbstr_cpy"@lbstr_cpy@/JUMP@ ((T_int8 *) &par_puc_table [*par_pul_table_index + 1],
+               par_puc_added_string)@/BRANCH@;
+	*par_pul_table_index = *par_pul_table_index + loc_uc_nb_char + 1;
+	
+    @BRANCH MARK=TP ID=2 SUM=1@return;@SHORTCUT MARK=TB ID=30@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** static void add_equipment_system_identification 
+ ***** 
+ ***** Description: provides an equipment (MKB, GCP, etc) part of the CDS 
+ *****              system identification data.
+ ***** 
+ ***** Input:
+ ***** 
+ *****   T_uint32 par_ul_max_size_of_msg: max size of buffer
+ ***** 
+ *****   T_uint32 *par_pul_table_index: index of table
+ ***** 
+ *****   T_int8 *par_pc_eqpt_lru_name: name of LRU
+ ***** 
+ *****   T_saco_identifiers *par_pr_equipment_identifiers: identifiers of equipment
+ ***** 
+ *****   T_uchar            *par_tuc_eqpt_see_amdt_plate : 
+ ***** 
+ ***** 
+ ***** Output:
+ ***** 
+ *****   T_uint8 *par_puc_cds_system_identification: 
+ *****     table of system identification data
+ ***** 
+ *****************************************************************************/@/COMMENT@
+static void @NODE TYPE=FUNCTION NAME="add_equipment_system_identification"@@BRANCH MARK=TP ID=5 SUM=0@@LINK NAME="add_equipment_system_identification"@add_equipment_system_identification@/BRANCH@ (
+    T_uint16           *par_pus_nb_lru,
+    T_uint8            *par_puc_cds_system_identification, 
+	T_uint32           par_ul_max_size_of_msg,
+	T_uint32           *par_pul_table_index,
+	T_int8             *par_pc_eqpt_lru_name, 
+    T_saco_identifiers *par_pr_equipment_identifiers,
+    T_int8             *par_tuc_eqpt_see_amdt_plate)
+@BRANCH MARK=TB ID=33 SUM=20@{
+    @DECISION SUM=20+21 ID=31|32@if (@POPUP@par_pr_equipment_identifiers->pn.validity == @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=26 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=27 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+    @BRANCH MARK=TB ID=31 SUM=20@{
+        *par_pus_nb_lru = *par_pus_nb_lru + 1;
+        @COMMENT@/* LRU equipment name */@/COMMENT@
+        @BRANCH MARK=TA ID=21 SUM=10@@JUMP NAME="add_string_to_table"@add_string_to_table@/JUMP@ (par_puc_cds_system_identification,
+                             par_pul_table_index,
+                             par_pc_eqpt_lru_name,
+                             par_ul_max_size_of_msg)@/BRANCH@;
+
+        @COMMENT@/* Equipment S/N */@/COMMENT@
+        @BRANCH MARK=TA ID=22 SUM=10@@JUMP NAME="add_string_to_table"@add_string_to_table@/JUMP@ (par_puc_cds_system_identification,
+                             par_pul_table_index,
+                             par_pr_equipment_identifiers->sn.identifier,
+                             par_ul_max_size_of_msg)@/BRANCH@;
+
+        @COMMENT@/* Set number of equipment identifiers (there is only P/N identifier)*/@/COMMENT@
+        par_puc_cds_system_identification[*par_pul_table_index] = 0;
+        par_puc_cds_system_identification[*par_pul_table_index + 1] = 1;
+        *par_pul_table_index = *par_pul_table_index + 2;
+
+        @COMMENT@/* Equipment P/N */@/COMMENT@
+        @BRANCH MARK=TA ID=23 SUM=10@@JUMP NAME="add_string_to_table"@add_string_to_table@/JUMP@ (par_puc_cds_system_identification,
+                             par_pul_table_index,
+                             par_pr_equipment_identifiers->pn.identifier,
+                             par_ul_max_size_of_msg)@/BRANCH@;
+
+        @COMMENT@/* Amendment */@/COMMENT@ 
+        @BRANCH MARK=TA ID=24 SUM=10@@JUMP NAME="add_string_to_table"@add_string_to_table@/JUMP@ (par_puc_cds_system_identification,
+                             par_pul_table_index,
+                             par_tuc_eqpt_see_amdt_plate,
+                             par_ul_max_size_of_msg)@/BRANCH@;
+
+        @COMMENT@/* Set Number of characters used for identification name */@/COMMENT@ 
+        @COMMENT@/* Already sent in field "LRU name" */@/COMMENT@
+        par_puc_cds_system_identification[*par_pul_table_index] = 0;
+        @BRANCH MARK=TA ID=25 SUM=10@@JUMP NAME="check_msg_size_for_dlcs"@check_msg_size_for_dlcs@/JUMP@(*par_pul_table_index + 1,
+                                par_ul_max_size_of_msg)@/BRANCH@;
+        @COMMENT@/* Increment the table index */@/COMMENT@
+        *par_pul_table_index = *par_pul_table_index + 1;
+    }@/BRANCH@
+	@BRANCH MARK=TB ID=32 SUM=20@else
+	{
+		@COMMENT@/* Nothing to do */@/COMMENT@
+	}@/BRANCH@@/DECISION@
+	@BRANCH MARK=TP ID=4 SUM=1@return;@SHORTCUT MARK=TB ID=33@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** static void get_identification_name
+ ***** 
+ ***** Description : provides the functional designation for the definition of
+ *****				 of Identification name (DU Software and each UADFy in each DU)
+ ***** 
+ ***** Input :
+ *****	 T_uint32 par_ul_identifier_type: 0 (P/N) or 1 (S/N)
+ *****  
+ *****   T_uint32 par_ul_du_index: SACO du index
+ *****
+ ***** Output : 
+ ***** 
+ *****	T_uint8 *par_puc_identification_name: the SN or PN of DU
+ *****
+ *****************************************************************************/@/COMMENT@
+static void	@NODE TYPE=FUNCTION NAME="get_identification_name"@@BRANCH MARK=TP ID=7 SUM=0@@LINK NAME="get_identification_name"@get_identification_name@/BRANCH@ (T_uint32 par_ul_identifier_type,
+                                     T_uint32 par_ul_du_index,
+                                     T_uint8 *par_puc_identification_name)
+@BRANCH MARK=TB ID=40 SUM=20@{
+	T_uint32						loc_ul_index;
+
+	
+	@COMMENT@/* Initialize value of identification name */@/COMMENT@
+	@COMMENT@/* (The identification name is not sent for the DU Hardware and KCCU) */@/COMMENT@
+	@BRANCH MARK=TA ID=26 SUM=10@@JUMP NAME="lbstr_cpy"@lbstr_cpy@/JUMP@( par_puc_identification_name, 
+			   "")@/BRANCH@;
+
+    @POPUP@for@-POPUP@loop branches :
+@BRANCH MARK=TB ID=37 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=38 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=39 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (loc_ul_index = 0; @POPUP@loc_ul_index < K_SACO_MAX_NB_DU_ID_PORT*10@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=28 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=29 SUM=30@False@/BRANCH@@/POPUP@; loc_ul_index++)
+    @BRANCH MARK=TB ID=36 SUM=20@{
+        @DECISION SUM=20+21 ID=34|35@if (@POPUP@(@POPUP@TR_SACO_FUNCTIONAL_DESIGNATION[loc_ul_index].e_du_identifier_type
+             == par_ul_identifier_type@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=30 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=31 SUM=30@False@/BRANCH@@/POPUP@)
+            && (@POPUP@TR_SACO_FUNCTIONAL_DESIGNATION[loc_ul_index].e_saco_du_type
+                == par_ul_du_index@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=32 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=33 SUM=30@False@/BRANCH@@/POPUP@)@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=34&36 SUM=31@TR_SACO_FUNCTIONAL_DESIGNATION[loc_ul_index]. ...@/BRANCH@ needs
+      @BRANCH MARK=TE ID=34 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=36 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=34&35 SUM=31@TR_SACO_FUNCTIONAL_DESIGNATION[loc_ul_index].e_saco_du_type  ...@/BRANCH@ needs
+      @BRANCH MARK=TE ID=34 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=35 SUM=32@TF@/BRANCH@=F@/POPUP@ )
+        @BRANCH MARK=TB ID=34 SUM=20@{
+	        @BRANCH MARK=TA ID=27 SUM=10@@JUMP NAME="lbstr_cpy"@lbstr_cpy@/JUMP@( par_puc_identification_name, 
+			           TR_SACO_FUNCTIONAL_DESIGNATION[loc_ul_index].tuc_funct_designation)@/BRANCH@;
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=35 SUM=20@else
+        {
+	        @COMMENT@/* Nothing to do */@/COMMENT@
+        }@/BRANCH@@/DECISION@
+	}@/BRANCH@
+	@BRANCH MARK=TP ID=6 SUM=1@return;@SHORTCUT MARK=TB ID=40@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** static void check_msg_size_for_dlcs
+ ***** 
+ ***** Description : Check if the message to send to DLCS is less than max size
+ *****				 A fatal error is raised if size is greater than max size.
+ ***** Input :
+ ***** 
+ *****              T_uint32 par_pul_msg_size : computed message size
+ ***** 
+ *****              T_uint32 par_ul_max_size_of_msg : max size of buffer
+ ***** 
+ ***** 
+ ***** Output : 
+ ***** 
+ *****************************************************************************/@/COMMENT@
+static void @NODE TYPE=FUNCTION NAME="check_msg_size_for_dlcs"@@BRANCH MARK=TP ID=9 SUM=0@@LINK NAME="check_msg_size_for_dlcs"@check_msg_size_for_dlcs@/BRANCH@(T_uint32 par_pul_msg_size,T_uint32 par_ul_max_size_of_msg)
+@BRANCH MARK=TB ID=43 SUM=20@{
+	@COMMENT@/* If computed size is greater than max size for message */@/COMMENT@
+	@DECISION SUM=20+21 ID=41|42@if (@POPUP@par_pul_msg_size > par_ul_max_size_of_msg@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=37 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=38 SUM=30@False@/BRANCH@@/POPUP@)
+	@BRANCH MARK=TB ID=41 SUM=20@{
+		@COMMENT@/* Raise a fatal error : the message to send to DLCS is too big */@/COMMENT@
+		@BRANCH MARK=TA ID=28 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ (	R_SACO_FSC_ERR_CONFIG,
+					K_SACO_FSC_ERR_MSG_FOR_DLCS_TOO_BIG,
+					K_SACO_GET_CDS_SYSTEM_IDENTIFICATION_COMPONENT_ID_ATT,
+					(T_uint32)par_pul_msg_size,
+					(T_uint32)par_ul_max_size_of_msg,
+					0,
+					K_NULL_PTR,
+					0)@/BRANCH@;
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=42 SUM=20@else
+	{
+		@COMMENT@/* Nothing to do : size computed is correct */@/COMMENT@
+	}@/BRANCH@@/DECISION@
+
+	@BRANCH MARK=TP ID=8 SUM=1@return;@SHORTCUT MARK=TB ID=43@@/BRANCH@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

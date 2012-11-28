@@ -1,0 +1,171 @@
+VE 3.0d CCOV CMCDC #i3
+FC "LBTRACE_DEBUG_WRITE.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\COMMON\\LBTRACE\\SRC\\"
+FD 1285925348
+TC AP BS BT BI BL CO CC
+CE 0 "lbtrace_debug_write" "1UL == DEBUG_TRACE" 82 82
+CE 2 "lbtrace_debug_write" "par_l_lbtrace_debug_port_id  ..." 85 85
+AP 0 "lbtrace_debug_write" "SEND_QUEUING_MESSAGE" 88 92
+CE 4 "lbtrace_debug_write" "loc_e_apex_return_code ==  ..." 95 95
+BL 0 simple "lbtrace_debug_write" /then/then/then 96 99
+AP 1 "lbtrace_debug_write" "lbfl_mng" 104 111
+BL 1 simple "lbtrace_debug_write" /then/then/else 102 112
+BL 2 simple "lbtrace_debug_write" /then/then 86 113
+BL 3 simple "lbtrace_debug_write" /then/else 115 117
+BL 4 simple "lbtrace_debug_write" /then 83 118
+BL 5 simple "lbtrace_debug_write" /else 120 122
+BL 6 simple "lbtrace_debug_write" / 74 125
+DC 474893838
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="LBTRACE_DEBUG_WRITE.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\COMMON\LBTRACE\SRC\"
+  DATE=1285925348
+  CHECKSUM=474893838
+  SUMS
+   ("&Functions",
+    "-&Exits",
+    "Functions and exits"),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="LBTRACE_DEBUG_WRITE.C"@@COMMENT@/******************************************************************************
+ **
+ **                                   ==============
+ **                                   IDENTIFICATION
+ **                                   ==============
+ **
+ **
+ **
+ **  Filename            : lbtrace_debug_write.c
+ **
+ **  Author/ Company     : Thales Services
+ **
+ **  Creation date       : 11/01/2008
+ **
+ **  Copyright statement : Copyright (C); 2004
+ **                        THALES Avionics
+ **
+ **  Module description  : Send message to the trace debug
+ **
+ *****************************************************************************/@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Project specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@/* MACS TYPES */@/COMMENT@
+@COMMENT@#include "COD_A653_API_COMMON.h"@/COMMENT@
+
+@COMMENT@/* SA TYPES */@/COMMENT@
+@COMMENT@#include "apsw_basic_types_c.h"@/COMMENT@
+
+@COMMENT@/* PLATFORM TYPES */@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU TYPES */@/COMMENT@
+@COMMENT@#include "lbfl.h"@/COMMENT@
+@COMMENT@#include "lbtrace_fsc_error_desc_config.h"@/COMMENT@
+@COMMENT@#include "lbtrace_component_id_ifc.h"@/COMMENT@
+
+@COMMENT@/* CALLED CSU PROTOTYPES */@/COMMENT@
+
+
+
+@COMMENT@/******************************************************************************
+ **                           Module specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@#include "lbtrace_debug_write.p"@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Local file declarations
+ *****************************************************************************/@/COMMENT@
+
+extern T_BOOL DEBUG_TRACE;
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** void lbtrace_debug_write
+ ***** 
+ ***** Description : Send message to the trace debug
+ ***** 
+ ***** Input :
+ ***** 
+ *****              T_uint8 *par_pc_msg_to_send : address of the message to send
+ ***** 
+ *****              T_uint32 par_ul_msg_size : size of the message
+ ***** 
+ *****			    T_int32 par_l_lbtrace_debug_port_id : port id
+ ***** 
+ ***** Output :		none.
+ ***** 
+ *****************************************************************************/@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="lbtrace_debug_write"@@LINK NAME="lbtrace_debug_write"@lbtrace_debug_write(T_uint8 *par_pc_msg_to_send, T_uint32 par_ul_msg_size,
+                         T_int32 par_l_lbtrace_debug_port_id)
+@BRANCH MARK=TB ID=6 SUM=20@{
+    RETURN_CODE_TYPE    loc_e_apex_return_code;
+
+@COMMENT@#ifdef TARGET_AP2633@/COMMENT@
+    @COMMENT@/* Increase the message size to take '\0' into account */@/COMMENT@
+    par_ul_msg_size++;
+@COMMENT@#endif@/COMMENT@
+
+    @DECISION SUM=20+21 ID=4|5@if (@ALT@K_BOOL_TRUE@-ALT@@POPUP@1UL@/ALT@ == DEBUG_TRACE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@)
+    @BRANCH MARK=TB ID=4 SUM=20@{
+
+        @DECISION SUM=20+21 ID=2|3@if (@POPUP@par_l_lbtrace_debug_port_id != -1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@)
+        @BRANCH MARK=TB ID=2 SUM=20@{
+            @COMMENT@/* Write the message */@/COMMENT@
+            @BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="SEND_QUEUING_MESSAGE"@SEND_QUEUING_MESSAGE@/JUMP@(par_l_lbtrace_debug_port_id,                
+                            (MESSAGE_ADDR_TYPE)par_pc_msg_to_send,
+                            (MESSAGE_SIZE_TYPE)par_ul_msg_size,
+                            (SYSTEM_TIME_TYPE)0,
+                            &loc_e_apex_return_code)@/BRANCH@;
+
+            @COMMENT@/* If no error */@/COMMENT@
+            @DECISION SUM=20+21 ID=0|1@if (@POPUP@loc_e_apex_return_code == NO_ERROR@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@)
+            @BRANCH MARK=TB ID=0 SUM=20@{
+                @COMMENT@/* Nothing to do */@/COMMENT@
+                ;
+            }@/BRANCH@
+            @COMMENT@/* Else */@/COMMENT@
+            @BRANCH MARK=TB ID=1 SUM=20@else
+            {
+                @COMMENT@/* Raise a fatal error : problem while sending configuration */@/COMMENT@
+                @BRANCH MARK=TA ID=1 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ (R_LBTRACE_FSC_ERR_CONFIG,
+                        K_LBFL_E_GNERR_SERV_QUEUING_PORT_SEND,
+                        K_LBTRACE_DEBUG_WRITE_COMPONENT_ATT,
+                        (T_uint32)loc_e_apex_return_code,
+                        0,
+                        0,
+                        K_NULL_PTR,
+                        0)@/BRANCH@;
+            }@/BRANCH@@/DECISION@
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=3 SUM=20@else
+        {
+            @COMMENT@/* Nothing to do */@/COMMENT@
+        }@/BRANCH@@/DECISION@
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=5 SUM=20@else
+    {
+        @COMMENT@/* Nothing to do */@/COMMENT@
+    }@/BRANCH@@/DECISION@
+
+    return;@SHORTCUT MARK=TB ID=6@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

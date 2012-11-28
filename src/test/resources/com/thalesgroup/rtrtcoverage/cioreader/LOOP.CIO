@@ -1,0 +1,63 @@
+# CIO File from Rational(R) Test RealTime Coverage
+# Tool version: 2002.05.21.468.004
+# Generation date: Fri Sep 23 13:51:36 2011
+T0
+ Coverage analysis : nothing was hit
+O0
+ Coverage analysis : nothing was hit
+T11
+ File BUFFERMANAGER.C
+    read_event_data
+       Functions and exits ......... 100.0% (2/2), +100.0 (+2)
+       Calls .......................   none
+       Statement blocks ............ 100.0% (2/2), +100.0 (+2)
+       Implicit blocks .............   none
+       Decisions ................... 100.0% (2/2), +100.0 (+2)
+       Loops .......................  33.3% (1/3), +33.3 (+1)
+T31
+ File BUFFERMANAGER.C
+    write_parameter_data
+       Functions and exits ......... 100.0% (2/2), +100.0 (+2)
+       Calls .......................   none
+       Statement blocks ............ 100.0% (2/2), +100.0 (+2)
+       Implicit blocks .............   none
+       Decisions ................... 100.0% (2/2), +100.0 (+2)
+       Loops .......................  33.3% (1/3), +33.3 (+1)
+O9
+ File BUFFERMANAGER.C
+    read_event_data
+       Functions and exits ......... 100.0% (2/2)
+       Calls .......................   none
+       Statement blocks ............ 100.0% (2/2)
+       Implicit blocks .............   none
+       Decisions ................... 100.0% (2/2)
+       Loops .......................  33.3% (1/3)
+    write_parameter_data
+       Functions and exits ......... 100.0% (2/2)
+       Calls .......................   none
+       Statement blocks ............ 100.0% (2/2)
+       Implicit blocks .............   none
+       Decisions ................... 100.0% (2/2)
+       Loops .......................  33.3% (1/3)
+T32
+ Coverage analysis : nothing was hit
+O10
+ Coverage analysis : nothing was hit
+G
+ File BUFFERMANAGER.C
+    read_event_data
+       Hit .........................    yes
+       Functions and exits ......... 100.0% (2/2)
+       Calls .......................   none
+       Statement blocks ............ 100.0% (2/2)
+       Implicit blocks .............   none
+       Decisions ................... 100.0% (2/2)
+       Loops .......................  33.3% (1/3)
+    write_parameter_data
+       Hit .........................    yes
+       Functions and exits ......... 100.0% (2/2)
+       Calls .......................   none
+       Statement blocks ............ 100.0% (2/2)
+       Implicit blocks .............   none
+       Decisions ................... 100.0% (2/2)
+       Loops .......................  33.3% (1/3)

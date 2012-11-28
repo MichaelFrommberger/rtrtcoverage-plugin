@@ -1,0 +1,202 @@
+VE 3.0d CCOV #i3
+FC "LAME_APPLY_ACCELERATION_LAW.C" "D:\\JENKINS\\JOBS\\A400M\\WORKSPACE\\CDS_A400M_DEV\\LA\\LAME\\SRC\\"
+FD 1320061619
+TC PR RE AP BS BT BI BL
+BL 0 simple "lame_apply_acceleration_law" /then 100 105
+BL 1 simple "lame_apply_acceleration_law" /else/then 108 113
+BL 2 simple "lame_apply_acceleration_law" /else/else 116 120
+BL 3 simple "lame_apply_acceleration_law" /else 107 120
+BL 4 simple "lame_apply_acceleration_law" /then 140 145
+BL 5 simple "lame_apply_acceleration_law" /else/then 148 153
+BL 6 simple "lame_apply_acceleration_law" /else/else 156 160
+BL 7 simple "lame_apply_acceleration_law" /else 147 160
+PR 0 return "lame_apply_acceleration_law" 162 162
+PR 1 proc "lame_apply_acceleration_law" 78 163
+BL 8 simple "lame_apply_acceleration_law" / 78 163
+DC 1803508578
+@RIK
+  TOKEN="CCOV"
+  SRC="LAME_APPLY_ACCELERATION_LAW.C"
+  DIR="D:\JENKINS\JOBS\A400M\WORKSPACE\CDS_A400M_DEV\LA\LAME\SRC\"
+  DATE=1320061619
+  CHECKSUM=1803508578
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions",
+    "&Modified conditions",
+    "M&ultiple conditions")
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="LAME_APPLY_ACCELERATION_LAW.C"@@COMMENT@/******************************************************************************
+ **
+ **                                   ==============
+ **                                   IDENTIFICATION
+ **                                   ==============
+ **
+ **
+ **
+ **  Filename            : lame_apply_acceleration_law.c
+ **
+ **  Author/ Company     : N. Sceaux / THALES Services
+ **
+ **  Creation date       : 06/02/2007
+ **
+ **  Copyright statement : Copyright (C); 2006
+ **                        THALES Avionics
+ **
+ **  Module description  : Media Behavior: compute screen position delta using
+ **                        acceleration law.
+ **
+ *****************************************************************************/@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Project specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@/* MACS TYPES */@/COMMENT@
+
+
+@COMMENT@/* SA TYPES */@/COMMENT@
+
+
+@COMMENT@/* PLATFORM TYPES */@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU TYPES */@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU PROTOTYPES */@/COMMENT@
+
+
+
+@COMMENT@/******************************************************************************
+ **                           Module specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@#include "lame_types.h"@/COMMENT@
+@COMMENT@#include "lame_apply_acceleration_law.p"@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Local file declarations
+ *****************************************************************************/@/COMMENT@
+
+
+@COMMENT@#define K_LIMIT_1 (8)@/COMMENT@
+@COMMENT@#define K_LOW_FACTOR_1 (12)@/COMMENT@
+@COMMENT@#define K_HIGH_FACTOR_1 (35)@/COMMENT@
+@COMMENT@#define K_LIMIT_2  (60)@/COMMENT@
+@COMMENT@#define K_LOW_FACTOR_2 (10)@/COMMENT@
+@COMMENT@#define K_HIGH_FACTOR_2 (16)@/COMMENT@
+@COMMENT@#define K_FACTOR_RATIO    10L@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** static T_float32 lame_apply_acceleration_law 
+ ***** 
+ ***** Description : Compute position delta through accelaration law
+ ***** 
+ ***** Input :
+ ***** 
+ *****   T_float32 par_media_delta : media delta position
+ ***** 
+ ***** Output : 
+ ***** 
+ *****   Return value: screen delta position after applying acceleration law 
+ ***** 
+ *****************************************************************************/@/COMMENT@
+T_float32 @NODE TYPE=FUNCTION NAME="lame_apply_acceleration_law"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="lame_apply_acceleration_law"@lame_apply_acceleration_law@/BRANCH@ (T_float32 par_media_delta)
+@BRANCH MARK=TB ID=8 SUM=20@{
+    T_float32 loc_pos_delta;
+
+    T_int32 loc_l_limit ;
+    T_int32 loc_l_low_factor ;
+    T_int32 loc_l_high_factor ;
+
+    @COMMENT@/*****************************************/@/COMMENT@
+    @COMMENT@/* First application of acceleration law */@/COMMENT@
+    @COMMENT@/*****************************************/@/COMMENT@
+
+    @COMMENT@/*$ RETRIEVE ACCELERATION PARAMETERS */@/COMMENT@
+    loc_l_limit = K_LIMIT_1 ;
+    loc_l_low_factor = K_LOW_FACTOR_1;
+    loc_l_high_factor = K_HIGH_FACTOR_1 ;
+
+	@COMMENT@/*$ NOTA: OVERFLOW ON ABOVE COMPUTATIONS SHALL ONLY RESULT IN A WRONG EVENT VALUE */@/COMMENT@
+	@COMMENT@/*$       (NO CODE EXECUTION PROBLEM) - EFFECT SHALL DEPEND ON EVENT BEHAVIOUR */@/COMMENT@
+	@COMMENT@/*$        ACCORDING TO FUNCTIONAL CONFIGURATION */@/COMMENT@
+
+    @COMMENT@/*$ IF MOVEMENT VALUE IS OUT OF + LIMIT BOUNDARIES */@/COMMENT@ 
+    @DECISION SUM=20+21 ID=0|3@if (par_media_delta > loc_l_limit)
+    @BRANCH MARK=TB ID=0 SUM=20@{
+        @COMMENT@/*$ APPLY COMBINATED LOW/HIGH ACCELERATION FACTORS TO + EVENT VALUE */@/COMMENT@
+        loc_pos_delta = (par_media_delta * loc_l_high_factor 
+                                + loc_l_limit * (loc_l_low_factor - loc_l_high_factor))
+                                    / K_FACTOR_RATIO ;
+    }@/BRANCH@
+    @COMMENT@/*$ ELSIF MOVEMENT VALUE IS OUT OF - LIMIT BOUNDARIES */@/COMMENT@
+    @BRANCH MARK=TB ID=3 SUM=20@else @DECISION SUM=20+21 ID=1|2@if (par_media_delta < (-loc_l_limit))
+    @BRANCH MARK=TB ID=1 SUM=20@{
+        @COMMENT@/*$ APPLY COMBINATED LOW/HIGH ACCELERATION FACTORS TO - EVENT VALUE */@/COMMENT@
+        loc_pos_delta = (par_media_delta * loc_l_high_factor 
+                                + loc_l_limit * (loc_l_high_factor - loc_l_low_factor))
+                                    / K_FACTOR_RATIO ;
+    }@/BRANCH@
+    @COMMENT@/*$ ELSE */@/COMMENT@
+    @BRANCH MARK=TB ID=2 SUM=20@else
+    {
+        @COMMENT@/*$ APPLY LOW ACCELERATION FACTOR TO +/- EVENT VALUE */@/COMMENT@
+        loc_pos_delta = (par_media_delta * loc_l_low_factor) 
+                                    / K_FACTOR_RATIO ;
+    }@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@
+
+    loc_pos_delta = (T_int32) loc_pos_delta;
+
+
+    @COMMENT@/******************************************/@/COMMENT@
+    @COMMENT@/* Second application of acceleration law */@/COMMENT@
+    @COMMENT@/******************************************/@/COMMENT@
+
+    @COMMENT@/*$ RETRIEVE ACCELERATION PARAMETERS */@/COMMENT@
+    loc_l_limit = K_LIMIT_2 ;
+    loc_l_low_factor = K_LOW_FACTOR_2 ;
+    loc_l_high_factor = K_HIGH_FACTOR_2 ;
+
+	@COMMENT@/*$ NOTA: OVERFLOW ON ABOVE COMPUTATIONS SHALL ONLY RESULT IN A WRONG EVENT VALUE */@/COMMENT@
+	@COMMENT@/*$       (NO CODE EXECUTION PROBLEM) - EFFECT SHALL DEPEND ON EVENT BEHAVIOUR */@/COMMENT@
+	@COMMENT@/*$        ACCORDING TO FUNCTIONAL CONFIGURATION */@/COMMENT@
+
+    @COMMENT@/*$ IF MOVEMENT VALUE IS OUT OF + LIMIT BOUNDARIES */@/COMMENT@ 
+    @DECISION SUM=20+21 ID=4|7@if (loc_pos_delta > loc_l_limit)
+    @BRANCH MARK=TB ID=4 SUM=20@{
+        @COMMENT@/*$ APPLY COMBINATED LOW/HIGH ACCELERATION FACTORS TO + EVENT VALUE */@/COMMENT@
+        loc_pos_delta = ((loc_pos_delta) * loc_l_high_factor 
+                                + loc_l_limit * (loc_l_low_factor - loc_l_high_factor))
+                                    / K_FACTOR_RATIO ;
+    }@/BRANCH@
+    @COMMENT@/*$ ELSIF MOVEMENT VALUE IS OUT OF - LIMIT BOUNDARIES */@/COMMENT@
+    @BRANCH MARK=TB ID=7 SUM=20@else @DECISION SUM=20+21 ID=5|6@if (loc_pos_delta < (-loc_l_limit))
+    @BRANCH MARK=TB ID=5 SUM=20@{
+        @COMMENT@/*$ APPLY COMBINATED LOW/HIGH ACCELERATION FACTORS TO - EVENT VALUE */@/COMMENT@
+        loc_pos_delta = ((loc_pos_delta) * loc_l_high_factor 
+                                + loc_l_limit * (loc_l_high_factor - loc_l_low_factor))
+                                    / K_FACTOR_RATIO ;
+    }@/BRANCH@
+    @COMMENT@/*$ ELSE */@/COMMENT@
+    @BRANCH MARK=TB ID=6 SUM=20@else
+    {
+        @COMMENT@/*$ APPLY LOW ACCELERATION FACTOR TO +/- EVENT VALUE */@/COMMENT@
+        loc_pos_delta = ((loc_pos_delta) * loc_l_low_factor) 
+                                    / K_FACTOR_RATIO ;
+    }@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@
+
+    @BRANCH MARK=TP ID=0 SUM=1@return loc_pos_delta;@SHORTCUT MARK=TB ID=8@@/BRANCH@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

@@ -1,0 +1,21 @@
+NT "Initialization" 0 0
+DT "Tue May 29 15:16:17 2012"
+NT "SAMC_CROSSTALK_1/1" b 9
+DT "Tue May 29 15:16:17 2012"
+FT 432473
+DC 1283946
+TP 1
+TA 0
+TA 1
+TB 0
+TB 2
+TB 4
+TB 6
+TB 8
+TE 0
+TE 2
+TE 4
+NT "Termination" c a
+DT "Tue May 29 15:16:17 2012"
+FT 432473
+DC 1283946

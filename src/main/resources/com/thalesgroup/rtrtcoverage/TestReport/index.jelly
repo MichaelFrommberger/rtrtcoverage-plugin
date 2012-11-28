@@ -1,0 +1,44 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <l:layout xmlns:e="/com/thalesgroup/rtrtcoverage/tags" norefresh="true" css="/plugin/rtrtcoverage/css/rtrtstyle.css">
+    <st:include it="${it.build}" page="sidepanel.jelly" />
+    <l:main-panel>
+      <h2>${%RTRT Coverage Report}</h2>
+      <div>
+  		<img src="graph" width="400" height="200"/>
+	  </div>
+
+      <h3>${%Test Coverage Summary}</h3>
+      <table border="1px" class="pane">
+  		<tr>
+    		<th>${%name}</th>
+    		<th>${%function}</th>
+    		<th>${%call}</th>
+    		<th>${%statement_blocks}</th>
+    		<th>${%implicit_blocks}</th>
+    		<th>${%decision}</th>
+    		<th>${%loop}</th>
+    		<th>${%basic_condition}</th>
+    		<th>${%modified_condition}</th>
+    		<th>${%multiple_condition}</th>
+  		</tr>
+    	<tr>
+      		<td>${it.name}</td>
+      		${it.printNineCoverageColumns()}
+    	</tr>
+  	  </table>
+  	  <j:if test="${it.isSourceCodeLevel()}">
+                <j:choose>
+                    <j:when test="${it.isSourceFileAvailable()}">
+                		<h3>${%Source Code}</h3>
+                        <div style="overflow-x:scroll;">
+                            <table class="source">
+                                ${it.getPaintedSourceFileContent()}
+                            </table>
+                        </div>
+                    </j:when>
+                </j:choose>
+            </j:if>  
+  	
+    </l:main-panel>
+  </l:layout>
+</j:jelly>

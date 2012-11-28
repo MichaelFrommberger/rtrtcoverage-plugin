@@ -1,0 +1,1007 @@
+VE 3.0d CCOV #i3
+FC "LAEXSEQ_MAIN.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\LA\\LAEX\\SRC\\"
+FD 1301919383
+TC PR RE AP BS BT BI BL
+AP 0 "laexseq_main" "la_init_mea_histo" 298 298
+BL 0 simple "laexseq_main" /then 284 307
+AP 1 "laexseq_main" "lbport_read_time" 320 320
+AP 2 "laexseq_main" "laflprc1_main" 321 321
+AP 3 "laexseq_main" "lbport_read_time" 322 322
+AP 4 "laexseq_main" "la_update_mea_histo" 322 322
+AP 5 "laexseq_main" "laio_reset_buffer_pa_size" 325 325
+AP 6 "laexseq_main" "lbport_read_time" 332 332
+AP 7 "laexseq_main" "laio_input" 333 333
+AP 8 "laexseq_main" "lbport_read_time" 334 334
+AP 9 "laexseq_main" "la_update_mea_histo" 334 334
+AP 10 "laexseq_main" "lbport_read_time" 337 337
+AP 11 "laexseq_main" "lama_main" 338 338
+AP 12 "laexseq_main" "lbport_read_time" 339 339
+AP 13 "laexseq_main" "la_update_mea_histo" 339 339
+BL 1 simple "laexseq_main" /else/then/then 347 349
+BL 2 simple "laexseq_main" /else/then/else 351 353
+AP 14 "laexseq_main" "laio_get_buffer_pa_address" 356 356
+BL 3 simple "laexseq_main" /else/then/then 361 368
+AP 15 "laexseq_main" "lbport_read_time" 374 374
+AP 16 "laexseq_main" "lame_main" 375 375
+AP 17 "laexseq_main" "lbport_read_time" 376 376
+AP 18 "laexseq_main" "la_update_mea_histo" 376 376
+BL 4 simple "laexseq_main" /else/then/else 370 377
+AP 19 "laexseq_main" "laio_init_pointer_buffer" 382 382
+AP 20 "laexseq_main" "lbport_read_time" 388 388
+AP 21 "laexseq_main" "LA" 389 389
+AP 22 "laexseq_main" "lbport_read_time" 390 390
+AP 23 "laexseq_main" "la_update_mea_histo" 390 390
+AP 24 "laexseq_main" "laal_manage_SA_variable" 395 395
+AP 25 "laexseq_main" "lbport_read_time" 402 402
+AP 26 "laexseq_main" "laio_add_buffer_pa_size" 407 407
+BL 5 simple "laexseq_main" /else/then/then/then/for 414 416
+BL 6 logical "laexseq_main" /else/then/then/then/for/0 413 416
+BL 7 logical "laexseq_main" /else/then/then/then/for/1 413 416
+BL 8 logical "laexseq_main" /else/then/then/then/for/2+ 413 416
+AP 27 "laexseq_main" "laio_add_buffer_pa_size" 417 417
+BL 9 simple "laexseq_main" /else/then/then/then 410 420
+BL 10 simple "laexseq_main" /else/then/then/else 422 424
+AP 28 "laexseq_main" "laalntd_layer_management" 433 435
+AP 29 "laexseq_main" "laio_add_buffer_pa_size" 438 438
+AP 30 "laexseq_main" "laalntd_checkered_box_management" 445 447
+AP 31 "laexseq_main" "laio_add_buffer_pa_size" 450 450
+BL 11 simple "laexseq_main" /else/then/then/then 430 454
+BL 12 simple "laexseq_main" /else/then/then/else 456 459
+AP 32 "laexseq_main" "laalvd_layer_management" 468 468
+AP 33 "laexseq_main" "laio_add_buffer_pa_size" 471 471
+BL 13 simple "laexseq_main" /else/then/then/then 465 475
+BL 14 simple "laexseq_main" /else/then/then/else 477 479
+AP 34 "laexseq_main" "laaltdsm_layer_management" 490 490
+BL 15 simple "laexseq_main" /else/then/then/then/then 488 491
+AP 35 "laexseq_main" "laaltdsm_layer_management" 495 495
+BL 16 simple "laexseq_main" /else/then/then/then/else 493 497
+AP 36 "laexseq_main" "laal_manage_custo_key" 500 500
+AP 37 "laexseq_main" "laio_add_buffer_pa_size" 503 503
+BL 17 simple "laexseq_main" /else/then/then/then 485 508
+BL 18 simple "laexseq_main" /else/then/then/else 510 513
+AP 38 "laexseq_main" "laalsdmbox_layer_management" 527 527
+BL 19 simple "laexseq_main" /else/then/then/then/then 525 528
+AP 39 "laexseq_main" "laalsdmbox_layer_management" 532 532
+BL 20 simple "laexseq_main" /else/then/then/then/else 530 533
+AP 40 "laexseq_main" "laio_add_buffer_pa_size" 536 536
+BL 21 simple "laexseq_main" /else/then/then/then 522 541
+BL 22 simple "laexseq_main" /else/then/then/else 543 546
+AP 41 "laexseq_main" "lakbsw_main" 555 563
+AP 42 "laexseq_main" "laio_add_buffer_pa_size" 566 566
+BL 23 simple "laexseq_main" /else/then/then/then 550 570
+BL 24 simple "laexseq_main" /else/then/then/else 572 577
+AP 43 "laexseq_main" "lbport_read_time" 578 578
+AP 44 "laexseq_main" "la_update_mea_histo" 578 578
+AP 45 "laexseq_main" "lbport_read_time" 581 581
+AP 46 "laexseq_main" "labi_main" 582 582
+AP 47 "laexseq_main" "lbport_read_time" 583 583
+AP 48 "laexseq_main" "la_update_mea_histo" 583 583
+AP 49 "laexseq_main" "lbport_read_time" 586 586
+AP 50 "laexseq_main" "lasc_main" 587 587
+AP 51 "laexseq_main" "lbport_read_time" 588 588
+AP 52 "laexseq_main" "la_update_mea_histo" 588 588
+AP 53 "laexseq_main" "lbport_read_time" 591 591
+AP 54 "laexseq_main" "laio_output" 592 592
+AP 55 "laexseq_main" "lbport_read_time" 593 593
+AP 56 "laexseq_main" "la_update_mea_histo" 593 593
+BL 25 simple "laexseq_main" /else/then/then 400 594
+AP 57 "laexseq_main" "laalntd_layer_management" 604 606
+AP 58 "laexseq_main" "laio_add_buffer_pa_size" 608 608
+AP 59 "laexseq_main" "laalntd_checkered_box_management" 614 616
+AP 60 "laexseq_main" "laio_add_buffer_pa_size" 618 618
+AP 61 "laexseq_main" "laiolapa_send_a661" 620 620
+BL 26 simple "laexseq_main" /else/then/else/then 596 621
+BL 27 simple "laexseq_main" /else/then/else/else 623 626
+BL 28 simple "laexseq_main" /else/then/else 595 626
+BL 29 simple "laexseq_main" /else/then 343 631
+BL 30 simple "laexseq_main" /else/else 633 637
+BL 31 simple "laexseq_main" /else/then 645 648
+AP 62 "laexseq_main" "la_init_mea_histo" 652 652
+BL 32 simple "laexseq_main" /else/else 650 653
+AP 63 "laexseq_main" "PERIODIC_WAIT" 656 656
+BL 33 simple "laexseq_main" /else/then 658 661
+AP 64 "laexseq_main" "lbfl_mng" 665 672
+BL 34 simple "laexseq_main" /else/else 663 673
+BL 35 simple "laexseq_main" /else 312 674
+PR 0 return "laexseq_main" 675 675
+PR 1 proc "laexseq_main" 252 676
+BL 36 simple "laexseq_main" / 252 676
+BL 37 simple "la_update_mea_histo" /then/then 713 715
+BL 38 simple "la_update_mea_histo" /then/else 717 719
+BL 39 simple "la_update_mea_histo" /then/then 721 723
+BL 40 simple "la_update_mea_histo" /then/else 725 727
+BL 41 simple "la_update_mea_histo" /then/then 731 733
+BL 42 simple "la_update_mea_histo" /then/else 735 737
+BL 43 simple "la_update_mea_histo" /then 710 742
+AP 65 "la_update_mea_histo" "lbfl_mng" 746 753
+BL 44 simple "la_update_mea_histo" /else 744 754
+PR 2 return "la_update_mea_histo" 756 756
+PR 3 proc "la_update_mea_histo" 706 757
+BL 45 simple "la_update_mea_histo" / 706 757
+BL 46 simple "la_init_mea_histo" /for/for 785 787
+BL 47 logical "la_init_mea_histo" /for/for/0 784 787
+BL 48 logical "la_init_mea_histo" /for/for/1 784 787
+BL 49 logical "la_init_mea_histo" /for/for/2+ 784 787
+BL 50 simple "la_init_mea_histo" /for 783 793
+BL 51 logical "la_init_mea_histo" /for/0 782 793
+BL 52 logical "la_init_mea_histo" /for/1 782 793
+BL 53 logical "la_init_mea_histo" /for/2+ 782 793
+BL 54 simple "la_init_mea_histo" /for/for 798 800
+BL 55 logical "la_init_mea_histo" /for/for/0 797 800
+BL 56 logical "la_init_mea_histo" /for/for/1 797 800
+BL 57 logical "la_init_mea_histo" /for/for/2+ 797 800
+BL 58 simple "la_init_mea_histo" /for 796 806
+BL 59 logical "la_init_mea_histo" /for/0 795 806
+BL 60 logical "la_init_mea_histo" /for/1 795 806
+BL 61 logical "la_init_mea_histo" /for/2+ 795 806
+PR 4 return "la_init_mea_histo" 810 810
+PR 5 proc "la_init_mea_histo" 778 811
+BL 62 simple "la_init_mea_histo" / 778 811
+DC 2105402866
+@RIK
+  TOKEN="CCOV"
+  SRC="LAEXSEQ_MAIN.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\LA\LAEX\SRC\"
+  DATE=1301919383
+  CHECKSUM=2105402866
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions",
+    "&Modified conditions",
+    "M&ultiple conditions")
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="LAEXSEQ_MAIN.C"@@COMMENT@/******************************************************************************
+ **
+ **                                   ==============
+ **                                   IDENTIFICATION
+ **                                   ==============
+ **
+ **
+ **
+ **  Filename            : Laexseq_main.c
+ **
+ **  Author/ Company     : THALES Services
+ **
+ **  Creation date       : 05/06/2006
+ **
+ **  Copyright statement : Copyright (C); 2002
+ **                        THALES Avionics
+ **
+ **  Module description  : Local Application EXecution comPonent INItialization
+ **                        => Scheduling of the periodic CSC : LA
+ **
+ **
+ *****************************************************************************/@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Project specific includes
+ *****************************************************************************/@/COMMENT@
+
+@COMMENT@/* MACS TYPES */@/COMMENT@
+
+@COMMENT@#include "COD_A653_API_COMMON.h"@/COMMENT@
+@COMMENT@#include "apsw_basic_types_c.h"@/COMMENT@
+@COMMENT@#include "lbfl.h"@/COMMENT@
+@COMMENT@#include "THEMIS_BASIC_TYPES.h"@/COMMENT@
+
+@COMMENT@/* SA TYPES */@/COMMENT@
+
+@COMMENT@/* PLATFORM TYPES */@/COMMENT@
+
+@COMMENT@/* CALLED CSU TYPES */@/COMMENT@
+@COMMENT@#include "laex_fsc_error_desc_config.h"@/COMMENT@
+@COMMENT@#include "Laex_global_man.h"@/COMMENT@
+@COMMENT@#include "laexpini_partition_config_ifc.h"@/COMMENT@
+@COMMENT@#include "none_section.h"@/COMMENT@
+@COMMENT@#include "laiolapa_ifc.h"@/COMMENT@
+
+@COMMENT@/* CALLED CSU PROTOTYPES */@/COMMENT@
+@COMMENT@#include "lba661_types.h"@/COMMENT@
+@COMMENT@#include "Laio.h"@/COMMENT@
+@COMMENT@#include "Labi.h"@/COMMENT@
+@COMMENT@#include "lasc.h"@/COMMENT@
+@COMMENT@#include "laal.h"@/COMMENT@
+@COMMENT@#include "LAKBSW_MAIN.h"@/COMMENT@
+@COMMENT@#include "Lba661.h"@/COMMENT@
+@COMMENT@#include "Lafl.h"@/COMMENT@
+@COMMENT@#include "Laal.h"@/COMMENT@
+@COMMENT@#include "lama_main.p"@/COMMENT@
+@COMMENT@#include "lame_main.p"@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Module specific includes
+ *****************************************************************************/@/COMMENT@
+
+@COMMENT@#include "Laexseq_main.p"@/COMMENT@
+@COMMENT@#include "laal_manage_SA_variable.p"@/COMMENT@
+@COMMENT@#include "laal_manage_custo_key.p"@/COMMENT@
+@COMMENT@#include "laalntd_checkered_box_management.p"@/COMMENT@
+@COMMENT@#include "laiolapa_send_a661.p"@/COMMENT@
+
+extern void LA(void);
+
+@COMMENT@/* Layer ID of layers NTD checkered box, NTD header, VD header, A661_CDS_TDSM and A661_CDS_SD_MBOX */@/COMMENT@
+@COMMENT@#define K_NTD_CHECKERED_BOX_LAYER_ID 58@/COMMENT@
+@COMMENT@#define K_NTD_A661_HEADER_LAYER_ID 61@/COMMENT@
+@COMMENT@#define K_VD_A661_HEADER_LAYER_ID  62@/COMMENT@
+@COMMENT@#define K_TDSM661_LAYER_ID 140@/COMMENT@
+@COMMENT@#define K_SD_MBOX661_LAYER_ID 145@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           LA measurements
+ *****************************************************************************/@/COMMENT@
+@COMMENT@#include "laex_measure.h"@/COMMENT@
+
+@COMMENT@#ifndef TARGET_RELEASE@/COMMENT@
+@COMMENT@/* Use performance measure instrumentation in debug versions only */@/COMMENT@
+T_la_time_mea tr_la_time_mea_table[K_MAX_TIME_MEA_PER_SEQ];
+T_la_time_mea tr_la_auto_code_table[K_MAX_AUTO_CODE_FUNC];
+T_uint32	ul_la_mea_reinit;
+
+static void la_init_mea_histo (void);
+
+typedef  const struct
+{
+    T_char name[16];
+} T_cst_char_name;
+
+@COMMENT@/*$ INITIALIZE TC_SEQ_FCT_NAME WITH THE FOLLOWING :                          */@/COMMENT@
+T_cst_char_name TC_SEQ_FCT_NAME [K_MAX_TIME_MEA_PER_SEQ] =
+{
+    "laio_input",
+    "laio_output",
+    "laflprc1_main",
+    "Appli_locale",
+    "labi_main",
+    "lasc_main",
+    "lama_main",
+    "lame_main"
+};
+
+T_cst_char_name TC_AUTO_LA_NAME [K_MAX_AUTO_CODE_FUNC] =
+{
+
+    "LA",
+
+    "BCOMSELECT",
+    "BOUTDFDR",
+
+    "ZCOMSELECTELEC",
+    "ZCOMSELECTEBCU",
+
+    "ZCOMSELECTACSVCS",
+    "ZCOMSELECTHLS",
+    "ZCOMSELECTHSMU",
+    "ZCOMSELECTKCS",
+    "ZCOMSELECTSCS",
+    "ZCOMSELECTSDS",
+    "ZCOMSELECTDME",
+    "ZCOMSELECTILS",
+
+    "ZCOMSELECTAICU",
+    "ZCOMSELECTBCC",
+    "ZCOMSELECTLMC",
+    "ZCOMSELECTOSCU",
+    "ZCOMSELECTPRIM",
+    "ZCOMSELECTVOR",
+    "ZCOMSELECTADF",
+    "ZCOMSELECTTAC",
+    "ZCOMEDSENTMPL",
+    "ZCOMEDTMPL",
+    "ZCOMNDPFDTMPL",
+    "ZCOMEDTMPLPTRIM",
+    "ZCOMSENEDTMPL",
+
+    "BCOM",
+    "ZCOMNDPFD",
+    "FOUT",
+    "BOUTFTE",
+    "FBITESTART",
+    "BBITESTARTGEN",
+    "BBITESTARTGND",
+    "BBITEFWSA429",
+    "BBITEFQMSA429",
+
+    "FPFDTMPL",
+    "FFMATMPL",
+    "FNDTMPL",
+    "BCOMEDSENTMPL",
+    "FVDTMPL",
+    "FSDTMPL",
+    "FMSGZONETMPL",
+    "BCOMNAV",
+
+    "FPFD",
+    "FFMA",
+
+    "FNDRVD",
+    "FNTDVIDEO",
+    "FNDA661",
+    "FNDCOM",
+    "FNDGEN",
+    "FVDA661",
+    "FVDGEN",
+    "FVD",
+
+    "BCOMNDPFD",
+    "NCOMNDPFDATT",
+    "RAIOM_13",
+    "RAIOM_14",
+    "GADIRUATTHDG_1",
+
+    "FCOM",
+    "ATC",
+    "BLACK",
+    "COMMUNICATION",
+    "EWD",
+    "FMD",
+    "FUEL",
+    "GT",
+    "MESSAGEZONE",
+    "NTD",
+    "PFD",
+    "SD",
+    "SURV",
+    "TDSM",
+    "VD",
+    "VIDEO",
+    "FBITE",
+};
+
+@COMMENT@#define K_LAEXSEQ_SAMPLE_NUMBER_LIMIT 126000UL@/COMMENT@
+
+@COMMENT@#endif@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Local file declarations
+ *****************************************************************************/@/COMMENT@
+
+@COMMENT@/* For UADK set parameter messages to be incoporated in TX_CHANNEL_LA_TO_PA_BUF */@/COMMENT@
+T_char LAEXSEQ_UADK_LA_TO_PA_BUF [K_LAIO_QPORT_TO_PA_MAX_SIZE/2];
+T_uint32 LAEXSEQ_UADK_LA_TO_PA_SIZE;
+
+@COMMENT@/* Cycle duration in second */@/COMMENT@
+@COMMENT@#define K_CYCLE_DURATION_S 0.033F@/COMMENT@
+
+@COMMENT@/* Cycle duration in millesecond */@/COMMENT@
+@COMMENT@#define K_CYCLE_DURATION_MS 33@/COMMENT@
+
+@COMMENT@/* Local HMI variable*/@/COMMENT@
+@COMMENT@#define K_TDSM_NO_REQUEST 99@/COMMENT@
+@COMMENT@#define K_SD_MBOX_NO_REQUEST 99@/COMMENT@
+
+@COMMENT@/* Variables produce in LA and provide to comInterPart */@/COMMENT@
+extern T_uint32 ul_sarm_tdsm_page_requested;
+extern T_uint32 ul_sarm_mailbox_requested;
+
+@COMMENT@/* Variables used to detect a transition 0->1 of the BA*/@/COMMENT@
+static T_boolean b_last_BA_CDS_TDSM;
+static T_boolean b_last_BA_CDS_SD_MBOX;
+
+@COMMENT@#define K_SARM_FORMAT_NTD1          2UL@/COMMENT@
+@COMMENT@#define K_SARM_FORMAT_NTD2          7UL@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** void laexseq_main
+ ***** 
+ ***** Description : 
+ *****
+ *****		Scheduling of the periodic CSC : LA Main
+ ***** 
+ ***** Input :
+ ***** 
+ *****      void : 
+ ***** 
+ ***** 
+ ***** Output : 
+ *****
+ *****		void
+ ***** 
+ *****************************************************************************/@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="laexseq_main"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="laexseq_main"@laexseq_main@/BRANCH@(void)
+@BRANCH MARK=TB ID=36 SUM=20@{
+@COMMENT@#ifdef TARGET_AP2633@/COMMENT@
+    static RETURN_CODE_TYPE loc_e_ret_code;
+    static T_uint32 loc_ul_size;
+    static T_uchar *loc_puc_buffer_ad;
+    static T_uchar *loc_puc_buffer_ad_sav;
+    static T_uint32 loc_ul_cycle_number;
+    static T_uint32 loc_i;
+    static T_INT    loc_prev_disp_fmt;
+
+    static T_uint32 loc_ul_init_cycle_number;
+    static T_uint32 loc_ul_sav_cycle_number;
+
+    static T_uint32 loc_first_frame = 1;
+@COMMENT@@COMMENT@#else@/COMMENT@
+    RETURN_CODE_TYPE loc_e_ret_code;
+    T_uint32 loc_ul_size;
+    T_uchar *loc_puc_buffer_ad;
+    T_uchar *loc_puc_buffer_ad_sav;
+    T_uint32 loc_ul_cycle_number;
+    T_uint32 loc_i;
+    T_INT    loc_prev_disp_fmt;
+
+    T_uint32 loc_ul_init_cycle_number;
+    T_uint32 loc_ul_sav_cycle_number;
+@/COMMENT@@COMMENT@#endif@/COMMENT@
+    T_boolean loc_b_ntd_mode_change;
+
+    LAEXSEQ_PERF_MEASURE_DECL
+
+@COMMENT@#ifdef TARGET_AP2633@/COMMENT@
+    @DECISION SUM=20+21 ID=0|35@if (loc_first_frame != 0)
+    @BRANCH MARK=TB ID=0 SUM=20@{
+@COMMENT@#endif@/COMMENT@
+    @COMMENT@/* Initialize */@/COMMENT@
+    loc_ul_init_cycle_number = 0;
+    loc_prev_disp_fmt = 0;
+    @COMMENT@/* Initialize the cycle number in ms */@/COMMENT@
+    loc_ul_cycle_number = 0UL;
+
+    @COMMENT@/* Start Value for l_cycle_number */@/COMMENT@
+    @COMMENT@/* 0 when coming from long power cut*/@/COMMENT@
+    @COMMENT@/* non zero value when coming from short power cut */@/COMMENT@
+    loc_ul_sav_cycle_number = l_cycle_nb;
+
+@COMMENT@#ifndef TARGET_RELEASE@/COMMENT@
+    @BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="la_init_mea_histo"@la_init_mea_histo@/JUMP@()@/BRANCH@;
+@COMMENT@#endif@/COMMENT@
+
+    @COMMENT@/*Initialization*/@/COMMENT@
+    b_last_BA_CDS_TDSM = K_BOOL_FALSE;
+    b_last_BA_CDS_SD_MBOX = K_BOOL_FALSE;
+
+@COMMENT@#ifdef TARGET_AP2633@/COMMENT@
+    loc_first_frame = 0;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=35 SUM=20@else
+@COMMENT@@COMMENT@#else@/COMMENT@
+    for (;;)
+@/COMMENT@@COMMENT@#endif@/COMMENT@
+    {
+        @COMMENT@/* Set LA process stack top address (for lbfl/lbport) */@/COMMENT@
+        pl_stack_start_area_addr = &loc_ul_cycle_number;
+
+        @COMMENT@/* Set to PROCESS_1 the PROCESS ID GV   */@/COMMENT@
+        e_laexpini_process_id = K_LAEXPINI_E_PROCESS_1;
+
+        
+        @ALT@LAEXSEQ_PERF_MEASURE_START@-ALT@
+loc_ul_fct_start_time = @BRANCH MARK=TA ID=1 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@;@/ALT@
+        @BRANCH MARK=TA ID=2 SUM=10@@JUMP NAME="laflprc1_main"@laflprc1_main@/JUMP@()@/BRANCH@;
+        @ALT@LAEXSEQ_PERF_MEASURE_STOP(K_LAEXSEQ_FCT_laflprc1_main)@-ALT@
+loc_ul_fct_end_time = @BRANCH MARK=TA ID=3 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@; @BRANCH MARK=TA ID=4 SUM=10@@JUMP NAME="la_update_mea_histo"@la_update_mea_histo@/JUMP@ (loc_ul_fct_start_time, loc_ul_fct_end_time, &tr_la_time_mea_table[K_LAEXSEQ_FCT_laflprc1_main])@/BRANCH@;@/ALT@
+
+        @COMMENT@/* Reset output buffer */@/COMMENT@
+        @BRANCH MARK=TA ID=5 SUM=10@@JUMP NAME="laio_reset_buffer_pa_size"@laio_reset_buffer_pa_size@/JUMP@()@/BRANCH@;
+
+        @COMMENT@/* Reinit page_requested for Local HMI */@/COMMENT@
+        ul_sarm_tdsm_page_requested = K_TDSM_NO_REQUEST;
+        ul_sarm_mailbox_requested = K_SD_MBOX_NO_REQUEST;
+
+        @COMMENT@/* Read input from SA and PA */@/COMMENT@
+        @ALT@LAEXSEQ_PERF_MEASURE_START@-ALT@
+loc_ul_fct_start_time = @BRANCH MARK=TA ID=6 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@;@/ALT@
+        @BRANCH MARK=TA ID=7 SUM=10@@JUMP NAME="laio_input"@laio_input@/JUMP@()@/BRANCH@;
+        @ALT@LAEXSEQ_PERF_MEASURE_STOP(K_LAEXSEQ_FCT_laio_input)@-ALT@
+loc_ul_fct_end_time = @BRANCH MARK=TA ID=8 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@; @BRANCH MARK=TA ID=9 SUM=10@@JUMP NAME="la_update_mea_histo"@la_update_mea_histo@/JUMP@ (loc_ul_fct_start_time, loc_ul_fct_end_time, &tr_la_time_mea_table[K_LAEXSEQ_FCT_laio_input])@/BRANCH@;@/ALT@
+
+        @COMMENT@/*  Call the lama main */@/COMMENT@
+        @ALT@LAEXSEQ_PERF_MEASURE_START@-ALT@
+loc_ul_fct_start_time = @BRANCH MARK=TA ID=10 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@;@/ALT@
+        @BRANCH MARK=TA ID=11 SUM=10@@JUMP NAME="lama_main"@lama_main@/JUMP@()@/BRANCH@;
+        @ALT@LAEXSEQ_PERF_MEASURE_STOP(K_LAEXSEQ_FCT_lama_main)@-ALT@
+loc_ul_fct_end_time = @BRANCH MARK=TA ID=12 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@; @BRANCH MARK=TA ID=13 SUM=10@@JUMP NAME="la_update_mea_histo"@la_update_mea_histo@/JUMP@ (loc_ul_fct_start_time, loc_ul_fct_end_time, &tr_la_time_mea_table[K_LAEXSEQ_FCT_lama_main])@/BRANCH@;@/ALT@
+
+        @COMMENT@/* If LA has been initialized */@/COMMENT@
+        @DECISION SUM=20+21 ID=29|30@if (b_la_init == K_BOOL_FALSE)
+        @BRANCH MARK=TB ID=29 SUM=20@{
+            @DECISION SUM=20+21 ID=1|2@if ((loc_prev_disp_fmt == DISP_FMT)
+                && ((DISP_FMT == K_SARM_FORMAT_NTD1)
+                    || (DISP_FMT == K_SARM_FORMAT_NTD2)))
+            @BRANCH MARK=TB ID=1 SUM=20@{
+                loc_b_ntd_mode_change = K_BOOL_TRUE;
+            }@/BRANCH@
+            @BRANCH MARK=TB ID=2 SUM=20@else
+            {
+                loc_b_ntd_mode_change = K_BOOL_FALSE;
+            }@/BRANCH@@/DECISION@
+
+            @COMMENT@/* Initialization of ppuc_buffer_ad variables */@/COMMENT@
+            loc_puc_buffer_ad = @BRANCH MARK=TA ID=14 SUM=10@@JUMP NAME="laio_get_buffer_pa_address"@laio_get_buffer_pa_address@/JUMP@()@/BRANCH@;
+            loc_puc_buffer_ad_sav = loc_puc_buffer_ad;
+            
+            @COMMENT@/* First Call after the LA end of init */@/COMMENT@
+            @DECISION SUM=20+21 ID=3|4@if (loc_ul_init_cycle_number == 0)
+            @BRANCH MARK=TB ID=3 SUM=20@{
+                @COMMENT@/* Increment during init phase is not take into account */@/COMMENT@
+                @COMMENT@/* Set to the start value */@/COMMENT@
+                l_cycle_nb = loc_ul_sav_cycle_number;
+
+                @COMMENT@/* lock the init */@/COMMENT@
+                loc_ul_init_cycle_number = 1;
+            }@/BRANCH@
+            @BRANCH MARK=TB ID=4 SUM=20@else
+            {
+                @COMMENT@/* Wait for the 2nd cycle after init before
+                 * calling lame, because it needs inputs
+                 * computed by LA() the first time it's called. */@/COMMENT@
+                @ALT@LAEXSEQ_PERF_MEASURE_START@-ALT@
+loc_ul_fct_start_time = @BRANCH MARK=TA ID=15 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@;@/ALT@
+                @BRANCH MARK=TA ID=16 SUM=10@@JUMP NAME="lame_main"@lame_main@/JUMP@ ()@/BRANCH@;
+                @ALT@LAEXSEQ_PERF_MEASURE_STOP(K_LAEXSEQ_FCT_lame_main)@-ALT@
+loc_ul_fct_end_time = @BRANCH MARK=TA ID=17 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@; @BRANCH MARK=TA ID=18 SUM=10@@JUMP NAME="la_update_mea_histo"@la_update_mea_histo@/JUMP@ (loc_ul_fct_start_time, loc_ul_fct_end_time, &tr_la_time_mea_table[K_LAEXSEQ_FCT_lame_main])@/BRANCH@;@/ALT@
+            }@/BRANCH@@/DECISION@
+
+            @COMMENT@/* Increment the cycle variable */@/COMMENT@
+            l_cycle_nb = l_cycle_nb + 1;
+
+            @BRANCH MARK=TA ID=19 SUM=10@@JUMP NAME="laio_init_pointer_buffer"@laio_init_pointer_buffer@/JUMP@(&loc_puc_buffer_ad)@/BRANCH@;
+
+            @COMMENT@/* Reset UADK buffer size before calling LA */@/COMMENT@
+            LAEXSEQ_UADK_LA_TO_PA_SIZE = 0;
+
+            @COMMENT@/* Call the entry point of the main sequencer of LA */@/COMMENT@
+            @ALT@LAEXSEQ_PERF_MEASURE_START@-ALT@
+loc_ul_fct_start_time = @BRANCH MARK=TA ID=20 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@;@/ALT@
+            @BRANCH MARK=TA ID=21 SUM=10@@JUMP NAME="LA"@LA@/JUMP@()@/BRANCH@;
+            @ALT@LAEXSEQ_PERF_MEASURE_AUTO_CODE_STOP(K_LAEXSEQ_FCT_AUTOCODE_LA)@-ALT@
+loc_ul_fct_end_time = @BRANCH MARK=TA ID=22 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@; @BRANCH MARK=TA ID=23 SUM=10@@JUMP NAME="la_update_mea_histo"@la_update_mea_histo@/JUMP@ (loc_ul_fct_start_time, loc_ul_fct_end_time, &tr_la_auto_code_table[K_LAEXSEQ_FCT_AUTOCODE_LA])@/BRANCH@;@/ALT@
+
+            @COMMENT@/* Set the BRECONF to False after the first call */@/COMMENT@
+            BRECONF_LA = K_BOOL_FALSE;
+
+            @BRANCH MARK=TA ID=24 SUM=10@@JUMP NAME="laal_manage_SA_variable"@laal_manage_SA_variable@/JUMP@()@/BRANCH@;
+
+            @COMMENT@/* Send A661_SET_PARAMETER commands to the PDUSW (PA) partition as long as */@/COMMENT@
+            @COMMENT@/* the variable RECONF_STARTED is set to FLASE by the SA partition.        */@/COMMENT@
+            @DECISION SUM=20+21 ID=25|28@if (RECONF_STARTED == K_BOOL_FALSE)
+            @BRANCH MARK=TB ID=25 SUM=20@{
+
+                @ALT@LAEXSEQ_PERF_MEASURE_START@-ALT@
+loc_ul_fct_start_time = @BRANCH MARK=TA ID=25 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@;@/ALT@
+                @COMMENT@/* computes buffer size */@/COMMENT@
+                loc_ul_size = (T_uint32) (loc_puc_buffer_ad - loc_puc_buffer_ad_sav);
+
+                @COMMENT@/* Add the data to the output buffer */@/COMMENT@
+                @BRANCH MARK=TA ID=26 SUM=10@@JUMP NAME="laio_add_buffer_pa_size"@laio_add_buffer_pa_size@/JUMP@(loc_ul_size)@/BRANCH@;
+
+                @DECISION SUM=20+21 ID=9|10@if (LAEXSEQ_UADK_LA_TO_PA_SIZE > 0)
+                @BRANCH MARK=TB ID=9 SUM=20@{
+                    loc_ul_size = LAEXSEQ_UADK_LA_TO_PA_SIZE;
+                    @COMMENT@/* Copie UADK buffer to the buffer sent to PA */@/COMMENT@
+                    @POPUP@for@-POPUP@loop branches :
+@BRANCH MARK=TB ID=6 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=7 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=8 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (loc_i = 0 ; loc_i < loc_ul_size ; loc_i ++)
+                    @BRANCH MARK=TB ID=5 SUM=20@{
+                        loc_puc_buffer_ad [loc_i] = LAEXSEQ_UADK_LA_TO_PA_BUF [loc_i];
+                    }@/BRANCH@
+                    @BRANCH MARK=TA ID=27 SUM=10@@JUMP NAME="laio_add_buffer_pa_size"@laio_add_buffer_pa_size@/JUMP@ (loc_ul_size)@/BRANCH@;
+                    @COMMENT@/* Updates buffer adresse */@/COMMENT@
+                    loc_puc_buffer_ad += loc_ul_size;
+                }@/BRANCH@
+                @BRANCH MARK=TB ID=10 SUM=20@else
+                {
+                    @COMMENT@/* Nothing to do */@/COMMENT@
+                }@/BRANCH@@/DECISION@
+
+                @COMMENT@/* call the local NTD User Application if the layer */@/COMMENT@
+                @COMMENT@/* NTD_A661_HEADER is present in the current configuration */@/COMMENT@
+                @COMMENT@/* Check if the activation boolean of this layer is TRUE */@/COMMENT@
+                @DECISION SUM=20+21 ID=11|12@if (BA_FNDCOM == K_BOOL_TRUE)
+                @BRANCH MARK=TB ID=11 SUM=20@{ 
+                    @COMMENT@/* call the function managing the NTD Local User Application */@/COMMENT@
+                    loc_ul_size = 0;
+                    @BRANCH MARK=TA ID=28 SUM=10@@JUMP NAME="laalntd_layer_management"@laalntd_layer_management@/JUMP@ (K_NTD_A661_HEADER_LAYER_ID,
+                                              &loc_ul_size,
+                                              loc_puc_buffer_ad)@/BRANCH@;
+
+                    @COMMENT@/* Add the size to the output buffer */@/COMMENT@
+                    @BRANCH MARK=TA ID=29 SUM=10@@JUMP NAME="laio_add_buffer_pa_size"@laio_add_buffer_pa_size@/JUMP@(loc_ul_size)@/BRANCH@;
+                    
+                    @COMMENT@/* Update buffer adresse */@/COMMENT@
+                    loc_puc_buffer_ad += loc_ul_size;
+
+                    @COMMENT@/* call the function managing the NTD Checkered Box */@/COMMENT@
+                    loc_ul_size = 0;
+                    @BRANCH MARK=TA ID=30 SUM=10@@JUMP NAME="laalntd_checkered_box_management"@laalntd_checkered_box_management@/JUMP@ (K_NTD_CHECKERED_BOX_LAYER_ID,
+                                                      &loc_ul_size,
+                                                      loc_puc_buffer_ad)@/BRANCH@;
+
+                    @COMMENT@/* Add the size to the output buffer */@/COMMENT@
+                    @BRANCH MARK=TA ID=31 SUM=10@@JUMP NAME="laio_add_buffer_pa_size"@laio_add_buffer_pa_size@/JUMP@(loc_ul_size)@/BRANCH@;
+                    
+                    @COMMENT@/* Update buffer adresse */@/COMMENT@
+                    loc_puc_buffer_ad += loc_ul_size;
+                }@/BRANCH@
+                @BRANCH MARK=TB ID=12 SUM=20@else
+                {
+                    @COMMENT@/* Nothing to Do */@/COMMENT@
+                    ;
+                }@/BRANCH@@/DECISION@
+
+                @COMMENT@/* call the local VD User Application if the layer */@/COMMENT@
+                @COMMENT@/* VD_A661_Header is present in the current configuration */@/COMMENT@
+                @COMMENT@/* Check if the activation boolean of this layer is TRUE */@/COMMENT@
+                @DECISION SUM=20+21 ID=13|14@if (BA_VDA661 == K_BOOL_TRUE)
+                @BRANCH MARK=TB ID=13 SUM=20@{
+                    @COMMENT@/* call the function managing the VD Local User Application */@/COMMENT@
+                    loc_ul_size = 0;
+                    @BRANCH MARK=TA ID=32 SUM=10@@JUMP NAME="laalvd_layer_management"@laalvd_layer_management@/JUMP@ (K_VD_A661_HEADER_LAYER_ID, &loc_ul_size, loc_puc_buffer_ad)@/BRANCH@;
+
+                    @COMMENT@/* Add the size to the output buffer */@/COMMENT@
+                    @BRANCH MARK=TA ID=33 SUM=10@@JUMP NAME="laio_add_buffer_pa_size"@laio_add_buffer_pa_size@/JUMP@(loc_ul_size)@/BRANCH@;
+
+                    @COMMENT@/* Update buffer adresse */@/COMMENT@
+                    loc_puc_buffer_ad += loc_ul_size;
+                }@/BRANCH@
+                @BRANCH MARK=TB ID=14 SUM=20@else
+                {
+                    @COMMENT@/* Nothing to Do */@/COMMENT@
+                }@/BRANCH@@/DECISION@
+
+                @COMMENT@/* call the local TDSM User Application if the layer */@/COMMENT@
+                @COMMENT@/* TDSM_A661_Header is present in the current configuration */@/COMMENT@
+                @COMMENT@/* Check if the activation boolean of this layer is TRUE */@/COMMENT@
+                @DECISION SUM=20+21 ID=17|18@if (BA_CDS_TDSM == K_BOOL_TRUE)
+                @BRANCH MARK=TB ID=17 SUM=20@{ 
+                    loc_ul_size = 0;
+                    @DECISION SUM=20+21 ID=15|16@if (b_last_BA_CDS_TDSM == K_BOOL_FALSE)
+                    @BRANCH MARK=TB ID=15 SUM=20@{
+                        @COMMENT@/* The layer was not present at the last cycle*/@/COMMENT@
+                        @BRANCH MARK=TA ID=34 SUM=10@@JUMP NAME="laaltdsm_layer_management"@laaltdsm_layer_management@/JUMP@(K_TDSM661_LAYER_ID, &loc_ul_size, loc_puc_buffer_ad, K_BOOL_TRUE)@/BRANCH@;
+                    }@/BRANCH@
+                    @BRANCH MARK=TB ID=16 SUM=20@else
+                    {
+                        @COMMENT@/* call the function managing the Local User Application */@/COMMENT@
+                        @BRANCH MARK=TA ID=35 SUM=10@@JUMP NAME="laaltdsm_layer_management"@laaltdsm_layer_management@/JUMP@ (K_TDSM661_LAYER_ID, &loc_ul_size, loc_puc_buffer_ad, K_BOOL_FALSE)@/BRANCH@;
+
+                    }@/BRANCH@@/DECISION@
+                    
+                    @COMMENT@/* Treat the custo shortcut */@/COMMENT@
+                    @BRANCH MARK=TA ID=36 SUM=10@@JUMP NAME="laal_manage_custo_key"@laal_manage_custo_key@/JUMP@()@/BRANCH@;
+                    
+                    @COMMENT@/* Add the size to the output buffer */@/COMMENT@
+                    @BRANCH MARK=TA ID=37 SUM=10@@JUMP NAME="laio_add_buffer_pa_size"@laio_add_buffer_pa_size@/JUMP@(loc_ul_size)@/BRANCH@;
+
+                    @COMMENT@/* Update buffer adresse */@/COMMENT@
+                    loc_puc_buffer_ad += loc_ul_size;
+                    
+                }@/BRANCH@
+                @BRANCH MARK=TB ID=18 SUM=20@else
+                {
+                    @COMMENT@/* Nothing to Do */@/COMMENT@
+                    ;
+                }@/BRANCH@@/DECISION@
+
+                @COMMENT@/*Memorize the BA_CDS_TDSM for next cycle*/@/COMMENT@
+                b_last_BA_CDS_TDSM = BA_CDS_TDSM;
+
+                @COMMENT@/* call the local SD MBOX User Application if the layer */@/COMMENT@
+                @COMMENT@/* SD_MBOX_A661_Header is present in the current configuration */@/COMMENT@
+                @COMMENT@/* Check if the activation boolean of this layer is TRUE */@/COMMENT@
+                @DECISION SUM=20+21 ID=21|22@if ((BA_CDS_SD_MBOX == K_BOOL_TRUE) || (BA_FMAILBOXFAIL == K_BOOL_TRUE))
+                @BRANCH MARK=TB ID=21 SUM=20@{
+                    loc_ul_size = 0;
+                    @DECISION SUM=20+21 ID=19|20@if(b_last_BA_CDS_SD_MBOX == K_BOOL_FALSE)
+                    @BRANCH MARK=TB ID=19 SUM=20@{
+                        @COMMENT@/* The layer was not present at the last cycle*/@/COMMENT@
+                        @BRANCH MARK=TA ID=38 SUM=10@@JUMP NAME="laalsdmbox_layer_management"@laalsdmbox_layer_management@/JUMP@ (K_SD_MBOX661_LAYER_ID, &loc_ul_size, loc_puc_buffer_ad, K_BOOL_TRUE)@/BRANCH@;
+                    }@/BRANCH@
+                    @BRANCH MARK=TB ID=20 SUM=20@else
+                    {
+                        @COMMENT@/* call the function managing the Local User Application */@/COMMENT@
+                        @BRANCH MARK=TA ID=39 SUM=10@@JUMP NAME="laalsdmbox_layer_management"@laalsdmbox_layer_management@/JUMP@ (K_SD_MBOX661_LAYER_ID, &loc_ul_size, loc_puc_buffer_ad, K_BOOL_FALSE)@/BRANCH@;
+                    }@/BRANCH@@/DECISION@
+
+                    @COMMENT@/* Add the size to the output buffer */@/COMMENT@
+                    @BRANCH MARK=TA ID=40 SUM=10@@JUMP NAME="laio_add_buffer_pa_size"@laio_add_buffer_pa_size@/JUMP@(loc_ul_size)@/BRANCH@;
+
+                    @COMMENT@/* Update buffer adresse */@/COMMENT@
+                    loc_puc_buffer_ad += loc_ul_size;
+
+                }@/BRANCH@
+                @BRANCH MARK=TB ID=22 SUM=20@else
+                {
+                    @COMMENT@/* Nothing to Do */@/COMMENT@
+                    ;
+                }@/BRANCH@@/DECISION@
+
+                @COMMENT@/* Call the KCCU KBDSW set parameter if active */@/COMMENT@
+                @DECISION SUM=20+21 ID=23|24@if (BA_FKBDSW == K_BOOL_TRUE)
+                @BRANCH MARK=TB ID=23 SUM=20@{
+                    @COMMENT@/* buids the set parameter command */@/COMMENT@
+                    loc_ul_size = 0;
+
+                    @COMMENT@/* builds the command to send */@/COMMENT@
+                    @BRANCH MARK=TA ID=41 SUM=10@@JUMP NAME="lakbsw_main"@lakbsw_main@/JUMP@( (T_lakbsw_bool)    BRECONF_FKBDSW,
+                                 (T_lakbsw_uint32)  loc_ul_cycle_number, 
+                                 (T_lakbsw_uint32)  SWKBD_WIDGET_INITIAL_POS_Y,
+                                 (T_lakbsw_int32)   SWKBD_CCD_DX, 
+                                 (T_lakbsw_int32)   SWKBD_CCD_DY,
+                                 (T_lakbsw_bool)    SWKBD_CCD_CLICK,
+                                 (T_lakbsw_uint32 *)&SWKBD_KEY_CODE,
+                                 (T_lakbsw_char8  *)loc_puc_buffer_ad,
+                                 (T_lakbsw_uint32 *)&loc_ul_size)@/BRANCH@;
+
+                    @COMMENT@/* Add the size to the output buffer */@/COMMENT@
+                    @BRANCH MARK=TA ID=42 SUM=10@@JUMP NAME="laio_add_buffer_pa_size"@laio_add_buffer_pa_size@/JUMP@(loc_ul_size)@/BRANCH@;
+
+                    @COMMENT@/* Update buffer adresse */@/COMMENT@
+                    loc_puc_buffer_ad += loc_ul_size;
+                }@/BRANCH@
+                @BRANCH MARK=TB ID=24 SUM=20@else
+                {
+                    loc_ul_cycle_number = 0UL;
+
+                    @COMMENT@/* Reset the Key code elaborated by the Software keyboard */@/COMMENT@
+                    SWKBD_KEY_CODE = 0UL;
+                }@/BRANCH@@/DECISION@
+                @ALT@LAEXSEQ_PERF_MEASURE_STOP(K_LAEXSEQ_FCT_Applis_locale)@-ALT@
+loc_ul_fct_end_time = @BRANCH MARK=TA ID=43 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@; @BRANCH MARK=TA ID=44 SUM=10@@JUMP NAME="la_update_mea_histo"@la_update_mea_histo@/JUMP@ (loc_ul_fct_start_time, loc_ul_fct_end_time, &tr_la_time_mea_table[K_LAEXSEQ_FCT_Applis_locale])@/BRANCH@;@/ALT@
+
+                @COMMENT@/* Manages Bite errors */@/COMMENT@
+                @ALT@LAEXSEQ_PERF_MEASURE_START@-ALT@
+loc_ul_fct_start_time = @BRANCH MARK=TA ID=45 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@;@/ALT@
+                @BRANCH MARK=TA ID=46 SUM=10@@JUMP NAME="labi_main"@labi_main@/JUMP@()@/BRANCH@;
+                @ALT@LAEXSEQ_PERF_MEASURE_STOP(K_LAEXSEQ_FCT_labi_main)@-ALT@
+loc_ul_fct_end_time = @BRANCH MARK=TA ID=47 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@; @BRANCH MARK=TA ID=48 SUM=10@@JUMP NAME="la_update_mea_histo"@la_update_mea_histo@/JUMP@ (loc_ul_fct_start_time, loc_ul_fct_end_time, &tr_la_time_mea_table[K_LAEXSEQ_FCT_labi_main])@/BRANCH@;@/ALT@
+
+                @COMMENT@/*  Compute the local AFDX status */@/COMMENT@
+                @ALT@LAEXSEQ_PERF_MEASURE_START@-ALT@
+loc_ul_fct_start_time = @BRANCH MARK=TA ID=49 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@;@/ALT@
+                @BRANCH MARK=TA ID=50 SUM=10@@JUMP NAME="lasc_main"@lasc_main@/JUMP@()@/BRANCH@;
+                @ALT@LAEXSEQ_PERF_MEASURE_STOP(K_LAEXSEQ_FCT_lasc_main)@-ALT@
+loc_ul_fct_end_time = @BRANCH MARK=TA ID=51 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@; @BRANCH MARK=TA ID=52 SUM=10@@JUMP NAME="la_update_mea_histo"@la_update_mea_histo@/JUMP@ (loc_ul_fct_start_time, loc_ul_fct_end_time, &tr_la_time_mea_table[K_LAEXSEQ_FCT_lasc_main])@/BRANCH@;@/ALT@
+
+                @COMMENT@/*  Write output to PA or SA */@/COMMENT@
+                @ALT@LAEXSEQ_PERF_MEASURE_START@-ALT@
+loc_ul_fct_start_time = @BRANCH MARK=TA ID=53 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@;@/ALT@
+                @BRANCH MARK=TA ID=54 SUM=10@@JUMP NAME="laio_output"@laio_output@/JUMP@()@/BRANCH@;
+                @ALT@LAEXSEQ_PERF_MEASURE_STOP(K_LAEXSEQ_FCT_laio_output)@-ALT@
+loc_ul_fct_end_time = @BRANCH MARK=TA ID=55 SUM=10@@JUMP NAME="lbport_read_time"@lbport_read_time@/JUMP@()@/BRANCH@; @BRANCH MARK=TA ID=56 SUM=10@@JUMP NAME="la_update_mea_histo"@la_update_mea_histo@/JUMP@ (loc_ul_fct_start_time, loc_ul_fct_end_time, &tr_la_time_mea_table[K_LAEXSEQ_FCT_laio_output])@/BRANCH@;@/ALT@
+            }@/BRANCH@
+            @BRANCH MARK=TB ID=28 SUM=20@else @DECISION SUM=20+21 ID=26|27@if (loc_b_ntd_mode_change == K_BOOL_TRUE)
+            @BRANCH MARK=TB ID=26 SUM=20@{
+                @COMMENT@/* NTD1 or NTD2 mode change:
+                 * go on sending A661 messages regarding NTD_A661_header
+                 * and NTD_checkered_box */@/COMMENT@
+
+                loc_puc_buffer_ad = loc_puc_buffer_ad_sav;
+                loc_ul_size = 0;
+                @COMMENT@/* call the function managing the NTD Local User Application */@/COMMENT@
+                @BRANCH MARK=TA ID=57 SUM=10@@JUMP NAME="laalntd_layer_management"@laalntd_layer_management@/JUMP@ (K_NTD_A661_HEADER_LAYER_ID,
+                                          &loc_ul_size,
+                                          loc_puc_buffer_ad)@/BRANCH@;
+                @COMMENT@/* Add the size to the output buffer */@/COMMENT@
+                @BRANCH MARK=TA ID=58 SUM=10@@JUMP NAME="laio_add_buffer_pa_size"@laio_add_buffer_pa_size@/JUMP@(loc_ul_size)@/BRANCH@;
+
+                @COMMENT@/* Update buffer adress */@/COMMENT@
+                loc_puc_buffer_ad += loc_ul_size;
+                loc_ul_size = 0;
+                @COMMENT@/* call the function managing the NTD Checkered Box */@/COMMENT@
+                @BRANCH MARK=TA ID=59 SUM=10@@JUMP NAME="laalntd_checkered_box_management"@laalntd_checkered_box_management@/JUMP@ (K_NTD_CHECKERED_BOX_LAYER_ID,
+                                                  &loc_ul_size,
+                                                  loc_puc_buffer_ad)@/BRANCH@;
+                @COMMENT@/* Add the size to the output buffer */@/COMMENT@
+                @BRANCH MARK=TA ID=60 SUM=10@@JUMP NAME="laio_add_buffer_pa_size"@laio_add_buffer_pa_size@/JUMP@(loc_ul_size)@/BRANCH@;
+                
+                @BRANCH MARK=TA ID=61 SUM=10@@JUMP NAME="laiolapa_send_a661"@laiolapa_send_a661@/JUMP@ ()@/BRANCH@;
+            }@/BRANCH@
+            @BRANCH MARK=TB ID=27 SUM=20@else
+            {
+                @COMMENT@/* Nothing to do */@/COMMENT@
+                ;
+            }@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@
+            loc_prev_disp_fmt = DISP_FMT;
+            
+            @COMMENT@/*Memorize the BA_CDS_SD_MBOX for next cycle*/@/COMMENT@
+            b_last_BA_CDS_SD_MBOX = BA_CDS_SD_MBOX;
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=30 SUM=20@else
+        {
+            @COMMENT@/* LA is in init phase */@/COMMENT@
+            @COMMENT@/* Increment the cycle variable */@/COMMENT@
+            l_cycle_nb = l_cycle_nb + 1;
+        }@/BRANCH@@/DECISION@
+
+        @COMMENT@/* Compute the cycle number in milliseconds */@/COMMENT@
+        loc_ul_cycle_number += K_CYCLE_DURATION_MS;
+
+@COMMENT@#ifndef TARGET_RELEASE@/COMMENT@
+       @COMMENT@/* If the following flag has not been set through VT */@/COMMENT@
+       @DECISION SUM=20+21 ID=31|32@if (ul_la_mea_reinit != 1)
+       @BRANCH MARK=TB ID=31 SUM=20@{
+              @COMMENT@/* Nothing to do */@/COMMENT@
+              ;
+       }@/BRANCH@
+       @BRANCH MARK=TB ID=32 SUM=20@else
+       {
+              @COMMENT@/* Reset the data */@/COMMENT@
+              @BRANCH MARK=TA ID=62 SUM=10@@JUMP NAME="la_init_mea_histo"@la_init_mea_histo@/JUMP@ ()@/BRANCH@;
+       }@/BRANCH@@/DECISION@
+@COMMENT@#endif@/COMMENT@
+
+        @BRANCH MARK=TA ID=63 SUM=10@@JUMP NAME="PERIODIC_WAIT"@PERIODIC_WAIT@/JUMP@ (&loc_e_ret_code)@/BRANCH@;
+        @DECISION SUM=20+21 ID=33|34@if (loc_e_ret_code == NO_ERROR)
+        @BRANCH MARK=TB ID=33 SUM=20@{
+            @COMMENT@/* Nothing to do */@/COMMENT@
+            ;
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=34 SUM=20@else
+        {
+            @COMMENT@/* Raise a fatal error */@/COMMENT@
+            @BRANCH MARK=TA ID=64 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@(R_LAEX_FSC_ERR_CONFIG,
+                 K_LBFL_E_GNERR_SERV_TIMING_PERIODIC_WAIT,
+                 K_LAEX_LAEXSEQ_MAIN_ID_ATT,
+                 0,
+                 0,
+                 0,
+                 K_NULL_PTR,
+                 0)@/BRANCH@;
+        }@/BRANCH@@/DECISION@
+    }@/BRANCH@@/DECISION@
+    @BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=36@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+@COMMENT@#ifndef TARGET_RELEASE@/COMMENT@
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** void la_update_mea_histo 
+ ***** 
+ ***** Description : 
+ ***** 
+ *****		Update Measurement Histo
+ ***** 
+ ***** Input :
+ ***** 
+ *****		T_uint32		par_ul_start_time	:	Start Time
+ ***** 
+ *****      T_uint32		par_ul_end_time		:	End Time
+ ***** 
+ *****      T_la_time_mea	*par_pr_time_mea	:	Time Measurement
+ ***** 
+ ***** 
+ ***** Output :
+ *****
+ *****		void
+ ***** 
+ *****************************************************************************/@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="la_update_mea_histo"@@BRANCH MARK=TP ID=3 SUM=0@@LINK NAME="la_update_mea_histo"@la_update_mea_histo@/BRANCH@ (
+        T_uint32        par_ul_start_time,
+        T_uint32        par_ul_end_time,
+        T_la_time_mea   *par_pr_time_mea)
+
+@BRANCH MARK=TB ID=45 SUM=20@{
+    T_uint32 loc_ul_duration = (T_uint32) ( ((T_float32)(par_ul_end_time - par_ul_start_time)) / K_LBTRACE_TB_FREQ );
+
+    @DECISION SUM=20+21 ID=43|44@if (par_pr_time_mea != K_NULL_PTR)
+    @BRANCH MARK=TB ID=43 SUM=20@{
+        @COMMENT@/* update min and max fields */@/COMMENT@
+        @DECISION SUM=20+21 ID=37|38@if (loc_ul_duration < par_pr_time_mea->min)
+        @BRANCH MARK=TB ID=37 SUM=20@{
+            par_pr_time_mea->min = loc_ul_duration;
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=38 SUM=20@else
+        {
+            @COMMENT@/* Nothing to do */@/COMMENT@
+        }@/BRANCH@@/DECISION@
+        @DECISION SUM=20+21 ID=39|40@if (loc_ul_duration > par_pr_time_mea->max)
+        @BRANCH MARK=TB ID=39 SUM=20@{
+            par_pr_time_mea->max = loc_ul_duration;
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=40 SUM=20@else
+        {
+            @COMMENT@/* Nothing to do */@/COMMENT@
+        }@/BRANCH@@/DECISION@
+
+        @COMMENT@/* compute average value field */@/COMMENT@
+        @DECISION SUM=20+21 ID=41|42@if (par_pr_time_mea->sample_number > K_LAEXSEQ_SAMPLE_NUMBER_LIMIT)
+        @BRANCH MARK=TB ID=41 SUM=20@{
+            par_pr_time_mea->sample_number = par_pr_time_mea->sample_number / 2;
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=42 SUM=20@else
+        {
+            @COMMENT@/* Nothing to do */@/COMMENT@
+        }@/BRANCH@@/DECISION@
+        par_pr_time_mea->average = ((par_pr_time_mea->average * par_pr_time_mea->sample_number)
+                                    + loc_ul_duration)
+                                   / (par_pr_time_mea->sample_number + 1);
+        par_pr_time_mea->sample_number ++;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=44 SUM=20@else
+    {
+        @COMMENT@/* Raise a fatal error */@/COMMENT@
+        @BRANCH MARK=TA ID=65 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@ (R_LAEX_FSC_ERR_CONFIG,
+                K_LBFL_E_GNERR_SERV_NULL_PT,
+                K_LAEX_LAEXSEQ_MAIN_ID_ATT,
+                0,
+                0,
+                0,
+                K_NULL_PTR,
+                0)@/BRANCH@;
+    }@/BRANCH@@/DECISION@
+
+    @BRANCH MARK=TP ID=2 SUM=1@return;@SHORTCUT MARK=TB ID=45@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** static void la_init_mea_histo 
+ ***** 
+ ***** Description : 
+ *****  
+ *****		Initialize Measurement Histo
+ ***** 
+ ***** Input :
+ *****
+ *****		void
+ *****         
+ ***** Output :
+ *****
+ *****		void
+ ***** 
+ *****************************************************************************/@/COMMENT@
+static void @NODE TYPE=FUNCTION NAME="la_init_mea_histo"@@BRANCH MARK=TP ID=5 SUM=0@@LINK NAME="la_init_mea_histo"@la_init_mea_histo@/BRANCH@ (void)
+
+@BRANCH MARK=TB ID=62 SUM=20@{
+    T_uint32 loc_ul_index;
+    T_uint32 loc_ul_i;
+
+    @POPUP@for@-POPUP@loop branches :
+@BRANCH MARK=TB ID=51 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=52 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=53 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (loc_ul_index = 0; loc_ul_index < K_MAX_TIME_MEA_PER_SEQ; loc_ul_index++)
+    @BRANCH MARK=TB ID=50 SUM=20@{
+       @POPUP@for@-POPUP@loop branches :
+@BRANCH MARK=TB ID=47 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=48 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=49 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (loc_ul_i = 0; loc_ul_i < 16; loc_ul_i++)
+        @BRANCH MARK=TB ID=46 SUM=20@{
+            tr_la_time_mea_table[loc_ul_index].tc_name[loc_ul_i] = TC_SEQ_FCT_NAME[loc_ul_index].name[loc_ul_i];
+        }@/BRANCH@
+   
+        tr_la_time_mea_table[loc_ul_index].sample_number = 0;
+        tr_la_time_mea_table[loc_ul_index].average = 0;
+        tr_la_time_mea_table[loc_ul_index].min = K_LA_TBL_MAX_VALUE;
+        tr_la_time_mea_table[loc_ul_index].max = 0;
+    }@/BRANCH@
+
+    @POPUP@for@-POPUP@loop branches :
+@BRANCH MARK=TB ID=59 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=60 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=61 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (loc_ul_index = 0; loc_ul_index < K_MAX_AUTO_CODE_FUNC; loc_ul_index++)
+    @BRANCH MARK=TB ID=58 SUM=20@{
+       @POPUP@for@-POPUP@loop branches :
+@BRANCH MARK=TB ID=55 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=56 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=57 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (loc_ul_i = 0; loc_ul_i < 16; loc_ul_i++)
+        @BRANCH MARK=TB ID=54 SUM=20@{
+            tr_la_auto_code_table[loc_ul_index].tc_name[loc_ul_i] = TC_AUTO_LA_NAME[loc_ul_index].name[loc_ul_i];
+        }@/BRANCH@
+   
+        tr_la_auto_code_table[loc_ul_index].sample_number = 0;
+        tr_la_auto_code_table[loc_ul_index].average = 0;
+        tr_la_auto_code_table[loc_ul_index].min = K_LA_TBL_MAX_VALUE;
+        tr_la_auto_code_table[loc_ul_index].max = 0;
+    }@/BRANCH@
+
+    ul_la_mea_reinit = 0UL;
+
+    @BRANCH MARK=TP ID=4 SUM=1@return;@SHORTCUT MARK=TB ID=62@@/BRANCH@
+}@/BRANCH@@/NODE@
+@COMMENT@#endif@/COMMENT@@/NODE /RIK@

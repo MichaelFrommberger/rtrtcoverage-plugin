@@ -1,0 +1,261 @@
+/* Rational Test RealTime C Instrumentor 2002.05.21.468.004 */
+/* Build Number: 282.001*/
+/* Copyright(C) 2002 Rational Software Corporation. All rights reserved. */
+/*   Date : 09-Oct-02 19:21 */
+/*     OS : ms-dos */
+
+#define ATL_C_INSTRUMENTOR
+
+#define USE_ATC 1
+
+#define ATC_INFORMATION 0
+
+#include "D:\Jenkins\jobs\A400M\workspace\CDS_A400M_DEV\..\build_tools_cds_a400m_L3.1\DESK_CompilationChain/TDP/GNU\lib\TP.h"
+
+#define _ATC_INIT_CONST_COMPOUND_STUFF
+
+_ATC_DECLARE_PROC(1,4)
+_ATC_DECLARE_BLOC(1,10)
+_ATC_DECLARE(1,0x13324134UL,0x175D0F6CUL,4,_ATC_TAB_PROC(1),0,0,10,_ATC_TAB_BLOC(1),0,0)
+
+# 1 "D:/Jenkins/jobs/A400M/workspace/CDS_A400M_DEV/LA/Laio/Src/BufferManager.c"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1 "D:/Jenkins/jobs/A400M/workspace/CDS_A400M_DEV/COMMON/lb_pds_lang/Includes/pds_basic_types.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+typedef unsigned char T_boolean;
+
+
+
+
+
+
+typedef signed char T_char;
+
+
+# 35 "D:/Jenkins/jobs/A400M/workspace/CDS_A400M_DEV/COMMON/lb_pds_lang/Includes/pds_basic_types.h"
+
+typedef signed char T_int8;
+typedef short T_int16;
+typedef long T_int32;
+
+
+typedef	unsigned long long T_uint64;
+
+
+# 45 "D:/Jenkins/jobs/A400M/workspace/CDS_A400M_DEV/COMMON/lb_pds_lang/Includes/pds_basic_types.h"
+
+typedef unsigned char T_uint8;
+typedef unsigned short T_uint16;
+typedef unsigned long T_uint32;
+
+
+typedef	long long T_int64;
+
+
+# 55 "D:/Jenkins/jobs/A400M/workspace/CDS_A400M_DEV/COMMON/lb_pds_lang/Includes/pds_basic_types.h"
+
+typedef float T_float32;
+typedef double T_float64;
+
+typedef void *T_ptr;
+typedef unsigned long T_addr;
+
+
+
+# 65 "D:/Jenkins/jobs/A400M/workspace/CDS_A400M_DEV/COMMON/lb_pds_lang/Includes/pds_basic_types.h"
+# 34 "D:/Jenkins/jobs/A400M/workspace/CDS_A400M_DEV/LA/Laio/Src/BufferManager.c"
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1 "D:/Jenkins/jobs/A400M/workspace/CDS_A400M_DEV/LA/Laio/Interface/BufferManager.p"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1 "D:/Jenkins/jobs/A400M/workspace/CDS_A400M_DEV/COMMON/lb_pds_lang/Includes/pds_basic_types.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 23 "D:/Jenkins/jobs/A400M/workspace/CDS_A400M_DEV/LA/Laio/Interface/BufferManager.p"
+
+extern T_uint32 read_event_data(T_char *par_buffer);
+
+extern void write_parameter_data(T_char *pBuffer, T_uint32 pSize);
+# 48 "D:/Jenkins/jobs/A400M/workspace/CDS_A400M_DEV/LA/Laio/Src/BufferManager.c"
+
+
+
+
+
+extern T_uint32 RX_CHANNEL_PA_TO_LA_SIZE;
+extern T_char RX_CHANNEL_PA_TO_LA_BUF[];
+
+extern T_uint32 LAEXSEQ_UADK_LA_TO_PA_SIZE;
+extern T_char LAEXSEQ_UADK_LA_TO_PA_BUF[];
+
+
+T_uint32 read_event_data(T_char *par_buffer)
+{_ATC_LINK(1);{_ATC_PROC(1,1);{_ATC_BLOC(1,4);{
+    T_char *loc_src_buffer;
+    T_uint32 loc_i;
+    loc_src_buffer = (T_char *) &RX_CHANNEL_PA_TO_LA_BUF;
+    {_ATC_LOOP_bef(1,1);for (loc_i = 0 ; loc_i < RX_CHANNEL_PA_TO_LA_SIZE ; loc_i ++)
+    {_ATC_LOOP_in(1,1);{_ATC_BLOC(1,0);{
+        par_buffer [loc_i] = loc_src_buffer [loc_i];
+    }}}}
+    {_ATC_PROC(1,0);return RX_CHANNEL_PA_TO_LA_SIZE;}
+}}}}
+
+void write_parameter_data(T_char *pBuffer, T_uint32 pSize)
+{_ATC_LINK(1);{_ATC_PROC(1,3);{_ATC_BLOC(1,9);{
+    T_char *loc_output_buffer;
+    T_uint32 loc_i;
+    loc_output_buffer = (T_char *) &LAEXSEQ_UADK_LA_TO_PA_BUF;
+    {_ATC_LOOP_bef(1,6);for (loc_i = 0 ; loc_i < pSize ; loc_i ++)
+    {_ATC_LOOP_in(1,6);{_ATC_BLOC(1,5);{
+        loc_output_buffer [loc_i] = pBuffer [loc_i];
+    }}}}
+    LAEXSEQ_UADK_LA_TO_PA_SIZE += pSize;
+    {_ATC_PROC(1,2);return;}
+}}}}

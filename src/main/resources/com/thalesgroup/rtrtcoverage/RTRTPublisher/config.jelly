@@ -1,0 +1,115 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <f:entry title="${%entryCio.title}"
+           description="${%includesCio.description}">
+    <f:textbox name="rtrtcoverage.includesCio" value="${instance.includesCio}"/>
+  </f:entry>
+  <f:entry title="${%entryTio.title}"
+           description="${%includesTio.description}">
+    <f:textbox name="rtrtcoverage.includesTio" value="${instance.includesTio}"/>
+  </f:entry>
+  <f:entry title="${%entryFdc.title}"
+           description="${%includesFdc.description}">
+    <f:textbox name="rtrtcoverage.includesFdc" value="${instance.includesFdc}"/>
+  </f:entry>
+  <f:entry title="${%entryAug.title}"
+           		description="${%entryAug.description}">
+    		<f:textbox name="rtrtcoverage.augPattern" value="${instance.augPattern}"/>
+   </f:entry>
+
+  <f:optionalBlock name="rtrtcoverage.mustTusarExport" 
+  title="${%optionalTusar.title}" checked="${instance.mustTusarExport}">
+		<f:entry title="${%entryTusar.title}"
+				 description="${%entryTusar.description}">
+			<f:textbox name="rtrtcoverage.tusarExportPath" value="${instance.tusarExportPath}"/>
+		</f:entry>
+  </f:optionalBlock>
+
+    <f:entry title="${%Health reporting}"
+             description="${%thresholds.description}">
+        <table>
+            <thead>
+                <tr>
+                    <td width="10%"></td>
+                    <td width="10%">${%Function}</td>
+                    <td width="10%">${%Call}</td>
+                    <td width="10%">${%StatBlock}</td>
+                    <td width="10%">${%ImplBlock}</td>
+                    <td width="10%">${%Decision}</td>
+                    <td width="10%">${%Loop}</td>
+                    <td width="10%">${%BasicCond}</td>
+                    <td width="10%">${%ModifCond}</td>
+                    <td width="10%">${%MultCond}</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>
+                        <img src="${rootURL}/images/16x16/health-80plus.gif" alt="100%"
+                             title="${%health.100.title}"/>
+                    </th>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.maxFunction" value="${instance.healthReports.maxFunction}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.maxCall" value="${instance.healthReports.maxCall}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.maxStatBlock" value="${instance.healthReports.maxStatBlock}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.maxImplBlock" value="${instance.healthReports.maxImplBlock}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.maxDecision" value="${instance.healthReports.maxDecision}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.maxLoop" value="${instance.healthReports.maxLoop}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.maxBasicCond" value="${instance.healthReports.maxBasicCond}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.maxModifCond" value="${instance.healthReports.maxModifCond}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.maxMultCond" value="${instance.healthReports.maxMultCond}" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <img src="${rootURL}/images/16x16/health-00to19.gif" alt="0%"
+                             title="${%health.0.title}"/>
+                    </th>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.minFunction" value="${instance.healthReports.minFunction}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.minCall" value="${instance.healthReports.minCall}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.minStatBlock" value="${instance.healthReports.minStatBlock}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.minImplBlock" value="${instance.healthReports.minImplBlock}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.minDecision" value="${instance.healthReports.minDecision}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.minLoop" value="${instance.healthReports.minLoop}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.minBasicCond" value="${instance.healthReports.minBasicCond}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.minModifCond" value="${instance.healthReports.minModifCond}" />
+                    </td>
+                    <td>
+                        <f:textbox name="rtrtcoverageHealthReports.minMultCond" value="${instance.healthReports.minMultCond}" />
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </f:entry>
+</j:jelly>

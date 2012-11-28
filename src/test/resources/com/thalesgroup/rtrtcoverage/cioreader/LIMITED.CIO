@@ -1,0 +1,96 @@
+# CIO File from Rational(R) Test RealTime Coverage
+# Tool version: 2002.05.21.468.004
+# Generation date: Mon Feb 28 16:29:09 2011
+T0
+ Coverage analysis : nothing was hit
+O0
+ Coverage analysis : nothing was hit
+T13
+ File FLOAT_INITIALIZESTATICCLASS.C
+    Float_initializeStaticClass
+       Calls .......................   none
+       Statement blocks ............ 100.0% (1/1), +100.0 (+1)
+       Basic conditions ............   none
+T25
+ File FLOAT_INITIALIZESTATICCLASS.C
+    Float_initializeStaticClass
+       Calls .......................   none
+       Statement blocks ............ 100.0% (1/1), +0.0 (+0)
+       Basic conditions ............   none
+ File FLOAT_STATIC_VALUEOF.C
+    Float_static_valueOf
+       Calls .......................   0.0% (0/6), +0.0 (+0)
+       Statement blocks ............  16.7% (2/12), +16.7 (+2)
+       Basic conditions ............   6.2% (1/16), +6.2 (+1)
+T41
+ File FLOAT_INITIALIZESTATICCLASS.C
+    Float_initializeStaticClass
+       Calls .......................   none
+       Statement blocks ............ 100.0% (1/1), +0.0 (+0)
+       Basic conditions ............   none
+ File FLOAT_STATIC_VALUEOF.C
+    Float_static_valueOf
+       Calls .......................  83.3% (5/6), +83.3 (+5)
+       Statement blocks ............  58.3% (7/12), +50.0 (+6)
+       Basic conditions ............  62.5% (10/16), +62.5 (+10)
+T57
+ File FLOAT_INITIALIZESTATICCLASS.C
+    Float_initializeStaticClass
+       Calls .......................   none
+       Statement blocks ............ 100.0% (1/1), +0.0 (+0)
+       Basic conditions ............   none
+ File FLOAT_STATIC_VALUEOF.C
+    Float_static_valueOf
+       Calls ....................... 100.0% (6/6), +16.7 (+1)
+       Statement blocks ............  66.7% (8/12), +25.0 (+3)
+       Basic conditions ............  62.5% (10/16), +18.8 (+3)
+T73
+ File FLOAT_INITIALIZESTATICCLASS.C
+    Float_initializeStaticClass
+       Calls .......................   none
+       Statement blocks ............ 100.0% (1/1), +0.0 (+0)
+       Basic conditions ............   none
+ File FLOAT_STATIC_VALUEOF.C
+    Float_static_valueOf
+       Calls ....................... 100.0% (6/6), +0.0 (+0)
+       Statement blocks ............  66.7% (8/12), +0.0 (+0)
+       Basic conditions ............  68.8% (11/16), +6.2 (+1)
+T89
+ File FLOAT_INITIALIZESTATICCLASS.C
+    Float_initializeStaticClass
+       Calls .......................   none
+       Statement blocks ............ 100.0% (1/1), +0.0 (+0)
+       Basic conditions ............   none
+ File FLOAT_STATIC_VALUEOF.C
+    Float_static_valueOf
+       Calls .......................  66.7% (4/6), +0.0 (+0)
+       Statement blocks ............  58.3% (7/12), +8.3 (+1)
+       Basic conditions ............  56.2% (9/16), +6.2 (+1)
+O11
+ File FLOAT_INITIALIZESTATICCLASS.C
+    Float_initializeStaticClass
+       Calls .......................   none
+       Statement blocks ............ 100.0% (1/1)
+       Basic conditions ............   none
+ File FLOAT_STATIC_VALUEOF.C
+    Float_static_valueOf
+       Calls ....................... 100.0% (6/6)
+       Statement blocks ............ 100.0% (12/12)
+       Basic conditions ............ 100.0% (16/16)
+T90
+ Coverage analysis : nothing was hit
+O12
+ Coverage analysis : nothing was hit
+G
+ File FLOAT_INITIALIZESTATICCLASS.C
+    Float_initializeStaticClass
+       Hit .........................    yes
+       Calls .......................   none
+       Statement blocks ............ 100.0% (1/1)
+       Basic conditions ............   none
+ File FLOAT_STATIC_VALUEOF.C
+    Float_static_valueOf
+       Hit .........................    yes
+       Calls ....................... 100.0% (6/6)
+       Statement blocks ............ 100.0% (12/12)
+       Basic conditions ............ 100.0% (16/16)

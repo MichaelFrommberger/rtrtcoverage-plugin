@@ -1,0 +1,359 @@
+VE 3.0d CCOV CMCDC #i3
+FC "SATM_RECEIVE.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\SA\\SATM\\SRC\\"
+FD 1285925515
+TC PR RE AP BS BT BI BL CO CC
+AP 0 "SATM_receive" "sadi_get_local_du_id" 69 69
+CA 0 "SATM_receive" "case K_SADI_DU_OL" 74 74
+BL 0 simple "SATM_receive" /case 74 74
+CA 1 "SATM_receive" "case K_SADI_DU_OR" 81 81
+BL 1 simple "SATM_receive" /case 81 81
+CA 2 "SATM_receive" "case K_SADI_DU_IL" 88 88
+BL 2 simple "SATM_receive" /case 88 88
+CA 3 "SATM_receive" "case K_SADI_DU_IR" 95 95
+BL 3 simple "SATM_receive" /case 95 95
+CA 4 "SATM_receive" "case K_SADI_DU_LL" 102 102
+BL 4 simple "SATM_receive" /case 102 102
+CA 5 "SATM_receive" "case K_SADI_DU_LR" 109 109
+BL 5 simple "SATM_receive" /case 109 109
+CA 6 "SATM_receive" "case K_SADI_DU_CL" 116 116
+CA 7 "SATM_receive" "case K_SADI_DU_CR" 117 117
+CA 8 "SATM_receive" "case K_SADI_DU_3C" 118 118
+CA 9 "SATM_receive" "default" 119 119
+BL 6 simple "SATM_receive" /default 119 119
+CE 10 "SATM_receive" "loc_du1_id != K_SADI_DU_NONE" 127 127
+AP 1 "SATM_receive" "sarmdrmm_get_du_healthy" 128 128
+CE 12 "SATM_receive" "sarmdrmm_get_du_healthy ( ..." 128 128
+CC 14 2 10 12 3 TTTFFX 1
+AP 2 "SATM_receive" "SATM_xtalk_receive" 134 139
+CE 17 "SATM_receive" "loc_return_du1 == 1UL" 141 141
+CE 19 "SATM_receive" "loc_du1_chrono_state == 1" 147 147
+CE 21 "SATM_receive" "DU1_CHRONOTIME_CYCLE_IN_AFDX ..." 152 152
+BL 7 simple "SATM_receive" /then/then/then/then 153 157
+BL 8 simple "SATM_receive" /then/then/then/else 159 161
+BL 9 simple "SATM_receive" /then/then/then 148 162
+BL 10 simple "SATM_receive" /then/then/else 164 166
+BL 11 simple "SATM_receive" /then/then 142 167
+BL 12 simple "SATM_receive" /then/else 169 171
+BL 13 simple "SATM_receive" /then 129 173
+BL 14 simple "SATM_receive" /else 175 178
+CE 23 "SATM_receive" "loc_du2_id != K_SADI_DU_NONE" 181 181
+AP 3 "SATM_receive" "sarmdrmm_get_du_healthy" 182 182
+CE 25 "SATM_receive" "sarmdrmm_get_du_healthy ( ..." 182 182
+CC 27 2 23 25 3 TTTFFX 1
+AP 4 "SATM_receive" "SATM_xtalk_receive" 188 193
+CE 30 "SATM_receive" "loc_return_du2 == 1UL" 195 195
+CE 32 "SATM_receive" "loc_du2_chrono_state == 1" 201 201
+CE 34 "SATM_receive" "DU2_CHRONOTIME_CYCLE_IN_AFDX ..." 206 206
+BL 15 simple "SATM_receive" /then/then/then/then 207 211
+BL 16 simple "SATM_receive" /then/then/then/else 213 215
+BL 17 simple "SATM_receive" /then/then/then 202 216
+BL 18 simple "SATM_receive" /then/then/else 218 220
+BL 19 simple "SATM_receive" /then/then 196 221
+BL 20 simple "SATM_receive" /then/else 223 225
+BL 21 simple "SATM_receive" /then 183 227
+BL 22 simple "SATM_receive" /else 229 232
+CE 36 "SATM_receive" "loc_return_du2" 237 237
+CE 38 "SATM_receive" "loc_return_du1" 237 237
+CC 40 2 36 38 3 TTTFFX 1
+PR 0 return "SATM_receive" 237 237
+PR 1 proc "SATM_receive" 48 239
+BL 23 simple "SATM_receive" / 48 239
+DC 2070361266
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="SATM_RECEIVE.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\SA\SATM\SRC\"
+  DATE=1285925515
+  CHECKSUM=2070361266
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="SATM_RECEIVE.C"@@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* (C) Copyright 2005 by THALES Avionics                                                   */@/COMMENT@
+@COMMENT@/* All rights reserved                                                                     */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* This program is the property of THALES Avionics, LE HAILLAN-BORDEAUX FRANCE, and can    */@/COMMENT@
+@COMMENT@/* only be used and copied with the prior written authorisation of THALES Avionics.        */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* Any whole or partial copy of this program in either its original form or in a modified  */@/COMMENT@
+@COMMENT@/* form must mention this copyright and its owner.                                         */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* PROJECT: PDS                                                                            */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* FILE NAME: SATM_receive.c                                                             */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+
+@COMMENT@#include "SATM.h"@/COMMENT@
+
+@COMMENT@/* Start of user includes */@/COMMENT@
+
+@COMMENT@#include "SATM_xtalk_receive.hpp"@/COMMENT@
+@COMMENT@#include "sarmdrmm_get_du_healthy.p"@/COMMENT@
+@COMMENT@#include "sadi_get_local_du_id.p"@/COMMENT@
+@COMMENT@#include "satm_component_id_ifc.h"@/COMMENT@
+@COMMENT@#include "satm_fsc_error_desc_config.h"@/COMMENT@
+@COMMENT@#include "satm_fsc_error_ifc.h"@/COMMENT@
+
+
+extern T_boolean DU1_SYNCHRONIZATION_STATE ;
+extern T_boolean DU2_SYNCHRONIZATION_STATE ;
+extern T_uint32 DU1_CHRONO_STATE ;
+extern T_uint32 DU2_CHRONO_STATE ;
+extern T_uint32 DU1_CHRONOTIME_IN_AFDX;
+extern T_uint32 DU2_CHRONOTIME_IN_AFDX ;
+extern T_uint32 DU1_CHRONOTIME_CYCLE_IN_AFDX;
+extern T_uint32 DU2_CHRONOTIME_CYCLE_IN_AFDX;
+extern T_boolean DU1_HEALTHY ;
+extern T_boolean DU2_HEALTHY ;
+extern T_boolean CHRONO_RECEIVE_CALLED;
+
+@COMMENT@/* End of user includes */@/COMMENT@
+
+
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* METHOD DESCRIPTION: This function receives chrono state and synchronization state       */@/COMMENT@
+@COMMENT@/* ------------------- from the 2 other DU                                                 */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+T_boolean @NODE TYPE=FUNCTION NAME="SATM_receive"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="SATM_receive"@SATM_receive@/BRANCH@(SATM *par_This) 
+@BRANCH MARK=TB ID=23 SUM=20@{
+    @COMMENT@/* Start of user code */@/COMMENT@
+    T_sadi_du_id    loc_local_du_id;
+    T_sadi_du_id    loc_du1_id;
+    T_sadi_du_id    loc_du2_id;
+    T_uint8         loc_du1_chrono_state;
+    T_uint8         loc_du2_chrono_state;
+    T_boolean       loc_du1_synchronization_state;
+    T_boolean       loc_du2_synchronization_state;
+    T_uint32        loc_du1_chronotime_in_afdx;
+    T_uint32        loc_du2_chronotime_in_afdx;
+    T_uint8         loc_du1_chronotime_cycle_in_afdx;
+    T_uint8         loc_du2_chronotime_cycle_in_afdx;
+    T_boolean       loc_return_du1;
+    T_boolean       loc_return_du2;
+
+    @COMMENT@/* Initialization of return values */@/COMMENT@
+    loc_return_du1 = K_BOOL_TRUE;
+    loc_return_du2 = K_BOOL_TRUE;
+
+    @COMMENT@/* Get the Id of the current DU */@/COMMENT@
+    @BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="sadi_get_local_du_id"@sadi_get_local_du_id@/JUMP@(&loc_local_du_id)@/BRANCH@;
+
+    @COMMENT@/* Set the du1 and du2 according to the local position */@/COMMENT@
+    @DECISION SUM=20+21 ID=0|1|2|3|4|5|6@switch (loc_local_du_id)
+	{
+        @BRANCH MARK=TB ID=0 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=0 SUM=30@case K_SADI_DU_OL:@/BRANCH@@/BRANCH@
+            {
+                loc_du1_id = K_SADI_DU_IL;
+                loc_du2_id = K_SADI_DU_LL;
+            }
+            break;@SHORTCUT MARK=TB ID=0@
+
+        @BRANCH MARK=TB ID=1 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=1 SUM=30@case K_SADI_DU_OR:@/BRANCH@@/BRANCH@
+            {
+                loc_du1_id = K_SADI_DU_IR;
+                loc_du2_id = K_SADI_DU_LR;
+            }
+            break;@SHORTCUT MARK=TB ID=0@
+
+        @BRANCH MARK=TB ID=2 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=2 SUM=30@case K_SADI_DU_IL:@/BRANCH@@/BRANCH@
+            {
+                loc_du1_id = K_SADI_DU_OL;
+                loc_du2_id = K_SADI_DU_LL;
+            }
+            break;@SHORTCUT MARK=TB ID=0@
+
+        @BRANCH MARK=TB ID=3 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=3 SUM=30@case K_SADI_DU_IR:@/BRANCH@@/BRANCH@
+            {
+                loc_du1_id = K_SADI_DU_OR;
+                loc_du2_id = K_SADI_DU_LR;
+            }
+            break;@SHORTCUT MARK=TB ID=0@
+
+        @BRANCH MARK=TB ID=4 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=4 SUM=30@case K_SADI_DU_LL:@/BRANCH@@/BRANCH@
+            {
+                loc_du1_id = K_SADI_DU_OL;
+                loc_du2_id = K_SADI_DU_IL;
+            }
+            break;@SHORTCUT MARK=TB ID=0@
+
+        @BRANCH MARK=TB ID=5 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=5 SUM=30@case K_SADI_DU_LR:@/BRANCH@@/BRANCH@
+            {
+                loc_du1_id = K_SADI_DU_OR;
+                loc_du2_id = K_SADI_DU_IR;
+            }
+            break;@SHORTCUT MARK=TB ID=0@
+
+        @BRANCH NO@@BRANCH MARK=TE ID=6 SUM=30@case K_SADI_DU_CL:@/BRANCH@@/BRANCH@
+        @BRANCH NO@@BRANCH MARK=TE ID=7 SUM=30@case K_SADI_DU_CR:@/BRANCH@@/BRANCH@
+        @BRANCH NO@@BRANCH MARK=TE ID=8 SUM=30@case K_SADI_DU_3C:@/BRANCH@@/BRANCH@
+        @BRANCH MARK=TB ID=6 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=9 SUM=30@default :@/BRANCH@@/BRANCH@
+            {
+                loc_du1_id = K_SADI_DU_NONE;
+                loc_du2_id = K_SADI_DU_NONE;
+            }
+    }@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/DECISION@
+    
+    @COMMENT@/* If DU1 is healthy, get the Xtalk variables concerning Time Management */@/COMMENT@
+    @DECISION SUM=20+21 ID=13|14@if(@POPUP@(@POPUP@loc_du1_id != K_SADI_DU_NONE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=10 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=11 SUM=30@False@/BRANCH@@/POPUP@) &&
+       (@POPUP@@BRANCH MARK=TA ID=1 SUM=10@@JUMP NAME="sarmdrmm_get_du_healthy"@sarmdrmm_get_du_healthy@/JUMP@(loc_du1_id)@/BRANCH@ == 1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=12 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=13 SUM=30@False@/BRANCH@@/POPUP@)@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=14&16 SUM=31@loc_du1_id != K_SADI_DU_NONE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=14 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=16 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=14&15 SUM=31@sarmdrmm_get_du_healthy (loc_du1_id) == 1@/BRANCH@ needs
+      @BRANCH MARK=TE ID=14 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=15 SUM=32@TF@/BRANCH@=F@/POPUP@)
+    @BRANCH MARK=TB ID=13 SUM=20@{
+        @COMMENT@/* set DU1 to healthy status */@/COMMENT@
+        DU1_HEALTHY = K_BOOL_TRUE;
+
+        @COMMENT@/* get chrono state and synchronization state of DU1 */@/COMMENT@
+        loc_return_du1 = @BRANCH MARK=TA ID=2 SUM=10@@JUMP NAME="SATM_xtalk_receive"@SATM_xtalk_receive@/JUMP@(par_This, 
+                                              loc_du1_id, 
+                                              &loc_du1_chrono_state, 
+                                              &loc_du1_synchronization_state,
+                                              &loc_du1_chronotime_cycle_in_afdx,
+                                              &loc_du1_chronotime_in_afdx)@/BRANCH@; 
+    
+        @DECISION SUM=20+21 ID=11|12@if(@POPUP@loc_return_du1 == @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=17 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=18 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+        @BRANCH MARK=TB ID=11 SUM=20@{
+            @COMMENT@/* set the ComInterPartition variables for LA*/@/COMMENT@
+            DU1_CHRONO_STATE = (T_uint32) loc_du1_chrono_state;
+            DU1_SYNCHRONIZATION_STATE = (T_BOOL) loc_du1_synchronization_state;
+            DU1_CHRONOTIME_IN_AFDX = loc_du1_chronotime_in_afdx;
+            @DECISION SUM=20+21 ID=9|10@if (@POPUP@loc_du1_chrono_state == @ALT@K_SATM_CHRONO_START@-ALT@1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=19 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=20 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+            @BRANCH MARK=TB ID=9 SUM=20@{
+                @COMMENT@/* a cycle is added to take the latency 
+                 * between DU sender and DU receiver into account */@/COMMENT@
+                DU1_CHRONOTIME_CYCLE_IN_AFDX = (T_uint32) (loc_du1_chronotime_cycle_in_afdx + 1);
+                @DECISION SUM=20+21 ID=7|8@if (@POPUP@DU1_CHRONOTIME_CYCLE_IN_AFDX >= @ALT@K_SATM_NB_CYCLE_PER_SECOND@-ALT@30@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=21 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=22 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+                @BRANCH MARK=TB ID=7 SUM=20@{
+                    DU1_CHRONOTIME_CYCLE_IN_AFDX = 
+                        DU1_CHRONOTIME_CYCLE_IN_AFDX % K_SATM_NB_CYCLE_PER_SECOND;
+                    DU1_CHRONOTIME_IN_AFDX++;
+                }@/BRANCH@
+                @BRANCH MARK=TB ID=8 SUM=20@else
+                {
+                    @COMMENT@/* nothing to do */@/COMMENT@
+                }@/BRANCH@@/DECISION@
+            }@/BRANCH@
+            @BRANCH MARK=TB ID=10 SUM=20@else
+            {
+                DU1_CHRONOTIME_CYCLE_IN_AFDX = (T_uint32) loc_du1_chronotime_cycle_in_afdx;
+            }@/BRANCH@@/DECISION@
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=12 SUM=20@else
+        {
+            @COMMENT@/* NOTHING TO DO */@/COMMENT@
+        }@/BRANCH@@/DECISION@
+
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=14 SUM=20@else
+    {
+        @COMMENT@/* DU1 isn't healthy */@/COMMENT@
+        DU1_HEALTHY = K_BOOL_FALSE;
+    }@/BRANCH@@/DECISION@
+
+    @COMMENT@/* If DU2 is healthy, get the Xtalk variables concerning Time Management */@/COMMENT@
+    @DECISION SUM=20+21 ID=21|22@if(@POPUP@(@POPUP@loc_du2_id != K_SADI_DU_NONE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=23 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=24 SUM=30@False@/BRANCH@@/POPUP@) &&
+       (@POPUP@@BRANCH MARK=TA ID=3 SUM=10@@JUMP NAME="sarmdrmm_get_du_healthy"@sarmdrmm_get_du_healthy@/JUMP@(loc_du2_id)@/BRANCH@ == 1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=25 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=26 SUM=30@False@/BRANCH@@/POPUP@)@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=27&29 SUM=31@loc_du2_id != K_SADI_DU_NONE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=27 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=29 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=27&28 SUM=31@sarmdrmm_get_du_healthy (loc_du2_id) == 1@/BRANCH@ needs
+      @BRANCH MARK=TE ID=27 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=28 SUM=32@TF@/BRANCH@=F@/POPUP@)
+    @BRANCH MARK=TB ID=21 SUM=20@{
+        @COMMENT@/* set DU2 to healthy status */@/COMMENT@
+        DU2_HEALTHY = K_BOOL_TRUE;
+        
+        @COMMENT@/* get chrono state and synchronization state of DU2 */@/COMMENT@
+        loc_return_du2 = @BRANCH MARK=TA ID=4 SUM=10@@JUMP NAME="SATM_xtalk_receive"@SATM_xtalk_receive@/JUMP@(par_This, 
+                                              loc_du2_id, 
+                                              &loc_du2_chrono_state, 
+                                              &loc_du2_synchronization_state,
+                                              &loc_du2_chronotime_cycle_in_afdx,
+                                              &loc_du2_chronotime_in_afdx)@/BRANCH@; 
+    
+        @DECISION SUM=20+21 ID=19|20@if(@POPUP@loc_return_du2 == @ALT@K_BOOL_TRUE@-ALT@1UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=30 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=31 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+        @BRANCH MARK=TB ID=19 SUM=20@{
+            @COMMENT@/* set the ComInterPartition variables for LA*/@/COMMENT@
+            DU2_CHRONO_STATE = (T_uint32) loc_du2_chrono_state;
+            DU2_SYNCHRONIZATION_STATE = loc_du2_synchronization_state;
+            DU2_CHRONOTIME_IN_AFDX = loc_du2_chronotime_in_afdx;
+            @DECISION SUM=20+21 ID=17|18@if (@POPUP@loc_du2_chrono_state == @ALT@K_SATM_CHRONO_START@-ALT@1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=32 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=33 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+            @BRANCH MARK=TB ID=17 SUM=20@{
+                @COMMENT@/* a cycle is added to take the latency 
+                 * between DU sender and DU receiver into account */@/COMMENT@
+                DU2_CHRONOTIME_CYCLE_IN_AFDX = (T_uint32) (loc_du2_chronotime_cycle_in_afdx + 1);
+                @DECISION SUM=20+21 ID=15|16@if (@POPUP@DU2_CHRONOTIME_CYCLE_IN_AFDX >= @ALT@K_SATM_NB_CYCLE_PER_SECOND@-ALT@30@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=34 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=35 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+                @BRANCH MARK=TB ID=15 SUM=20@{
+                    DU2_CHRONOTIME_CYCLE_IN_AFDX = 
+                        DU2_CHRONOTIME_CYCLE_IN_AFDX % K_SATM_NB_CYCLE_PER_SECOND;
+                    DU2_CHRONOTIME_IN_AFDX++;
+                }@/BRANCH@
+                @BRANCH MARK=TB ID=16 SUM=20@else
+                {
+                    @COMMENT@/* nothing to do */@/COMMENT@
+                }@/BRANCH@@/DECISION@
+            }@/BRANCH@
+            @BRANCH MARK=TB ID=18 SUM=20@else
+            {
+                DU2_CHRONOTIME_CYCLE_IN_AFDX = (T_uint32) loc_du2_chronotime_cycle_in_afdx;
+            }@/BRANCH@@/DECISION@
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=20 SUM=20@else
+        {
+            @COMMENT@/* NOTHING TO DO */@/COMMENT@
+        }@/BRANCH@@/DECISION@
+
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=22 SUM=20@else
+    {
+        @COMMENT@/* DU1 isn't healthy */@/COMMENT@
+        DU2_HEALTHY = K_BOOL_FALSE;
+    }@/BRANCH@@/DECISION@
+
+    @COMMENT@/* Set the variable that indicates to LA that this function has been called */@/COMMENT@
+    CHRONO_RECEIVE_CALLED = 1;
+    
+    @BRANCH MARK=TP ID=0 SUM=1@return (@POPUP@@POPUP@loc_return_du2@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=36 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=37 SUM=30@False@/BRANCH@@/POPUP@ && @POPUP@loc_return_du1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=38 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=39 SUM=30@False@/BRANCH@@/POPUP@@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=40&42 SUM=31@loc_return_du2@/BRANCH@ needs
+      @BRANCH MARK=TE ID=40 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=42 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=40&41 SUM=31@loc_return_du1@/BRANCH@ needs
+      @BRANCH MARK=TE ID=40 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=41 SUM=32@TF@/BRANCH@=F@/POPUP@);@SHORTCUT MARK=TB ID=23@@/BRANCH@
+    @COMMENT@/* End of user code */@/COMMENT@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

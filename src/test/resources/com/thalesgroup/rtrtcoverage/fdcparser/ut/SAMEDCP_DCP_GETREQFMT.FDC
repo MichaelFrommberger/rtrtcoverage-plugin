@@ -1,0 +1,195 @@
+VE 3.0d CCOV CMCDC #i3
+FC "SAMEDCP_DCP_GETREQFMT.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\SA\\SAME\\SAMEDCP\\SRC\\"
+FD 1285925485
+TC PR RE AP BS BT BI BL CO CC
+AP 0 "samedcp_DCP_getReqFmt" "sarmcore_convert_configuration_nb_in_format_nb" 44 44
+CE 0 "samedcp_DCP_getReqFmt" "loc_reqFmt == par_This-> ..." 48 48
+CE 2 "samedcp_DCP_getReqFmt" "loc_reqFmt == loc_format" 49 49
+CE 4 "samedcp_DCP_getReqFmt" "DCP_KEY_01_PULSE" 51 51
+CE 6 "samedcp_DCP_getReqFmt" "DCP_KEY_02_PULSE" 51 51
+CE 8 "samedcp_DCP_getReqFmt" "DCP_KEY_03_PULSE" 51 51
+CE 10 "samedcp_DCP_getReqFmt" "DCP_KEY_04_PULSE" 52 52
+CE 12 "samedcp_DCP_getReqFmt" "DCP_KEY_05_PULSE" 52 52
+CE 14 "samedcp_DCP_getReqFmt" "DCP_KEY_06_PULSE" 52 52
+CE 16 "samedcp_DCP_getReqFmt" "DCP_KEY_07_PULSE" 53 53
+CE 18 "samedcp_DCP_getReqFmt" "DCP_KEY_08_PULSE" 53 53
+CE 20 "samedcp_DCP_getReqFmt" "DCP_KEY_09_PULSE" 53 53
+CE 22 "samedcp_DCP_getReqFmt" "DCP_KEY_10_PULSE" 54 54
+CE 24 "samedcp_DCP_getReqFmt" "par_This->_ReqFmtMemo !=  ..." 55 55
+CC 26 13 0 2 4 6 8 10 12 14 16 18 20 22 24 23 TXXXXXXXXXXXXFTXXXXXXXXXXXFFFFFFFFFFFFXFFTXXXXXXXXXTFFFTXXXXXXXXTFFFFTXXXXXXXTFFFFFTXXXXXXTFFFFFFTXXXXXTFFFFFFFTXXXXTFFFFFFFFTXXXTFFFFFFFFFTXXTFFFFFFFFFFTXTFFFFFFFFFFFTTFFTXXXXXXXXXFFFFTXXXXXXXXFFFFFTXXXXXXXFFFFFFTXXXXXXFFFFFFFTXXXXXFFFFFFFFTXXXXFFFFFFFFFTXXXFFFFFFFFFFTXXFFFFFFFFFFFTXFFFFFFFFFFFFTF 13
+BL 0 simple "samedcp_DCP_getReqFmt" /then 56 59
+BL 1 simple "samedcp_DCP_getReqFmt" /else 61 64
+PR 0 return "samedcp_DCP_getReqFmt" 66 66
+PR 1 proc "samedcp_DCP_getReqFmt" 37 68
+BL 2 simple "samedcp_DCP_getReqFmt" / 37 68
+DC 2120298764
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="SAMEDCP_DCP_GETREQFMT.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\SA\SAME\SAMEDCP\SRC\"
+  DATE=1285925485
+  CHECKSUM=2120298764
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="SAMEDCP_DCP_GETREQFMT.C"@@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* (C) Copyright 2005 by THALES Avionics                                                   */@/COMMENT@
+@COMMENT@/* All rights reserved                                                                     */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* This program is the property of THALES Avionics, LE HAILLAN-BORDEAUX FRANCE, and can    */@/COMMENT@
+@COMMENT@/* only be used and copied with the prior written authorisation of THALES Avionics.        */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* Any whole or partial copy of this program in either its original form or in a modified  */@/COMMENT@
+@COMMENT@/* form must mention this copyright and its owner.                                         */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* PROJECT: PDS                                                                            */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* FILE NAME: DCP_getReqFmt.c                                                              */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+
+@COMMENT@#include "samedcp_DCP.h"@/COMMENT@
+
+@COMMENT@/* Start of user includes */@/COMMENT@
+@COMMENT@#include "sarm_global_defs.h"@/COMMENT@
+@COMMENT@#include "lbfl.h"@/COMMENT@
+@COMMENT@#include "sadi.h"@/COMMENT@
+@COMMENT@#include "samc.h"@/COMMENT@
+@COMMENT@#include "samc_ifc.h"@/COMMENT@
+
+@COMMENT@#include "none_section.h"@/COMMENT@
+@COMMENT@#include "sadi.h"@/COMMENT@
+@COMMENT@#include "samedcp_cte.h"@/COMMENT@
+@COMMENT@#include "sarmcore_convert_configuration_nb_in_format_nb.p"@/COMMENT@
+@COMMENT@/* End of user includes */@/COMMENT@
+
+
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* METHOD DESCRIPTION: [public][instance method]                                           */@/COMMENT@
+@COMMENT@/* -------------------                                                                     */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+T_uint32 @NODE TYPE=FUNCTION NAME="samedcp_DCP_getReqFmt"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="samedcp_DCP_getReqFmt"@samedcp_DCP_getReqFmt@/BRANCH@(T_DCP *par_This) 
+@BRANCH MARK=TB ID=2 SUM=20@{
+    @COMMENT@/* Start of user code */@/COMMENT@
+    T_uint32 loc_return;
+    T_uint32 loc_reqFmt;
+    T_uint32 loc_format; @COMMENT@/* format associated to DU_CONFIGURATION */@/COMMENT@
+
+    @COMMENT@/* check format id associated to conf id */@/COMMENT@
+    loc_format = @BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="sarmcore_convert_configuration_nb_in_format_nb"@sarmcore_convert_configuration_nb_in_format_nb@/JUMP@(DU_CONFIGURATION)@/BRANCH@;
+
+    loc_reqFmt = REQ_FMT;
+    
+    @DECISION SUM=20+21 ID=0|1@if ( @POPUP@(@POPUP@loc_reqFmt == par_This->_ReqFmtMemo@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@)
+        || (@POPUP@loc_reqFmt == loc_format@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@)
+        @COMMENT@/* No DCP event if no key has been pressed */@/COMMENT@
+        || !(@POPUP@DCP_KEY_01_PULSE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@ || @POPUP@DCP_KEY_02_PULSE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=6 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=7 SUM=30@False@/BRANCH@@/POPUP@ || @POPUP@DCP_KEY_03_PULSE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=8 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=9 SUM=30@False@/BRANCH@@/POPUP@ || 
+             @POPUP@DCP_KEY_04_PULSE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=10 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=11 SUM=30@False@/BRANCH@@/POPUP@ || @POPUP@DCP_KEY_05_PULSE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=12 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=13 SUM=30@False@/BRANCH@@/POPUP@ || @POPUP@DCP_KEY_06_PULSE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=14 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=15 SUM=30@False@/BRANCH@@/POPUP@ || 
+             @POPUP@DCP_KEY_07_PULSE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=16 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=17 SUM=30@False@/BRANCH@@/POPUP@ || @POPUP@DCP_KEY_08_PULSE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=18 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=19 SUM=30@False@/BRANCH@@/POPUP@ || @POPUP@DCP_KEY_09_PULSE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=20 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=21 SUM=30@False@/BRANCH@@/POPUP@ || 
+             @POPUP@DCP_KEY_10_PULSE@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=22 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=23 SUM=30@False@/BRANCH@@/POPUP@)
+        || (@POPUP@par_This->_ReqFmtMemo != par_This->_DuConfMemo@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=24 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=25 SUM=30@False@/BRANCH@@/POPUP@)@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=26&39|26&40|26&41|26&42|26&43|26&44|26&45|26&46|26&47|26&48 SUM=31@loc_reqFmt == par_This->_ReqFmtMemo@/BRANCH@ needs
+      @BRANCH MARK=TE ID=26 SUM=32@TXXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=39 SUM=32@FFTXXXXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=26 SUM=32@TXXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=40 SUM=32@FFFTXXXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=26 SUM=32@TXXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=41 SUM=32@FFFFTXXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=26 SUM=32@TXXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=42 SUM=32@FFFFFTXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=26 SUM=32@TXXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=43 SUM=32@FFFFFFTXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=26 SUM=32@TXXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=44 SUM=32@FFFFFFFTXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=26 SUM=32@TXXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=45 SUM=32@FFFFFFFFTXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=26 SUM=32@TXXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=46 SUM=32@FFFFFFFFFTXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=26 SUM=32@TXXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=47 SUM=32@FFFFFFFFFFTXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=26 SUM=32@TXXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=48 SUM=32@FFFFFFFFFFFTF@/BRANCH@=F
+  @BRANCH MARK=TE ID=27&39|27&40|27&41|27&42|27&43|27&44|27&45|27&46|27&47|27&48 SUM=31@loc_reqFmt == loc_format@/BRANCH@ needs
+      @BRANCH MARK=TE ID=27 SUM=32@FTXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=39 SUM=32@FFTXXXXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=27 SUM=32@FTXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=40 SUM=32@FFFTXXXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=27 SUM=32@FTXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=41 SUM=32@FFFFTXXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=27 SUM=32@FTXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=42 SUM=32@FFFFFTXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=27 SUM=32@FTXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=43 SUM=32@FFFFFFTXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=27 SUM=32@FTXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=44 SUM=32@FFFFFFFTXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=27 SUM=32@FTXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=45 SUM=32@FFFFFFFFTXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=27 SUM=32@FTXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=46 SUM=32@FFFFFFFFFTXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=27 SUM=32@FTXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=47 SUM=32@FFFFFFFFFFTXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=27 SUM=32@FTXXXXXXXXXXX@/BRANCH@=T,@BRANCH MARK=TE ID=48 SUM=32@FFFFFFFFFFFTF@/BRANCH@=F
+  @BRANCH MARK=TE ID=28&39 SUM=31@DCP_KEY_01_PULSE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=28 SUM=32@FFFFFFFFFFFFX@/BRANCH@=T,@BRANCH MARK=TE ID=39 SUM=32@FFTXXXXXXXXXF@/BRANCH@=F
+  @BRANCH MARK=TE ID=28&40 SUM=31@DCP_KEY_02_PULSE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=28 SUM=32@FFFFFFFFFFFFX@/BRANCH@=T,@BRANCH MARK=TE ID=40 SUM=32@FFFTXXXXXXXXF@/BRANCH@=F
+  @BRANCH MARK=TE ID=28&41 SUM=31@DCP_KEY_03_PULSE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=28 SUM=32@FFFFFFFFFFFFX@/BRANCH@=T,@BRANCH MARK=TE ID=41 SUM=32@FFFFTXXXXXXXF@/BRANCH@=F
+  @BRANCH MARK=TE ID=28&42 SUM=31@DCP_KEY_04_PULSE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=28 SUM=32@FFFFFFFFFFFFX@/BRANCH@=T,@BRANCH MARK=TE ID=42 SUM=32@FFFFFTXXXXXXF@/BRANCH@=F
+  @BRANCH MARK=TE ID=28&43 SUM=31@DCP_KEY_05_PULSE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=28 SUM=32@FFFFFFFFFFFFX@/BRANCH@=T,@BRANCH MARK=TE ID=43 SUM=32@FFFFFFTXXXXXF@/BRANCH@=F
+  @BRANCH MARK=TE ID=28&44 SUM=31@DCP_KEY_06_PULSE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=28 SUM=32@FFFFFFFFFFFFX@/BRANCH@=T,@BRANCH MARK=TE ID=44 SUM=32@FFFFFFFTXXXXF@/BRANCH@=F
+  @BRANCH MARK=TE ID=28&45 SUM=31@DCP_KEY_07_PULSE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=28 SUM=32@FFFFFFFFFFFFX@/BRANCH@=T,@BRANCH MARK=TE ID=45 SUM=32@FFFFFFFFTXXXF@/BRANCH@=F
+  @BRANCH MARK=TE ID=28&46 SUM=31@DCP_KEY_08_PULSE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=28 SUM=32@FFFFFFFFFFFFX@/BRANCH@=T,@BRANCH MARK=TE ID=46 SUM=32@FFFFFFFFFTXXF@/BRANCH@=F
+  @BRANCH MARK=TE ID=28&47 SUM=31@DCP_KEY_09_PULSE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=28 SUM=32@FFFFFFFFFFFFX@/BRANCH@=T,@BRANCH MARK=TE ID=47 SUM=32@FFFFFFFFFFTXF@/BRANCH@=F
+  @BRANCH MARK=TE ID=28&48 SUM=31@DCP_KEY_10_PULSE@/BRANCH@ needs
+      @BRANCH MARK=TE ID=28 SUM=32@FFFFFFFFFFFFX@/BRANCH@=T,@BRANCH MARK=TE ID=48 SUM=32@FFFFFFFFFFFTF@/BRANCH@=F
+  @BRANCH MARK=TE ID=29&39|30&40|31&41|32&42|33&43|34&44|35&45|36&46|37&47|38&48 SUM=31@par_This->_ReqFmtMemo != par_This->_DuConfMemo@/BRANCH@ needs
+      @BRANCH MARK=TE ID=29 SUM=32@FFTXXXXXXXXXT@/BRANCH@=T,@BRANCH MARK=TE ID=39 SUM=32@FFTXXXXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=30 SUM=32@FFFTXXXXXXXXT@/BRANCH@=T,@BRANCH MARK=TE ID=40 SUM=32@FFFTXXXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=31 SUM=32@FFFFTXXXXXXXT@/BRANCH@=T,@BRANCH MARK=TE ID=41 SUM=32@FFFFTXXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=32 SUM=32@FFFFFTXXXXXXT@/BRANCH@=T,@BRANCH MARK=TE ID=42 SUM=32@FFFFFTXXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=33 SUM=32@FFFFFFTXXXXXT@/BRANCH@=T,@BRANCH MARK=TE ID=43 SUM=32@FFFFFFTXXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=34 SUM=32@FFFFFFFTXXXXT@/BRANCH@=T,@BRANCH MARK=TE ID=44 SUM=32@FFFFFFFTXXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=35 SUM=32@FFFFFFFFTXXXT@/BRANCH@=T,@BRANCH MARK=TE ID=45 SUM=32@FFFFFFFFTXXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=36 SUM=32@FFFFFFFFFTXXT@/BRANCH@=T,@BRANCH MARK=TE ID=46 SUM=32@FFFFFFFFFTXXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=37 SUM=32@FFFFFFFFFFTXT@/BRANCH@=T,@BRANCH MARK=TE ID=47 SUM=32@FFFFFFFFFFTXF@/BRANCH@=F
+   or @BRANCH MARK=TE ID=38 SUM=32@FFFFFFFFFFFTT@/BRANCH@=T,@BRANCH MARK=TE ID=48 SUM=32@FFFFFFFFFFFTF@/BRANCH@=F@/POPUP@ )
+    @BRANCH MARK=TB ID=0 SUM=20@{
+        loc_return = K_NO_EVENT;
+        par_This->_ReqFmtMemo = par_This->_DuConfMemo;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=1 SUM=20@else
+    {
+        par_This->_ReqFmtMemo = par_This->_DuConfMemo;
+        loc_return = loc_reqFmt;
+    }@/BRANCH@@/DECISION@
+
+    @BRANCH MARK=TP ID=0 SUM=1@return loc_return;@SHORTCUT MARK=TB ID=2@@/BRANCH@
+    @COMMENT@/* End of user code */@/COMMENT@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

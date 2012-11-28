@@ -1,0 +1,75 @@
+VE 3.0d CCOV CMCDC #i3
+FC "SAEXPINI_QPORT_CREATE.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\SA\\SAEX\\SAEXPINI\\SRC\\"
+FD 1285925463
+TC PR RE AP BS BT BI BL CO CC
+CE 0 "saexpini_qport_create" "par_ul_du_id < K_SADI_DU_FTE1" 345 345
+CE 2 "saexpini_qport_create" "loc_ul_idx < loc_ul_nb" 352 352
+AP 0 "saexpini_qport_create" "CREATE_QUEUING_PORT" 354 360
+CE 4 "saexpini_qport_create" "loc_e_ret == NO_ERROR" 362 362
+BL 0 simple "saexpini_qport_create" /then/for/then 363 366
+AP 1 "saexpini_qport_create" "lbfl_mng" 371 378
+BL 1 simple "saexpini_qport_create" /then/for/else 368 379
+BL 2 simple "saexpini_qport_create" /then/for 353 380
+BL 3 logical "saexpini_qport_create" /then/for/0 352 380
+BL 4 logical "saexpini_qport_create" /then/for/1 352 380
+BL 5 logical "saexpini_qport_create" /then/for/2+ 352 380
+AP 2 "saexpini_qport_create" "pini_get_qport_id" 384 384
+CE 6 "saexpini_qport_create" "par_ul_du_id == K_SADI_DU_CL" 387 387
+CE 8 "saexpini_qport_create" "par_ul_du_id == K_SADI_DU_CR" 387 387
+CE 10 "saexpini_qport_create" "par_ul_du_id == K_SADI_DU_3C" 388 388
+CC 12 3 6 8 10 4 TXXFTXFFTFFF 3
+AP 3 "saexpini_qport_create" "CREATE_QUEUING_PORT" 391 397
+CE 16 "saexpini_qport_create" "loc_e_ret == NO_ERROR" 398 398
+BL 6 simple "saexpini_qport_create" /then/then/then 399 401
+AP 4 "saexpini_qport_create" "lbfl_mng" 405 412
+BL 7 simple "saexpini_qport_create" /then/then/else 403 413
+BL 8 simple "saexpini_qport_create" /then/then 389 414
+BL 9 simple "saexpini_qport_create" /then/else 416 418
+BL 10 simple "saexpini_qport_create" /then 346 420
+BL 11 simple "saexpini_qport_create" /else 422 424
+PR 0 return "saexpini_qport_create" 426 426
+PR 1 proc "saexpini_qport_create" 335 427
+BL 12 simple "saexpini_qport_create" / 335 427
+AP 5 "pini_get_qport_id" "GET_QUEUING_PORT_ID" 448 451
+CE 18 "pini_get_qport_id" "loc_apex_return_code == NO_ERROR" 454 454
+BL 13 simple "pini_get_qport_id" /then 455 458
+AP 6 "pini_get_qport_id" "lbfl_mng" 462 469
+BL 14 simple "pini_get_qport_id" /else 460 470
+AP 7 "pini_get_qport_id" "GET_QUEUING_PORT_ID" 473 476
+CE 20 "pini_get_qport_id" "loc_apex_return_code == NO_ERROR" 479 479
+BL 15 simple "pini_get_qport_id" /then 480 483
+AP 8 "pini_get_qport_id" "lbfl_mng" 487 494
+BL 16 simple "pini_get_qport_id" /else 485 495
+PR 2 return "pini_get_qport_id" 497 497
+PR 3 proc "pini_get_qport_id" 443 498
+BL 17 simple "pini_get_qport_id" / 443 498
+DC 206860755
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="SAEXPINI_QPORT_CREATE.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\SA\SAEX\SAEXPINI\SRC\"
+  DATE=1285925463
+  CHECKSUM=206860755
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="SAEXPINI_QPORT_CREATE.C"@
+typedef struct 
+{
+	const T_uint32	ul_sport_nb;	@COMMENT@/* number of ports */@/COMMENT@
+	const T_qport	*pr_qport_list;	@COMMENT@/* ports list caracteristics */@/COMMENT@
+}T_qport_car;						@COMMENT@/* caracteristics of specific ports of a DU */@/COMMENT@
+@/NODE /RIK@

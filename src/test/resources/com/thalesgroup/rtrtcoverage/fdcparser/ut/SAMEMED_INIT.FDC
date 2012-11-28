@@ -1,0 +1,351 @@
+VE 3.0d CCOV CMCDC #i3
+FC "SAMEMED_INIT.C" "V:\\CDS_A400M_DEV\\SA\\SAME\\SAMEMED\\SRC\\"
+FD 1292262856
+TC PR RE AP BS BT BI BL CO CC
+AP 0 "samemed_init" "sadi_get_local_du_id" 160 160
+AP 1 "samemed_init" "sadi_get_du_side" 161 161
+AP 2 "samemed_init" "lbtm_init" 164 165
+CE 0 "samemed_init" "loc_du_side == (type-cast) ..." 204 204
+BL 0 simple "samemed_init" /then 205 208
+BL 1 simple "samemed_init" /else 210 213
+CE 2 "samemed_init" "loc_i < 3UL" 216 216
+CE 4 "samemed_init" "loc_du_id != loc_local_du_id" 222 222
+AP 3 "samemed_init" "samc_msg_port_create" 225 230
+CE 6 "samemed_init" "loc_apex_return_code != NO_ERROR" 231 231
+AP 4 "samemed_init" "lbfl_mng" 234 241
+BL 2 simple "samemed_init" /for/then/then 232 244
+BL 3 simple "samemed_init" /for/then/else 246 248
+BL 4 simple "samemed_init" /for/then 223 249
+BL 5 simple "samemed_init" /for/else 251 254
+BL 6 simple "samemed_init" /for 217 255
+BL 7 logical "samemed_init" /for/0 216 255
+BL 8 logical "samemed_init" /for/1 216 255
+BL 9 logical "samemed_init" /for/2+ 216 255
+AP 5 "samemed_init" "samc_msg_port_create" 258 263
+CE 8 "samemed_init" "loc_apex_return_code != NO_ERROR" 264 264
+AP 6 "samemed_init" "lbfl_mng" 267 274
+BL 10 simple "samemed_init" /then 265 276
+BL 11 simple "samemed_init" /else 278 280
+PR 0 return "samemed_init" 282 282
+PR 1 proc "samemed_init" 151 283
+BL 12 simple "samemed_init" / 151 283
+DC 1300047202
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="SAMEMED_INIT.C"
+  DIR="V:\CDS_A400M_DEV\SA\SAME\SAMEMED\SRC\"
+  DATE=1292262856
+  CHECKSUM=1300047202
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="SAMEMED_INIT.C"@@COMMENT@/******************************************************************************
+ **
+ **                                   ==============
+ **                                   IDENTIFICATION
+ **                                   ==============
+ **
+ **
+ **
+ **  Filename            : samemed_init.c
+ **
+ **  Author/ Company     : THALES SERVICES
+ **
+ **  Creation date       : 14/06/2006
+ **
+ **  Copyright statement : Copyright (C); 2006
+ **                        THALES Avionics
+ **
+ **  Module description  : Media Behavior:
+ **						   Initialization for data needed by SAMEMED
+ **
+ *****************************************************************************/@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Project specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@/* MACS TYPES */@/COMMENT@
+@COMMENT@#include "COD_A653_API_COMMON.h"@/COMMENT@
+@COMMENT@#include "COD_CMTY_CS_COMMON.h"@/COMMENT@
+
+@COMMENT@/* SA TYPES */@/COMMENT@
+@COMMENT@#include "apsw_basic_types_c.h"@/COMMENT@
+
+@COMMENT@/* PLATFORM TYPES */@/COMMENT@
+@COMMENT@#include "C_TYPES.t"@/COMMENT@
+
+@COMMENT@/* CALLED CSU TYPES */@/COMMENT@
+@COMMENT@#include "THEMIS_BASIC_TYPES.h"@/COMMENT@
+@COMMENT@#include "LIB_TYPES.h"@/COMMENT@
+@COMMENT@#include "none_section.h"@/COMMENT@
+@COMMENT@#include "lbtm.h"@/COMMENT@
+@COMMENT@#include "lbfl.h"@/COMMENT@
+@COMMENT@#include "sadi.h"@/COMMENT@
+@COMMENT@#include "sarmlayr_layer_tools.h"@/COMMENT@
+@COMMENT@#include "same_fsc_error_desc_config.h"@/COMMENT@
+@COMMENT@#include "same_component_id_ifc.h"@/COMMENT@
+@COMMENT@#include "samemed.h"@/COMMENT@
+
+@COMMENT@/* CALLED CSU PROTOTYPES */@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Module specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@#include "samemed_init.p"@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Local file declarations
+ *****************************************************************************/@/COMMENT@
+
+typedef struct
+{
+    T_sadi_du_id            e_du_id;      @COMMENT@/* hosting DU's id */@/COMMENT@
+    T_samc_comm_msg_desc    r_port_desc;  @COMMENT@/* MSG port desc */@/COMMENT@
+} T_same_media_portname_map;
+
+typedef struct
+{
+    @COMMENT@/* input port names */@/COMMENT@
+    T_same_media_portname_map in[K_SAME_MEDIA_NB_DU_PER_SIDE];
+    @COMMENT@/* output port name */@/COMMENT@
+    T_samc_comm_msg_desc out_port_desc;
+} T_same_media_portname_side_setup;
+
+static const T_same_media_portname_side_setup tr_same_media_portname_setup_left =
+{ @COMMENT@/* left side */@/COMMENT@       
+    { @COMMENT@/* input */@/COMMENT@
+        @COMMENT@/* { du_id, {port name, message size, direction, refresh} } */@/COMMENT@
+        { K_SADI_DU_OL, { K_SAME_MEDIA_PORT_REC_OL, K_SAME_MEDIA_XTALK_MSG_LENGTH,
+                          DESTINATION,                K_SAME_MEDIA_XTALK_MSG_REFRESH } },
+        { K_SADI_DU_IL, { K_SAME_MEDIA_PORT_REC_IL, K_SAME_MEDIA_XTALK_MSG_LENGTH, 
+                          DESTINATION,                K_SAME_MEDIA_XTALK_MSG_REFRESH } },
+        { K_SADI_DU_LL, { K_SAME_MEDIA_PORT_REC_LL, K_SAME_MEDIA_XTALK_MSG_LENGTH, 
+                          DESTINATION,                K_SAME_MEDIA_XTALK_MSG_REFRESH } }
+    },
+    @COMMENT@/* output */@/COMMENT@
+    { K_SAME_MEDIA_PORT_SEND, K_SAME_MEDIA_XTALK_MSG_LENGTH, 
+      SOURCE,                   K_SAME_MEDIA_XTALK_MSG_REFRESH }
+};
+static const T_same_media_portname_side_setup tr_same_media_portname_setup_right =
+{ @COMMENT@/* right side */@/COMMENT@
+    { @COMMENT@/* input */@/COMMENT@
+        { K_SADI_DU_OR, { K_SAME_MEDIA_PORT_REC_OR, K_SAME_MEDIA_XTALK_MSG_LENGTH,
+                          DESTINATION,                 K_SAME_MEDIA_XTALK_MSG_REFRESH } },
+        { K_SADI_DU_IR, { K_SAME_MEDIA_PORT_REC_IR, K_SAME_MEDIA_XTALK_MSG_LENGTH, 
+                          DESTINATION,                 K_SAME_MEDIA_XTALK_MSG_REFRESH } },
+        { K_SADI_DU_LR, { K_SAME_MEDIA_PORT_REC_LR, K_SAME_MEDIA_XTALK_MSG_LENGTH, 
+                          DESTINATION,                 K_SAME_MEDIA_XTALK_MSG_REFRESH } }
+    },
+    @COMMENT@/* output */@/COMMENT@
+    { K_SAME_MEDIA_PORT_SEND, K_SAME_MEDIA_XTALK_MSG_LENGTH, 
+      SOURCE,                    K_SAME_MEDIA_XTALK_MSG_REFRESH }
+};
+
+T_same_media_xtalk_port_ids tr_same_media_xtalk_port_ids;
+
+@COMMENT@#define K_SAMEMED_INTERACTIVITY_MODE_INIT_TEMPO 30@/COMMENT@
+
+@COMMENT@/* Definition of [Interactive cursor mode menu to display] time out: 2000ms */@/COMMENT@ 
+@COMMENT@#define K_SAMEKCCU_CURSOR_MODE_MENU_TIMEOUT	2000UL@/COMMENT@
+
+@COMMENT@/* [Interactive cursor mode menu to display] time out */@/COMMENT@
+extern T_lib_timeout r_samemed_interactivity_mode_menu_timeout;
+
+@COMMENT@/* Global variable for [ghost cursor activation] */@/COMMENT@
+extern T_boolean b_same_ghost_cursor_activation;
+
+@COMMENT@/* Media state at previous cycle */@/COMMENT@
+extern T_samemed_media_state r_samemed_previous_media_state;
+
+@COMMENT@/* Display state at current and previous cycles */@/COMMENT@
+extern T_samemed_display_state r_samemed_display_state;
+extern T_samemed_display_state r_samemed_display_state_prev;
+
+extern T_BOOL CURSOR_IMMOBILIZE;
+extern T_BOOL CURSOR_FORCE_CENTERING;
+extern T_FLOAT PRP_SLEW_NTD1_LAST_LAT;
+extern T_FLOAT PRP_SLEW_NTD1_LAST_LONG;
+extern T_FLOAT PRP_SLEW_NTD2_LAST_LAT;
+extern T_FLOAT PRP_SLEW_NTD2_LAST_LONG;
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** void samemed_init
+ ***** 
+ ***** Description : Initialization of SAMEMED XTalk data
+ *****
+ ***** 
+ ***** Output global variables:
+ *****
+ *****   b_same_ghost_cursor_activation: [ghost cursor activation]
+ *****
+ *****   r_samemed_interactivity_mode_menu_timeout: time out for 
+ *****      [Interactive cursor mode menu to display]
+ *****   
+ *****   tr_same_media_xtalk_port_ids: port ids used to read and send
+ *****       messages regarding media behavior on XTalk.
+ *****   
+ *****************************************************************************/@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="samemed_init"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="samemed_init"@samemed_init@/BRANCH@(void) 
+@BRANCH MARK=TB ID=12 SUM=20@{
+    T_uint32                loc_i;
+    T_samc_return_code_type loc_apex_return_code;
+    T_sadi_du_id            loc_local_du_id;
+    T_samc_comm_msg_desc    loc_port_desc;
+    T_sadi_du_id            loc_du_id;
+    T_uint32                loc_du_side;
+    T_same_media_portname_side_setup *loc_portname_setup;
+
+    @BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="sadi_get_local_du_id"@sadi_get_local_du_id@/JUMP@ (&loc_local_du_id)@/BRANCH@;
+    @BRANCH MARK=TA ID=1 SUM=10@@JUMP NAME="sadi_get_du_side"@sadi_get_du_side@/JUMP@(&loc_du_side)@/BRANCH@;
+
+    @COMMENT@/* Initialize the time out for [Interactive cursor mode menu to display] */@/COMMENT@
+	@BRANCH MARK=TA ID=2 SUM=10@@JUMP NAME="lbtm_init"@lbtm_init@/JUMP@ (&r_samemed_interactivity_mode_menu_timeout,
+               K_SAMEKCCU_CURSOR_MODE_MENU_TIMEOUT)@/BRANCH@;
+
+    @COMMENT@/* Global variable for [ghost cursor activation] */@/COMMENT@
+    b_same_ghost_cursor_activation = 0;
+
+    @COMMENT@/* Initialize [Interactive cursor mode on NTDi] */@/COMMENT@
+    r_samemed_previous_media_state.ntd1_interactivity_mode = K_SARMLAYR_INTERACTIVE_CURSOR_NAV;
+    r_samemed_previous_media_state.ntd1_interactivity_mode_initialized = K_BOOL_FALSE;
+    r_samemed_previous_media_state.ntd1_interactivity_mode_init_tempo =
+        K_SAMEMED_INTERACTIVITY_MODE_INIT_TEMPO;
+    r_samemed_previous_media_state.ntd2_interactivity_mode = K_SARMLAYR_INTERACTIVE_CURSOR_NAV;
+    r_samemed_previous_media_state.ntd2_interactivity_mode_initialized = K_BOOL_FALSE;
+    r_samemed_previous_media_state.ntd2_interactivity_mode_init_tempo =
+        K_SAMEMED_INTERACTIVITY_MODE_INIT_TEMPO;
+
+    r_samemed_previous_media_state.cursor_displayed = K_BOOL_FALSE;
+    r_samemed_previous_media_state.du_format = 0;
+    r_samemed_previous_media_state.border_look = K_BOOL_TRUE;
+    r_samemed_previous_media_state.immobilize = K_BOOL_FALSE;
+    r_samemed_previous_media_state.force_centering = K_BOOL_FALSE;
+    r_samemed_previous_media_state.cursor_reference = K_SAMEMED_CURSOR_REF_SCREEN;
+    r_samemed_previous_media_state.cursor_shape = 0;
+
+	@COMMENT@/* Initialize previous and current display states */@/COMMENT@
+	r_samemed_display_state.ntd1_mode = 0;
+	r_samemed_display_state.ntd2_mode = 0;
+	r_samemed_display_state_prev.ntd1_mode = 0;
+	r_samemed_display_state_prev.ntd2_mode = 0;
+
+    CURSOR_INTERACTIVITY_TYPE = K_SARMLAYR_INTERACTIVE_CURSOR_NAV;
+
+    CURSOR_IMMOBILIZE = K_BOOL_FALSE;
+    CURSOR_FORCE_CENTERING = K_BOOL_FALSE;
+    PRP_SLEW_NTD1_LAST_LAT = 0;
+    PRP_SLEW_NTD1_LAST_LONG = 0;
+    PRP_SLEW_NTD2_LAST_LAT = 0;
+    PRP_SLEW_NTD2_LAST_LONG = 0;
+
+    @COMMENT@/* set loc_portname_setup according to the side */@/COMMENT@
+    @DECISION SUM=20+21 ID=0|1@if(@POPUP@loc_du_side == @ALT@K_SADI_LEFT_SIDE@-ALT@(T_int32)0x4C454654@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+    @BRANCH MARK=TB ID=0 SUM=20@{
+        loc_portname_setup = (T_same_media_portname_side_setup *) 
+            &tr_same_media_portname_setup_left;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=1 SUM=20@else
+    {
+        loc_portname_setup = (T_same_media_portname_side_setup *) 
+            &tr_same_media_portname_setup_right;
+    }@/BRANCH@@/DECISION@
+
+    @COMMENT@/* Get input port ids */@/COMMENT@
+    @POPUP@for@-POPUP@loop branches :
+@BRANCH MARK=TB ID=7 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=8 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=9 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (loc_i = 0 ; @POPUP@loc_i < @ALT@K_SAME_MEDIA_NB_DU_PER_SIDE@-ALT@3UL@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@@/ALT@ ; loc_i ++)
+    @BRANCH MARK=TB ID=6 SUM=20@{
+        loc_du_id = loc_portname_setup->in[loc_i].e_du_id;
+        tr_same_media_xtalk_port_ids.in[loc_i].e_du_id = loc_du_id;
+        loc_port_desc = loc_portname_setup->in[loc_i].r_port_desc;
+        @COMMENT@/* Skip local DU */@/COMMENT@
+        @DECISION SUM=20+21 ID=4|5@if (@POPUP@loc_du_id != loc_local_du_id@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@)
+        @BRANCH MARK=TB ID=4 SUM=20@{
+            @COMMENT@/* Creation of the samc port */@/COMMENT@
+            @BRANCH MARK=TA ID=3 SUM=10@@JUMP NAME="samc_msg_port_create"@samc_msg_port_create@/JUMP@ (loc_port_desc.tc_name,
+						          loc_port_desc.l_size,
+						          loc_port_desc.e_direction,
+						          loc_port_desc.ul_refresh,
+						          &tr_same_media_xtalk_port_ids.in[loc_i].l_port_id,
+						          &loc_apex_return_code)@/BRANCH@;
+            @DECISION SUM=20+21 ID=2|3@if (@POPUP@loc_apex_return_code != NO_ERROR@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=6 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=7 SUM=30@False@/BRANCH@@/POPUP@)
+            @BRANCH MARK=TB ID=2 SUM=20@{
+				@COMMENT@/* Raise an error */@/COMMENT@
+		        @BRANCH MARK=TA ID=4 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@(R_SAME_FSC_ERR_CONFIG,
+				    K_LBFL_E_GNERR_SERV_SAMPLING_PORT_CREATE,
+				    K_SAME_SAMEMED_INIT_COMPONENT_ATT,
+				    (T_uint32)loc_apex_return_code,
+				    0UL,
+				    0UL,
+				    K_NULL_PTR,
+				    0UL)@/BRANCH@;
+
+				tr_same_media_xtalk_port_ids.in[loc_i].l_port_id = K_SAME_MEDIA_XTALK_ERROR_PORT;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=3 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+        }@/BRANCH@
+		@BRANCH MARK=TB ID=5 SUM=20@else
+		{
+            @COMMENT@/* Init value for unit testing */@/COMMENT@
+			tr_same_media_xtalk_port_ids.in[loc_i].l_port_id = 0;
+		}@/BRANCH@@/DECISION@
+    }@/BRANCH@
+    @COMMENT@/* Get output port id */@/COMMENT@
+    loc_port_desc = loc_portname_setup->out_port_desc;
+    @BRANCH MARK=TA ID=5 SUM=10@@JUMP NAME="samc_msg_port_create"@samc_msg_port_create@/JUMP@ (loc_port_desc.tc_name,
+                          loc_port_desc.l_size,
+                          loc_port_desc.e_direction,
+                          loc_port_desc.ul_refresh,
+                          &tr_same_media_xtalk_port_ids.out_port_id,
+                          &loc_apex_return_code)@/BRANCH@;
+    @DECISION SUM=20+21 ID=10|11@if (@POPUP@loc_apex_return_code != NO_ERROR@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=8 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=9 SUM=30@False@/BRANCH@@/POPUP@)
+    @BRANCH MARK=TB ID=10 SUM=20@{
+		@COMMENT@/* Raise an error */@/COMMENT@
+		@BRANCH MARK=TA ID=6 SUM=10@@JUMP NAME="lbfl_mng"@lbfl_mng@/JUMP@(R_SAME_FSC_ERR_CONFIG,
+			K_LBFL_E_GNERR_SERV_SAMPLING_PORT_CREATE,
+			K_SAME_SAMEMED_INIT_COMPONENT_ATT,
+			(T_uint32)loc_apex_return_code,
+			0UL,
+			0UL,
+			K_NULL_PTR,
+			0UL)@/BRANCH@;
+		tr_same_media_xtalk_port_ids.out_port_id = K_SAME_MEDIA_XTALK_ERROR_PORT;
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=11 SUM=20@else
+	{
+		@COMMENT@/* Nothing to do */@/COMMENT@
+	}@/BRANCH@@/DECISION@
+
+    @BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=12@@/BRANCH@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

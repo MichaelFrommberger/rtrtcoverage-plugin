@@ -1,0 +1,538 @@
+VE 3.0d CCOV #i3
+FC "LAME_UPDATE_SLEW_PRP.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\LA\\LAME\\SRC\\"
+FD 1285925450
+TC PR RE AP BS BT BI BL
+AP 0 "lame_update_slew_prp" "initialize_slew_prp" 110 112
+BL 0 simple "lame_update_slew_prp" /then 107 114
+AP 1 "lame_update_slew_prp" "update_last_position_on_side" 117 118
+BL 1 simple "lame_update_slew_prp" /else/then/then 125 132
+AP 2 "lame_update_slew_prp" "lame_update_slew_prp_in_slew" 135 138
+BL 2 simple "lame_update_slew_prp" /else/then/else/then 134 139
+BL 3 simple "lame_update_slew_prp" /else/then/else/else/then/then 145 154
+BL 4 simple "lame_update_slew_prp" /else/then/else/else/then/else 156 161
+BL 5 simple "lame_update_slew_prp" /else/then/else/else/then 141 162
+BL 6 simple "lame_update_slew_prp" /else/then/else/else/else 164 166
+BL 7 simple "lame_update_slew_prp" /else/then/else/else 140 166
+BL 8 simple "lame_update_slew_prp" /else/then/else 133 166
+BL 9 simple "lame_update_slew_prp" /else/then 123 167
+BL 10 simple "lame_update_slew_prp" /else/else 169 172
+BL 11 simple "lame_update_slew_prp" /else 116 173
+PR 0 return "lame_update_slew_prp" 174 174
+PR 1 proc "lame_update_slew_prp" 105 175
+BL 12 simple "lame_update_slew_prp" / 105 175
+BL 13 simple "lame_update_slew_prp_in_slew" /then 213 222
+BL 14 simple "lame_update_slew_prp_in_slew" /else/then 227 235
+BL 15 simple "lame_update_slew_prp_in_slew" /else/else/then 237 240
+BL 16 simple "lame_update_slew_prp_in_slew" /else/else/else/then 244 247
+BL 17 simple "lame_update_slew_prp_in_slew" /else/else/else/else/then 250 253
+AP 3 "lame_update_slew_prp_in_slew" "lame_conv_screen_to_en" 273 278
+AP 4 "lame_update_slew_prp_in_slew" "lame_conv_en_to_geo" 280 282
+BL 18 simple "lame_update_slew_prp_in_slew" /else/else/else/else/else/then 267 283
+BL 19 simple "lame_update_slew_prp_in_slew" /else/else/else/else/else/else 285 288
+BL 20 simple "lame_update_slew_prp_in_slew" /else/else/else/else/else 255 289
+BL 21 simple "lame_update_slew_prp_in_slew" /else/else/else/else 248 289
+BL 22 simple "lame_update_slew_prp_in_slew" /else/else/else 241 289
+BL 23 simple "lame_update_slew_prp_in_slew" /else/else 236 289
+BL 24 simple "lame_update_slew_prp_in_slew" /else 223 289
+PR 2 return "lame_update_slew_prp_in_slew" 290 290
+PR 3 proc "lame_update_slew_prp_in_slew" 205 291
+BL 25 simple "lame_update_slew_prp_in_slew" / 205 291
+BL 26 simple "initialize_slew_prp" /while/then/then 356 362
+BL 27 simple "initialize_slew_prp" /while/then/else 364 366
+BL 28 simple "initialize_slew_prp" /while/then 344 367
+BL 29 simple "initialize_slew_prp" /while/else 369 371
+BL 30 simple "initialize_slew_prp" /while 340 372
+BL 31 logical "initialize_slew_prp" /while/0 338 372
+BL 32 logical "initialize_slew_prp" /while/1 338 372
+BL 33 logical "initialize_slew_prp" /while/2+ 338 372
+PR 4 return "initialize_slew_prp" 374 374
+PR 5 proc "initialize_slew_prp" 315 375
+BL 34 simple "initialize_slew_prp" / 315 375
+BL 35 simple "update_last_position_on_side" /while/then 418 425
+BL 36 simple "update_last_position_on_side" /while/else 427 429
+BL 37 simple "update_last_position_on_side" /while 413 430
+BL 38 logical "update_last_position_on_side" /while/0 411 430
+BL 39 logical "update_last_position_on_side" /while/1 411 430
+BL 40 logical "update_last_position_on_side" /while/2+ 411 430
+BL 41 simple "update_last_position_on_side" /then 435 440
+BL 42 simple "update_last_position_on_side" /else 442 444
+PR 6 return "update_last_position_on_side" 446 446
+PR 7 proc "update_last_position_on_side" 399 447
+BL 43 simple "update_last_position_on_side" / 399 447
+DC 2098840239
+@RIK
+  TOKEN="CCOV"
+  SRC="LAME_UPDATE_SLEW_PRP.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\LA\LAME\SRC\"
+  DATE=1285925450
+  CHECKSUM=2098840239
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions",
+    "&Modified conditions",
+    "M&ultiple conditions")
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="LAME_UPDATE_SLEW_PRP.C"@@COMMENT@/******************************************************************************
+ **
+ **                                   ==============
+ **                                   IDENTIFICATION
+ **                                   ==============
+ **
+ **
+ **
+ **  Filename            : lame_update_slew_prp.c
+ **
+ **  Author/ Company     : N. Sceaux / THALES Services
+ **
+ **  Creation date       : 01/02/2007
+ **
+ **  Copyright statement : Copyright (C); 2006
+ **                        THALES Avionics
+ **
+ **  Module description  : Media Behavior: updates NTDi Slew PRP
+ **
+ *****************************************************************************/@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Project specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@/* MACS TYPES */@/COMMENT@
+
+
+@COMMENT@/* SA TYPES */@/COMMENT@
+
+
+@COMMENT@/* PLATFORM TYPES */@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU TYPES */@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU PROTOTYPES */@/COMMENT@
+
+
+
+@COMMENT@/******************************************************************************
+ **                           Module specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@#include "lame_types.h"@/COMMENT@
+@COMMENT@#include "lame_conv_screen_to_en.p"@/COMMENT@
+@COMMENT@#include "lame_conv_en_to_geo.p"@/COMMENT@
+@COMMENT@#include "lame_update_slew_prp.p"@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Local file declarations
+ *****************************************************************************/@/COMMENT@
+
+static void lame_update_slew_prp_in_slew (
+    T_lame_NTDi_slew_prp         *par_ptr_slew_conf,
+    T_lame_cursor_configuration  *par_ptr_cursor_config,
+    T_lame_display_configuration *par_ptr_display_config,
+    T_lame_geographic_coordinate *par_ptr_current_PRP_position);
+
+static void initialize_slew_prp (
+    T_lame_NTDi_slew_prp         *par_ptr_slew_conf,
+    T_lame_display_configuration *par_ptr_display_config,
+    T_lame_geographic_coordinate *par_ptr_AC_position);
+
+static void update_last_position_on_side (
+    T_lame_NTDi_slew_prp         *par_ptr_slew_conf,
+    T_lame_display_configuration *par_ptr_display_config);
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** void lame_update_slew_prp 
+ ***** 
+ ***** Description : update NTDi Slew PRP
+ ***** 
+ ***** Input:
+ ***** 
+ *****  T_lame_cursor_configuration  *par_ptr_cursor_config:
+ *****    cursor configuration
+ ***** 
+ *****  T_lame_display_configuration *par_ptr_display_config:
+ *****    display configuration
+ ***** 
+ *****  T_lame_geographic_coordinate *par_ptr_AC_position:
+ *****    Aircraft lat/long
+ ***** 
+ *****  T_lame_geographic_coordinate *par_ptr_current_PRP_position:
+ *****    current PRP lat/long
+ ***** 
+ *****  T_boolean                     par_b_prp_reset:
+ *****    a Slew PRP reset occurs at this cycle
+ ***** 
+ ***** Input/Output:
+ ***** 
+ *****  T_lame_NTDi_slew_prp         *par_ptr_slew_conf:
+ *****    NTDi slew PRP configuration
+ ***** 
+ *****************************************************************************/@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="lame_update_slew_prp"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="lame_update_slew_prp"@lame_update_slew_prp@/BRANCH@ (
+    T_lame_NTDi_slew_prp         *par_ptr_slew_conf,
+    T_lame_cursor_configuration  *par_ptr_cursor_config,
+    T_lame_display_configuration *par_ptr_display_config,
+    T_lame_geographic_coordinate *par_ptr_AC_position,
+    T_lame_geographic_coordinate *par_ptr_current_PRP_position,
+    T_boolean                     par_b_prp_reset)
+@BRANCH MARK=TB ID=12 SUM=20@{
+    @DECISION SUM=20+21 ID=0|11@if (par_ptr_slew_conf->initialized == K_BOOL_FALSE)
+    @BRANCH MARK=TB ID=0 SUM=20@{
+        @COMMENT@/* The PRP Slew has not been initialized yet (which means that 
+         * this is the first invocation in cyclic mode) */@/COMMENT@
+        @BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="initialize_slew_prp"@initialize_slew_prp@/JUMP@ (par_ptr_slew_conf,
+                             par_ptr_display_config,
+                             par_ptr_AC_position)@/BRANCH@;
+        par_ptr_slew_conf->initialized = K_BOOL_TRUE;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=11 SUM=20@else
+    {
+        @BRANCH MARK=TA ID=1 SUM=10@@JUMP NAME="update_last_position_on_side"@update_last_position_on_side@/JUMP@ (par_ptr_slew_conf,
+                                      par_ptr_display_config)@/BRANCH@;
+        @COMMENT@/* At this point, we are not in init phase,.
+         * If NTDi is displayed on local DU, the NTDi Slew PRP may have 
+         * to be updated */@/COMMENT@
+        @DECISION SUM=20+21 ID=9|10@if (par_ptr_display_config->format == par_ptr_slew_conf->format)
+        @BRANCH MARK=TB ID=9 SUM=20@{
+            @DECISION SUM=20+21 ID=1|8@if (par_b_prp_reset == K_BOOL_TRUE)
+            @BRANCH MARK=TB ID=1 SUM=20@{
+                @COMMENT@/* M-AF-PTSCDS-A1.45-2541
+                 * Upon Slew PRP reset, use [NTD current PRP lat/long] */@/COMMENT@
+                par_ptr_slew_conf->position.latitude  = 
+                    par_ptr_current_PRP_position->latitude;
+                par_ptr_slew_conf->position.longitude = 
+                    par_ptr_current_PRP_position->longitude;
+            }@/BRANCH@
+            @BRANCH MARK=TB ID=8 SUM=20@else @DECISION SUM=20+21 ID=2|7@if (par_ptr_display_config->ntd_mode == K_LAME_NTD_MODE_SLEW)
+            @BRANCH MARK=TB ID=2 SUM=20@{
+                @BRANCH MARK=TA ID=2 SUM=10@@JUMP NAME="lame_update_slew_prp_in_slew"@lame_update_slew_prp_in_slew@/JUMP@ (par_ptr_slew_conf,
+                                              par_ptr_cursor_config,
+                                              par_ptr_display_config,
+                                              par_ptr_current_PRP_position)@/BRANCH@;
+            }@/BRANCH@
+            @BRANCH MARK=TB ID=7 SUM=20@else @DECISION SUM=20+21 ID=5|6@if (par_ptr_display_config->ntd_mode == K_LAME_NTD_MODE_SLEW_FRZ)
+            @BRANCH MARK=TB ID=5 SUM=20@{
+                @COMMENT@/* local DU displays NTDi Slew Frz */@/COMMENT@
+                @DECISION SUM=20+21 ID=3|4@if (par_ptr_display_config->format_prev 
+                    != par_ptr_display_config->format)
+                @BRANCH MARK=TB ID=3 SUM=20@{
+                    @COMMENT@/* M-AF-PTSCDS-A1.45-2505
+                     * When format changes to NTDi (with mode=SLEW FRZ), 
+                     * use the last position when NTDi was displayed on
+                     * this side in Slew or Slew FRZ mode */@/COMMENT@
+                    par_ptr_slew_conf->position.latitude  = 
+                        par_ptr_slew_conf->last_position_on_side.latitude;
+                    par_ptr_slew_conf->position.longitude = 
+                        par_ptr_slew_conf->last_position_on_side.longitude;
+                }@/BRANCH@
+                @BRANCH MARK=TB ID=4 SUM=20@else
+                {
+                    @COMMENT@/* M-AF-PTSCDS-A1.45-2501 */@/COMMENT@
+                    @COMMENT@/* M-AF-PTSCDS-A1.45-2504 */@/COMMENT@
+                    @COMMENT@/* M-AF-PTSCDS-A1.45-2591 */@/COMMENT@
+                    @COMMENT@/* Nothing to do */@/COMMENT@
+                }@/BRANCH@@/DECISION@
+            }@/BRANCH@
+            @BRANCH MARK=TB ID=6 SUM=20@else
+            {
+               @COMMENT@/* Nothing to do */@/COMMENT@
+            }@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=10 SUM=20@else
+        {
+            @COMMENT@/* Not in NTDi format */@/COMMENT@
+            @COMMENT@/* Nothing to do */@/COMMENT@
+        }@/BRANCH@@/DECISION@
+    }@/BRANCH@@/DECISION@
+    @BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=12@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** static void lame_update_slew_prp_in_slew 
+ ***** 
+ ***** Description :  update NTDi Slew PRP when local DU display Slew mode.
+ ***** 
+ *****  T_lame_cursor_configuration  *par_ptr_cursor_config:
+ *****    cursor configuration
+ ***** 
+ *****  T_lame_display_configuration *par_ptr_display_config:
+ *****    display configuration
+ ***** 
+ *****  T_lame_geographic_coordinate *par_ptr_current_PRP_position:
+ *****    current PRP lat/long
+ ***** 
+ ***** Input/Output:
+ ***** 
+ *****  T_lame_NTDi_slew_prp         *par_ptr_slew_conf:
+ *****    NTDi slew PRP configuration
+ ***** 
+ *****************************************************************************/@/COMMENT@
+static void @NODE TYPE=FUNCTION NAME="lame_update_slew_prp_in_slew"@@BRANCH MARK=TP ID=3 SUM=0@@LINK NAME="lame_update_slew_prp_in_slew"@lame_update_slew_prp_in_slew@/BRANCH@ (
+    T_lame_NTDi_slew_prp         *par_ptr_slew_conf,
+    T_lame_cursor_configuration  *par_ptr_cursor_config,
+    T_lame_display_configuration *par_ptr_display_config,
+    T_lame_geographic_coordinate *par_ptr_current_PRP_position)
+@BRANCH MARK=TB ID=25 SUM=20@{
+    T_lame_cartesian_coordinate loc_east_north_move;
+    T_lame_cartesian_coordinate loc_ccd_delta;
+    T_lame_cartesian_coordinate loc_ref;
+
+    @COMMENT@/* local DU displays NTDi Slew */@/COMMENT@
+    @DECISION SUM=20+21 ID=13|24@if (par_ptr_display_config->format_prev 
+        != par_ptr_display_config->format)
+    @BRANCH MARK=TB ID=13 SUM=20@{
+        @COMMENT@/* M-AF-PTSCDS-A1.45-2505
+         * When format changes to NTDi (with mode=SLEW), 
+         * use the last position when NTDi was displayed on
+         * this side in Slew or Slew FRZ mode */@/COMMENT@
+        par_ptr_slew_conf->position.latitude  = 
+            par_ptr_slew_conf->last_position_on_side.latitude;
+        par_ptr_slew_conf->position.longitude = 
+            par_ptr_slew_conf->last_position_on_side.longitude;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=24 SUM=20@else @DECISION SUM=20+21 ID=14|23@if ((par_ptr_display_config->ntd_mode_prev
+              != K_LAME_NTD_MODE_SLEW)
+             && (par_ptr_display_config->ntd_mode_prev
+                 != K_LAME_NTD_MODE_SLEW_FRZ))
+    @BRANCH MARK=TB ID=14 SUM=20@{
+        @COMMENT@/* M-AF-PTSCDS-A1.45-2500
+         * When NTDi mode changes from a mode other than Slew Frz 
+         * to SLEW, use [NTD current PRP lat/long] */@/COMMENT@
+        par_ptr_slew_conf->position.latitude  = 
+            par_ptr_current_PRP_position->latitude;
+        par_ptr_slew_conf->position.longitude = 
+            par_ptr_current_PRP_position->longitude;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=23 SUM=20@else @DECISION SUM=20+21 ID=15|22@if (par_ptr_cursor_config->displayed == K_BOOL_FALSE)
+    @BRANCH MARK=TB ID=15 SUM=20@{
+        @COMMENT@/* M-AF-PTSCDS-A1.45-2501 */@/COMMENT@
+        @COMMENT@/* Nothing to do */@/COMMENT@
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=22 SUM=20@else @DECISION SUM=20+21 ID=16|21@if ((par_ptr_cursor_config->displayed_prev == K_BOOL_FALSE)
+             && (par_ptr_display_config->ntd_mode_prev
+                 == K_LAME_NTD_MODE_SLEW))
+    @BRANCH MARK=TB ID=16 SUM=20@{
+        @COMMENT@/* M-AF-PTSCDS-A1.45-2504 */@/COMMENT@
+        @COMMENT@/* Nothing to do */@/COMMENT@
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=21 SUM=20@else @DECISION SUM=20+21 ID=17|20@if (par_ptr_display_config->ntd_mode_prev
+             == K_LAME_NTD_MODE_SLEW_FRZ)
+    @BRANCH MARK=TB ID=17 SUM=20@{
+        @COMMENT@/* M-AF-PTSCDS-A1.45-2592 */@/COMMENT@
+        @COMMENT@/* Nothing to do */@/COMMENT@
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=20 SUM=20@else
+    {
+        @COMMENT@/* M-AF-PTSCDS-A1.45-2499
+         * Slew mode position changes according to trackball moves */@/COMMENT@
+        @DECISION SUM=20+21 ID=18|19@if (@COMMENT@/* Inhibit Slew PRP computation for a few cycles after
+             * a mode change, to avoid unwanted Slew PRP move */@/COMMENT@
+            (par_ptr_display_config->ntd_mode_changed_to_slew_tempo == 0)
+            && ((par_ptr_cursor_config->on_prp == K_BOOL_TRUE)
+                || (par_ptr_cursor_config->immobilize == K_BOOL_TRUE))
+            && ((par_ptr_cursor_config->ccd_dx != 0)
+                || (par_ptr_cursor_config->ccd_dy != 0))
+            && (par_ptr_display_config->range_valid == K_BOOL_TRUE))
+
+        @BRANCH MARK=TB ID=18 SUM=20@{
+            @COMMENT@/* Compute movement in ND base */@/COMMENT@
+            loc_ccd_delta.x = par_ptr_cursor_config->ccd_dx;
+            loc_ccd_delta.y = par_ptr_cursor_config->ccd_dy;
+            loc_ref.x = 0;
+            loc_ref.y = 0;
+            @BRANCH MARK=TA ID=3 SUM=10@@JUMP NAME="lame_conv_screen_to_en"@lame_conv_screen_to_en@/JUMP@ (&loc_ccd_delta,
+                                    0.0,
+                                    par_ptr_display_config->range_factor_x,
+                                    par_ptr_display_config->range_factor_y,
+                                    &loc_ref,
+                                    &loc_east_north_move)@/BRANCH@;
+            @COMMENT@/* Compute Slew PRP Latitude and Longitude */@/COMMENT@
+            @BRANCH MARK=TA ID=4 SUM=10@@JUMP NAME="lame_conv_en_to_geo"@lame_conv_en_to_geo@/JUMP@ (&loc_east_north_move,
+                                 &(par_ptr_slew_conf->position),
+                                 &(par_ptr_slew_conf->position))@/BRANCH@;
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=19 SUM=20@else
+        {
+            @COMMENT@/* No trackball move, or cursor not yet centered on PRP */@/COMMENT@
+            @COMMENT@/* Nothing to do */@/COMMENT@
+        }@/BRANCH@@/DECISION@
+    }@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@@/BRANCH@@/DECISION@
+    @BRANCH MARK=TP ID=2 SUM=1@return;@SHORTCUT MARK=TB ID=25@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** static void initialize_slew_prp 
+ ***** 
+ ***** Description: Initialize NTDi Slew PRP lat/long (after a power up)
+ *****
+ ***** Input :
+ ***** 
+ *****  T_lame_display_configuration *par_ptr_display_config : 
+ ***** 
+ *****  T_lame_geographic_coordinate *par_ptr_AC_position : 
+ ***** 
+ ***** 
+ ***** Input/Output : 
+ ***** 
+ *****  T_lame_NTDi_slew_prp *par_ptr_slew_conf : 
+ ***** 
+ *****************************************************************************/@/COMMENT@
+static void @NODE TYPE=FUNCTION NAME="initialize_slew_prp"@@BRANCH MARK=TP ID=5 SUM=0@@LINK NAME="initialize_slew_prp"@initialize_slew_prp@/BRANCH@ (
+    T_lame_NTDi_slew_prp         *par_ptr_slew_conf,
+    T_lame_display_configuration *par_ptr_display_config,
+    T_lame_geographic_coordinate *par_ptr_AC_position)
+@BRANCH MARK=TB ID=34 SUM=20@{
+    T_lame_foreign_du_index loc_du_index;
+    T_lame_foreign_slew_prp *loc_p_DUj_slew_prp;
+    T_boolean loc_b_updated;
+
+    @COMMENT@/* M-AF-PTSCDS-A1.45-2502
+     * If local DU displays NTDi and NTD mode is Slew or Slew Frz,
+     * then acquire Slew PRP from other DUs;
+     * otherwise use aircraft position */@/COMMENT@
+
+    @COMMENT@/* Default value for last_position_on_side and Slew PRP position:
+     * aircraft position */@/COMMENT@
+    par_ptr_slew_conf->last_position_on_side.latitude  = 
+        par_ptr_AC_position->latitude;
+    par_ptr_slew_conf->last_position_on_side.longitude = 
+        par_ptr_AC_position->longitude;
+    par_ptr_slew_conf->position.latitude  = 
+        par_ptr_AC_position->latitude;
+    par_ptr_slew_conf->position.longitude = 
+        par_ptr_AC_position->longitude;
+    
+    loc_b_updated = K_BOOL_FALSE;
+    loc_du_index = 0;
+    @POPUP@while@-POPUP@loop branches :
+@BRANCH MARK=TB ID=31 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=32 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=33 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ ((loc_du_index < K_LAME_NB_FOREIGN_DU)
+           && (loc_b_updated == K_BOOL_FALSE))
+    @BRANCH MARK=TB ID=30 SUM=20@{
+        loc_p_DUj_slew_prp = 
+            &(par_ptr_slew_conf->foreign_slew_prp [loc_du_index]);
+        @DECISION SUM=20+21 ID=28|29@if (loc_p_DUj_slew_prp->validity == K_BOOL_TRUE)
+        @BRANCH MARK=TB ID=28 SUM=20@{
+            loc_b_updated = K_BOOL_TRUE;
+
+            @COMMENT@/* Update last_position value */@/COMMENT@
+            par_ptr_slew_conf->last_position_on_side.latitude  = 
+                loc_p_DUj_slew_prp->position.latitude;
+            par_ptr_slew_conf->last_position_on_side.longitude = 
+                loc_p_DUj_slew_prp->position.longitude;
+
+            @DECISION SUM=20+21 ID=26|27@if ((par_ptr_display_config->format == par_ptr_slew_conf->format)
+                && ((par_ptr_display_config->ntd_mode == K_LAME_NTD_MODE_SLEW)
+                    || (par_ptr_display_config->ntd_mode == K_LAME_NTD_MODE_SLEW_FRZ)))
+            @BRANCH MARK=TB ID=26 SUM=20@{
+                @COMMENT@/* use NTDi Slew PRP position sent by DUj */@/COMMENT@
+                par_ptr_slew_conf->position.latitude  = 
+                    loc_p_DUj_slew_prp->position.latitude;
+                par_ptr_slew_conf->position.longitude = 
+                    loc_p_DUj_slew_prp->position.longitude;
+            }@/BRANCH@
+            @BRANCH MARK=TB ID=27 SUM=20@else
+            {
+                @COMMENT@/* Nothing to do */@/COMMENT@
+            }@/BRANCH@@/DECISION@
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=29 SUM=20@else
+        {
+            loc_du_index ++;
+        }@/BRANCH@@/DECISION@
+    }@/BRANCH@
+    
+    @BRANCH MARK=TP ID=4 SUM=1@return;@SHORTCUT MARK=TB ID=34@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+@COMMENT@/******************************************************************************
+ ***** 
+ ***** static void update_last_position_on_side 
+ ***** 
+ ***** Description : Update the "last Slew PRP position on this CDS side", 
+ ***** used when local format changes to NTDi (mode Slew or Slew frz)
+ ***** (cf M-AF-PTSCDS-A1.45-2505)
+ ***** 
+ ***** Input:
+ ***** 
+ *****  T_lame_display_configuration *par_ptr_display_config: 
+ *****    display configuration
+ *****
+ ***** Input/Output:
+ ***** 
+ *****  T_lame_NTDi_slew_prp *par_ptr_slew_conf:
+ *****    NTDi slew PRP configuration
+ ***** 
+ *****************************************************************************/@/COMMENT@
+static void @NODE TYPE=FUNCTION NAME="update_last_position_on_side"@@BRANCH MARK=TP ID=7 SUM=0@@LINK NAME="update_last_position_on_side"@update_last_position_on_side@/BRANCH@ (
+    T_lame_NTDi_slew_prp         *par_ptr_slew_conf,
+    T_lame_display_configuration *par_ptr_display_config)
+@BRANCH MARK=TB ID=43 SUM=20@{
+    T_lame_foreign_du_index loc_du_index;
+    T_lame_foreign_slew_prp *loc_p_DUj_slew_prp;
+    T_boolean loc_b_updated;
+
+    @COMMENT@/* Update the "last Slew PRP position on this CDS side", used when
+     * local NTD mode changes to Slew:
+     * - if an other DU displays NTDi on this side, acquire its Slew PRP
+     * - else, if local DU displays NTDi mode Slew or Slew FRZ, use the local Slew PRP
+     * - otherwise, unchanged */@/COMMENT@
+    loc_du_index = 0;
+    loc_b_updated = K_BOOL_FALSE;
+    @POPUP@while@-POPUP@loop branches :
+@BRANCH MARK=TB ID=38 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=39 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=40 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ ((loc_du_index < K_LAME_NB_FOREIGN_DU)
+           && (loc_b_updated == K_BOOL_FALSE))
+    @BRANCH MARK=TB ID=37 SUM=20@{
+        loc_p_DUj_slew_prp = 
+            &(par_ptr_slew_conf->foreign_slew_prp [loc_du_index]);
+        @DECISION SUM=20+21 ID=35|36@if ((loc_p_DUj_slew_prp->validity == K_BOOL_TRUE) &&
+            (loc_p_DUj_slew_prp->display_ntd == K_BOOL_TRUE))
+        @BRANCH MARK=TB ID=35 SUM=20@{
+            @COMMENT@/* DUj displays NTDi ==> use its NTDi Slew PRP position */@/COMMENT@
+            par_ptr_slew_conf->last_position_on_side.latitude  = 
+                loc_p_DUj_slew_prp->position.latitude;
+            par_ptr_slew_conf->last_position_on_side.longitude = 
+                loc_p_DUj_slew_prp->position.longitude;
+            loc_b_updated = K_BOOL_TRUE;
+        }@/BRANCH@
+        @BRANCH MARK=TB ID=36 SUM=20@else
+        {
+            loc_du_index ++;
+        }@/BRANCH@@/DECISION@
+    }@/BRANCH@
+    @DECISION SUM=20+21 ID=41|42@if ((par_ptr_display_config->format == par_ptr_slew_conf->format)
+        && (par_ptr_display_config->format_prev == par_ptr_slew_conf->format)
+        && ((par_ptr_display_config->ntd_mode == K_LAME_NTD_MODE_SLEW)
+            || (par_ptr_display_config->ntd_mode == K_LAME_NTD_MODE_SLEW_FRZ)))
+    @BRANCH MARK=TB ID=41 SUM=20@{
+        par_ptr_slew_conf->last_position_on_side.latitude  = 
+            par_ptr_slew_conf->position.latitude;
+        par_ptr_slew_conf->last_position_on_side.longitude = 
+            par_ptr_slew_conf->position.longitude;
+    }@/BRANCH@
+    @BRANCH MARK=TB ID=42 SUM=20@else
+    {
+        @COMMENT@/* Nothing to do */@/COMMENT@
+    }@/BRANCH@@/DECISION@
+        
+    @BRANCH MARK=TP ID=6 SUM=1@return;@SHORTCUT MARK=TB ID=43@@/BRANCH@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

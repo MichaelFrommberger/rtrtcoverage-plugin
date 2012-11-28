@@ -1,0 +1,122 @@
+VE 3.0d CCOV CMCDC #i3
+FC "STRINGUTILITIES_STATIC_EQUALS.C" "D:\\TRAVAIL\\EXEMPLE_RTRT\\SRC\\"
+FD 1292427669
+TC PR RE AP BS BT BI CO CC
+CE 0 "StringUtilities_static_equals" "lReturn == 1" 33 33
+CE 2 "StringUtilities_static_equals" "pStr1[lIndex] != '\\0'" 33 33
+CE 4 "StringUtilities_static_equals" "pStr2[lIndex] != '\\0'" 33 33
+CC 6 3 0 2 4 4 TTTTTFTFXFXX 1
+CE 10 "StringUtilities_static_equals" "pStr1[lIndex] == pStr2[lIndex]" 35 35
+BL 0 simple "StringUtilities_static_equals" /while/then 36 38
+BL 1 simple "StringUtilities_static_equals" /while/else 40 42
+BL 2 simple "StringUtilities_static_equals" /while 34 43
+CE 12 "StringUtilities_static_equals" "lReturn == 1" 45 45
+CE 14 "StringUtilities_static_equals" "pStr1[lIndex] != pStr2[lIndex]" 45 45
+CC 16 2 12 14 3 TTTFFX 1
+BL 3 simple "StringUtilities_static_equals" /then 46 48
+BL 4 simple "StringUtilities_static_equals" /else 50 52
+PR 0 return "StringUtilities_static_equals" 54 54
+PR 1 proc "StringUtilities_static_equals" 28 56
+BL 5 simple "StringUtilities_static_equals" / 28 56
+DC 1527281467
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="STRINGUTILITIES_STATIC_EQUALS.C"
+  DIR="D:\TRAVAIL\EXEMPLE_RTRT\SRC\"
+  DATE=1292427669
+  CHECKSUM=1527281467
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="STRINGUTILITIES_STATIC_EQUALS.C"@@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* (C) Copyright 2005 by THALES Avionics                                                   */@/COMMENT@
+@COMMENT@/* All rights reserved                                                                     */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* This program is the property of THALES Avionics, LE HAILLAN-BORDEAUX FRANCE, and can    */@/COMMENT@
+@COMMENT@/* only be used and copied with the prior written authorisation of THALES Avionics.        */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* Any whole or partial copy of this program in either its original form or in a modified  */@/COMMENT@
+@COMMENT@/* form must mention this copyright and its owner.                                         */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* PROJECT: PDS                                                                            */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* FILE NAME: StringUtilities_static_equals.c                                              */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+
+@COMMENT@#include "StringUtilities.h"@/COMMENT@
+
+@COMMENT@/* Start of user includes */@/COMMENT@
+@COMMENT@/* End of user includes */@/COMMENT@
+
+
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* METHOD DESCRIPTION: [public][class method]                                              */@/COMMENT@
+@COMMENT@/* -------------------                                                                     */@/COMMENT@
+@COMMENT@/* This method returns true if the two specified string are equal, otherwise false.        */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+T_boolean @NODE TYPE=FUNCTION NAME="StringUtilities_static_equals"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="StringUtilities_static_equals"@StringUtilities_static_equals@/BRANCH@(const T_char *pStr1, const T_char *pStr2) 
+@BRANCH MARK=TB ID=5 SUM=20@{
+    @COMMENT@/* Start of user code */@/COMMENT@
+    T_uint16 lIndex = 0;
+    T_boolean lReturn = K_BOOL_TRUE;
+    
+    while (@POPUP@(@POPUP@lReturn == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@@/ALT@) && (@POPUP@pStr1[lIndex] != '\0'@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@) && (@POPUP@pStr2[lIndex] != '\0'@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@)@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=6&9 SUM=31@lReturn == 1@/BRANCH@ needs
+      @BRANCH MARK=TE ID=6 SUM=32@TTT@/BRANCH@=T,@BRANCH MARK=TE ID=9 SUM=32@FXX@/BRANCH@=F
+  @BRANCH MARK=TE ID=6&8 SUM=31@pStr1[lIndex] != '\0'@/BRANCH@ needs
+      @BRANCH MARK=TE ID=6 SUM=32@TTT@/BRANCH@=T,@BRANCH MARK=TE ID=8 SUM=32@TFX@/BRANCH@=F
+  @BRANCH MARK=TE ID=6&7 SUM=31@pStr2[lIndex] != '\0'@/BRANCH@ needs
+      @BRANCH MARK=TE ID=6 SUM=32@TTT@/BRANCH@=T,@BRANCH MARK=TE ID=7 SUM=32@TTF@/BRANCH@=F@/POPUP@)
+    @BRANCH MARK=TB ID=2 SUM=20@{
+    	@DECISION SUM=20+21 ID=0|1@if (@POPUP@pStr1[lIndex] == pStr2[lIndex]@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=10 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=11 SUM=30@False@/BRANCH@@/POPUP@)
+    	@BRANCH MARK=TB ID=0 SUM=20@{
+    		lIndex++;
+    	}@/BRANCH@
+    	@BRANCH MARK=TB ID=1 SUM=20@else
+    	{
+    		lReturn = K_BOOL_FALSE;
+    	}@/BRANCH@@/DECISION@
+    }@/BRANCH@
+    
+    @DECISION SUM=20+21 ID=3|4@if (@POPUP@(@POPUP@lReturn == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=12 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=13 SUM=30@False@/BRANCH@@/POPUP@@/ALT@) && (@POPUP@pStr1[lIndex] != pStr2[lIndex]@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=14 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=15 SUM=30@False@/BRANCH@@/POPUP@)@-POPUP@modified and multiple conditions :
+  @BRANCH MARK=TE ID=16&18 SUM=31@lReturn == 1@/BRANCH@ needs
+      @BRANCH MARK=TE ID=16 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=18 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=16&17 SUM=31@pStr1[lIndex] != pStr2[lIndex]@/BRANCH@ needs
+      @BRANCH MARK=TE ID=16 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=17 SUM=32@TF@/BRANCH@=F@/POPUP@)
+    @BRANCH MARK=TB ID=3 SUM=20@{
+    	lReturn = K_BOOL_FALSE;
+    }@/BRANCH@
+	@BRANCH MARK=TB ID=4 SUM=20@else
+	{
+		;@COMMENT@/* nothing to do */@/COMMENT@
+	}@/BRANCH@@/DECISION@
+    
+	@BRANCH MARK=TP ID=0 SUM=1@return lReturn;@SHORTCUT MARK=TB ID=5@@/BRANCH@
+    @COMMENT@/* End of user code */@/COMMENT@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

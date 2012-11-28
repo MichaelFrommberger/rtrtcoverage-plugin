@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:tusar xmlns="http://www.thalesgroup.com/tusar/tests/v5" xmlns:ns2="http://www.thalesgroup.com/tusar/v10" xmlns:ns3="http://www.thalesgroup.com/tusar/line-coverage/v1" xmlns:ns4="http://www.thalesgroup.com/tusar/coverage/v4" xmlns:ns5="http://www.thalesgroup.com/tusar/branch-coverage/v1" xmlns:ns6="http://www.thalesgroup.com/tusar/violations/v4" xmlns:ns7="http://www.thalesgroup.com/tusar/duplications/v1" xmlns:ns8="http://www.thalesgroup.com/tusar/measures/v6" xmlns:ns9="http://www.thalesgroup.com/tusar/size/v1">
+    <ns2:coverage>
+        <ns4:branch-coverage>
+            <ns5:resource fullname="D:\JENKINS\JOBS\A400M\WORKSPACE\CDS_A400M_DEV\SA\SAMC\SRC\SAMC_CROSSTALK_SEND_CAN_COMPATIBILITY.C">
+                <ns5:line uncoveredBranches="0" numberOfBranches="2" branchesCoverage="100.0" number="63">
+                    <ns5:branches>
+                        <ns5:branch coverage="100" type="Statement Blocks" name="BL 8 simple samc_crosstalk_send_CAN_compatibility / 63 103"/>
+                        <ns5:branch coverage="100" type="Functions" name="PR 1 proc samc_crosstalk_send_CAN_compatibility 63 103"/>
+                    </ns5:branches>
+                </ns5:line>
+                <ns5:line uncoveredBranches="2" numberOfBranches="3" branchesCoverage="33.3" number="71">
+                    <ns5:branches>
+                        <ns5:branch coverage="0" type="Loops" name="BL 5 logical samc_crosstalk_send_CAN_compatibility /for/0 71 101"/>
+                        <ns5:branch coverage="100" type="Loops" name="BL 6 logical samc_crosstalk_send_CAN_compatibility /for/1 71 101"/>
+                        <ns5:branch coverage="0" type="Loops" name="BL 7 logical samc_crosstalk_send_CAN_compatibility /for/2+ 71 101"/>
+                    </ns5:branches>
+                </ns5:line>
+                <ns5:line uncoveredBranches="0" numberOfBranches="1" branchesCoverage="100.0" number="72">
+                    <ns5:branches>
+                        <ns5:branch coverage="100" type="Statement Blocks" name="BL 4 simple samc_crosstalk_send_CAN_compatibility /for 72 101"/>
+                    </ns5:branches>
+                </ns5:line>
+                <ns5:line uncoveredBranches="0" numberOfBranches="1" branchesCoverage="100.0" number="75">
+                    <ns5:branches>
+                        <ns5:branch coverage="100" type="Statement Blocks" name="BL 2 simple samc_crosstalk_send_CAN_compatibility /for/then 75 96"/>
+                    </ns5:branches>
+                </ns5:line>
+                <ns5:line uncoveredBranches="0" numberOfBranches="1" branchesCoverage="100.0" number="76">
+                    <ns5:branches>
+                        <ns5:branch coverage="100" type="Calls" name="AP 0 samc_crosstalk_send_CAN_compatibility WRITE_SAMPLING_MESSAGE 76 79"/>
+                    </ns5:branches>
+                </ns5:line>
+                <ns5:line uncoveredBranches="0" numberOfBranches="1" branchesCoverage="100.0" number="81">
+                    <ns5:branches>
+                        <ns5:branch coverage="100" type="Statement Blocks" name="BL 0 simple samc_crosstalk_send_CAN_compatibility /for/then/then 81 91"/>
+                    </ns5:branches>
+                </ns5:line>
+                <ns5:line uncoveredBranches="0" numberOfBranches="1" branchesCoverage="100.0" number="83">
+                    <ns5:branches>
+                        <ns5:branch coverage="100" type="Calls" name="AP 1 samc_crosstalk_send_CAN_compatibility lbfl_mng 83 90"/>
+                    </ns5:branches>
+                </ns5:line>
+                <ns5:line uncoveredBranches="1" numberOfBranches="1" branchesCoverage="0.0" number="93">
+                    <ns5:branches>
+                        <ns5:branch coverage="0" type="Statement Blocks" name="BL 1 simple samc_crosstalk_send_CAN_compatibility /for/then/else 93 95"/>
+                    </ns5:branches>
+                </ns5:line>
+                <ns5:line uncoveredBranches="1" numberOfBranches="1" branchesCoverage="0.0" number="98">
+                    <ns5:branches>
+                        <ns5:branch coverage="0" type="Statement Blocks" name="BL 3 simple samc_crosstalk_send_CAN_compatibility /for/else 98 100"/>
+                    </ns5:branches>
+                </ns5:line>
+                <ns5:line uncoveredBranches="1" numberOfBranches="1" branchesCoverage="0.0" number="102">
+                    <ns5:branches>
+                        <ns5:branch coverage="0" type="Functions" name="PR 0 return samc_crosstalk_send_CAN_compatibility 102 102"/>
+                    </ns5:branches>
+                </ns5:line>
+            </ns5:resource>
+        </ns4:branch-coverage>
+    </ns2:coverage>
+</ns2:tusar>

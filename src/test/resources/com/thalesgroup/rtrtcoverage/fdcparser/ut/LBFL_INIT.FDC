@@ -1,0 +1,248 @@
+VE 3.0d CCOV CMCDC #i3
+FC "LBFL_INIT.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\COMMON\\LBFL\\SRC\\"
+FD 1285925333
+TC AP BS BT BI BL CO CC
+CE 0 "lbfl_init" "e_lbfl_failure_init_status ! ..." 93 93
+AP 0 "lbfl_init" "lbfl_failure_report_ifc_init" 102 102
+AP 1 "lbfl_init" "lbfl_debug_report_ifc_init" 106 106
+CE 2 "lbfl_init" "loc_ul_process_id < 5" 121 121
+CE 4 "lbfl_init" "loc_ul_error_mng_level_id <  ..." 128 128
+BL 0 simple "lbfl_init" /then/for/for 129 173
+BL 1 logical "lbfl_init" /then/for/for/0 128 173
+BL 2 logical "lbfl_init" /then/for/for/1 128 173
+BL 3 logical "lbfl_init" /then/for/for/2+ 128 173
+BL 4 simple "lbfl_init" /then/for 122 175
+BL 5 logical "lbfl_init" /then/for/0 121 175
+BL 6 logical "lbfl_init" /then/for/1 121 175
+BL 7 logical "lbfl_init" /then/for/2+ 121 175
+BL 8 simple "lbfl_init" /then 94 181
+BL 9 simple "lbfl_init" /else 184 187
+BL 10 simple "lbfl_init" / 83 190
+DC 1114666408
+@RIK
+  TOKEN="CCOV CMCDC"
+  SRC="LBFL_INIT.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\COMMON\LBFL\SRC\"
+  DATE=1285925333
+  CHECKSUM=1114666408
+  SUMS
+   ("&Functions",
+    "-&Exits",
+    "Functions and exits"),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="LBFL_INIT.C"@@COMMENT@/******************************************************************************
+ **
+ **                                   ==============
+ **                                   IDENTIFICATION
+ **                                   ==============
+ **
+ **
+ **
+ **  Filename            : lbfl_init.c
+ **
+ **  Author/ Company     : B.Palomino / THALES Avionics
+ **
+ **  Creation date       : 07/05/2003
+ **
+ **  Copyright statement : Copyright (C); 2003
+ **                        THALES Avionics
+ **
+ **  Module description  : To initialise the failure processing at library level
+ **
+ *****************************************************************************/@/COMMENT@
+
+
+@COMMENT@/******************************************************************************
+ **                           Project specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@/* MACS TYPES */@/COMMENT@
+@COMMENT@#include "COD_A653_API_COMMON.h"@/COMMENT@
+
+@COMMENT@/* SA TYPES */@/COMMENT@
+@COMMENT@#include "apsw_basic_types_c.h"@/COMMENT@
+
+@COMMENT@/* PLATFORM TYPES */@/COMMENT@
+
+
+@COMMENT@/* CALLED CSU TYPES */@/COMMENT@
+@COMMENT@#include "lbfl_init.h"@/COMMENT@
+@COMMENT@#include "lbfl_errors_mng_ifc.h"@/COMMENT@
+
+
+
+@COMMENT@/* CALLED CSU PROTOTYPES */@/COMMENT@
+@COMMENT@#include "lbfl_failure_report_ifc_init.p"@/COMMENT@
+@COMMENT@#include "lbfl_debug_report_ifc_init.p"@/COMMENT@
+
+
+
+@COMMENT@/******************************************************************************
+ **                           Module specific includes
+ *****************************************************************************/@/COMMENT@
+@COMMENT@#include "lbfl_init.p"@/COMMENT@
+
+@COMMENT@/******************************************************************************
+ **                           Local file declarations
+ *****************************************************************************/@/COMMENT@
+
+@COMMENT@/*Global variables definition */@/COMMENT@
+
+
+@COMMENT@/*	pr_lbfl_error_mng :
+	mng of specific or partition errors during exception of a component of lbfl library 
+	all lbfl errors are treated with no confirmation, so,no need to cyclically update the state of the error */@/COMMENT@
+T_lbfl_r_error_mng r_lbfl_error_mng;@COMMENT@/* initialized in lbfl_partition_error_config_init */@/COMMENT@
+T_lbfl_pr_error_mng pr_lbfl_error_mng;@COMMENT@/* initialized in lbfl_partition_error_config_init */@/COMMENT@
+
+@COMMENT@/*	tr_lbfl_global_error_mng : 
+	mng of the confirmation of the failures 
+	for each process and each failure definition level : CSC, process or partition */@/COMMENT@
+T_lbfl_r_global_error_mng	tr_lbfl_global_error_mng[K_LBFL_MAX_PROCESS_NB][K_LBFL_E_ERROR_MNG_LEVEL_MAX_NB];
+
+@COMMENT@/*	r_lbfl_partition_error_config :
+	set with the partition characteristics through lbfl_partition_error_config_init call;
+		bfm config :		functional block id / vendor id
+		process_config :	pointer on process_id (update by the processes of the partition) / process nb;*/@/COMMENT@
+T_lbfl_r_partition_error_config r_lbfl_partition_error_config;
+
+T_lbfl_r_process_error_config	tr_process_error_config[K_LBFL_MAX_PROCESS_NB];
+
+T_lbfl_e_failure_init_status	e_lbfl_failure_init_status;
+T_uint32						ul_lbfl_call_number;
+
+
+void @NODE TYPE=FUNCTION NAME="lbfl_init"@@LINK NAME="lbfl_init"@lbfl_init	(void)						
+@BRANCH MARK=TB ID=10 SUM=20@{
+
+	T_uint32				loc_ul_process_id;
+	T_uint32				loc_ul_error_mng_level_id;
+
+
+	@COMMENT@/*	initialise the variable for reentrance check */@/COMMENT@
+	ul_lbfl_call_number  = 0UL;
+
+    @COMMENT@/*	if the global failure initialisation is not already performed */@/COMMENT@
+    @DECISION SUM=20+21 ID=8|9@if (@POPUP@e_lbfl_failure_init_status != K_LBFL_E_INIT_ENDED@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@)
+    @BRANCH MARK=TB ID=8 SUM=20@{
+		@COMMENT@/*	initialise the status of the initialisation of lbfl variable 
+			at the first step  */@/COMMENT@
+		e_lbfl_failure_init_status = K_LBFL_E_INIT_BEGIN;
+
+		@COMMENT@/*	through lbfl_failure_report_ifc_init call, 
+			initialise the failure report queuing port ID access service: lbfl_get_failure_report_id
+			used to get the failure report queuing port ID */@/COMMENT@
+		@BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="lbfl_failure_report_ifc_init"@lbfl_failure_report_ifc_init@/JUMP@ ()@/BRANCH@;
+		@COMMENT@/*	through lbfl_debug_report_ifc_init call, 
+			initialise the debug report queuing port ID access service: lbfl_get_debug_report_id
+			used to get the debug report queuing port ID */@/COMMENT@
+		@BRANCH MARK=TA ID=1 SUM=10@@JUMP NAME="lbfl_debug_report_ifc_init"@lbfl_debug_report_ifc_init@/JUMP@ ()@/BRANCH@;
+
+
+		@COMMENT@/*$ 
+			This default values permit, during a failure treatment in OPER phase, 
+			to check if an effective initialization by the partition has be done and so,
+			to raise an error if any.
+			This initialisation shall be done, during the INIT phase of the partition 
+			through the call of lbfl_partition_error_config_init */@/COMMENT@  
+		r_lbfl_partition_error_config.pr_bfm_config = K_NULL_PTR;
+		r_lbfl_partition_error_config.pr_process_config = K_NULL_PTR;
+		r_lbfl_partition_error_config.ul_partition_gnerr_nb = 0UL;
+
+
+		@COMMENT@/*	For each available process id defined at lbfl level*/@/COMMENT@
+		@POPUP@for@-POPUP@loop branches :
+@BRANCH MARK=TB ID=5 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=6 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=7 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (loc_ul_process_id = 0; @POPUP@loc_ul_process_id <@ALT@K_LBFL_MAX_PROCESS_NB@-ALT@5@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@@/ALT@; loc_ul_process_id++ )
+		@BRANCH MARK=TB ID=4 SUM=20@{
+			tr_process_error_config[loc_ul_process_id].pr_process_fsc_name_config = K_NULL_PTR;
+			tr_process_error_config[loc_ul_process_id].pr_process_gnerr_config = K_NULL_PTR;
+			tr_process_error_config[loc_ul_process_id].ul_process_id = K_LBFL_MAX_PROCESS_NB + 1;
+
+			@COMMENT@/*	for the three levels (FSC, PROCESS, PARTITION), initialisation with default value */@/COMMENT@	
+			@POPUP@for@-POPUP@loop branches :
+@BRANCH MARK=TB ID=1 SUM=22@  0 loop@/BRANCH@
+@BRANCH MARK=TB ID=2 SUM=22@  1 loop@/BRANCH@
+@BRANCH MARK=TB ID=3 SUM=22@  2 loops or more@/BRANCH@@/POPUP@ (loc_ul_error_mng_level_id = 0; @POPUP@loc_ul_error_mng_level_id <K_LBFL_E_ERROR_MNG_LEVEL_MAX_NB@-POPUP@basic boolean conditions :
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@; loc_ul_error_mng_level_id++ )
+			@BRANCH MARK=TB ID=0 SUM=20@{
+
+				@COMMENT@/*	ul_process_id field is set to K_LBFL_PROCESS_MAX_NUMBER + 1;
+				
+					During INIT phase of each process composing the partition, 
+					through the call of lbfl_process_error_desc_init :
+					It will be filled by each process, with their specific process_id 
+					this value shall be set between 0 and  K_LBFL_PROCESS_MAX_NUMBER,
+
+					During OPER phase, at a lbfl_mng call :
+					If for a current process_id, the corresponding process_id field is still 
+					equal to K_LBFL_PROCESS_MAX_NUMBER + 1,
+					an error will be raised. */@/COMMENT@
+
+				tr_lbfl_global_error_mng[loc_ul_process_id][loc_ul_error_mng_level_id].ul_process_id = K_LBFL_MAX_PROCESS_NB + 1;
+
+				@COMMENT@/*	ul_error_detection_nb field is set to 0;
+				
+					During OPER phase, at lbfl_main call :
+					it will be increased by one at each new failure in confirmation management
+					in a specific couple (process_id, error_mng_level_id) or 
+					it will be decreased by one when a failure is no more in confirmation management
+					in a specific couple (process_id, error_mng_level_id)  */@/COMMENT@
+
+				tr_lbfl_global_error_mng[loc_ul_process_id][loc_ul_error_mng_level_id].ul_level_error_detection_nb = 0;
+
+				@COMMENT@/*	pr_error_mng is set to K_NULL_PTR;
+				
+					During INIT phase of each process composing the partition,
+					through the call of lbfl_process_error_config_init :
+					pr_error_mng will be loaded with the address reserved by each process and
+					all fields composing *pr_error_mng are resetted */@/COMMENT@
+					  
+				tr_lbfl_global_error_mng[loc_ul_process_id][loc_ul_error_mng_level_id].pr_error_mng = K_NULL_PTR;
+
+				@COMMENT@/*	ul_component_number / ul_error_number are set to 0;
+				
+					During INIT phase of each process composing the partition,
+					through the call of lbfl_process_error_config_init :
+					ul_component_number will be set with the number of component associated to the couple 
+					(process id, level_id) */@/COMMENT@
+
+				tr_lbfl_global_error_mng[loc_ul_process_id][loc_ul_error_mng_level_id].ul_component_number = 0;
+				tr_lbfl_global_error_mng[loc_ul_process_id][loc_ul_error_mng_level_id].ul_error_number = 0;
+			}@/BRANCH@
+			@COMMENT@/*$ ENDO FOR */@/COMMENT@
+		}@/BRANCH@
+		@COMMENT@/*$ ENDO FOR */@/COMMENT@
+
+@COMMENT@/*		first step of initialisation reached */@/COMMENT@
+ 		e_lbfl_failure_init_status = K_LBFL_E_CLEAR_INIT_ENDED;
+
+    }@/BRANCH@
+    @COMMENT@/*$ ELSE */@/COMMENT@
+    @BRANCH MARK=TB ID=9 SUM=20@else
+    {
+		@COMMENT@/*$ NOTHING TO DO */@/COMMENT@
+		;
+    }@/BRANCH@@/DECISION@
+
+    return;@SHORTCUT MARK=TB ID=10@	
+}@/BRANCH@@/NODE@
+
+@COMMENT@/*********************** End of file *******************************/@/COMMENT@
+@/NODE /RIK@

@@ -1,0 +1,186 @@
+VE 3.0d CCOV #i3
+FC "LAKBSW_A661_SET_KEY_STATE.C" "D:\\VIEWSNAP\\IC_CDS_A400M\\CDS_A400M_DEV\\LA\\LAKBDSW\\SRC\\"
+FD 1285925445
+TC PR RE AP BS BT BI BL
+BL 0 simple "lakbsw_a661_set_key_state" /case 82 82
+BL 1 simple "lakbsw_a661_set_key_state" /case 87 87
+BL 2 simple "lakbsw_a661_set_key_state" /case 92 92
+BL 3 simple "lakbsw_a661_set_key_state" /default 97 97
+PR 0 return "lakbsw_a661_set_key_state" 121 121
+PR 1 proc "lakbsw_a661_set_key_state" 64 122
+BL 4 simple "lakbsw_a661_set_key_state" / 64 122
+DC 1762004281
+@RIK
+  TOKEN="CCOV"
+  SRC="LAKBSW_A661_SET_KEY_STATE.C"
+  DIR="D:\VIEWSNAP\IC_CDS_A400M\CDS_A400M_DEV\LA\LAKBDSW\SRC\"
+  DATE=1285925445
+  CHECKSUM=1762004281
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions",
+    "&Modified conditions",
+    "M&ultiple conditions")
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="LAKBSW_A661_SET_KEY_STATE.C"@@COMMENT@/** MODULE DESCRIPTION------------------------------------------------------
+
+==============
+IDENTIFICATION
+==============
+
+FILENAME          : LAKBSW_A661_SET_KEY_STATE.c
+VERSION           : \main\5
+AUTHOR/COMPANY    : breitbch / DAv
+CREATION DATE     : 16-OCT-2002
+MODIFICATION DATE : 24-Sep-04 12:22:08
+COPYRIGHT (C)     : 2003 DIEHL Avionik Systeme GmbH
+COPYRIGHT (C)     : 2005 by THALES Avionics
+PROJECT           : A380 CDS / SW Keyboard
+LANGUAGE          : C for PowerPC target
+REFERENCE DOCS    :
+DESCRIPTION       : Building A661 commands for key highlight changes. 
+FUNCTION EXTERNAL : lakbsw_a661_set_key_state -> build A661 command for state
+FUNCTION INTERNAL :
+NOTICE            :
+CHANGE HISTORY    : See end of file
+-------------------------------------------------------------------------**/@/COMMENT@
+
+@COMMENT@/*========================================================================*/@/COMMENT@
+@COMMENT@/* Project specific includes                                              */@/COMMENT@
+@COMMENT@/*========================================================================*/@/COMMENT@
+@COMMENT@#include "LAKBSW_BASIC_TYPES.h"@/COMMENT@
+@COMMENT@#include "LAKBSW_LOCAL_VAR.h"@/COMMENT@
+
+@COMMENT@/*========================================================================*/@/COMMENT@
+@COMMENT@/* Module specific includes                                               */@/COMMENT@
+@COMMENT@/*========================================================================*/@/COMMENT@
+@COMMENT@#include "LAKBSW_A661_SET_KEY_STATE.h"@/COMMENT@
+
+@COMMENT@/*========================================================================*/@/COMMENT@
+@COMMENT@/* Module body                                                            */@/COMMENT@
+@COMMENT@/*========================================================================*/@/COMMENT@
+
+@COMMENT@/*+ FUNCTION DESCRIPTION ---------------------------------------------------
+NAME:
+   lakbsw_a661_set_key_state
+
+DESCRIPTION:
+   This function builds a sequence of ARINC661 commands for the change of
+   key highlight states.
+
+PARAMETER:
+   par_e_key_id       -> [I] key to do highlight state transition for
+   par_ul_state       -> [I] new state for the key
+   par_pc_a661_buffer -> [O] command buffer for raw ARINC661 output
+   par_pul_a661_size  -> [O] size of the raw ARINC661 output in bytes
+
+RETURN:
+   none
+
+NOTICE:
+
+--------------------------------------------------------------------------+*/@/COMMENT@
+
+void @NODE TYPE=FUNCTION NAME="lakbsw_a661_set_key_state"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="lakbsw_a661_set_key_state"@lakbsw_a661_set_key_state@/BRANCH@( T_lakbsw_key_id  par_e_key_id,
+                                T_lakbsw_uint32  par_ul_state,
+                                T_lakbsw_char8  *par_pc_a661_buffer,
+                                T_lakbsw_uint32 *par_pul_a661_size )
+@BRANCH MARK=TB ID=4 SUM=20@{
+ 
+  T_a661_block_set_par_2byte *loc_pr_block_set_par_2byte;
+  T_lakbsw_uint16 loc_us_new_style_set;
+
+  @COMMENT@/* lay structure over the buffer for convenient writing */@/COMMENT@
+  loc_pr_block_set_par_2byte = (T_a661_block_set_par_2byte*)par_pc_a661_buffer;
+
+  @COMMENT@/*~ WRITE necessary ARINC661 tags for SET_PARAMETER command to
+      par_pc_a661_buffer ~*/@/COMMENT@
+  loc_pr_block_set_par_2byte->us_command      = K_A661_SET_PARAMETER;
+  loc_pr_block_set_par_2byte->us_command_size
+     = (T_lakbsw_uint16)sizeof(T_a661_block_set_par_2byte);
+  loc_pr_block_set_par_2byte->us_unused_pad   = (T_lakbsw_uint16)0;
+
+  @COMMENT@/*~ SWITCH on par_ul_state ~*/@/COMMENT@
+  @DECISION SUM=20+21 ID=0|1|2|3@switch( par_ul_state )
+  {
+  @BRANCH MARK=TB ID=0 SUM=20@@BRANCH NO@case K_LAKBSW_STATE_NORMAL:@/BRANCH@
+    @COMMENT@/*~ CASE key is not highlighted: set the NORMAL style set for the
+        key in r_lakbsw_key_table at position par_e_key_id ~*/@/COMMENT@
+    loc_us_new_style_set = r_lakbsw_key_table[par_e_key_id].us_style_set_norm;
+    break;@SHORTCUT MARK=TB ID=0@
+  @BRANCH MARK=TB ID=1 SUM=20@@BRANCH NO@case K_LAKBSW_STATE_HIGHLIGHTED:@/BRANCH@
+    @COMMENT@/*~ CASE key is highlighted: set the HIGHLIGHTED style set for
+        the key in r_lakbsw_key_table at position par_e_key_id ~*/@/COMMENT@
+    loc_us_new_style_set = r_lakbsw_key_table[par_e_key_id].us_style_set_high;
+    break;@SHORTCUT MARK=TB ID=0@
+  @BRANCH MARK=TB ID=2 SUM=20@@BRANCH NO@case K_LAKBSW_STATE_VALIDATED:@/BRANCH@
+    @COMMENT@/*~ CASE key is validated: set the POST FOCUS (VALIDATED) style set for
+        the key in r_lakbsw_key_table at position par_e_key_id  ~*/@/COMMENT@
+    loc_us_new_style_set = r_lakbsw_key_table[par_e_key_id].us_style_set_post;
+    break;@SHORTCUT MARK=TB ID=0@
+  @BRANCH MARK=TB ID=3 SUM=20@@BRANCH NO@default:@/BRANCH@
+    @COMMENT@/*~ default: set the NORMAL style set for the key in r_lakbsw_key_table at
+        position par_e_key_id ~*/@/COMMENT@
+    loc_us_new_style_set = r_lakbsw_key_table[par_e_key_id].us_style_set_norm;
+    break;@SHORTCUT MARK=TB ID=0@
+  }@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/DECISION@
+  @COMMENT@/*~ ENDSWITCH ~*/@/COMMENT@
+
+  @COMMENT@/* the widget id has an offset of 128 to the key id */@/COMMENT@
+  loc_pr_block_set_par_2byte->us_widget_ident
+           = (T_lakbsw_uint16)r_lakbsw_key_table[par_e_key_id].ul_key_id;
+
+  @COMMENT@/*~ WRITE A661_STYLE_SET TO par_pc_A661_buffer ~*/@/COMMENT@  
+  loc_pr_block_set_par_2byte->us_param_1  = K_A661_STYLE_SET;
+         
+  @COMMENT@/* write the style set through to the buffer */@/COMMENT@
+  @COMMENT@/*~ WRITE determined style set TO par_pc_a661_buffer ~*/@/COMMENT@
+  loc_pr_block_set_par_2byte->us_param_2 = loc_us_new_style_set;
+  
+  @COMMENT@/*~ WRITE the size of the ARINC661 commands TO par_pul_a661_size ~*/@/COMMENT@
+  *par_pul_a661_size
+    = (T_lakbsw_uint32)loc_pr_block_set_par_2byte->us_command_size;
+  
+
+  @BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=4@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+@COMMENT@/** CHANGE HISTORY -------------------------------------------------------------
+
+Revision: \main\0 27-Okt-03 10:51:01   breitbch (breitbch@@pc113)
+Comment : empty
+
+Revision: \main\1 29-Okt-03 08:32:06   breitbch (breitbch@@pc113)
+Labels  : (DAv-EAGO-SV114001.01A)
+Comment : Added to source control
+
+Revision: \main\2 06-Jan-04 14:12:20   oberhoff (oberhoff@@pc91)
+Labels  : (DAv-EAGO-SV114001.02B, DAv-EAGO-SV114001.02A)
+Comment : DAv-EAGO-PR110091E-01A: Update Design 
+          DAv-EAGO-PR110094E-01A: Errors detected during integration. 
+
+Revision: \main\3 01-Apr-04 07:01:56   oberhoff (oberhoff@@pc91)
+Labels  : (DAv-EAGO-SV114001.03B, DAv-EAGO-SD110013E-03A02,
+DAv-EAGO-SV114001.03A)
+Comment : DAv-EAGO-PR110122E-01A: Coding rule violations 
+
+Revision: \main\4 27-Jul-04 15:00:03   oberhoff (oberhoff@@pc91)
+Labels  : (DAv-EAGO-SV114001.04A)
+Comment : DAv-EAGO-PR110163E-01A: New Widget library 
+
+Revision: \main\5 24-Sep-04 12:22:08   breitbch (breitbch@@pc113)
+Comment : DAv-EAGO-PR110163E-01A: New Widget library DAv-EAGO-PR110194E-01A:
+          Right arrow, left arrow and +/- not correctly displayed. 
+
+-----------------------------------------------------------------------------**/@/COMMENT@
+@/NODE /RIK@

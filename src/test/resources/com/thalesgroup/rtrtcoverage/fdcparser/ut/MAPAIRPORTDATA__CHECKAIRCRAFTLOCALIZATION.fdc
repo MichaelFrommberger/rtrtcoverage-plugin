@@ -1,0 +1,95 @@
+VE 3.0e CCOV #i5 7.0.0.1
+FC "MAPAIRPORTDATA__CHECKAIRCRAFTLOCALIZATION.C" "E:\\TEMP\\GD50528\\A350\\UT_DGWPSW_WP1\\UNIT_TEST\\CLASS_MAPAIRPORTDATA\\SOURCES\\"
+FD 1343208256
+TC PR RE BS BT BI BL
+BL 0 simple "MapAirportData__checkAircraftLocalization" /then 51 53
+BL 1 simple "MapAirportData__checkAircraftLocalization" /else 55 57
+PR 0 return "MapAirportData__checkAircraftLocalization" 60 60
+PR 1 proc "MapAirportData__checkAircraftLocalization" 36 61
+BL 2 simple "MapAirportData__checkAircraftLocalization" / 36 61
+DC 70797173
+@RIK
+  ENCODING="System"
+  TOKEN="CCOV"
+  SRC="MAPAIRPORTDATA__CHECKAIRCRAFTLOCALIZATION.C"
+  DIR="E:\TEMP\GD50528\A350\UT_DGWPSW_WP1\UNIT_TEST\CLASS_MAPAIRPORTDATA\SOURCES\"
+  DATE=1343208256
+  CHECKSUM=70797173
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions",
+    "&Modified conditions",
+    "M&ultiple conditions")
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="MAPAIRPORTDATA__CHECKAIRCRAFTLOCALIZATION.C"@@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* (C) Copyright by THALES Avionics                                                        */@/COMMENT@
+@COMMENT@/* All rights reserved                                                                     */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* This program is the property of THALES Avionics, LE HAILLAN-BORDEAUX FRANCE, and can    */@/COMMENT@
+@COMMENT@/* only be used and copied with the prior written authorisation of THALES Avionics.        */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* Any whole or partial copy of this program in either its original form or in a modified  */@/COMMENT@
+@COMMENT@/* form must mention this copyright and its owner.                                         */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* PROJECT: ANF_A350                                                                       */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* FILE NAME: MapAirportData__checkAircraftLocalization.c                                  */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+
+@COMMENT@#include "MapAirportData.h"@/COMMENT@
+
+@COMMENT@#define __CLASS__ 	"MapAirportData"@/COMMENT@
+@COMMENT@#define __METHOD__ 	"_checkAircraftLocalization"@/COMMENT@
+
+@COMMENT@/* Start of user includes */@/COMMENT@
+@COMMENT@#include "THEMIS_BASIC_TYPES.h"@/COMMENT@
+@COMMENT@#include "NavigationDataConcentrationComponent.h"@/COMMENT@
+@COMMENT@#include "AircraftLocalizationServices.h"@/COMMENT@
+extern T_BOOL ARPT_NAV_POS_LOST;
+extern T_BOOL FT_ARPT_NAV_POS_LOST_DSP_ST;
+@COMMENT@/* End of user includes */@/COMMENT@
+
+
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* METHOD DESCRIPTION: [private][instance method]                                          */@/COMMENT@
+@COMMENT@/* -------------------                                                                     */@/COMMENT@
+@COMMENT@/* Manage for display the navigation data relating to the aircraft localization.           */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="MapAirportData__checkAircraftLocalization"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="MapAirportData__checkAircraftLocalization"@MapAirportData__checkAircraftLocalization@/BRANCH@(MapAirportData *pThis) 
+@BRANCH MARK=TB ID=2 SUM=20@{
+    @COMMENT@/* Start of user code */@/COMMENT@
+	NavigationDataConcentrationComponent *lNavigationDataConcentrationComponent = K_NULL;
+	AircraftLocalizationServices *lAircraftLocalizationServices = K_NULL;
+	T_boolean lAircraftLocationValidity = K_BOOL_FALSE;
+
+	lNavigationDataConcentrationComponent = CNavigationDataConcentrationComponent->getInstance();
+	lAircraftLocalizationServices =
+					(AircraftLocalizationServices*)(lNavigationDataConcentrationComponent->getConnectedFacet
+																	(lNavigationDataConcentrationComponent,
+																	E_NAVIGATION_DATA_CONCENTRATION_AIRCRAFT_LOCALIZATION_SERVICES_RECEPTACLE_INDEX));
+
+	lAircraftLocationValidity = lAircraftLocalizationServices->getAircraftLocationValidity(lAircraftLocalizationServices);
+
+	@DECISION SUM=20+21 ID=0|1@if (lAircraftLocationValidity == K_BOOL_TRUE)
+	@BRANCH MARK=TB ID=0 SUM=20@{
+		ARPT_NAV_POS_LOST = K_FALSE;
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=1 SUM=20@else
+	{
+		ARPT_NAV_POS_LOST = K_TRUE;
+	}@/BRANCH@@/DECISION@
+	FT_ARPT_NAV_POS_LOST_DSP_ST = ARPT_NAV_POS_LOST;
+    @COMMENT@/* End of user code */@/COMMENT@
+	@BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=2@@/BRANCH@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

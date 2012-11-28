@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fileset-config file-format-version="1.2.0" simple-config="true" sync-formatter="false">
+  <local-check-config name="checkstyle -rtrt" location="internal_config__1316532877843.xml" type="internal" description="">
+    <property name="checkstyle.cache.file" value="0"/>
+  </local-check-config>
+  <fileset name="all" enabled="true" check-config-name="checkstyle -rtrt" local="true">
+    <file-match-pattern match-pattern="." include-pattern="true"/>
+  </fileset>
+  <filter name="FilesFromPackage" enabled="true">
+    <filter-data value="src/test/java"/>
+    <filter-data value="src/test/resources"/>
+    <filter-data value="target/generated-sources/localizer"/>
+    <filter-data value="target/generated-sources/javacc"/>
+    <filter-data value="src/main/resources"/>
+  </filter>
+  <filter name="NonSrcDirs" enabled="true"/>
+</fileset-config>
