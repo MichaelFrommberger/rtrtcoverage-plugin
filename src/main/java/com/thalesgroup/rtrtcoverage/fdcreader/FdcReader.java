@@ -51,7 +51,9 @@ public class FdcReader {
                 isInPopup = false;
             }
             if (currentLineString.startsWith("FC")) {
-                fileCoverageDef.setSourceName(customSplit(currentLineString).get(1));
+            	// RTRT is inconsistent about filename case
+            	// => put every source file name to upper case
+                fileCoverageDef.setSourceName(customSplit(currentLineString).get(1).toUpperCase());
                 fileCoverageDef.setSourceDir(customSplit(currentLineString).get(2));
             }
             if (currentLineString.startsWith("NODE")) {
@@ -62,10 +64,6 @@ public class FdcReader {
                 nodeDef = new NodeDefinition();
                 nodeDef.setNodeName(getStringAfterToken(getStringsBetween(currentLineString, "@NODE", "@").get(0), "NAME="));
                 isInNode = true;
-            }
-            if (currentLineString.contains("@/NODE@")) {
-                fileCoverageDef.addNode(nodeDef);
-                isInNode = false;
             }
             if (isInNode) {
                 if (currentLineString.contains("@BRANCH")) {
@@ -83,6 +81,10 @@ public class FdcReader {
                         nodeDef.addBranchDefinition(branch);
                     }
                 }
+            }
+            if (currentLineString.contains("@/NODE@")) {
+                fileCoverageDef.addNode(nodeDef);
+                isInNode = false;
             }
             currentLineString = bf.readLine();
             if (!isInPopup) {

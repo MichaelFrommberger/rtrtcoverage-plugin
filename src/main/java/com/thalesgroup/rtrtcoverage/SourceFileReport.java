@@ -6,12 +6,18 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.thalesgroup.rtrtcoverage.fdcparser.FdcParser;
+import com.thalesgroup.rtrtcoverage.fdcreader.FdcReader;
+import com.thalesgroup.rtrtcoverage.fdcreader.FileCoverageDefinition;
 import com.thalesgroup.rtrtcoverage.filesmapping.FileIdentitiesImport;
+import com.thalesgroup.rtrtcoverage.filesmapping.FileIdentity;
 import com.thalesgroup.rtrtcoverage.filesmapping.FilesMapping;
-import com.thalesgroup.rtrtcoverage.tioreader.CoverageFile;
-import com.thalesgroup.rtrtcoverage.tioreader.CoverageLine;
-import com.thalesgroup.rtrtcoverage.tioreader.TioReader;
+import com.thalesgroup.rtrtcoverage.sourcecoloring.FdcSourceReader;
+import com.thalesgroup.rtrtcoverage.sourcecoloring.SourceColourer;
+import com.thalesgroup.rtrtcoverage.sourcecoloring.SourceFile;
+import com.thalesgroup.rtrtcoverage.tioreader2.TestSuiteTrace;
+import com.thalesgroup.rtrtcoverage.tioreader2.TioReader2;
+import com.thalesgroup.rtrtcoverage.tracemerge.CoverageTraceMerger;
+import com.thalesgroup.rtrtcoverage.tracemerge.FileCoverage;
 
 /**
  * Global coverage by files. Could be an AggregatedReport if adding TestReport
@@ -28,133 +34,34 @@ AggregatedReport<CoverageReport, SourceFileReport, TestReport> {
      * @return the painted source code.
      */
     public String getPaintedSourceFileContent() {
-
-        // Input and output files.
-        final StringBuilder buf = new StringBuilder();
-
         try {
-            // Determine where the .tio files are located.
-            final List<FilePath> paths = new ArrayList<FilePath>();
+            // Load file identity mapping
             final FilesMapping mapping =
                     (new FileIdentitiesImport()).importXml(new File(getBuild().getRootDir()
                             + System.getProperty("file.separator") + "file_identities.xml"));
-            for (FilePath path : mapping.get(this.getName()).getAssociedTios()) {
-                paths.add(path);
+            // FDC file corresponding to this source file
+            FilePath fdcPath = new FilePath(new File(getSourcePath()));
+            FileIdentity fdcId = mapping.get(getName());
+            // Read associated TIO files
+            List<TestSuiteTrace> traces = new ArrayList<TestSuiteTrace>();
+            for (FilePath tio : fdcId.getAssociedTios()) {
+                traces.add(new TioReader2(tio.read()).readTio());
             }
-
-            // Opening the source code stream for source code.
-            final FdcParser fdcParser = new FdcParser(getSourcePath());
-
-            // Perform a test on the file if several .tio files
-            // the tio name contains the beginning of the name of the file.
-            for (final FilePath f : paths) {
-
-                if (f.exists()) {
-                    final TioReader tioReader = new TioReader(f.read());
-                    final CoverageFile coverageFile = tioReader
-                            .readCoverageForFile();
-
-                    int line = 0;
-                    int hits = 0;
-                    int methodMark = -1;
-                    int mark = 0;
-                    // to detect partial condition missed to failed conditions
-                    String content = "";
-                    String error = "";
-
-                    while (fdcParser.hasNext()) {
-                        fdcParser.next();
-                        hits = 0;
-                        mark = 0;
-                        error = "";
-                        CoverageLine[] coverage = fdcParser.getCoverageTypes();
-                        for (int c = 0; c < fdcParser.getNumberOfCoverageType(); ++c) {
-                            hits += coverageFile.getHit(coverage[c]);
-                            if (coverageFile.getCoverage()
-                                    .contains(coverage[c])) {
-                                mark++;
-                            } else {
-                                if (coverage[c].isConditional()) {
-                                    error += ",  missed condition: "
-                                            + coverage[c].getValue();
-                                }
-                            }
-                        }
-
-                        // head
-                        boolean isHeadOk = false;
-                        coverage = fdcParser.getHeadCoverageTypes();
-                        for (int c = 0; c < coverage.length; ++c) {
-                            if (coverageFile.getCoverage()
-                                    .contains(coverage[c])) {
-                                isHeadOk |= true;
-                            }
-                        }
-
-                        if (fdcParser.isFirstLineOfMethod()) {
-                            methodMark = mark;
-                        }
-
-                        if (fdcParser.mustBePainted()) {
-                            // New branch with same value as previous one.
-                            // Coverage is not done!
-                            if (methodMark == 0) {
-                                buf.append("<tr class=\"coverNone\">");
-                            } else if (mark == fdcParser
-                                    .getNumberOfCoverageType()) {
-                                buf.append("<tr class=\"coverFull\">");
-                            } else if (isHeadOk) {
-                                final float perCent = 100.f;
-                                final int coveragePercent = (int) (mark
-                                        * perCent / fdcParser
-                                        .getNumberOfCoverageType());
-                                buf.append("<tr class=\"coverPartial\" title=\"Line "
-                                        + line
-                                        + ": Conditional coverage "
-                                        + coveragePercent
-                                        + "% ("
-                                        + mark
-                                        + "/"
-                                        + fdcParser.getNumberOfCoverageType()
-                                        + ")" + error + "\">");
-                            } else {
-                                buf.append("<tr class=\"coverNone\">");
-                            }
-                            buf.append("<td class=\"line\">" + line + "</td>");
-                            // buf.append("<td class=\"hits\">" + hits +
-                            // "</td>"); //TODO : fix erratic hit values
-
-                        } else {
-                            buf.append("<tr class=\"noCover\">");
-                            buf.append("<td class=\"line\">" + line + "</td>");
-                            // buf.append("<td class=\"hits\"/>"); //TODO : fix
-                            // erratic hit values
-                        }
-
-                        content = fdcParser.getSourceCode();
-                        buf.append("<td>"
-                                + content
-                                .replaceAll("\\&", "&amp;")
-                                .replaceAll("\\<", "&lt;")
-                                .replaceAll("\\>", "&gt;")
-                                .replaceAll("\\\\[nr]", "")
-                                .replaceAll(" ", "&nbsp;")
-                                .replaceAll("\t",
-                                        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
-                                        .replaceAll("\n", "<br>") + "</td>");
-                        buf.append("</tr>");
-                        line++;
-                    }
-                } else {
-                    System.out.println("[RTRTCoverage] Fichier *.tio manquant : " + f.getRemote());
-                }
-            }
-
+            // merge FDC and TIO to build the detailed coverage status
+            FileCoverageDefinition fileCovDef = new FdcReader().read(fdcPath);
+            fileCovDef.setKey(fdcId.getKey());
+            fileCovDef.setCrc(fdcId.getCrc());
+            List<FileCoverageDefinition> fileCoverageDefs = new ArrayList<FileCoverageDefinition>();
+            fileCoverageDefs.add(fileCovDef);
+            FileCoverage fileCov = new CoverageTraceMerger().merge(fileCoverageDefs, traces).get(0);
+            // Read structured source code
+            SourceFile source = new FdcSourceReader().read(fdcPath);
+            // Generate colored code
+            return new SourceColourer().colorSource(source, fileCov);
         } catch (final Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-        return buf.toString();
-
+        return "";
     }
 }

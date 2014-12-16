@@ -5,7 +5,6 @@ import hudson.FilePath;
 import hudson.Launcher;
 import hudson.model.Action;
 import hudson.model.BuildListener;
-import hudson.model.Result;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
 import hudson.tasks.BuildStepDescriptor;
@@ -54,8 +53,6 @@ import com.thalesgroup.rtrtcoverage.tracemerge.NodeCoverage;
  */
 public class RTRTPublisher extends Recorder {
 
-    private static final Result Result = null;
-
     /**
      * the ant-style pattern input in web ui where to find instrumented files
      * Must be public to be seen by config.jelly
@@ -87,14 +84,14 @@ public class RTRTPublisher extends Recorder {
     public String tusarExportPathFromWorkspaceDir;
 
     /**
-     * Relative ant-style path to the RTRT fdc files inside the workspace. Must be public
-     * to be seen by config.jelly
+     * Relative ant-style path to the RTRT fdc files inside the workspace. Must
+     * be public to be seen by config.jelly
      */
     public String includesFdc;
 
     /**
-     * Relative ant-style path to the RTRT tio files inside the workspace. Must be public
-     * to be seen by config.jelly
+     * Relative ant-style path to the RTRT tio files inside the workspace. Must
+     * be public to be seen by config.jelly
      */
     public String includesTio;
 
@@ -174,7 +171,7 @@ public class RTRTPublisher extends Recorder {
     @Override
     public final boolean perform(final AbstractBuild<?, ?> build,
             final Launcher launcher, final BuildListener listener)
-                    throws InterruptedException, IOException {
+            throws InterruptedException, IOException {
 
         final PrintStream logger = listener.getLogger();
 
@@ -190,7 +187,8 @@ public class RTRTPublisher extends Recorder {
             return true;
         }
 
-        FilePath[] rtrtTestCoverageFiles = build.getWorkspace().list(includesTio);
+        FilePath[] rtrtTestCoverageFiles = build.getWorkspace().list(
+                includesTio);
         if (rtrtTestCoverageFiles.length == 0) {
             logger.println("[RTRTCoverage] [WARNING]: no rtrt test coverage file found.");
         }
@@ -218,15 +216,19 @@ public class RTRTPublisher extends Recorder {
         // Extract tio data
         logger.println("[RTRTCoverage]: Extracting TIO data...");
         List<TestSuiteTrace> traces = new ArrayList<TestSuiteTrace>();
-        try {
-            for (FilePath tioFile : rtrtTestCoverageFolder.list("*.TIO")) {
-                TioReader2 tioReader = new TioReader2(tioFile.read());
+        for (FilePath tioFile : rtrtTestCoverageFolder.list("*.TIO")) {
+            TioReader2 tioReader = new TioReader2(tioFile.read());
+            try {
                 TestSuiteTrace tst = tioReader.readTio();
                 tst.setName(tioFile.getName());
                 traces.add(tst);
+            } catch (TioException e) {
+                logger.println("[RTRTCoverage] [WARNING]: TIO file "
+                        + tioFile.getName() + " is ignored.");
+                logger.println("[RTRTCoverage] [WARNING]: Reason: "
+                        + e.getMessage());
+                build.setResult(hudson.model.Result.UNSTABLE);
             }
-        } catch (TioException e) {
-            logger.println("[RTRTCoverage] [ERROR]: " + e.getMessage());
         }
         logger.println("[RTRTCoverage]: TIO data extraction done.");
 
@@ -234,7 +236,8 @@ public class RTRTPublisher extends Recorder {
         logger.println("[RTRTCoverage]: Building files mapping...");
         FilesMapping mapping = new FilesMapping();
         try {
-            mapping.build(traces, build.getWorkspace(), augPattern, rtrtTestCoverageFolder);
+            mapping.build(traces, build.getWorkspace(), augPattern,
+                    rtrtTestCoverageFolder);
         } catch (FileIdentificationException e1) {
             build.setResult(hudson.model.Result.FAILURE);
             logger.println(e1.getMessage());
@@ -246,13 +249,15 @@ public class RTRTPublisher extends Recorder {
         }
         logger.println("[RTRTCoverage]: Files mapping done");
 
-
         // Save file IDs
         if (build.getWorkspace().list(augPattern).length != 0) {
             logger.println("[RTRTCoverage]: Saving files ID correspondances...");
-            File fileIdOutput = new File(build.getRootDir() + System.getProperty("file.separator") + "file_identities.xml");
+            File fileIdOutput = new File(build.getRootDir()
+                    + System.getProperty("file.separator")
+                    + "file_identities.xml");
             (new FileIdentitiesExport()).export(mapping, fileIdOutput);
-            logger.println("[RTRTCoverage]: Files ID correspondances saved at " + fileIdOutput.getPath());
+            logger.println("[RTRTCoverage]: Files ID correspondances saved at "
+                    + fileIdOutput.getPath());
         } else {
             logger.println("[RTRTCoverage] [WARNING]: Cannot find instrumented files: "
                     + "unable to find and save files ID correspondances");
@@ -267,7 +272,8 @@ public class RTRTPublisher extends Recorder {
             FileCoverageDefinition fileDef = fdcReader.read(fdcFile);
             FileIdentity id = mapping.get(fileDef.getSourceName());
             if (id == null) {
-                logger.println("[RTRTCoverage] [ERROR]: Cannot get id for source: " + fileDef.getSourceName());
+                logger.println("[RTRTCoverage] [ERROR]: Cannot get id for source: "
+                        + fileDef.getSourceName());
                 build.setResult(hudson.model.Result.FAILURE);
                 return false;
             } else {
@@ -297,7 +303,8 @@ public class RTRTPublisher extends Recorder {
 
         // Data serialization
         logger.println("[RTRTCoverage]: Saving ratios data...");
-        FileOutputStream fos = new FileOutputStream(build.getRootDir() + System.getProperty("file.separator") + "globalrate.dat");
+        FileOutputStream fos = new FileOutputStream(build.getRootDir()
+                + System.getProperty("file.separator") + "globalrate.dat");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         try {
             oos.writeObject(globalRate);
@@ -311,15 +318,9 @@ public class RTRTPublisher extends Recorder {
         }
         logger.println("[RTRTCoverage]: Ratios data saved.");
 
-
         RTRTBuildAction action = null;
-        action = RTRTBuildAction.load(
-                build,
-                rule,
-                logger,
-                globalRate,
+        action = RTRTBuildAction.load(build, rule, logger, globalRate,
                 healthReports);
-
 
         logger.println("[RTRTCoverage]: "
                 + action.getBuildHealth().getDescription());
@@ -336,17 +337,21 @@ public class RTRTPublisher extends Recorder {
             if (build.getWorkspace().list(augPattern).length != 0) {
                 FilePath outputFile = null;
                 if (tusarExportPathFromBuildDir != null
-                        && tusarExportPathFromBuildDir.contentEquals("")) {
+                        && tusarExportPathFromBuildDir.equals("")) {
                     outputFile = new FilePath(new File(build.getRootDir()
                             + System.getProperty("file.separator")
-                            + "TUSAR" + System.getProperty("file.separator") + "tusar_export.xml"));
+                            + "generatedDTKITFiles"
+                            + System.getProperty("file.separator") + "COVERAGE"
+                            + System.getProperty("file.separator")
+                            + "tusar_export.xml"));
                 } else {
                     outputFile = new FilePath(new File(build.getRootDir()
                             + System.getProperty("file.separator")
                             + tusarExportPathFromBuildDir));
                 }
 
-                RtrtCoverage2Tusar.export(globalCov, outputFile, build.getRootDir());
+                RtrtCoverage2Tusar.export(globalCov, outputFile,
+                        build.getRootDir());
 
                 logger.println("[RTRTCoverage]: stored TUSAR (.xml) file at : "
                         + outputFile.getRemote());
@@ -360,15 +365,24 @@ public class RTRTPublisher extends Recorder {
             if (build.getWorkspace().list(augPattern).length != 0) {
                 FilePath outputFile = null;
                 if (tusarExportPathFromWorkspaceDir != null
-                        && tusarExportPathFromWorkspaceDir.contentEquals("")) {
-                    outputFile = new FilePath(build.getWorkspace(), "TUSAR"
-                        + System.getProperty("file.separator") + "tusar_export.xml");
+                        && tusarExportPathFromWorkspaceDir.equals("")) {
+                    // By default, export Tusar file to
+                    // generatedDTKITFiles/COVERAGE
+                    // directory, so that Tusar notifier plugin should find it.
+                    outputFile = new FilePath(build.getWorkspace(),
+                            "generatedDTKITFiles"
+                                    + System.getProperty("file.separator")
+                                    + "COVERAGE"
+                                    + System.getProperty("file.separator")
+                                    + "tusar_export.xml");
                 } else {
-                    outputFile = new FilePath(build.getWorkspace(), System.getProperty("file.separator") +
-                            tusarExportPathFromWorkspaceDir);
+                    outputFile = new FilePath(build.getWorkspace(),
+                            System.getProperty("file.separator")
+                                    + tusarExportPathFromWorkspaceDir);
                 }
 
-                RtrtCoverage2Tusar.export(globalCov, outputFile, build.getRootDir());
+                RtrtCoverage2Tusar.export(globalCov, outputFile,
+                        build.getRootDir());
 
                 logger.println("[RTRTCoverage]: stored TUSAR (.xml) file at : "
                         + outputFile.getRemote());
@@ -382,7 +396,9 @@ public class RTRTPublisher extends Recorder {
 
     /**
      * Build a serializable global rate object.
-     * @param globalCov a global coverage object.
+     *
+     * @param globalCov
+     *            a global coverage object.
      * @return a global rate object.
      */
     public static GlobalRate buildRatesData(final GlobalCoverage globalCov) {
@@ -398,23 +414,26 @@ public class RTRTPublisher extends Recorder {
                 fileRate.getNodeRates().add(nodeRate);
                 for (BranchType type : BranchType.values()) {
                     CoverageRate rate = nodeCov.getGlobalRate(type);
-                    nodeRate.get(type).addRatio(rate.getCoveredNumber(), rate.getTotal());
+                    nodeRate.get(type).addRatio(rate.getCoveredNumber(),
+                            rate.getTotal());
                 }
             }
             // add the tests covering this file
-            for (String testName: fileCov.getTestNames()) {
+            for (String testName : fileCov.getTestNames()) {
                 TestRate testRate = new TestRate();
                 fileRate.getTestRates().add(testRate);
                 testRate.setTestName(testName);
                 testRate.setSourceFileName(fileCov.getSourceFileName());
                 testRate.setFdcPath(fileCov.getFdcPath());
-                for (NodeCoverage node: fileCov.getNodesForTest(testName).values()) {
+                for (NodeCoverage node : fileCov.getNodesForTest(testName)
+                        .values()) {
                     NodeRate nodeRate = new NodeRate();
                     nodeRate.setNodeName(node.getNodeName());
                     testRate.getNodeRates().add(nodeRate);
                     for (BranchType type : BranchType.values()) {
                         CoverageRate rate = node.getTestRate(testName, type);
-                        nodeRate.get(type).addRatio(rate.getCoveredNumber(), rate.getTotal());
+                        nodeRate.get(type).addRatio(rate.getCoveredNumber(),
+                                rate.getTotal());
                     }
                 }
                 for (NodeRate nodeRate : testRate.getNodeRates()) {

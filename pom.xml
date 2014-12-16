@@ -11,8 +11,8 @@
 	<artifactId>rtrtcoverage</artifactId>
 	<packaging>hpi</packaging>
 	<name>RTRTCoverage plugin</name>
-	<version>2.2</version>
-	<description>This plugin integrates RTRT code coverage reports to Hudson/Jenkins.</description>
+	<version>2.7</version>
+	<description>RTRT code coverage reports in Hudson/Jenkins.</description>
 	<developers>
 		<developer>
 			<name>Sébastien Barbier</name>
@@ -146,7 +146,7 @@
 				<configuration>
 					<targetJdk>1.5</targetJdk>
 					<excludeRoots>
-						<excludeRoot>target/generated-sources/javacc</excludeRoot>
+						<excludeRoot>${basedir}/target</excludeRoot>
 					</excludeRoots>
 				</configuration>
 			</plugin>
