@@ -1,0 +1,121 @@
+<html><head></head><body><table class="rtrtcoverage-file">
+<style media="screen" type="text/css">
+.rtrtcoverage-complete {
+  background-color: #ccffcc;}
+.rtrtcoverage-partial {
+  background-color: #ffffcc;}
+.rtrtcoverage-none {
+  background-color: #ffcccc;}
+.rtrtcoverage-hint {
+  border: 1px dashed grey;}
+</style>
+<tr><td><pre>1</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>2</pre></td><td><pre><span>/* (C) Copyright 2010 by THALES Avionics                                                   */</span></pre></td></tr>
+<tr><td><pre>3</pre></td><td><pre><span>/* All rights reserved                                                                     */</span></pre></td></tr>
+<tr><td><pre>4</pre></td><td><pre><span>/*                                                                                         */</span></pre></td></tr>
+<tr><td><pre>5</pre></td><td><pre><span>/* This program is the property of THALES Avionics, LE HAILLAN-BORDEAUX FRANCE, and can    */</span></pre></td></tr>
+<tr><td><pre>6</pre></td><td><pre><span>/* only be used and copied with the prior written authorisation of THALES Avionics.        */</span></pre></td></tr>
+<tr><td><pre>7</pre></td><td><pre><span>/*                                                                                         */</span></pre></td></tr>
+<tr><td><pre>8</pre></td><td><pre><span>/* Any whole or partial copy of this program in either its original form or in a modified  */</span></pre></td></tr>
+<tr><td><pre>9</pre></td><td><pre><span>/* form must mention this copyright and its owner.                                         */</span></pre></td></tr>
+<tr><td><pre>10</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>11</pre></td><td><pre><span>/* PROJECT: DGWPSW_A350                                                                    */</span></pre></td></tr>
+<tr><td><pre>12</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>13</pre></td><td><pre><span>/* FILE NAME: InteractiveTestSelector_areConnectionsSatisfied.c                            */</span></pre></td></tr>
+<tr><td><pre>14</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>15</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>16</pre></td><td><pre><span>#include &quot;InteractiveTestSelector.h&quot;</span></pre></td></tr>
+<tr><td><pre>17</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>18</pre></td><td><pre><span>#define __CLASS__ 	&quot;InteractiveTestSelector&quot;</span></pre></td></tr>
+<tr><td><pre>19</pre></td><td><pre><span>#define __METHOD__ 	&quot;areConnectionsSatisfied&quot;</span></pre></td></tr>
+<tr><td><pre>20</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>21</pre></td><td><pre><span>/* Start of user includes */</span></pre></td></tr>
+<tr><td><pre>22</pre></td><td><pre><span>/* End of user includes */</span></pre></td></tr>
+<tr><td><pre>23</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>24</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>25</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>26</pre></td><td><pre><span>/* METHOD DESCRIPTION: [public][instance method]                                           */</span></pre></td></tr>
+<tr><td><pre>27</pre></td><td><pre><span>/* -------------------                                                                     */</span></pre></td></tr>
+<tr><td><pre>28</pre></td><td><pre><span>/* Returns K_BOOL_TRUE if all of the mandatory receptacles have been successfully connecte */</span></pre></td></tr>
+<tr><td><pre>29</pre></td><td><pre><span>/* d to the required facets                                                                */</span></pre></td></tr>
+<tr><td><pre>30</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>31</pre></td><td><pre><span>T_boolean </span><span class="rtrtcoverage-complete">InteractiveTestSelector_areConnectionsSatisfied</span><span>(InteractiveTestSelector *pThis)</span></pre></td></tr>
+<tr><td><pre>32</pre></td><td><pre><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>33</pre></td><td><pre><span class="rtrtcoverage-complete">    </span><span>/* Start of user code */</span></pre></td></tr>
+<tr><td><pre>34</pre></td><td><pre><span class="rtrtcoverage-complete">	T_boolean lConnectionsSatisfied = K_BOOL_TRUE;</span></pre></td></tr>
+<tr><td><pre>35</pre></td><td><pre><span class="rtrtcoverage-complete">	T_uint32 lIndex;</span></pre></td></tr>
+<tr><td><pre>36</pre></td><td><pre><span class="rtrtcoverage-complete">	T_DisplayUnitLocation lDisplayUnitLocation =  INNER_LEFT_DISPLAY_UNIT;</span></pre></td></tr>
+<tr><td><pre>37</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>38</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if(</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">pThis-&gt;_softwareConfiguration != </span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="((T_ptr)0)">K_NULL</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>39</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>40</pre></td><td><pre><span class="rtrtcoverage-complete">		lDisplayUnitLocation =  pThis-&gt;_softwareConfiguration-&gt;whereAmI(pThis-&gt;_softwareConfiguration);</span></pre></td></tr>
+<tr><td><pre>41</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>42</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-none">else</span></pre></td></tr>
+<tr><td><pre>43</pre></td><td><pre><span class="rtrtcoverage-none">	{</span></pre></td></tr>
+<tr><td><pre>44</pre></td><td><pre><span class="rtrtcoverage-none">		lConnectionsSatisfied = K_BOOL_FALSE;</span></pre></td></tr>
+<tr><td><pre>45</pre></td><td><pre><span class="rtrtcoverage-none">	}</span></pre></td></tr>
+<tr><td><pre>46</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>47</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span>/* For each DU of the system */</span></pre></td></tr>
+<tr><td><pre>48</pre></td><td><pre><span class="rtrtcoverage-complete">	for(lIndex=0;</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lIndex &lt; DISPLAY_UNITS_COUNT</span><span class="rtrtcoverage-complete">;lIndex++)</span></pre></td></tr>
+<tr><td><pre>49</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>50</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span>/* If Du index refer to my du */</span></pre></td></tr>
+<tr><td><pre>51</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lIndex != lDisplayUnitLocation[covered] needs      TT[covered]=T,FX[covered]=F  pThis-&gt;_systemDataReceiver[lIndex] == ((type-cast)0)[covered] needs      TT[covered]=T,TF[covered]=F">(</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lIndex != lDisplayUnitLocation</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lIndex != lDisplayUnitLocation[covered] needs      TT[covered]=T,FX[covered]=F  pThis-&gt;_systemDataReceiver[lIndex] == ((type-cast)0)[covered] needs      TT[covered]=T,TF[covered]=F">) &amp;&amp; (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">pThis-&gt;_systemDataReceiver[lIndex] == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="((T_ptr)0)">K_NULL</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lIndex != lDisplayUnitLocation[covered] needs      TT[covered]=T,FX[covered]=F  pThis-&gt;_systemDataReceiver[lIndex] == ((type-cast)0)[covered] needs      TT[covered]=T,TF[covered]=F">)</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>52</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>53</pre></td><td><pre><span class="rtrtcoverage-complete">			lConnectionsSatisfied = K_BOOL_FALSE;</span></pre></td></tr>
+<tr><td><pre>54</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>55</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>56</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>57</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* Nothing to do */</span></pre></td></tr>
+<tr><td><pre>58</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>59</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>60</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>61</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span>/* IF DU is UC or LC */</span></pre></td></tr>
+<tr><td><pre>62</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if(</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lDisplayUnitLocation == UPPER_CENTER_DISPLAY_UNIT[covered] needs      TX[covered]=T,FF[covered]=F  lDisplayUnitLocation == LOWER_CENTER_DISPLAY_UNIT[covered] needs      FT[covered]=T,FF[covered]=F">(</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lDisplayUnitLocation == UPPER_CENTER_DISPLAY_UNIT</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lDisplayUnitLocation == UPPER_CENTER_DISPLAY_UNIT[covered] needs      TX[covered]=T,FF[covered]=F  lDisplayUnitLocation == LOWER_CENTER_DISPLAY_UNIT[covered] needs      FT[covered]=T,FF[covered]=F">) || (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lDisplayUnitLocation == LOWER_CENTER_DISPLAY_UNIT</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lDisplayUnitLocation == UPPER_CENTER_DISPLAY_UNIT[covered] needs      TX[covered]=T,FF[covered]=F  lDisplayUnitLocation == LOWER_CENTER_DISPLAY_UNIT[covered] needs      FT[covered]=T,FF[covered]=F">)</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>63</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>64</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span>/* Check if KCCU interface is available */</span></pre></td></tr>
+<tr><td><pre>65</pre></td><td><pre><span class="rtrtcoverage-complete">		for(lIndex=0;</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lIndex &lt; </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="(LAST_KCCU_ID-FIRST_KCCU_ID+1)">K_MAX_KCCU_COUNT</span><span class="rtrtcoverage-complete">;lIndex++)</span></pre></td></tr>
+<tr><td><pre>66</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>67</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* If Du index refer to my du */</span></pre></td></tr>
+<tr><td><pre>68</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">pThis-&gt;_kccuDataReceiver[lIndex] == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="((T_ptr)0)">K_NULL</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>69</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>70</pre></td><td><pre><span class="rtrtcoverage-complete">				lConnectionsSatisfied = K_BOOL_FALSE;</span></pre></td></tr>
+<tr><td><pre>71</pre></td><td><pre><span class="rtrtcoverage-complete">			}</span></pre></td></tr>
+<tr><td><pre>72</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>73</pre></td><td><pre><span class="rtrtcoverage-complete">			{</span></pre></td></tr>
+<tr><td><pre>74</pre></td><td><pre><span class="rtrtcoverage-complete">				</span><span>/* Nothing to do */</span></pre></td></tr>
+<tr><td><pre>75</pre></td><td><pre><span class="rtrtcoverage-complete">			}</span></pre></td></tr>
+<tr><td><pre>76</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>77</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>78</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span>/* Check if HCE interface is available */</span></pre></td></tr>
+<tr><td><pre>79</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="((T_ptr)0)">K_NULL</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]"> == pThis-&gt;_hceIdentificationData</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>80</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>81</pre></td><td><pre><span class="rtrtcoverage-complete">			lConnectionsSatisfied = K_BOOL_FALSE;</span></pre></td></tr>
+<tr><td><pre>82</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>83</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>84</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>85</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* Nothing to do */</span></pre></td></tr>
+<tr><td><pre>86</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>87</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>88</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>89</pre></td><td><pre><span class="rtrtcoverage-complete">	{</span></pre></td></tr>
+<tr><td><pre>90</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span>/* Nothing to do */</span></pre></td></tr>
+<tr><td><pre>91</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>92</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>93</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>94</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  ((type-cast)0) == pThis-&gt;_errorThrower[covered] needs      TXX[covered]=T,FFF[covered]=F  ((type-cast)0) == pThis-&gt;_localDataReceiver[covered] needs      FTX[covered]=T,FFF[covered]=F  1 == pThis-&gt;_testObserversOverflow[covered] needs      FFT[covered]=T,FFF[covered]=F">(</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="((T_ptr)0)">K_NULL</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]"> == pThis-&gt;_errorThrower</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  ((type-cast)0) == pThis-&gt;_errorThrower[covered] needs      TXX[covered]=T,FFF[covered]=F  ((type-cast)0) == pThis-&gt;_localDataReceiver[covered] needs      FTX[covered]=T,FFF[covered]=F  1 == pThis-&gt;_testObserversOverflow[covered] needs      FFT[covered]=T,FFF[covered]=F">) ||</span></pre></td></tr>
+<tr><td><pre>95</pre></td><td><pre><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  ((type-cast)0) == pThis-&gt;_errorThrower[covered] needs      TXX[covered]=T,FFF[covered]=F  ((type-cast)0) == pThis-&gt;_localDataReceiver[covered] needs      FTX[covered]=T,FFF[covered]=F  1 == pThis-&gt;_testObserversOverflow[covered] needs      FFT[covered]=T,FFF[covered]=F">		(</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="((T_ptr)0)">K_NULL</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]"> == pThis-&gt;_localDataReceiver</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  ((type-cast)0) == pThis-&gt;_errorThrower[covered] needs      TXX[covered]=T,FFF[covered]=F  ((type-cast)0) == pThis-&gt;_localDataReceiver[covered] needs      FTX[covered]=T,FFF[covered]=F  1 == pThis-&gt;_testObserversOverflow[covered] needs      FFT[covered]=T,FFF[covered]=F">) ||</span></pre></td></tr>
+<tr><td><pre>96</pre></td><td><pre><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  ((type-cast)0) == pThis-&gt;_errorThrower[covered] needs      TXX[covered]=T,FFF[covered]=F  ((type-cast)0) == pThis-&gt;_localDataReceiver[covered] needs      FTX[covered]=T,FFF[covered]=F  1 == pThis-&gt;_testObserversOverflow[covered] needs      FFT[covered]=T,FFF[covered]=F">	    (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="1">K_BOOL_TRUE</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]"> == pThis-&gt;_testObserversOverflow</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  ((type-cast)0) == pThis-&gt;_errorThrower[covered] needs      TXX[covered]=T,FFF[covered]=F  ((type-cast)0) == pThis-&gt;_localDataReceiver[covered] needs      FTX[covered]=T,FFF[covered]=F  1 == pThis-&gt;_testObserversOverflow[covered] needs      FFT[covered]=T,FFF[covered]=F">)</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>97</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>98</pre></td><td><pre><span class="rtrtcoverage-complete">		lConnectionsSatisfied = K_BOOL_FALSE;</span></pre></td></tr>
+<tr><td><pre>99</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>100</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>101</pre></td><td><pre><span class="rtrtcoverage-complete">	{</span></pre></td></tr>
+<tr><td><pre>102</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span>/* Nothing to do */</span></pre></td></tr>
+<tr><td><pre>103</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>104</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>105</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">return lConnectionsSatisfied;</span></pre></td></tr>
+<tr><td><pre>106</pre></td><td><pre><span class="rtrtcoverage-complete">    </span><span>/* End of user code */</span></pre></td></tr>
+<tr><td><pre>107</pre></td><td><pre><span class="rtrtcoverage-complete">}</span></pre></td></tr>
+<tr><td><pre>108</pre></td><td><pre></pre></td>
+</tr>
+</table></body></html>

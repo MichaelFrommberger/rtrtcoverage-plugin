@@ -1,0 +1,132 @@
+VE 3.0e CCOV #i5 7.0.0.1
+FC "AIRCRAFTLOCALIZATIONCOMPONENT_CONNECT.C" "R:\\DGWP-SW-A350\\DGWP_A350_UT\\DGWP_ANF\\CLASS_AIRCRAFTLOCALIZATIONCOMPONENT\\SOURCES\\"
+FD 1331629882
+TC PR RE BS BT BI BL
+BL 0 simple "AircraftLocalizationComponent_connect" /case 38 38
+BL 1 simple "AircraftLocalizationComponent_connect" /case 46 46
+BL 2 simple "AircraftLocalizationComponent_connect" /case 54 54
+BL 3 simple "AircraftLocalizationComponent_connect" /case 62 62
+BL 4 simple "AircraftLocalizationComponent_connect" /case 70 70
+BL 5 simple "AircraftLocalizationComponent_connect" /case 78 78
+BL 6 simple "AircraftLocalizationComponent_connect" /default 86 86
+PR 0 return "AircraftLocalizationComponent_connect" 92 92
+PR 1 proc "AircraftLocalizationComponent_connect" 31 93
+BL 7 simple "AircraftLocalizationComponent_connect" / 31 93
+DC 1362319514
+@RIK
+  ENCODING="System"
+  TOKEN="CCOV"
+  SRC="AIRCRAFTLOCALIZATIONCOMPONENT_CONNECT.C"
+  DIR="R:\DGWP-SW-A350\DGWP_A350_UT\DGWP_ANF\CLASS_AIRCRAFTLOCALIZATIONCOMPONENT\SOURCES\"
+  DATE=1331629882
+  CHECKSUM=1362319514
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"=22),
+   ("Basic &conditions",
+    "&Modified conditions",
+    "M&ultiple conditions")
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="AIRCRAFTLOCALIZATIONCOMPONENT_CONNECT.C"@@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* (C) Copyright by THALES Avionics                                                        */@/COMMENT@
+@COMMENT@/* All rights reserved                                                                     */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* This program is the property of THALES Avionics, LE HAILLAN-BORDEAUX FRANCE, and can    */@/COMMENT@
+@COMMENT@/* only be used and copied with the prior written authorisation of THALES Avionics.        */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* Any whole or partial copy of this program in either its original form or in a modified  */@/COMMENT@
+@COMMENT@/* form must mention this copyright and its owner.                                         */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* PROJECT: ANF_A350                                                                       */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* FILE NAME: AircraftLocalizationComponent_connect.c                                      */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+
+@COMMENT@#include "AircraftLocalizationComponent.h"@/COMMENT@
+
+@COMMENT@#define __CLASS__ 	"AircraftLocalizationComponent"@/COMMENT@
+@COMMENT@#define __METHOD__ 	"connect"@/COMMENT@
+
+@COMMENT@/* Start of user includes */@/COMMENT@
+@COMMENT@/* End of user includes */@/COMMENT@
+
+
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* METHOD DESCRIPTION: [public][instance method]                                           */@/COMMENT@
+@COMMENT@/* -------------------                                                                     */@/COMMENT@
+@COMMENT@/* Connect the given feature instance to the named receptacle                              */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="AircraftLocalizationComponent_connect"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="AircraftLocalizationComponent_connect"@AircraftLocalizationComponent_connect@/BRANCH@(AircraftLocalizationComponent *pThis, const T_char *pName, T_PortInterface pInterface)
+@BRANCH MARK=TB ID=7 SUM=20@{
+    @COMMENT@/* Start of user code */@/COMMENT@
+	T_uint32 lReceptacleIndex = pThis->_componentHelper.indexOfReceptacle(&(pThis->_componentHelper), pName);
+
+	@COMMENT@/* Update interface instance corresponding to receptacle index */@/COMMENT@
+	@DECISION SUM=20+21 ID=0|1|2|3|4|5|6@switch (lReceptacleIndex)
+	{
+		@BRANCH MARK=TB ID=0 SUM=20@@BRANCH NO@case E_AIRCRAFT_LOCALIZATION_DATABASE_SERVICES_RECEPTACLE_INDEX:@/BRANCH@
+		{
+			pThis->_receptacles.databaseServices = pInterface;
+			@COMMENT@/* TODO STUB L1: to uncomment for L2 */@/COMMENT@
+			@COMMENT@/* pThis->_componentHelper.newConnection(&(pThis->_componentHelper)); */@/COMMENT@
+		}
+		break;@SHORTCUT MARK=TB ID=0@
+
+		@BRANCH MARK=TB ID=1 SUM=20@@BRANCH NO@case E_AIRCRAFT_LOCALIZATION_ERROR_THROWER_RECEPTACLE_INDEX:@/BRANCH@
+		{
+			pThis->_receptacles.errorThrower = pInterface;
+			@COMMENT@/* TODO STUB L1: to uncomment for L2 */@/COMMENT@
+			@COMMENT@/* pThis->_componentHelper.newConnection(&(pThis->_componentHelper)); */@/COMMENT@
+		}
+		break;@SHORTCUT MARK=TB ID=0@
+
+		@BRANCH MARK=TB ID=2 SUM=20@@BRANCH NO@case E_AIRCRAFT_LOCALIZATION_FLIGHT_PLAN_MANAGEMENT_SERVICES_RECEPTACLE_INDEX:@/BRANCH@
+		{
+			pThis->_receptacles.flightPlanManagementServices = pInterface;
+			@COMMENT@/* TODO STUB L1: to uncomment for L2 */@/COMMENT@
+			@COMMENT@/* pThis->_componentHelper.newConnection(&(pThis->_componentHelper)); */@/COMMENT@
+		}
+		break;@SHORTCUT MARK=TB ID=0@
+
+		@BRANCH MARK=TB ID=3 SUM=20@@BRANCH NO@case E_AIRCRAFT_LOCALIZATION_MAP_OBJECT_SERVICES_RECEPTACLE_INDEX:@/BRANCH@
+		{
+			pThis->_receptacles.mapObjectServices = pInterface;
+			@COMMENT@/* TODO STUB L1: to uncomment for L2 */@/COMMENT@
+			@COMMENT@/* pThis->_componentHelper.newConnection(&(pThis->_componentHelper)); */@/COMMENT@
+		}
+		break;@SHORTCUT MARK=TB ID=0@
+
+		@BRANCH MARK=TB ID=4 SUM=20@@BRANCH NO@case E_AIRCRAFT_LOCALIZATION_DATA_STORAGE_SERVICES_RECEPTACLE_INDEX:@/BRANCH@
+		{
+			pThis->_receptacles.dataStorageServices = pInterface;
+			@COMMENT@/* TODO STUB L1: to uncomment for L2 */@/COMMENT@
+			@COMMENT@/* pThis->_componentHelper.newConnection(&(pThis->_componentHelper)); */@/COMMENT@
+		}
+		break;@SHORTCUT MARK=TB ID=0@
+
+		@BRANCH MARK=TB ID=5 SUM=20@@BRANCH NO@case E_AIRCRAFT_LOCALIZATION_TASKS_BENCHMARKING_RECEPTACLE_INDEX:@/BRANCH@
+		{
+			pThis->_receptacles.benchmarking = pInterface;
+			@COMMENT@/* TODO STUB L1: to uncomment for L2 */@/COMMENT@
+			@COMMENT@/* pThis->_componentHelper.newConnection(&(pThis->_componentHelper)); */@/COMMENT@
+		}
+		break;@SHORTCUT MARK=TB ID=0@
+
+		@BRANCH MARK=TB ID=6 SUM=20@@BRANCH NO@default:@/BRANCH@
+			; @COMMENT@/* Nothing to do */@/COMMENT@
+		break;@SHORTCUT MARK=TB ID=0@
+	}@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/DECISION@
+
+    @COMMENT@/* End of user code */@/COMMENT@
+	@BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=7@@/BRANCH@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

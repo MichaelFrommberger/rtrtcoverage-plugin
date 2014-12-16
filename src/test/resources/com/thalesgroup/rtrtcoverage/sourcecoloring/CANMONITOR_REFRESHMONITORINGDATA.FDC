@@ -1,0 +1,267 @@
+VE 3.0e CCOV CMCDC #i5 7.0.0.1
+FC "CANMONITOR_REFRESHMONITORINGDATA.C" "D:\\A350\\UT\\CLASS_CANMONITOR\\SOURCES\\"
+FD 1361893440
+TC PR RE BS BT BI CO CC
+CE 0 "CANMonitor_refreshMonitoringData" "lLRUIndex <= LAST_LRU_ID" 70 70
+BL 0 simple "CANMonitor_refreshMonitoringData" /for 71 73
+CE 2 "CANMonitor_refreshMonitoringData" "lLRUIndex < pThis-> ..." 77 77
+CE 4 "CANMonitor_refreshMonitoringData" "lIsLRUADisplayUnit == 1" 82 82
+CE 6 "CANMonitor_refreshMonitoringData" "lCANBusItem->sourceLruId !=  ..." 85 85
+BL 1 simple "CANMonitor_refreshMonitoringData" /for/then/then 86 89
+BL 2 simple "CANMonitor_refreshMonitoringData" /for/then/else 91 94
+BL 3 simple "CANMonitor_refreshMonitoringData" /for/then 83 95
+BL 4 simple "CANMonitor_refreshMonitoringData" /for/else 97 99
+BL 5 simple "CANMonitor_refreshMonitoringData" /for 78 100
+CE 8 "CANMonitor_refreshMonitoringData" "lLRUIndex < pThis-> ..." 103 103
+CE 10 "CANMonitor_refreshMonitoringData" "lIsLRUADisplayUnit == 1" 108 108
+CE 12 "CANMonitor_refreshMonitoringData" "lCANBusItem->sourceLruId !=  ..." 111 111
+BL 6 simple "CANMonitor_refreshMonitoringData" /for/then/then 112 115
+BL 7 simple "CANMonitor_refreshMonitoringData" /for/then/else 117 120
+BL 8 simple "CANMonitor_refreshMonitoringData" /for/then 109 121
+BL 9 simple "CANMonitor_refreshMonitoringData" /for/else 123 125
+BL 10 simple "CANMonitor_refreshMonitoringData" /for 104 126
+CE 14 "CANMonitor_refreshMonitoringData" "lLRUIndex <= LAST_LRU_ID_DU" 128 128
+CE 16 "CANMonitor_refreshMonitoringData" "pThis->_canSubscribers.local ..." 131 131
+CE 18 "CANMonitor_refreshMonitoringData" "lRefreshStatus ==  ..." 138 138
+CE 20 "CANMonitor_refreshMonitoringData" "lBusMonitoringInformation. ..." 145 145
+BL 11 simple "CANMonitor_refreshMonitoringData" /for/then/then/then 146 148
+BL 12 simple "CANMonitor_refreshMonitoringData" /for/then/then/else 150 152
+CE 22 "CANMonitor_refreshMonitoringData" "lBusMonitoringInformation. ..." 154 154
+BL 13 simple "CANMonitor_refreshMonitoringData" /for/then/then/then 155 157
+BL 14 simple "CANMonitor_refreshMonitoringData" /for/then/then/else 159 161
+BL 15 simple "CANMonitor_refreshMonitoringData" /for/then/then 139 163
+BL 16 simple "CANMonitor_refreshMonitoringData" /for/then/else 165 169
+BL 17 simple "CANMonitor_refreshMonitoringData" /for/then 132 170
+BL 18 simple "CANMonitor_refreshMonitoringData" /for/else 172 174
+BL 19 simple "CANMonitor_refreshMonitoringData" /for 129 175
+PR 0 return "CANMonitor_refreshMonitoringData" 178 178
+PR 1 proc "CANMonitor_refreshMonitoringData" 37 179
+BL 20 simple "CANMonitor_refreshMonitoringData" / 37 179
+DC 1913283955
+@RIK
+  ENCODING="System"
+  TOKEN="CCOV CMCDC"
+  SRC="CANMONITOR_REFRESHMONITORINGDATA.C"
+  DIR="D:\A350\UT\CLASS_CANMONITOR\SOURCES\"
+  DATE=1361893440
+  CHECKSUM=1913283955
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="CANMONITOR_REFRESHMONITORINGDATA.C"@@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* (C) Copyright 2009 by THALES Avionics                                                   */@/COMMENT@
+@COMMENT@/* All rights reserved                                                                     */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* This program is the property of THALES Avionics, LE HAILLAN-BORDEAUX FRANCE, and can    */@/COMMENT@
+@COMMENT@/* only be used and copied with the prior written authorisation of THALES Avionics.        */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* Any whole or partial copy of this program in either its original form or in a modified  */@/COMMENT@
+@COMMENT@/* form must mention this copyright and its owner.                                         */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* PROJECT: DGWPSW_A350                                                                    */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* FILE NAME: CANMonitor_refreshMonitoringData.c                                           */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+
+@COMMENT@#include "CANMonitor.h"@/COMMENT@
+
+@COMMENT@#define __CLASS__ 	"CANMonitor"@/COMMENT@
+@COMMENT@#define __METHOD__ 	"refreshMonitoringData"@/COMMENT@
+
+@COMMENT@/* Start of user includes */@/COMMENT@
+@COMMENT@#include "BusesMonitoring.h"@/COMMENT@
+@COMMENT@/* End of user includes */@/COMMENT@
+
+
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* METHOD DESCRIPTION: [public][instance method]                                           */@/COMMENT@
+@COMMENT@/* -------------------                                                                     */@/COMMENT@
+@COMMENT@/* Retrieve the refresh status of subscribers messages involved in CAN Failure computation */@/COMMENT@
+@COMMENT@/* .                                                                                       */@/COMMENT@
+@COMMENT@/* Read xtalk data :                                                                       */@/COMMENT@
+@COMMENT@/* - Retrieve Off in progress messages from KCCUs and from Display Units on CAN.           */@/COMMENT@
+@COMMENT@/* - read the synthesize CAN Statuses from other DU on AFDX                                */@/COMMENT@
+@COMMENT@/* Retrieve reports on CAN status messages from KCCUs on CAN.                              */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="CANMonitor_refreshMonitoringData"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="CANMonitor_refreshMonitoringData"@CANMonitor_refreshMonitoringData@/BRANCH@(CANMonitor *pThis) 
+@BRANCH MARK=TB ID=20 SUM=20@{
+    @COMMENT@/* Start of user code */@/COMMENT@
+
+	T_LRUId lLRUIndex=0;
+
+	T_uint8 lIndex=0;
+
+	T_boolean lIsLRUADisplayUnit = K_BOOL_TRUE;
+
+	T_BusMonitoringInformation lBusMonitoringInformation;
+
+	T_SharedDataStatus lRefreshStatus=K_SHARED_DATA_STATUS_UNKNOWN;
+
+
+	@COMMENT@//T_CANSubscriberItem *lCANSubscriberItem;@/COMMENT@
+
+	T_CANBusItem *lCANBusItem;
+
+
+	@COMMENT@/* read monitored messages refresh status from buses subscribers */@/COMMENT@
+
+	@COMMENT@// readMonitoringReportsFromKCCU : REFRESH_CAN_X from CAN@/COMMENT@
+	@COMMENT@/*
+		REFRESH_CANx = 1 => true if the KCCU doesn't receive any valid and refreshed message
+		from any DUs on X CAN bus.
+		REFRESH_CANx = 0 => false if the KCCU receive at least, one valid and refreshed message
+		from one DU on x CAN bus.
+	 */@/COMMENT@
+	@COMMENT@// read KCCU Healthy status refresh from CAN@/COMMENT@
+	@COMMENT@// pThis->_offStatus[K_LRU_ID_COUNT] : POWER_OFF KCCU@/COMMENT@
+
+	@COMMENT@/* reset off status refreshed from current cycle */@/COMMENT@
+	@COMMENT@/* to evaluate off status only one time in case of redundancy */@/COMMENT@
+	for (lLRUIndex=FIRST_LRU_ID;@POPUP@lLRUIndex<=LAST_LRU_ID@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@;lLRUIndex++)
+	@BRANCH MARK=TB ID=0 SUM=20@{
+		pThis->_offStatus[lLRUIndex].isRefreshedThisCycle = K_BOOL_FALSE;
+	}@/BRANCH@
+
+
+	@COMMENT@/* monitor first bus subscribers */@/COMMENT@
+	for (lLRUIndex=0; @POPUP@lLRUIndex<pThis->_canSubscribers.localBus1.count@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@; lLRUIndex++)
+	@BRANCH MARK=TB ID=5 SUM=20@{
+		lCANBusItem = pThis->_canSubscribers.localBus1.items[lLRUIndex];
+		pThis->getLruIsDisplayUnit(pThis, lCANBusItem->sourceLruId, &lIsLRUADisplayUnit);
+
+		@DECISION SUM=20+21 ID=3|4@if (@POPUP@lIsLRUADisplayUnit == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@@/ALT@) @COMMENT@/* DU */@/COMMENT@
+		@BRANCH MARK=TB ID=3 SUM=20@{
+
+			@DECISION SUM=20+21 ID=1|2@if (@POPUP@lCANBusItem->sourceLruId != pThis->_canSubscribers.localLRU->lruId@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=6 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=7 SUM=30@False@/BRANCH@@/POPUP@) @COMMENT@/* remote DU */@/COMMENT@
+			@BRANCH MARK=TB ID=1 SUM=20@{
+				@COMMENT@/* read DU Healthy status refresh from both CAN buses */@/COMMENT@
+				pThis->_monitorDisplayUnit(pThis, lCANBusItem, CAN_BUS_LOGIC_ID_FIRST);
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=2 SUM=20@else @COMMENT@/* self DU */@/COMMENT@
+			{
+				@COMMENT@/* NOTHING TO DO */@/COMMENT@
+				@COMMENT@//pThis->_canSubscribers.localLRU->firstBus.isMonitoredMessageRefreshed = K_BOOL_TRUE;@/COMMENT@
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=4 SUM=20@else @COMMENT@/* KCCU */@/COMMENT@
+		{
+			pThis->_monitorKCCU(pThis, lCANBusItem, CAN_BUS_LOGIC_ID_FIRST);
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+
+	@COMMENT@/* monitor second bus subscribers */@/COMMENT@
+	for (lLRUIndex=0; @POPUP@lLRUIndex<pThis->_canSubscribers.localBus2.count@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=8 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=9 SUM=30@False@/BRANCH@@/POPUP@; lLRUIndex++)
+	@BRANCH MARK=TB ID=10 SUM=20@{
+		lCANBusItem = pThis->_canSubscribers.localBus2.items[lLRUIndex];
+		pThis->getLruIsDisplayUnit(pThis, lCANBusItem->sourceLruId, &lIsLRUADisplayUnit);
+
+		@DECISION SUM=20+21 ID=8|9@if (@POPUP@lIsLRUADisplayUnit == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=10 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=11 SUM=30@False@/BRANCH@@/POPUP@@/ALT@) @COMMENT@/* DU */@/COMMENT@
+		@BRANCH MARK=TB ID=8 SUM=20@{
+
+			@DECISION SUM=20+21 ID=6|7@if (@POPUP@lCANBusItem->sourceLruId != pThis->_canSubscribers.localLRU->lruId@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=12 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=13 SUM=30@False@/BRANCH@@/POPUP@) @COMMENT@/* remote DU */@/COMMENT@
+			@BRANCH MARK=TB ID=6 SUM=20@{
+				@COMMENT@/* read DU Healthy status refresh from both CAN buses */@/COMMENT@
+				pThis->_monitorDisplayUnit(pThis, lCANBusItem, CAN_BUS_LOGIC_ID_SECOND);
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=7 SUM=20@else @COMMENT@/* self DU */@/COMMENT@
+			{
+				@COMMENT@/* NOTHING TO DO */@/COMMENT@
+				@COMMENT@//pThis->_canSubscribers.localLRU->secondBus.isMonitoredMessageRefreshed = K_BOOL_TRUE;@/COMMENT@
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=9 SUM=20@else @COMMENT@/* KCCU */@/COMMENT@
+		{
+			pThis->_monitorKCCU(pThis, lCANBusItem, CAN_BUS_LOGIC_ID_SECOND);
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+
+	for (lLRUIndex=FIRST_LRU_ID_DU;@POPUP@lLRUIndex<=LAST_LRU_ID_DU@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=14 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=15 SUM=30@False@/BRANCH@@/POPUP@;lLRUIndex++)
+	@BRANCH MARK=TB ID=19 SUM=20@{
+
+		@DECISION SUM=20+21 ID=17|18@if (@POPUP@pThis->_canSubscribers.localLRU->lruId != lLRUIndex@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=16 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=17 SUM=30@False@/BRANCH@@/POPUP@)
+		@BRANCH MARK=TB ID=17 SUM=20@{
+			@COMMENT@//The following macro updates lIndex :@/COMMENT@
+			lIndex = CBusesMonitoring->mapDisplayUnit(pThis->_canSubscribers.localLRU->lruId, lLRUIndex);
+			@COMMENT@/* select AFDX bus for healthy status */@/COMMENT@
+			lRefreshStatus = pThis->_systemDataReceptions[lIndex]->updateBusMonitoringInformation(pThis->_systemDataReceptions[lIndex], &lBusMonitoringInformation, K_SHARED_DATA_MEDIA_AFDX);
+
+			@DECISION SUM=20+21 ID=15|16@if (@POPUP@lRefreshStatus == K_SHARED_DATA_STATUS_REFRESH@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=18 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=19 SUM=30@False@/BRANCH@@/POPUP@)
+			@BRANCH MARK=TB ID=15 SUM=20@{
+				@COMMENT@// read remote CAN_BUSx_FAILURE from AFDX@/COMMENT@
+				@COMMENT@/* read the synthesize CAN Statuses from other DU on AFDX */@/COMMENT@
+				pThis->_canSubscribers.allCANSubscribers[lLRUIndex].firstBus.isSynthesizedFailureRefreshed = K_BOOL_TRUE;
+				pThis->_canSubscribers.allCANSubscribers[lLRUIndex].secondBus.isSynthesizedFailureRefreshed = K_BOOL_TRUE;
+
+				@DECISION SUM=20+21 ID=11|12@if (@POPUP@lBusMonitoringInformation.canBus1Failure == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=20 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=21 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+				@BRANCH MARK=TB ID=11 SUM=20@{
+					pThis->_canSubscribers.allCANSubscribers[lLRUIndex].firstBus.synthesizedFailure = 1;
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=12 SUM=20@else
+				{
+					pThis->_canSubscribers.allCANSubscribers[lLRUIndex].firstBus.synthesizedFailure = 0;
+				}@/BRANCH@@/DECISION@
+
+				@DECISION SUM=20+21 ID=13|14@if (@POPUP@lBusMonitoringInformation.canBus2Failure == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=22 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=23 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+				@BRANCH MARK=TB ID=13 SUM=20@{
+					pThis->_canSubscribers.allCANSubscribers[lLRUIndex].secondBus.synthesizedFailure = 1;
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=14 SUM=20@else
+				{
+					pThis->_canSubscribers.allCANSubscribers[lLRUIndex].secondBus.synthesizedFailure = 0;
+				}@/BRANCH@@/DECISION@
+
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=16 SUM=20@else
+			{
+				@COMMENT@/* no synthesized failure if not refreshed; the refresh state is self sufficient */@/COMMENT@
+				pThis->_canSubscribers.allCANSubscribers[lLRUIndex].firstBus.isSynthesizedFailureRefreshed = K_BOOL_FALSE;
+				pThis->_canSubscribers.allCANSubscribers[lLRUIndex].secondBus.isSynthesizedFailureRefreshed = K_BOOL_FALSE;
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=18 SUM=20@else @COMMENT@//pThis->_canSubscribers.localLRU->lruId == lLRUIndex@/COMMENT@
+		{
+			@COMMENT@/* NOTHING TO DO */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+
+    @COMMENT@/* End of user code */@/COMMENT@
+	@BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=20@@/BRANCH@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

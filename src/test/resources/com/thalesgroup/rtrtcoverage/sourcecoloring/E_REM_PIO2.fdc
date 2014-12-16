@@ -1,0 +1,277 @@
+VE 3.0e CCOV #i5 7.0.0.1
+FC "E_REM_PIO2.C" "E:\\USERS\\GD50528\\RTRT\\PROJETRTRT\\SRC\\"
+FD 795367768
+TC PR AP BS CO
+CE 0 "__ieee754_rem_pio2" "ix <= 0x3fe921fb" 96 96
+BL 0 simple "__ieee754_rem_pio2" /then 97 97
+BL 1 simple "__ieee754_rem_pio2" /seq 98 174
+CE 2 "__ieee754_rem_pio2" "ix < 0x4002d97c" 98 98
+CE 4 "__ieee754_rem_pio2" "hx > 0" 99 99
+CE 6 "__ieee754_rem_pio2" "ix != 0x3ff921fb" 101 101
+BL 2 simple "__ieee754_rem_pio2" /then/then/then 101 104
+BL 3 simple "__ieee754_rem_pio2" /then/then/else 104 108
+BL 4 simple "__ieee754_rem_pio2" /then/then 99 110
+CE 8 "__ieee754_rem_pio2" "ix != 0x3ff921fb" 112 112
+BL 5 simple "__ieee754_rem_pio2" /then/else/then 112 115
+BL 6 simple "__ieee754_rem_pio2" /then/else/else 115 119
+BL 7 simple "__ieee754_rem_pio2" /then/else 110 121
+BL 8 simple "__ieee754_rem_pio2" /then 98 122
+BL 9 simple "__ieee754_rem_pio2" /seq 123 174
+CE 10 "__ieee754_rem_pio2" "ix <= 0x413921fb" 123 123
+AP 0 "__ieee754_rem_pio2" "fabs" 124 124
+CE 12 "__ieee754_rem_pio2" "n < 32" 129 129
+CE 14 "__ieee754_rem_pio2" "ix != npio2_hw[n - 1]" 129 129
+BL 10 simple "__ieee754_rem_pio2" /then/then 129 131
+CE 16 "__ieee754_rem_pio2" "i > 16" 135 135
+CE 18 "__ieee754_rem_pio2" "i > 49" 142 142
+BL 11 simple "__ieee754_rem_pio2" /then/else/then/then 142 148
+BL 12 simple "__ieee754_rem_pio2" /then/else/then 135 149
+BL 13 simple "__ieee754_rem_pio2" /then/else 131 150
+CE 20 "__ieee754_rem_pio2" "hx < 0" 152 152
+BL 14 simple "__ieee754_rem_pio2" /then/then 152 152
+BL 15 simple "__ieee754_rem_pio2" /then/else 153 153
+BL 16 simple "__ieee754_rem_pio2" /then 123 154
+BL 17 simple "__ieee754_rem_pio2" /seq 158 174
+CE 22 "__ieee754_rem_pio2" "ix >= 0x7ff00000" 158 158
+BL 18 simple "__ieee754_rem_pio2" /then 158 160
+BL 19 simple "__ieee754_rem_pio2" /seq 162 174
+CE 24 "__ieee754_rem_pio2" "i < 2" 165 165
+BL 20 simple "__ieee754_rem_pio2" /for 165 168
+CE 26 "__ieee754_rem_pio2" "tx[nx - 1] == zero" 171 171
+BL 21 simple "__ieee754_rem_pio2" /while 171 171
+AP 1 "__ieee754_rem_pio2" "__kernel_rem_pio2" 172 172
+CE 28 "__ieee754_rem_pio2" "hx < 0" 173 173
+BL 22 simple "__ieee754_rem_pio2" /then 173 173
+BL 23 simple "__ieee754_rem_pio2" /seq 174 174
+PR 0 proc "__ieee754_rem_pio2" 89 175
+BL 24 simple "__ieee754_rem_pio2" / 89 175
+DC 896096581
+@RIK
+  ENCODING="System"
+  TOKEN="CCOV"
+  SRC="E_REM_PIO2.C"
+  DIR="E:\USERS\GD50528\RTRT\PROJETRTRT\SRC\"
+  DATE=795367768
+  CHECKSUM=896096581
+  SUMS
+   ("&Functions"=0,
+    "-&Exits",
+    "Functions and exits"),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks",
+    "Decisions",
+    "&Loops"),
+   ("Basic &conditions"=30,
+    "&Modified conditions",
+    "M&ultiple conditions")
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="E_REM_PIO2.C"@
+@COMMENT@/* @@(#)e_rem_pio2.c 1.4 95/01/18 */@/COMMENT@
+@COMMENT@/*
+ * ====================================================
+ * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
+ *
+ * Developed at SunSoft, a Sun Microsystems, Inc. business.
+ * Permission to use, copy, modify, and distribute this
+ * software is freely granted, provided that this notice 
+ * is preserved.
+ * ====================================================
+ *
+ */@/COMMENT@
+
+@COMMENT@/* __ieee754_rem_pio2(x,y)
+ * 
+ * return the remainder of x rem pi/2 in y[0]+y[1] 
+ * use __kernel_rem_pio2()
+ */@/COMMENT@
+
+@COMMENT@#include "fdlibm.h"@/COMMENT@
+
+@COMMENT@/*
+ * Table of constants for 2/pi, 396 Hex digits (476 decimal) of 2/pi 
+ */@/COMMENT@
+@COMMENT@#ifdef __STDC__@/COMMENT@
+static const int two_over_pi[] = {
+@COMMENT@@COMMENT@#else@/COMMENT@
+static int two_over_pi[] = {
+@/COMMENT@@COMMENT@#endif@/COMMENT@
+0xA2F983, 0x6E4E44, 0x1529FC, 0x2757D1, 0xF534DD, 0xC0DB62, 
+0x95993C, 0x439041, 0xFE5163, 0xABDEBB, 0xC561B7, 0x246E3A, 
+0x424DD2, 0xE00649, 0x2EEA09, 0xD1921C, 0xFE1DEB, 0x1CB129, 
+0xA73EE8, 0x8235F5, 0x2EBB44, 0x84E99C, 0x7026B4, 0x5F7E41, 
+0x3991D6, 0x398353, 0x39F49C, 0x845F8B, 0xBDF928, 0x3B1FF8, 
+0x97FFDE, 0x05980F, 0xEF2F11, 0x8B5A0A, 0x6D1F6D, 0x367ECF, 
+0x27CB09, 0xB74F46, 0x3F669E, 0x5FEA2D, 0x7527BA, 0xC7EBE5, 
+0xF17B3D, 0x0739F7, 0x8A5292, 0xEA6BFB, 0x5FB11F, 0x8D5D08, 
+0x560330, 0x46FC7B, 0x6BABF0, 0xCFBC20, 0x9AF436, 0x1DA9E3, 
+0x91615E, 0xE61B08, 0x659985, 0x5F14A0, 0x68408D, 0xFFD880, 
+0x4D7327, 0x310606, 0x1556CA, 0x73A8C9, 0x60E27B, 0xC08C6B, 
+};
+
+@COMMENT@#ifdef __STDC__@/COMMENT@
+static const int npio2_hw[] = {
+@COMMENT@@COMMENT@#else@/COMMENT@
+static int npio2_hw[] = {
+@/COMMENT@@COMMENT@#endif@/COMMENT@
+0x3FF921FB, 0x400921FB, 0x4012D97C, 0x401921FB, 0x401F6A7A, 0x4022D97C,
+0x4025FDBB, 0x402921FB, 0x402C463A, 0x402F6A7A, 0x4031475C, 0x4032D97C,
+0x40346B9C, 0x4035FDBB, 0x40378FDB, 0x403921FB, 0x403AB41B, 0x403C463A,
+0x403DD85A, 0x403F6A7A, 0x40407E4C, 0x4041475C, 0x4042106C, 0x4042D97C,
+0x4043A28C, 0x40446B9C, 0x404534AC, 0x4045FDBB, 0x4046C6CB, 0x40478FDB,
+0x404858EB, 0x404921FB,
+};
+
+@COMMENT@/*
+ * invpio2:  53 bits of 2/pi
+ * pio2_1:   first  33 bit of pi/2
+ * pio2_1t:  pi/2 - pio2_1
+ * pio2_2:   second 33 bit of pi/2
+ * pio2_2t:  pi/2 - (pio2_1+pio2_2)
+ * pio2_3:   third  33 bit of pi/2
+ * pio2_3t:  pi/2 - (pio2_1+pio2_2+pio2_3)
+ */@/COMMENT@
+
+@COMMENT@#ifdef __STDC__@/COMMENT@
+static const double 
+@COMMENT@@COMMENT@#else@/COMMENT@
+static double 
+@/COMMENT@@COMMENT@#endif@/COMMENT@
+zero =  0.00000000000000000000e+00, @COMMENT@/* 0x00000000, 0x00000000 */@/COMMENT@
+half =  5.00000000000000000000e-01, @COMMENT@/* 0x3FE00000, 0x00000000 */@/COMMENT@
+two24 =  1.67772160000000000000e+07, @COMMENT@/* 0x41700000, 0x00000000 */@/COMMENT@
+invpio2 =  6.36619772367581382433e-01, @COMMENT@/* 0x3FE45F30, 0x6DC9C883 */@/COMMENT@
+pio2_1  =  1.57079632673412561417e+00, @COMMENT@/* 0x3FF921FB, 0x54400000 */@/COMMENT@
+pio2_1t =  6.07710050650619224932e-11, @COMMENT@/* 0x3DD0B461, 0x1A626331 */@/COMMENT@
+pio2_2  =  6.07710050630396597660e-11, @COMMENT@/* 0x3DD0B461, 0x1A600000 */@/COMMENT@
+pio2_2t =  2.02226624879595063154e-21, @COMMENT@/* 0x3BA3198A, 0x2E037073 */@/COMMENT@
+pio2_3  =  2.02226624871116645580e-21, @COMMENT@/* 0x3BA3198A, 0x2E000000 */@/COMMENT@
+pio2_3t =  8.47842766036889956997e-32; @COMMENT@/* 0x397B839A, 0x252049C1 */@/COMMENT@
+
+@COMMENT@#ifdef __STDC__@/COMMENT@
+	int @NODE TYPE=FUNCTION NAME="__ieee754_rem_pio2"@@BRANCH MARK=TP ID=0 SUM=0@@LINK NAME="__ieee754_rem_pio2"@__ieee754_rem_pio2@/BRANCH@(double x, double *y)
+@COMMENT@@COMMENT@#else@/COMMENT@
+	int __ieee754_rem_pio2(x,y)
+	double x,y[];
+@/COMMENT@@COMMENT@#endif@/COMMENT@
+@BRANCH MARK=TB ID=24 SUM=20@{
+	double z,w,t,r,fn;
+	double tx[3];
+	int e0,i,j,nx,n,ix,hx;
+
+	hx = __HI(x);		@COMMENT@/* high word of x */@/COMMENT@
+	ix = hx&0x7fffffff;
+	@DECISION SUM=20 ID=(0)|1@if(@POPUP@ix<=0x3fe921fb@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@)   @COMMENT@/* |x| ~<= pi/4 , no need for reduction */@/COMMENT@
+	    @BRANCH MARK=TB ID=0 SUM=20@{y[0] = x; y[1] = 0; return 0;@SHORTCUT MARK=TB ID=24@}@/BRANCH@@/DECISION@
+	@BRANCH MARK=TB ID=1 SUM=20@@DECISION SUM=20 ID=(8)|9@if(@POPUP@ix<0x4002d97c@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@) @BRANCH MARK=TB ID=8 SUM=20@{  @COMMENT@/* |x| < 3pi/4, special case with n=+-1 */@/COMMENT@
+	    @DECISION SUM=20 ID=4|7@if(@POPUP@hx>0@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@) @BRANCH MARK=TB ID=4 SUM=20@{ 
+		z = x - pio2_1;
+		@DECISION SUM=20 ID=2|3@if(@POPUP@ix!=0x3ff921fb@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=6 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=7 SUM=30@False@/BRANCH@@/POPUP@) @BRANCH MARK=TB ID=2 SUM=20@{ 	@COMMENT@/* 33+53 bit pi is good enough */@/COMMENT@
+		    y[0] = z - pio2_1t;
+		    y[1] = (z-y[0])-pio2_1t;
+		}@/BRANCH@ @BRANCH MARK=TB ID=3 SUM=20@else {		@COMMENT@/* near pi/2, use 33+33+53 bit pi */@/COMMENT@
+		    z -= pio2_2;
+		    y[0] = z - pio2_2t;
+		    y[1] = (z-y[0])-pio2_2t;
+		}@/BRANCH@@/DECISION@
+		return 1;@SHORTCUT MARK=TB ID=24@
+	    }@/BRANCH@ @BRANCH MARK=TB ID=7 SUM=20@else {	@COMMENT@/* negative x */@/COMMENT@
+		z = x + pio2_1;
+		@DECISION SUM=20 ID=5|6@if(@POPUP@ix!=0x3ff921fb@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=8 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=9 SUM=30@False@/BRANCH@@/POPUP@) @BRANCH MARK=TB ID=5 SUM=20@{ 	@COMMENT@/* 33+53 bit pi is good enough */@/COMMENT@
+		    y[0] = z + pio2_1t;
+		    y[1] = (z-y[0])+pio2_1t;
+		}@/BRANCH@ @BRANCH MARK=TB ID=6 SUM=20@else {		@COMMENT@/* near pi/2, use 33+33+53 bit pi */@/COMMENT@
+		    z += pio2_2;
+		    y[0] = z + pio2_2t;
+		    y[1] = (z-y[0])+pio2_2t;
+		}@/BRANCH@@/DECISION@
+		return -1;@SHORTCUT MARK=TB ID=24@
+	    }@/BRANCH@@/DECISION@
+	}@/BRANCH@@/DECISION@
+	@BRANCH MARK=TB ID=9 SUM=20@@DECISION SUM=20 ID=(16)|17@if(@POPUP@ix<=0x413921fb@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=10 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=11 SUM=30@False@/BRANCH@@/POPUP@) @BRANCH MARK=TB ID=16 SUM=20@{ @COMMENT@/* |x| ~<= 2^19*(pi/2), medium size */@/COMMENT@
+	    t  = @BRANCH MARK=TA ID=0 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@(x)@/BRANCH@;
+	    n  = (int) (t*invpio2+half);
+	    fn = (double)n;
+	    r  = t-fn*pio2_1;
+	    w  = fn*pio2_1t;	@COMMENT@/* 1st round good to 85 bit */@/COMMENT@
+	    @DECISION SUM=20 ID=10|13@if(@POPUP@n<32@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=12 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=13 SUM=30@False@/BRANCH@@/POPUP@&&@POPUP@ix!=npio2_hw[n-1]@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=14 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=15 SUM=30@False@/BRANCH@@/POPUP@) @BRANCH MARK=TB ID=10 SUM=20@{	
+		y[0] = r-w;	@COMMENT@/* quick check no cancellation */@/COMMENT@
+	    }@/BRANCH@ @BRANCH MARK=TB ID=13 SUM=20@else {
+	        j  = ix>>20;
+	        y[0] = r-w; 
+	        i = j-(((__HI(y[0]))>>20)&0x7ff);
+	        if(@POPUP@i>16@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=16 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=17 SUM=30@False@/BRANCH@@/POPUP@) @BRANCH MARK=TB ID=12 SUM=20@{  @COMMENT@/* 2nd iteration needed, good to 118 */@/COMMENT@
+		    t  = r;
+		    w  = fn*pio2_2;	
+		    r  = t-w;
+		    w  = fn*pio2_2t-((t-r)-w);	
+		    y[0] = r-w;
+		    i = j-(((__HI(y[0]))>>20)&0x7ff);
+		    if(@POPUP@i>49@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=18 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=19 SUM=30@False@/BRANCH@@/POPUP@)  @BRANCH MARK=TB ID=11 SUM=20@{	@COMMENT@/* 3rd iteration need, 151 bits acc */@/COMMENT@
+		    	t  = r;	@COMMENT@/* will cover all possible cases */@/COMMENT@
+		    	w  = fn*pio2_3;	
+		    	r  = t-w;
+		    	w  = fn*pio2_3t-((t-r)-w);	
+		    	y[0] = r-w;
+		    }@/BRANCH@
+		}@/BRANCH@
+	    }@/BRANCH@@/DECISION@
+	    y[1] = (r-y[0])-w;
+	    @DECISION SUM=20 ID=14|15@if(@POPUP@hx<0@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=20 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=21 SUM=30@False@/BRANCH@@/POPUP@) 	@BRANCH MARK=TB ID=14 SUM=20@{y[0] = -y[0]; y[1] = -y[1]; return -n;@SHORTCUT MARK=TB ID=24@}@/BRANCH@
+	    @BRANCH MARK=TB ID=15 SUM=20@else	 return n;@SHORTCUT MARK=TB ID=24@@/BRANCH@@/DECISION@
+	}@/BRANCH@@/DECISION@
+    @COMMENT@/* 
+     * all other (large) arguments
+     */@/COMMENT@
+	@BRANCH MARK=TB ID=17 SUM=20@@DECISION SUM=20 ID=(18)|19@if(@POPUP@ix>=0x7ff00000@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=22 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=23 SUM=30@False@/BRANCH@@/POPUP@) @BRANCH MARK=TB ID=18 SUM=20@{		@COMMENT@/* x is inf or NaN */@/COMMENT@
+	    y[0]=y[1]=x-x; return 0;@SHORTCUT MARK=TB ID=24@
+	}@/BRANCH@@/DECISION@
+    @COMMENT@/* set z = scalbn(|x|,ilogb(x)-23) */@/COMMENT@
+	@ALT@__LO(z)@-ALT@@BRANCH MARK=TB ID=19 SUM=20@*(int*)&z@/ALT@ = __LO(x);
+	e0 	= (ix>>20)-1046;	@COMMENT@/* e0 = ilogb(z)-23; */@/COMMENT@
+	__HI(z) = ix - (e0<<20);
+	for(i=0;@POPUP@i<2@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=24 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=25 SUM=30@False@/BRANCH@@/POPUP@;i++) @BRANCH MARK=TB ID=20 SUM=20@{
+		tx[i] = (double)((int)(z));
+		z     = (z-tx[i])*two24;
+	}@/BRANCH@
+	tx[2] = z;
+	nx = 3;
+	while(@POPUP@tx[nx-1]==zero@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=26 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=27 SUM=30@False@/BRANCH@@/POPUP@) @BRANCH MARK=TB ID=21 SUM=20@nx--;@/BRANCH@	@COMMENT@/* skip zero term */@/COMMENT@
+	n  =  @BRANCH MARK=TA ID=1 SUM=10@@JUMP NAME="__kernel_rem_pio2"@__kernel_rem_pio2@/JUMP@(tx,y,e0,nx,2,two_over_pi)@/BRANCH@;
+	@DECISION SUM=20 ID=(22)|23@if(@POPUP@hx<0@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=28 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=29 SUM=30@False@/BRANCH@@/POPUP@) @BRANCH MARK=TB ID=22 SUM=20@{y[0] = -y[0]; y[1] = -y[1]; return -n;@SHORTCUT MARK=TB ID=24@}@/BRANCH@@/DECISION@
+	@BRANCH MARK=TB ID=23 SUM=20@return n;@SHORTCUT MARK=TB ID=24@@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@@/BRANCH@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

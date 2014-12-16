@@ -1,0 +1,189 @@
+<html><head></head><body><table class="rtrtcoverage-file">
+<style media="screen" type="text/css">
+.rtrtcoverage-complete {
+  background-color: #ccffcc;}
+.rtrtcoverage-partial {
+  background-color: #ffffcc;}
+.rtrtcoverage-none {
+  background-color: #ffcccc;}
+.rtrtcoverage-hint {
+  border: 1px dashed grey;}
+</style>
+<tr><td><pre>1</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>2</pre></td><td><pre><span>/* </span><span>@(#)e_rem_pio2.c 1.4 95/01/18 */</span></pre></td></tr>
+<tr><td><pre>3</pre></td><td><pre><span>/*</span></pre></td></tr>
+<tr><td><pre>4</pre></td><td><pre><span> * ====================================================</span></pre></td></tr>
+<tr><td><pre>5</pre></td><td><pre><span> * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.</span></pre></td></tr>
+<tr><td><pre>6</pre></td><td><pre><span> *</span></pre></td></tr>
+<tr><td><pre>7</pre></td><td><pre><span> * Developed at SunSoft, a Sun Microsystems, Inc. business.</span></pre></td></tr>
+<tr><td><pre>8</pre></td><td><pre><span> * Permission to use, copy, modify, and distribute this</span></pre></td></tr>
+<tr><td><pre>9</pre></td><td><pre><span> * software is freely granted, provided that this notice </span></pre></td></tr>
+<tr><td><pre>10</pre></td><td><pre><span> * is preserved.</span></pre></td></tr>
+<tr><td><pre>11</pre></td><td><pre><span> * ====================================================</span></pre></td></tr>
+<tr><td><pre>12</pre></td><td><pre><span> *</span></pre></td></tr>
+<tr><td><pre>13</pre></td><td><pre><span> */</span></pre></td></tr>
+<tr><td><pre>14</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>15</pre></td><td><pre><span>/* __ieee754_rem_pio2(x,y)</span></pre></td></tr>
+<tr><td><pre>16</pre></td><td><pre><span> * </span></pre></td></tr>
+<tr><td><pre>17</pre></td><td><pre><span> * return the remainder of x rem pi/2 in y[0]+y[1] </span></pre></td></tr>
+<tr><td><pre>18</pre></td><td><pre><span> * use __kernel_rem_pio2()</span></pre></td></tr>
+<tr><td><pre>19</pre></td><td><pre><span> */</span></pre></td></tr>
+<tr><td><pre>20</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>21</pre></td><td><pre><span>#include &quot;fdlibm.h&quot;</span></pre></td></tr>
+<tr><td><pre>22</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>23</pre></td><td><pre><span>/*</span></pre></td></tr>
+<tr><td><pre>24</pre></td><td><pre><span> * Table of constants for 2/pi, 396 Hex digits (476 decimal) of 2/pi </span></pre></td></tr>
+<tr><td><pre>25</pre></td><td><pre><span> */</span></pre></td></tr>
+<tr><td><pre>26</pre></td><td><pre><span>#ifdef __STDC__</span></pre></td></tr>
+<tr><td><pre>27</pre></td><td><pre><span>static const int two_over_pi[] = {</span></pre></td></tr>
+<tr><td><pre>28</pre></td><td><pre><span>#else</span></pre></td></tr>
+<tr><td><pre>29</pre></td><td><pre><span>static int two_over_pi[] = {</span></pre></td></tr>
+<tr><td><pre>30</pre></td><td><pre><span>#endif</span></pre></td></tr>
+<tr><td><pre>31</pre></td><td><pre><span>0xA2F983, 0x6E4E44, 0x1529FC, 0x2757D1, 0xF534DD, 0xC0DB62, </span></pre></td></tr>
+<tr><td><pre>32</pre></td><td><pre><span>0x95993C, 0x439041, 0xFE5163, 0xABDEBB, 0xC561B7, 0x246E3A, </span></pre></td></tr>
+<tr><td><pre>33</pre></td><td><pre><span>0x424DD2, 0xE00649, 0x2EEA09, 0xD1921C, 0xFE1DEB, 0x1CB129, </span></pre></td></tr>
+<tr><td><pre>34</pre></td><td><pre><span>0xA73EE8, 0x8235F5, 0x2EBB44, 0x84E99C, 0x7026B4, 0x5F7E41, </span></pre></td></tr>
+<tr><td><pre>35</pre></td><td><pre><span>0x3991D6, 0x398353, 0x39F49C, 0x845F8B, 0xBDF928, 0x3B1FF8, </span></pre></td></tr>
+<tr><td><pre>36</pre></td><td><pre><span>0x97FFDE, 0x05980F, 0xEF2F11, 0x8B5A0A, 0x6D1F6D, 0x367ECF, </span></pre></td></tr>
+<tr><td><pre>37</pre></td><td><pre><span>0x27CB09, 0xB74F46, 0x3F669E, 0x5FEA2D, 0x7527BA, 0xC7EBE5, </span></pre></td></tr>
+<tr><td><pre>38</pre></td><td><pre><span>0xF17B3D, 0x0739F7, 0x8A5292, 0xEA6BFB, 0x5FB11F, 0x8D5D08, </span></pre></td></tr>
+<tr><td><pre>39</pre></td><td><pre><span>0x560330, 0x46FC7B, 0x6BABF0, 0xCFBC20, 0x9AF436, 0x1DA9E3, </span></pre></td></tr>
+<tr><td><pre>40</pre></td><td><pre><span>0x91615E, 0xE61B08, 0x659985, 0x5F14A0, 0x68408D, 0xFFD880, </span></pre></td></tr>
+<tr><td><pre>41</pre></td><td><pre><span>0x4D7327, 0x310606, 0x1556CA, 0x73A8C9, 0x60E27B, 0xC08C6B, </span></pre></td></tr>
+<tr><td><pre>42</pre></td><td><pre><span>};</span></pre></td></tr>
+<tr><td><pre>43</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>44</pre></td><td><pre><span>#ifdef __STDC__</span></pre></td></tr>
+<tr><td><pre>45</pre></td><td><pre><span>static const int npio2_hw[] = {</span></pre></td></tr>
+<tr><td><pre>46</pre></td><td><pre><span>#else</span></pre></td></tr>
+<tr><td><pre>47</pre></td><td><pre><span>static int npio2_hw[] = {</span></pre></td></tr>
+<tr><td><pre>48</pre></td><td><pre><span>#endif</span></pre></td></tr>
+<tr><td><pre>49</pre></td><td><pre><span>0x3FF921FB, 0x400921FB, 0x4012D97C, 0x401921FB, 0x401F6A7A, 0x4022D97C,</span></pre></td></tr>
+<tr><td><pre>50</pre></td><td><pre><span>0x4025FDBB, 0x402921FB, 0x402C463A, 0x402F6A7A, 0x4031475C, 0x4032D97C,</span></pre></td></tr>
+<tr><td><pre>51</pre></td><td><pre><span>0x40346B9C, 0x4035FDBB, 0x40378FDB, 0x403921FB, 0x403AB41B, 0x403C463A,</span></pre></td></tr>
+<tr><td><pre>52</pre></td><td><pre><span>0x403DD85A, 0x403F6A7A, 0x40407E4C, 0x4041475C, 0x4042106C, 0x4042D97C,</span></pre></td></tr>
+<tr><td><pre>53</pre></td><td><pre><span>0x4043A28C, 0x40446B9C, 0x404534AC, 0x4045FDBB, 0x4046C6CB, 0x40478FDB,</span></pre></td></tr>
+<tr><td><pre>54</pre></td><td><pre><span>0x404858EB, 0x404921FB,</span></pre></td></tr>
+<tr><td><pre>55</pre></td><td><pre><span>};</span></pre></td></tr>
+<tr><td><pre>56</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>57</pre></td><td><pre><span>/*</span></pre></td></tr>
+<tr><td><pre>58</pre></td><td><pre><span> * invpio2:  53 bits of 2/pi</span></pre></td></tr>
+<tr><td><pre>59</pre></td><td><pre><span> * pio2_1:   first  33 bit of pi/2</span></pre></td></tr>
+<tr><td><pre>60</pre></td><td><pre><span> * pio2_1t:  pi/2 - pio2_1</span></pre></td></tr>
+<tr><td><pre>61</pre></td><td><pre><span> * pio2_2:   second 33 bit of pi/2</span></pre></td></tr>
+<tr><td><pre>62</pre></td><td><pre><span> * pio2_2t:  pi/2 - (pio2_1+pio2_2)</span></pre></td></tr>
+<tr><td><pre>63</pre></td><td><pre><span> * pio2_3:   third  33 bit of pi/2</span></pre></td></tr>
+<tr><td><pre>64</pre></td><td><pre><span> * pio2_3t:  pi/2 - (pio2_1+pio2_2+pio2_3)</span></pre></td></tr>
+<tr><td><pre>65</pre></td><td><pre><span> */</span></pre></td></tr>
+<tr><td><pre>66</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>67</pre></td><td><pre><span>#ifdef __STDC__</span></pre></td></tr>
+<tr><td><pre>68</pre></td><td><pre><span>static const double </span></pre></td></tr>
+<tr><td><pre>69</pre></td><td><pre><span>#else</span></pre></td></tr>
+<tr><td><pre>70</pre></td><td><pre><span>static double </span></pre></td></tr>
+<tr><td><pre>71</pre></td><td><pre><span>#endif</span></pre></td></tr>
+<tr><td><pre>72</pre></td><td><pre><span>zero =  0.00000000000000000000e+00, </span><span>/* 0x00000000, 0x00000000 */</span></pre></td></tr>
+<tr><td><pre>73</pre></td><td><pre><span>half =  5.00000000000000000000e-01, </span><span>/* 0x3FE00000, 0x00000000 */</span></pre></td></tr>
+<tr><td><pre>74</pre></td><td><pre><span>two24 =  1.67772160000000000000e+07, </span><span>/* 0x41700000, 0x00000000 */</span></pre></td></tr>
+<tr><td><pre>75</pre></td><td><pre><span>invpio2 =  6.36619772367581382433e-01, </span><span>/* 0x3FE45F30, 0x6DC9C883 */</span></pre></td></tr>
+<tr><td><pre>76</pre></td><td><pre><span>pio2_1  =  1.57079632673412561417e+00, </span><span>/* 0x3FF921FB, 0x54400000 */</span></pre></td></tr>
+<tr><td><pre>77</pre></td><td><pre><span>pio2_1t =  6.07710050650619224932e-11, </span><span>/* 0x3DD0B461, 0x1A626331 */</span></pre></td></tr>
+<tr><td><pre>78</pre></td><td><pre><span>pio2_2  =  6.07710050630396597660e-11, </span><span>/* 0x3DD0B461, 0x1A600000 */</span></pre></td></tr>
+<tr><td><pre>79</pre></td><td><pre><span>pio2_2t =  2.02226624879595063154e-21, </span><span>/* 0x3BA3198A, 0x2E037073 */</span></pre></td></tr>
+<tr><td><pre>80</pre></td><td><pre><span>pio2_3  =  2.02226624871116645580e-21, </span><span>/* 0x3BA3198A, 0x2E000000 */</span></pre></td></tr>
+<tr><td><pre>81</pre></td><td><pre><span>pio2_3t =  8.47842766036889956997e-32; </span><span>/* 0x397B839A, 0x252049C1 */</span></pre></td></tr>
+<tr><td><pre>82</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>83</pre></td><td><pre><span>#ifdef __STDC__</span></pre></td></tr>
+<tr><td><pre>84</pre></td><td><pre><span>	int </span><span class="rtrtcoverage-complete">__ieee754_rem_pio2</span><span>(double x, double *y)</span></pre></td></tr>
+<tr><td><pre>85</pre></td><td><pre><span>#else</span></pre></td></tr>
+<tr><td><pre>86</pre></td><td><pre><span>	int __ieee754_rem_pio2(x,y)</span></pre></td></tr>
+<tr><td><pre>87</pre></td><td><pre><span>	double x,y[];</span></pre></td></tr>
+<tr><td><pre>88</pre></td><td><pre><span>#endif</span></pre></td></tr>
+<tr><td><pre>89</pre></td><td><pre><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>90</pre></td><td><pre><span class="rtrtcoverage-complete">	double z,w,t,r,fn;</span></pre></td></tr>
+<tr><td><pre>91</pre></td><td><pre><span class="rtrtcoverage-complete">	double tx[3];</span></pre></td></tr>
+<tr><td><pre>92</pre></td><td><pre><span class="rtrtcoverage-complete">	int e0,i,j,nx,n,ix,hx;</span></pre></td></tr>
+<tr><td><pre>93</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>94</pre></td><td><pre><span class="rtrtcoverage-complete">	hx = __HI(x);		</span><span>/* high word of x */</span></pre></td></tr>
+<tr><td><pre>95</pre></td><td><pre><span class="rtrtcoverage-complete">	ix = hx&amp;0x7fffffff;</span></pre></td></tr>
+<tr><td><pre>96</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if(</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[non-covered]  False[covered]">ix&lt;=0x3fe921fb</span><span class="rtrtcoverage-complete">)   </span><span>/* |x| ~&lt;= pi/4 , no need for reduction */</span></pre></td></tr>
+<tr><td><pre>97</pre></td><td><pre><span class="rtrtcoverage-complete">	    </span><span class="rtrtcoverage-none">{y[0] = x; y[1] = 0; return 0;</span><span class="rtrtcoverage-none">}</span></pre></td></tr>
+<tr><td><pre>98</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if(</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">ix&lt;0x4002d97c</span><span class="rtrtcoverage-complete">) </span><span class="rtrtcoverage-complete">{  </span><span>/* |x| &lt; 3pi/4, special case with n=+-1 */</span></pre></td></tr>
+<tr><td><pre>99</pre></td><td><pre><span class="rtrtcoverage-complete">	    </span><span class="rtrtcoverage-complete">if(</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">hx&gt;0</span><span class="rtrtcoverage-complete">) </span><span class="rtrtcoverage-complete">{ </span></pre></td></tr>
+<tr><td><pre>100</pre></td><td><pre><span class="rtrtcoverage-complete">		z = x - pio2_1;</span></pre></td></tr>
+<tr><td><pre>101</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">if(</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">ix!=0x3ff921fb</span><span class="rtrtcoverage-complete">) </span><span class="rtrtcoverage-complete">{ 	</span><span>/* 33+53 bit pi is good enough */</span></pre></td></tr>
+<tr><td><pre>102</pre></td><td><pre><span class="rtrtcoverage-complete">		    y[0] = z - pio2_1t;</span></pre></td></tr>
+<tr><td><pre>103</pre></td><td><pre><span class="rtrtcoverage-complete">		    y[1] = (z-y[0])-pio2_1t;</span></pre></td></tr>
+<tr><td><pre>104</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span><span class="rtrtcoverage-complete"> </span><span class="rtrtcoverage-complete">else {		</span><span>/* near pi/2, use 33+33+53 bit pi */</span></pre></td></tr>
+<tr><td><pre>105</pre></td><td><pre><span class="rtrtcoverage-complete">		    z -= pio2_2;</span></pre></td></tr>
+<tr><td><pre>106</pre></td><td><pre><span class="rtrtcoverage-complete">		    y[0] = z - pio2_2t;</span></pre></td></tr>
+<tr><td><pre>107</pre></td><td><pre><span class="rtrtcoverage-complete">		    y[1] = (z-y[0])-pio2_2t;</span></pre></td></tr>
+<tr><td><pre>108</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>109</pre></td><td><pre><span class="rtrtcoverage-complete">		return 1;</span></pre></td></tr>
+<tr><td><pre>110</pre></td><td><pre><span class="rtrtcoverage-complete">	    }</span><span class="rtrtcoverage-complete"> </span><span class="rtrtcoverage-none">else {	</span><span>/* negative x */</span></pre></td></tr>
+<tr><td><pre>111</pre></td><td><pre><span class="rtrtcoverage-none">		z = x + pio2_1;</span></pre></td></tr>
+<tr><td><pre>112</pre></td><td><pre><span class="rtrtcoverage-none">		</span><span class="rtrtcoverage-none">if(</span><span class="rtrtcoverage-none rtrtcoverage-hint" title="basic boolean conditions:  True[non-covered]  False[non-covered]">ix!=0x3ff921fb</span><span class="rtrtcoverage-none">) </span><span class="rtrtcoverage-none">{ 	</span><span>/* 33+53 bit pi is good enough */</span></pre></td></tr>
+<tr><td><pre>113</pre></td><td><pre><span class="rtrtcoverage-none">		    y[0] = z + pio2_1t;</span></pre></td></tr>
+<tr><td><pre>114</pre></td><td><pre><span class="rtrtcoverage-none">		    y[1] = (z-y[0])+pio2_1t;</span></pre></td></tr>
+<tr><td><pre>115</pre></td><td><pre><span class="rtrtcoverage-none">		}</span><span class="rtrtcoverage-none"> </span><span class="rtrtcoverage-none">else {		</span><span>/* near pi/2, use 33+33+53 bit pi */</span></pre></td></tr>
+<tr><td><pre>116</pre></td><td><pre><span class="rtrtcoverage-none">		    z += pio2_2;</span></pre></td></tr>
+<tr><td><pre>117</pre></td><td><pre><span class="rtrtcoverage-none">		    y[0] = z + pio2_2t;</span></pre></td></tr>
+<tr><td><pre>118</pre></td><td><pre><span class="rtrtcoverage-none">		    y[1] = (z-y[0])+pio2_2t;</span></pre></td></tr>
+<tr><td><pre>119</pre></td><td><pre><span class="rtrtcoverage-none">		}</span></pre></td></tr>
+<tr><td><pre>120</pre></td><td><pre><span class="rtrtcoverage-none">		return -1;</span></pre></td></tr>
+<tr><td><pre>121</pre></td><td><pre><span class="rtrtcoverage-none">	    }</span></pre></td></tr>
+<tr><td><pre>122</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>123</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if(</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">ix&lt;=0x413921fb</span><span class="rtrtcoverage-complete">) </span><span class="rtrtcoverage-complete">{ </span><span>/* |x| ~&lt;= 2^19*(pi/2), medium size */</span></pre></td></tr>
+<tr><td><pre>124</pre></td><td><pre><span class="rtrtcoverage-complete">	    t  = </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete">(x)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>125</pre></td><td><pre><span class="rtrtcoverage-complete">	    n  = (int) (t*invpio2+half);</span></pre></td></tr>
+<tr><td><pre>126</pre></td><td><pre><span class="rtrtcoverage-complete">	    fn = (double)n;</span></pre></td></tr>
+<tr><td><pre>127</pre></td><td><pre><span class="rtrtcoverage-complete">	    r  = t-fn*pio2_1;</span></pre></td></tr>
+<tr><td><pre>128</pre></td><td><pre><span class="rtrtcoverage-complete">	    w  = fn*pio2_1t;	</span><span>/* 1st round good to 85 bit */</span></pre></td></tr>
+<tr><td><pre>129</pre></td><td><pre><span class="rtrtcoverage-complete">	    </span><span class="rtrtcoverage-complete">if(</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">n&lt;32</span><span class="rtrtcoverage-complete">&amp;&amp;</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">ix!=npio2_hw[n-1]</span><span class="rtrtcoverage-complete">) </span><span class="rtrtcoverage-complete">{	</span></pre></td></tr>
+<tr><td><pre>130</pre></td><td><pre><span class="rtrtcoverage-complete">		y[0] = r-w;	</span><span>/* quick check no cancellation */</span></pre></td></tr>
+<tr><td><pre>131</pre></td><td><pre><span class="rtrtcoverage-complete">	    }</span><span class="rtrtcoverage-complete"> </span><span class="rtrtcoverage-complete">else {</span></pre></td></tr>
+<tr><td><pre>132</pre></td><td><pre><span class="rtrtcoverage-complete">	        j  = ix&gt;&gt;20;</span></pre></td></tr>
+<tr><td><pre>133</pre></td><td><pre><span class="rtrtcoverage-complete">	        y[0] = r-w; </span></pre></td></tr>
+<tr><td><pre>134</pre></td><td><pre><span class="rtrtcoverage-complete">	        i = j-(((__HI(y[0]))&gt;&gt;20)&amp;0x7ff);</span></pre></td></tr>
+<tr><td><pre>135</pre></td><td><pre><span class="rtrtcoverage-complete">	        if(</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">i&gt;16</span><span class="rtrtcoverage-complete">) </span><span class="rtrtcoverage-complete">{  </span><span>/* 2nd iteration needed, good to 118 */</span></pre></td></tr>
+<tr><td><pre>136</pre></td><td><pre><span class="rtrtcoverage-complete">		    t  = r;</span></pre></td></tr>
+<tr><td><pre>137</pre></td><td><pre><span class="rtrtcoverage-complete">		    w  = fn*pio2_2;	</span></pre></td></tr>
+<tr><td><pre>138</pre></td><td><pre><span class="rtrtcoverage-complete">		    r  = t-w;</span></pre></td></tr>
+<tr><td><pre>139</pre></td><td><pre><span class="rtrtcoverage-complete">		    w  = fn*pio2_2t-((t-r)-w);	</span></pre></td></tr>
+<tr><td><pre>140</pre></td><td><pre><span class="rtrtcoverage-complete">		    y[0] = r-w;</span></pre></td></tr>
+<tr><td><pre>141</pre></td><td><pre><span class="rtrtcoverage-complete">		    i = j-(((__HI(y[0]))&gt;&gt;20)&amp;0x7ff);</span></pre></td></tr>
+<tr><td><pre>142</pre></td><td><pre><span class="rtrtcoverage-complete">		    if(</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">i&gt;49</span><span class="rtrtcoverage-complete">)  </span><span class="rtrtcoverage-complete">{	</span><span>/* 3rd iteration need, 151 bits acc */</span></pre></td></tr>
+<tr><td><pre>143</pre></td><td><pre><span class="rtrtcoverage-complete">		    	t  = r;	</span><span>/* will cover all possible cases */</span></pre></td></tr>
+<tr><td><pre>144</pre></td><td><pre><span class="rtrtcoverage-complete">		    	w  = fn*pio2_3;	</span></pre></td></tr>
+<tr><td><pre>145</pre></td><td><pre><span class="rtrtcoverage-complete">		    	r  = t-w;</span></pre></td></tr>
+<tr><td><pre>146</pre></td><td><pre><span class="rtrtcoverage-complete">		    	w  = fn*pio2_3t-((t-r)-w);	</span></pre></td></tr>
+<tr><td><pre>147</pre></td><td><pre><span class="rtrtcoverage-complete">		    	y[0] = r-w;</span></pre></td></tr>
+<tr><td><pre>148</pre></td><td><pre><span class="rtrtcoverage-complete">		    }</span></pre></td></tr>
+<tr><td><pre>149</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>150</pre></td><td><pre><span class="rtrtcoverage-complete">	    }</span></pre></td></tr>
+<tr><td><pre>151</pre></td><td><pre><span class="rtrtcoverage-complete">	    y[1] = (r-y[0])-w;</span></pre></td></tr>
+<tr><td><pre>152</pre></td><td><pre><span class="rtrtcoverage-complete">	    </span><span class="rtrtcoverage-complete">if(</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[non-covered]  False[covered]">hx&lt;0</span><span class="rtrtcoverage-complete">) 	</span><span class="rtrtcoverage-none">{y[0] = -y[0]; y[1] = -y[1]; return -n;</span><span class="rtrtcoverage-none">}</span></pre></td></tr>
+<tr><td><pre>153</pre></td><td><pre><span class="rtrtcoverage-complete">	    </span><span class="rtrtcoverage-complete">else	 return n;</span></pre></td></tr>
+<tr><td><pre>154</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>155</pre></td><td><pre><span class="rtrtcoverage-complete">    </span><span>/* </span></pre></td></tr>
+<tr><td><pre>156</pre></td><td><pre><span>     * all other (large) arguments</span></pre></td></tr>
+<tr><td><pre>157</pre></td><td><pre><span>     */</span></pre></td></tr>
+<tr><td><pre>158</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-none">if(</span><span class="rtrtcoverage-none rtrtcoverage-hint" title="basic boolean conditions:  True[non-covered]  False[non-covered]">ix&gt;=0x7ff00000</span><span class="rtrtcoverage-none">) </span><span class="rtrtcoverage-none">{		</span><span>/* x is inf or NaN */</span></pre></td></tr>
+<tr><td><pre>159</pre></td><td><pre><span class="rtrtcoverage-none">	    y[0]=y[1]=x-x; return 0;</span></pre></td></tr>
+<tr><td><pre>160</pre></td><td><pre><span class="rtrtcoverage-none">	}</span></pre></td></tr>
+<tr><td><pre>161</pre></td><td><pre><span class="rtrtcoverage-none">    </span><span>/* set z = scalbn(|x|,ilogb(x)-23) */</span></pre></td></tr>
+<tr><td><pre>162</pre></td><td><pre><span class="rtrtcoverage-none">	</span><span class="rtrtcoverage-none rtrtcoverage-hint" title="*(int*)&amp;z[non-covered]">__LO(z)</span><span class="rtrtcoverage-none"> = __LO(x);</span></pre></td></tr>
+<tr><td><pre>163</pre></td><td><pre><span class="rtrtcoverage-none">	e0 	= (ix&gt;&gt;20)-1046;	</span><span>/* e0 = ilogb(z)-23; */</span></pre></td></tr>
+<tr><td><pre>164</pre></td><td><pre><span class="rtrtcoverage-none">	__HI(z) = ix - (e0&lt;&lt;20);</span></pre></td></tr>
+<tr><td><pre>165</pre></td><td><pre><span class="rtrtcoverage-none">	for(i=0;</span><span class="rtrtcoverage-none rtrtcoverage-hint" title="basic boolean conditions:  True[non-covered]  False[non-covered]">i&lt;2</span><span class="rtrtcoverage-none">;i++) </span><span class="rtrtcoverage-none">{</span></pre></td></tr>
+<tr><td><pre>166</pre></td><td><pre><span class="rtrtcoverage-none">		tx[i] = (double)((int)(z));</span></pre></td></tr>
+<tr><td><pre>167</pre></td><td><pre><span class="rtrtcoverage-none">		z     = (z-tx[i])*two24;</span></pre></td></tr>
+<tr><td><pre>168</pre></td><td><pre><span class="rtrtcoverage-none">	}</span></pre></td></tr>
+<tr><td><pre>169</pre></td><td><pre><span class="rtrtcoverage-none">	tx[2] = z;</span></pre></td></tr>
+<tr><td><pre>170</pre></td><td><pre><span class="rtrtcoverage-none">	nx = 3;</span></pre></td></tr>
+<tr><td><pre>171</pre></td><td><pre><span class="rtrtcoverage-none">	while(</span><span class="rtrtcoverage-none rtrtcoverage-hint" title="basic boolean conditions:  True[non-covered]  False[non-covered]">tx[nx-1]==zero</span><span class="rtrtcoverage-none">) </span><span class="rtrtcoverage-none">nx--;</span><span class="rtrtcoverage-none">	</span><span>/* skip zero term */</span></pre></td></tr>
+<tr><td><pre>172</pre></td><td><pre><span class="rtrtcoverage-none">	n  =  </span><span class="rtrtcoverage-none">__kernel_rem_pio2</span><span class="rtrtcoverage-none">(tx,y,e0,nx,2,two_over_pi)</span><span class="rtrtcoverage-none">;</span></pre></td></tr>
+<tr><td><pre>173</pre></td><td><pre><span class="rtrtcoverage-none">	</span><span class="rtrtcoverage-none">if(</span><span class="rtrtcoverage-none rtrtcoverage-hint" title="basic boolean conditions:  True[non-covered]  False[non-covered]">hx&lt;0</span><span class="rtrtcoverage-none">) </span><span class="rtrtcoverage-none">{y[0] = -y[0]; y[1] = -y[1]; return -n;</span><span class="rtrtcoverage-none">}</span></pre></td></tr>
+<tr><td><pre>174</pre></td><td><pre><span class="rtrtcoverage-none">	</span><span class="rtrtcoverage-none">return n;</span></pre></td></tr>
+<tr><td><pre>175</pre></td><td><pre><span>}</span></pre></td></tr>
+<tr><td><pre>176</pre></td><td><pre></pre></td>
+</tr>
+</table></body></html>

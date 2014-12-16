@@ -1,0 +1,107 @@
+<html><head></head><body><table class="rtrtcoverage-file">
+<style media="screen" type="text/css">
+.rtrtcoverage-complete {
+  background-color: #ccffcc;}
+.rtrtcoverage-partial {
+  background-color: #ffffcc;}
+.rtrtcoverage-none {
+  background-color: #ffcccc;}
+.rtrtcoverage-hint {
+  border: 1px dashed grey;}
+</style>
+<tr><td><pre>1</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>2</pre></td><td><pre><span>/* (C) Copyright by THALES Avionics                                                        */</span></pre></td></tr>
+<tr><td><pre>3</pre></td><td><pre><span>/* All rights reserved                                                                     */</span></pre></td></tr>
+<tr><td><pre>4</pre></td><td><pre><span>/*                                                                                         */</span></pre></td></tr>
+<tr><td><pre>5</pre></td><td><pre><span>/* This program is the property of THALES Avionics, LE HAILLAN-BORDEAUX FRANCE, and can    */</span></pre></td></tr>
+<tr><td><pre>6</pre></td><td><pre><span>/* only be used and copied with the prior written authorisation of THALES Avionics.        */</span></pre></td></tr>
+<tr><td><pre>7</pre></td><td><pre><span>/*                                                                                         */</span></pre></td></tr>
+<tr><td><pre>8</pre></td><td><pre><span>/* Any whole or partial copy of this program in either its original form or in a modified  */</span></pre></td></tr>
+<tr><td><pre>9</pre></td><td><pre><span>/* form must mention this copyright and its owner.                                         */</span></pre></td></tr>
+<tr><td><pre>10</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>11</pre></td><td><pre><span>/* PROJECT: ANF_A350                                                                       */</span></pre></td></tr>
+<tr><td><pre>12</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>13</pre></td><td><pre><span>/* FILE NAME: AircraftLocalizationComponent_connect.c                                      */</span></pre></td></tr>
+<tr><td><pre>14</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>15</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>16</pre></td><td><pre><span>#include &quot;AircraftLocalizationComponent.h&quot;</span></pre></td></tr>
+<tr><td><pre>17</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>18</pre></td><td><pre><span>#define __CLASS__ 	&quot;AircraftLocalizationComponent&quot;</span></pre></td></tr>
+<tr><td><pre>19</pre></td><td><pre><span>#define __METHOD__ 	&quot;connect&quot;</span></pre></td></tr>
+<tr><td><pre>20</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>21</pre></td><td><pre><span>/* Start of user includes */</span></pre></td></tr>
+<tr><td><pre>22</pre></td><td><pre><span>/* End of user includes */</span></pre></td></tr>
+<tr><td><pre>23</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>24</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>25</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>26</pre></td><td><pre><span>/* METHOD DESCRIPTION: [public][instance method]                                           */</span></pre></td></tr>
+<tr><td><pre>27</pre></td><td><pre><span>/* -------------------                                                                     */</span></pre></td></tr>
+<tr><td><pre>28</pre></td><td><pre><span>/* Connect the given feature instance to the named receptacle                              */</span></pre></td></tr>
+<tr><td><pre>29</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>30</pre></td><td><pre><span>void </span><span class="rtrtcoverage-complete">AircraftLocalizationComponent_connect</span><span>(AircraftLocalizationComponent *pThis, const T_char *pName, T_PortInterface pInterface)</span></pre></td></tr>
+<tr><td><pre>31</pre></td><td><pre><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>32</pre></td><td><pre><span class="rtrtcoverage-complete">    </span><span>/* Start of user code */</span></pre></td></tr>
+<tr><td><pre>33</pre></td><td><pre><span class="rtrtcoverage-complete">	T_uint32 lReceptacleIndex = pThis-&gt;_componentHelper.indexOfReceptacle(&amp;(pThis-&gt;_componentHelper), pName);</span></pre></td></tr>
+<tr><td><pre>34</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>35</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span>/* Update interface instance corresponding to receptacle index */</span></pre></td></tr>
+<tr><td><pre>36</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">switch (lReceptacleIndex)</span></pre></td></tr>
+<tr><td><pre>37</pre></td><td><pre><span class="rtrtcoverage-complete">	{</span></pre></td></tr>
+<tr><td><pre>38</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">case E_AIRCRAFT_LOCALIZATION_DATABASE_SERVICES_RECEPTACLE_INDEX:</span></pre></td></tr>
+<tr><td><pre>39</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>40</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_receptacles.databaseServices = pInterface;</span></pre></td></tr>
+<tr><td><pre>41</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* TODO STUB L1: to uncomment for L2 */</span></pre></td></tr>
+<tr><td><pre>42</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* pThis-&gt;_componentHelper.newConnection(&amp;(pThis-&gt;_componentHelper)); */</span></pre></td></tr>
+<tr><td><pre>43</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>44</pre></td><td><pre><span class="rtrtcoverage-complete">		break;</span></pre></td></tr>
+<tr><td><pre>45</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>46</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">case E_AIRCRAFT_LOCALIZATION_ERROR_THROWER_RECEPTACLE_INDEX:</span></pre></td></tr>
+<tr><td><pre>47</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>48</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_receptacles.errorThrower = pInterface;</span></pre></td></tr>
+<tr><td><pre>49</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* TODO STUB L1: to uncomment for L2 */</span></pre></td></tr>
+<tr><td><pre>50</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* pThis-&gt;_componentHelper.newConnection(&amp;(pThis-&gt;_componentHelper)); */</span></pre></td></tr>
+<tr><td><pre>51</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>52</pre></td><td><pre><span class="rtrtcoverage-complete">		break;</span></pre></td></tr>
+<tr><td><pre>53</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>54</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">case E_AIRCRAFT_LOCALIZATION_FLIGHT_PLAN_MANAGEMENT_SERVICES_RECEPTACLE_INDEX:</span></pre></td></tr>
+<tr><td><pre>55</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>56</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_receptacles.flightPlanManagementServices = pInterface;</span></pre></td></tr>
+<tr><td><pre>57</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* TODO STUB L1: to uncomment for L2 */</span></pre></td></tr>
+<tr><td><pre>58</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* pThis-&gt;_componentHelper.newConnection(&amp;(pThis-&gt;_componentHelper)); */</span></pre></td></tr>
+<tr><td><pre>59</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>60</pre></td><td><pre><span class="rtrtcoverage-complete">		break;</span></pre></td></tr>
+<tr><td><pre>61</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>62</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">case E_AIRCRAFT_LOCALIZATION_MAP_OBJECT_SERVICES_RECEPTACLE_INDEX:</span></pre></td></tr>
+<tr><td><pre>63</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>64</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_receptacles.mapObjectServices = pInterface;</span></pre></td></tr>
+<tr><td><pre>65</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* TODO STUB L1: to uncomment for L2 */</span></pre></td></tr>
+<tr><td><pre>66</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* pThis-&gt;_componentHelper.newConnection(&amp;(pThis-&gt;_componentHelper)); */</span></pre></td></tr>
+<tr><td><pre>67</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>68</pre></td><td><pre><span class="rtrtcoverage-complete">		break;</span></pre></td></tr>
+<tr><td><pre>69</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>70</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">case E_AIRCRAFT_LOCALIZATION_DATA_STORAGE_SERVICES_RECEPTACLE_INDEX:</span></pre></td></tr>
+<tr><td><pre>71</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>72</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_receptacles.dataStorageServices = pInterface;</span></pre></td></tr>
+<tr><td><pre>73</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* TODO STUB L1: to uncomment for L2 */</span></pre></td></tr>
+<tr><td><pre>74</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* pThis-&gt;_componentHelper.newConnection(&amp;(pThis-&gt;_componentHelper)); */</span></pre></td></tr>
+<tr><td><pre>75</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>76</pre></td><td><pre><span class="rtrtcoverage-complete">		break;</span></pre></td></tr>
+<tr><td><pre>77</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>78</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">case E_AIRCRAFT_LOCALIZATION_TASKS_BENCHMARKING_RECEPTACLE_INDEX:</span></pre></td></tr>
+<tr><td><pre>79</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>80</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_receptacles.benchmarking = pInterface;</span></pre></td></tr>
+<tr><td><pre>81</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* TODO STUB L1: to uncomment for L2 */</span></pre></td></tr>
+<tr><td><pre>82</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* pThis-&gt;_componentHelper.newConnection(&amp;(pThis-&gt;_componentHelper)); */</span></pre></td></tr>
+<tr><td><pre>83</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>84</pre></td><td><pre><span class="rtrtcoverage-complete">		break;</span></pre></td></tr>
+<tr><td><pre>85</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>86</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">default:</span></pre></td></tr>
+<tr><td><pre>87</pre></td><td><pre><span class="rtrtcoverage-complete">			; </span><span>/* Nothing to do */</span></pre></td></tr>
+<tr><td><pre>88</pre></td><td><pre><span class="rtrtcoverage-complete">		break;</span></pre></td></tr>
+<tr><td><pre>89</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>90</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>91</pre></td><td><pre><span class="rtrtcoverage-complete">    </span><span>/* End of user code */</span></pre></td></tr>
+<tr><td><pre>92</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">return;</span></pre></td></tr>
+<tr><td><pre>93</pre></td><td><pre><span class="rtrtcoverage-complete">}</span></pre></td></tr>
+<tr><td><pre>94</pre></td><td><pre></pre></td>
+</tr>
+</table></body></html>

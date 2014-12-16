@@ -1,0 +1,297 @@
+VE 3.0e CCOV #i5 7.0.0.1
+FC "DERIV.C" "E:\\USERS\\GD50528\\RTRT\\PROJETRTRT\\SRC\\"
+FD 1393947350
+TC PR AP BS CO
+AP 0 "central_deriv" "(*((f)->function))" 37 37
+AP 1 "central_deriv" "(*((f)->function))" 38 38
+AP 2 "central_deriv" "(*((f)->function))" 40 40
+AP 3 "central_deriv" "(*((f)->function))" 41 41
+AP 4 "central_deriv" "fabs" 46 46
+AP 5 "central_deriv" "fabs" 46 46
+AP 6 "central_deriv" "fabs" 47 47
+AP 7 "central_deriv" "fabs" 47 47
+AP 8 "central_deriv" "fabs" 51 51
+AP 9 "central_deriv" "fabs" 51 51
+CE 0 "central_deriv" "(fabs (r3 / h)) > (fabs (r5  ..." 51 51
+AP 10 "central_deriv" "fabs" 51 51
+AP 11 "central_deriv" "fabs" 51 51
+AP 12 "central_deriv" "fabs" 51 51
+AP 13 "central_deriv" "fabs" 59 59
+AP 14 "central_deriv" "fabs" 60 60
+PR 0 proc "central_deriv" 29 61
+BL 0 simple "central_deriv" / 29 61
+AP 15 "gsl_deriv_central" "central_deriv" 68 68
+CE 2 "gsl_deriv_central" "round < trunc" 71 71
+CE 4 "gsl_deriv_central" "round > 0" 71 71
+CE 6 "gsl_deriv_central" "trunc > 0" 71 71
+AP 16 "gsl_deriv_central" "pow" 79 79
+AP 17 "gsl_deriv_central" "central_deriv" 80 80
+CE 8 "gsl_deriv_central" "error_opt < error" 86 86
+AP 18 "gsl_deriv_central" "fabs" 86 86
+CE 10 "gsl_deriv_central" "fabs (r_opt - r_0) < 4.0 * error" 86 86
+BL 1 simple "gsl_deriv_central" /then/then 87 90
+BL 2 simple "gsl_deriv_central" /then 72 91
+PR 1 proc "gsl_deriv_central" 66 97
+BL 3 simple "gsl_deriv_central" / 66 97
+AP 19 "forward_deriv" "(*((f)->function))" 110 110
+AP 20 "forward_deriv" "(*((f)->function))" 111 111
+AP 21 "forward_deriv" "(*((f)->function))" 112 112
+AP 22 "forward_deriv" "(*((f)->function))" 113 113
+AP 23 "forward_deriv" "fabs" 121 121
+AP 24 "forward_deriv" "fabs" 121 121
+AP 25 "forward_deriv" "fabs" 121 121
+AP 26 "forward_deriv" "fabs" 121 121
+AP 27 "forward_deriv" "fabs" 125 125
+AP 28 "forward_deriv" "fabs" 125 125
+CE 12 "forward_deriv" "(fabs (r2 / h)) > (fabs (r4  ..." 125 125
+AP 29 "forward_deriv" "fabs" 125 125
+AP 30 "forward_deriv" "fabs" 125 125
+AP 31 "forward_deriv" "fabs" 125 125
+AP 32 "forward_deriv" "fabs" 133 133
+AP 33 "forward_deriv" "fabs" 134 134
+PR 2 proc "forward_deriv" 103 135
+BL 4 simple "forward_deriv" / 103 135
+AP 34 "gsl_deriv_forward" "forward_deriv" 142 142
+CE 14 "gsl_deriv_forward" "round < trunc" 145 145
+CE 16 "gsl_deriv_forward" "round > 0" 145 145
+CE 18 "gsl_deriv_forward" "trunc > 0" 145 145
+AP 35 "gsl_deriv_forward" "pow" 153 153
+AP 36 "gsl_deriv_forward" "forward_deriv" 154 154
+CE 20 "gsl_deriv_forward" "error_opt < error" 160 160
+AP 37 "gsl_deriv_forward" "fabs" 160 160
+CE 22 "gsl_deriv_forward" "fabs (r_opt - r_0) < 4.0 * error" 160 160
+BL 5 simple "gsl_deriv_forward" /then/then 161 164
+BL 6 simple "gsl_deriv_forward" /then 146 165
+PR 3 proc "gsl_deriv_forward" 140 171
+BL 7 simple "gsl_deriv_forward" / 140 171
+AP 38 "gsl_deriv_backward" "gsl_deriv_forward" 177 177
+PR 4 proc "gsl_deriv_backward" 176 178
+BL 8 simple "gsl_deriv_backward" / 176 178
+DC 1327781063
+@RIK
+  ENCODING="System"
+  TOKEN="CCOV"
+  SRC="DERIV.C"
+  DIR="E:\USERS\GD50528\RTRT\PROJETRTRT\SRC\"
+  DATE=1393947350
+  CHECKSUM=1327781063
+  SUMS
+   ("&Functions"=0,
+    "-&Exits",
+    "Functions and exits"),
+   ("&Calls"=10),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks",
+    "Decisions",
+    "&Loops"),
+   ("Basic &conditions"=30,
+    "&Modified conditions",
+    "M&ultiple conditions")
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="DERIV.C"@@COMMENT@/* deriv/deriv.c
+ * 
+ * Copyright (C) 2004, 2007 Brian Gough
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or (at
+ * your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ */@/COMMENT@
+
+@COMMENT@//#include <config.h>@/COMMENT@
+@COMMENT@#include <stdlib.h>@/COMMENT@
+@COMMENT@#include <gsl/gsl_math.h>@/COMMENT@
+@COMMENT@#include <gsl/gsl_errno.h>@/COMMENT@
+@COMMENT@#include <gsl/gsl_deriv.h>@/COMMENT@
+
+static void
+@NODE TYPE=FUNCTION NAME="central_deriv"@@BRANCH MARK=TP ID=0 SUM=0@@LINK NAME="central_deriv"@central_deriv@/BRANCH@ (const gsl_function * f, double x, double h,
+               double *result, double *abserr_round, double *abserr_trunc)
+@BRANCH MARK=TB ID=0 SUM=20@{
+  @COMMENT@/* Compute the derivative using the 5-point rule (x-h, x-h/2, x,
+     x+h/2, x+h). Note that the central point is not used.  
+
+     Compute the error using the difference between the 5-point and
+     the 3-point rule (x-h,x,x+h). Again the central point is not
+     used. */@/COMMENT@
+
+  double fm1 = @ALT@GSL_FN_EVAL (f, x - h)@-ALT@@BRANCH MARK=TA ID=0 SUM=10@(*((f)->function))(x - h,(f)->params)@/BRANCH@@/ALT@;
+  double fp1 = @ALT@GSL_FN_EVAL (f, x + h)@-ALT@@BRANCH MARK=TA ID=1 SUM=10@(*((f)->function))(x + h,(f)->params)@/BRANCH@@/ALT@;
+
+  double fmh = @ALT@GSL_FN_EVAL (f, x - h / 2)@-ALT@@BRANCH MARK=TA ID=2 SUM=10@(*((f)->function))(x - h / 2,(f)->params)@/BRANCH@@/ALT@;
+  double fph = @ALT@GSL_FN_EVAL (f, x + h / 2)@-ALT@@BRANCH MARK=TA ID=3 SUM=10@(*((f)->function))(x + h / 2,(f)->params)@/BRANCH@@/ALT@;
+
+  double r3 = 0.5 * (fp1 - fm1);
+  double r5 = (4.0 / 3.0) * (fph - fmh) - (1.0 / 3.0) * r3;
+
+  double e3 = (@BRANCH MARK=TA ID=4 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (fp1)@/BRANCH@ + @BRANCH MARK=TA ID=5 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (fm1)@/BRANCH@) * GSL_DBL_EPSILON;
+  double e5 = 2.0 * (@BRANCH MARK=TA ID=6 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (fph)@/BRANCH@ + @BRANCH MARK=TA ID=7 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (fmh)@/BRANCH@) * GSL_DBL_EPSILON + e3;
+
+  @COMMENT@/* The next term is due to finite precision in x+h = O (eps * x) */@/COMMENT@
+
+  double dy = @ALT@GSL_MAX (fabs (r3 / h), fabs (r5 / h))@-ALT@(@POPUP@(@BRANCH MARK=TA ID=8 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (r3 / h)@/BRANCH@) > (@BRANCH MARK=TA ID=9 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (r5 / h)@/BRANCH@)@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@ ? (@BRANCH MARK=TA ID=10 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (r3 / h)@/BRANCH@) : (@BRANCH MARK=TA ID=11 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (r5 / h)@/BRANCH@))@/ALT@ *(@BRANCH MARK=TA ID=12 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (x)@/BRANCH@ / h) * GSL_DBL_EPSILON;
+
+  @COMMENT@/* The truncation error in the r5 approximation itself is O(h^4).
+     However, for safety, we estimate the error from r5-r3, which is
+     O(h^2).  By scaling h we will minimise this estimated error, not
+     the actual truncation error in r5. */@/COMMENT@
+
+  *result = r5 / h;
+  *abserr_trunc = @BRANCH MARK=TA ID=13 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ ((r5 - r3) / h)@/BRANCH@; @COMMENT@/* Estimated truncation error O(h^2) */@/COMMENT@
+  *abserr_round = @BRANCH MARK=TA ID=14 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (e5 / h)@/BRANCH@ + dy;   @COMMENT@/* Rounding error (cancellations) */@/COMMENT@
+}@/BRANCH@@/NODE@
+
+int
+@NODE TYPE=FUNCTION NAME="gsl_deriv_central"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="gsl_deriv_central"@gsl_deriv_central@/BRANCH@ (const gsl_function * f, double x, double h,
+                   double *result, double *abserr)
+@BRANCH MARK=TB ID=3 SUM=20@{
+  double r_0, round, trunc, error;
+  @BRANCH MARK=TA ID=15 SUM=10@@JUMP NAME="central_deriv"@central_deriv@/JUMP@ (f, x, h, &r_0, &round, &trunc)@/BRANCH@;
+  error = round + trunc;
+
+  if (@POPUP@round < trunc@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@ && (@POPUP@round > 0@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@ && @POPUP@trunc > 0@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=6 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=7 SUM=30@False@/BRANCH@@/POPUP@))
+    @BRANCH MARK=TB ID=2 SUM=20@{
+      double r_opt, round_opt, trunc_opt, error_opt;
+
+      @COMMENT@/* Compute an optimised stepsize to minimize the total error,
+         using the scaling of the truncation error (O(h^2)) and
+         rounding error (O(1/h)). */@/COMMENT@
+
+      double h_opt = h * @BRANCH MARK=TA ID=16 SUM=10@@JUMP NAME="pow"@pow@/JUMP@ (round / (2.0 * trunc), 1.0 / 3.0)@/BRANCH@;
+      @BRANCH MARK=TA ID=17 SUM=10@@JUMP NAME="central_deriv"@central_deriv@/JUMP@ (f, x, h_opt, &r_opt, &round_opt, &trunc_opt)@/BRANCH@;
+      error_opt = round_opt + trunc_opt;
+
+      @COMMENT@/* Check that the new error is smaller, and that the new derivative 
+         is consistent with the error bounds of the original estimate. */@/COMMENT@
+
+      if (@POPUP@error_opt < error@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=8 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=9 SUM=30@False@/BRANCH@@/POPUP@ && @POPUP@@BRANCH MARK=TA ID=18 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (r_opt - r_0)@/BRANCH@ < 4.0 * error@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=10 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=11 SUM=30@False@/BRANCH@@/POPUP@)
+        @BRANCH MARK=TB ID=1 SUM=20@{
+          r_0 = r_opt;
+          error = error_opt;
+        }@/BRANCH@
+    }@/BRANCH@
+
+  *result = r_0;
+  *abserr = error;
+
+  return GSL_SUCCESS;@SHORTCUT MARK=TB ID=3@
+}@/BRANCH@@/NODE@
+
+
+static void
+@NODE TYPE=FUNCTION NAME="forward_deriv"@@BRANCH MARK=TP ID=2 SUM=0@@LINK NAME="forward_deriv"@forward_deriv@/BRANCH@ (const gsl_function * f, double x, double h,
+               double *result, double *abserr_round, double *abserr_trunc)
+@BRANCH MARK=TB ID=4 SUM=20@{
+  @COMMENT@/* Compute the derivative using the 4-point rule (x+h/4, x+h/2,
+     x+3h/4, x+h).
+
+     Compute the error using the difference between the 4-point and
+     the 2-point rule (x+h/2,x+h).  */@/COMMENT@
+
+  double f1 = @ALT@GSL_FN_EVAL (f, x + h / 4.0)@-ALT@@BRANCH MARK=TA ID=19 SUM=10@(*((f)->function))(x + h / 4.0,(f)->params)@/BRANCH@@/ALT@;
+  double f2 = @ALT@GSL_FN_EVAL (f, x + h / 2.0)@-ALT@@BRANCH MARK=TA ID=20 SUM=10@(*((f)->function))(x + h / 2.0,(f)->params)@/BRANCH@@/ALT@;
+  double f3 = @ALT@GSL_FN_EVAL (f, x + (3.0 / 4.0) * h)@-ALT@@BRANCH MARK=TA ID=21 SUM=10@(*((f)->function))(x + (3.0 / 4.0) * h,(f)->params)@/BRANCH@@/ALT@;
+  double f4 = @ALT@GSL_FN_EVAL (f, x + h)@-ALT@@BRANCH MARK=TA ID=22 SUM=10@(*((f)->function))(x + h,(f)->params)@/BRANCH@@/ALT@;
+
+  double r2 = 2.0*(f4 - f2);
+  double r4 = (22.0 / 3.0) * (f4 - f3) - (62.0 / 3.0) * (f3 - f2) +
+    (52.0 / 3.0) * (f2 - f1);
+
+  @COMMENT@/* Estimate the rounding error for r4 */@/COMMENT@
+
+  double e4 = 2 * 20.67 * (@BRANCH MARK=TA ID=23 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (f4)@/BRANCH@ + @BRANCH MARK=TA ID=24 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (f3)@/BRANCH@ + @BRANCH MARK=TA ID=25 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (f2)@/BRANCH@ + @BRANCH MARK=TA ID=26 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (f1)@/BRANCH@) * GSL_DBL_EPSILON;
+
+  @COMMENT@/* The next term is due to finite precision in x+h = O (eps * x) */@/COMMENT@
+
+  double dy = @ALT@GSL_MAX (fabs (r2 / h), fabs (r4 / h))@-ALT@(@POPUP@(@BRANCH MARK=TA ID=27 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (r2 / h)@/BRANCH@) > (@BRANCH MARK=TA ID=28 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (r4 / h)@/BRANCH@)@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=12 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=13 SUM=30@False@/BRANCH@@/POPUP@ ? (@BRANCH MARK=TA ID=29 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (r2 / h)@/BRANCH@) : (@BRANCH MARK=TA ID=30 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (r4 / h)@/BRANCH@))@/ALT@ * @BRANCH MARK=TA ID=31 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (x / h)@/BRANCH@ * GSL_DBL_EPSILON;
+
+  @COMMENT@/* The truncation error in the r4 approximation itself is O(h^3).
+     However, for safety, we estimate the error from r4-r2, which is
+     O(h).  By scaling h we will minimise this estimated error, not
+     the actual truncation error in r4. */@/COMMENT@
+
+  *result = r4 / h;
+  *abserr_trunc = @BRANCH MARK=TA ID=32 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ ((r4 - r2) / h)@/BRANCH@; @COMMENT@/* Estimated truncation error O(h) */@/COMMENT@
+  *abserr_round = @BRANCH MARK=TA ID=33 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (e4 / h)@/BRANCH@ + dy;
+}@/BRANCH@@/NODE@
+
+int
+@NODE TYPE=FUNCTION NAME="gsl_deriv_forward"@@BRANCH MARK=TP ID=3 SUM=0@@LINK NAME="gsl_deriv_forward"@gsl_deriv_forward@/BRANCH@ (const gsl_function * f, double x, double h,
+                   double *result, double *abserr)
+@BRANCH MARK=TB ID=7 SUM=20@{
+  double r_0, round, trunc, error;
+  @BRANCH MARK=TA ID=34 SUM=10@@JUMP NAME="forward_deriv"@forward_deriv@/JUMP@ (f, x, h, &r_0, &round, &trunc)@/BRANCH@;
+  error = round + trunc;
+
+  if (@POPUP@round < trunc@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=14 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=15 SUM=30@False@/BRANCH@@/POPUP@ && (@POPUP@round > 0@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=16 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=17 SUM=30@False@/BRANCH@@/POPUP@ && @POPUP@trunc > 0@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=18 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=19 SUM=30@False@/BRANCH@@/POPUP@))
+    @BRANCH MARK=TB ID=6 SUM=20@{
+      double r_opt, round_opt, trunc_opt, error_opt;
+
+      @COMMENT@/* Compute an optimised stepsize to minimize the total error,
+         using the scaling of the estimated truncation error (O(h)) and
+         rounding error (O(1/h)). */@/COMMENT@
+
+      double h_opt = h * @BRANCH MARK=TA ID=35 SUM=10@@JUMP NAME="pow"@pow@/JUMP@ (round / (trunc), 1.0 / 2.0)@/BRANCH@;
+      @BRANCH MARK=TA ID=36 SUM=10@@JUMP NAME="forward_deriv"@forward_deriv@/JUMP@ (f, x, h_opt, &r_opt, &round_opt, &trunc_opt)@/BRANCH@;
+      error_opt = round_opt + trunc_opt;
+
+      @COMMENT@/* Check that the new error is smaller, and that the new derivative 
+         is consistent with the error bounds of the original estimate. */@/COMMENT@
+
+      if (@POPUP@error_opt < error@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=20 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=21 SUM=30@False@/BRANCH@@/POPUP@ && @POPUP@@BRANCH MARK=TA ID=37 SUM=10@@JUMP NAME="fabs"@fabs@/JUMP@ (r_opt - r_0)@/BRANCH@ < 4.0 * error@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=22 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=23 SUM=30@False@/BRANCH@@/POPUP@)
+        @BRANCH MARK=TB ID=5 SUM=20@{
+          r_0 = r_opt;
+          error = error_opt;
+        }@/BRANCH@
+    }@/BRANCH@
+
+  *result = r_0;
+  *abserr = error;
+
+  return GSL_SUCCESS;@SHORTCUT MARK=TB ID=7@
+}@/BRANCH@@/NODE@
+
+int
+@NODE TYPE=FUNCTION NAME="gsl_deriv_backward"@@BRANCH MARK=TP ID=4 SUM=0@@LINK NAME="gsl_deriv_backward"@gsl_deriv_backward@/BRANCH@ (const gsl_function * f, double x, double h,
+                    double *result, double *abserr)
+@BRANCH MARK=TB ID=8 SUM=20@{
+  return @BRANCH MARK=TA ID=38 SUM=10@@JUMP NAME="gsl_deriv_forward"@gsl_deriv_forward@/JUMP@ (f, x, -h, result, abserr)@/BRANCH@;@SHORTCUT MARK=TB ID=8@
+}@/BRANCH@@/NODE@
+
+@/NODE /RIK@

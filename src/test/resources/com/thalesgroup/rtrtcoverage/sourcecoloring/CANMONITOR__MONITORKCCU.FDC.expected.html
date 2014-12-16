@@ -1,0 +1,213 @@
+<html><head></head><body><table class="rtrtcoverage-file">
+<style media="screen" type="text/css">
+.rtrtcoverage-complete {
+  background-color: #ccffcc;}
+.rtrtcoverage-partial {
+  background-color: #ffffcc;}
+.rtrtcoverage-none {
+  background-color: #ffcccc;}
+.rtrtcoverage-hint {
+  border: 1px dashed grey;}
+</style>
+<tr><td><pre>1</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>2</pre></td><td><pre><span>/* (C) Copyright 2010 by THALES Avionics                                                   */</span></pre></td></tr>
+<tr><td><pre>3</pre></td><td><pre><span>/* All rights reserved                                                                     */</span></pre></td></tr>
+<tr><td><pre>4</pre></td><td><pre><span>/*                                                                                         */</span></pre></td></tr>
+<tr><td><pre>5</pre></td><td><pre><span>/* This program is the property of THALES Avionics, LE HAILLAN-BORDEAUX FRANCE, and can    */</span></pre></td></tr>
+<tr><td><pre>6</pre></td><td><pre><span>/* only be used and copied with the prior written authorisation of THALES Avionics.        */</span></pre></td></tr>
+<tr><td><pre>7</pre></td><td><pre><span>/*                                                                                         */</span></pre></td></tr>
+<tr><td><pre>8</pre></td><td><pre><span>/* Any whole or partial copy of this program in either its original form or in a modified  */</span></pre></td></tr>
+<tr><td><pre>9</pre></td><td><pre><span>/* form must mention this copyright and its owner.                                         */</span></pre></td></tr>
+<tr><td><pre>10</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>11</pre></td><td><pre><span>/* PROJECT: DGWPSW_A350                                                                    */</span></pre></td></tr>
+<tr><td><pre>12</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>13</pre></td><td><pre><span>/* FILE NAME: CANMonitor__monitorKCCU.c                                                    */</span></pre></td></tr>
+<tr><td><pre>14</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>15</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>16</pre></td><td><pre><span>#include &quot;CANMonitor.h&quot;</span></pre></td></tr>
+<tr><td><pre>17</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>18</pre></td><td><pre><span>#define __CLASS__ 	&quot;CANMonitor&quot;</span></pre></td></tr>
+<tr><td><pre>19</pre></td><td><pre><span>#define __METHOD__ 	&quot;_monitorKCCU&quot;</span></pre></td></tr>
+<tr><td><pre>20</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>21</pre></td><td><pre><span>/* Start of user includes */</span></pre></td></tr>
+<tr><td><pre>22</pre></td><td><pre><span>/* End of user includes */</span></pre></td></tr>
+<tr><td><pre>23</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>24</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>25</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>26</pre></td><td><pre><span>/* METHOD DESCRIPTION: [private][instance method]                                          */</span></pre></td></tr>
+<tr><td><pre>27</pre></td><td><pre><span>/* -------------------                                                                     */</span></pre></td></tr>
+<tr><td><pre>28</pre></td><td><pre><span>/* CAN monitoring section related to KCCU subscribers :                                    */</span></pre></td></tr>
+<tr><td><pre>29</pre></td><td><pre><span>/* - Retrieve the refresh status of subscribers messages involved in CAN Failure computati */</span></pre></td></tr>
+<tr><td><pre>30</pre></td><td><pre><span>/* on.                                                                                     */</span></pre></td></tr>
+<tr><td><pre>31</pre></td><td><pre><span>/* - Retrieve Off in progress messages on CAN.                                             */</span></pre></td></tr>
+<tr><td><pre>32</pre></td><td><pre><span>/* - Retrieve reports on CAN status messages on CAN.                                       */</span></pre></td></tr>
+<tr><td><pre>33</pre></td><td><pre><span>/* *************************************************************************************** */</span></pre></td></tr>
+<tr><td><pre>34</pre></td><td><pre><span>void </span><span class="rtrtcoverage-complete">CANMonitor__monitorKCCU</span><span>(CANMonitor *pThis, T_CANBusItem *pCANBusItem, T_CANBusLogicId pCANBusLogicId) </span></pre></td></tr>
+<tr><td><pre>35</pre></td><td><pre><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>36</pre></td><td><pre><span class="rtrtcoverage-complete">    </span><span>/* Start of user code */</span></pre></td></tr>
+<tr><td><pre>37</pre></td><td><pre><span class="rtrtcoverage-complete">	T_boolean lKCCUIsCCD = K_BOOL_FALSE;</span></pre></td></tr>
+<tr><td><pre>38</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>39</pre></td><td><pre><span class="rtrtcoverage-complete">	T_int8 lIndex=0;</span></pre></td></tr>
+<tr><td><pre>40</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>41</pre></td><td><pre><span class="rtrtcoverage-complete">	T_KBDStatusMessage lKBDStatusMessage;</span></pre></td></tr>
+<tr><td><pre>42</pre></td><td><pre><span class="rtrtcoverage-complete">	T_CCDStatusMessage lCCDStatusMessage;</span></pre></td></tr>
+<tr><td><pre>43</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>44</pre></td><td><pre><span class="rtrtcoverage-complete">	T_SharedDataStatus lCANRefreshStatus=K_SHARED_DATA_STATUS_UNKNOWN;</span></pre></td></tr>
+<tr><td><pre>45</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>46</pre></td><td><pre><span class="rtrtcoverage-complete">	T_boolean lIsMonitoredMessageRefreshed = K_BOOL_FALSE;</span></pre></td></tr>
+<tr><td><pre>47</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>48</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>49</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">switch (pCANBusItem-&gt;sourceLruId)</span></pre></td></tr>
+<tr><td><pre>50</pre></td><td><pre><span class="rtrtcoverage-complete">	{</span></pre></td></tr>
+<tr><td><pre>51</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">case LRU_ID_KBD_LEFT:</span></pre></td></tr>
+<tr><td><pre>52</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">case LRU_ID_KBD_RIGHT:</span></pre></td></tr>
+<tr><td><pre>53</pre></td><td><pre><span class="rtrtcoverage-complete">			lKCCUIsCCD = K_BOOL_FALSE;</span></pre></td></tr>
+<tr><td><pre>54</pre></td><td><pre><span class="rtrtcoverage-complete">		break;</span></pre></td></tr>
+<tr><td><pre>55</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>56</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">default:</span></pre></td></tr>
+<tr><td><pre>57</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span>/* case LRU_ID_CCD_LEFT:</span></pre></td></tr>
+<tr><td><pre>58</pre></td><td><pre><span>		   case LRU_ID_CCD_RIGHT */</span></pre></td></tr>
+<tr><td><pre>59</pre></td><td><pre><span class="rtrtcoverage-complete">			lKCCUIsCCD = K_BOOL_TRUE;</span></pre></td></tr>
+<tr><td><pre>60</pre></td><td><pre><span class="rtrtcoverage-complete">		break;</span></pre></td></tr>
+<tr><td><pre>61</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>62</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>63</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>64</pre></td><td><pre><span class="rtrtcoverage-complete">	lIndex = pThis-&gt;_mapKccu(pThis, pCANBusItem-&gt;sourceLruId);</span></pre></td></tr>
+<tr><td><pre>65</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>66</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">switch (pCANBusLogicId)</span></pre></td></tr>
+<tr><td><pre>67</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>68</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>69</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span class="rtrtcoverage-complete">case CAN_BUS_LOGIC_ID_SECOND :</span></pre></td></tr>
+<tr><td><pre>70</pre></td><td><pre><span class="rtrtcoverage-complete">			{</span></pre></td></tr>
+<tr><td><pre>71</pre></td><td><pre><span class="rtrtcoverage-complete">				</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lKCCUIsCCD == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="1">K_BOOL_TRUE</span><span class="rtrtcoverage-complete">) </span><span>/* KCCU is CCD */</span></pre></td></tr>
+<tr><td><pre>72</pre></td><td><pre><span class="rtrtcoverage-complete">				</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>73</pre></td><td><pre><span class="rtrtcoverage-complete">					</span><span>/* Center DU are connected to two primary buses; from SDD point of view it means CAN1 */</span></pre></td></tr>
+<tr><td><pre>74</pre></td><td><pre><span class="rtrtcoverage-complete">					</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">pThis-&gt;_canSubscribers.localLRU-&gt;lruId == LRU_ID_DU_UC</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  pThis-&gt;_canSubscribers.localLRU-&gt;lruId == LRU_ID_DU_UC[covered] needs      TX[covered]=T,FF[covered]=F  pThis-&gt;_canSubscribers.localLRU-&gt;lruId == LRU_ID_DU_LC[covered] needs      FT[covered]=T,FF[covered]=F"> || </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">pThis-&gt;_canSubscribers.localLRU-&gt;lruId == LRU_ID_DU_LC</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>75</pre></td><td><pre><span class="rtrtcoverage-complete">					</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>76</pre></td><td><pre><span class="rtrtcoverage-complete">						lCANRefreshStatus = pThis-&gt;_kccuDataReceptions[lIndex]-&gt;updateCCDStatus(pThis-&gt;_kccuDataReceptions[lIndex], &amp;lCCDStatusMessage, K_SHARED_DATA_MEDIA_CAN1);</span></pre></td></tr>
+<tr><td><pre>77</pre></td><td><pre><span class="rtrtcoverage-complete">					}</span></pre></td></tr>
+<tr><td><pre>78</pre></td><td><pre><span class="rtrtcoverage-complete">					</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>79</pre></td><td><pre><span class="rtrtcoverage-complete">					{</span></pre></td></tr>
+<tr><td><pre>80</pre></td><td><pre><span class="rtrtcoverage-complete">						lCANRefreshStatus = pThis-&gt;_kccuDataReceptions[lIndex]-&gt;updateCCDStatus(pThis-&gt;_kccuDataReceptions[lIndex], &amp;lCCDStatusMessage, K_SHARED_DATA_MEDIA_CAN2);</span></pre></td></tr>
+<tr><td><pre>81</pre></td><td><pre><span class="rtrtcoverage-complete">					}</span></pre></td></tr>
+<tr><td><pre>82</pre></td><td><pre><span class="rtrtcoverage-complete">				}</span></pre></td></tr>
+<tr><td><pre>83</pre></td><td><pre><span class="rtrtcoverage-complete">				</span><span class="rtrtcoverage-complete">else </span><span>/* KCCU is KBD */</span></pre></td></tr>
+<tr><td><pre>84</pre></td><td><pre><span class="rtrtcoverage-complete">				{</span></pre></td></tr>
+<tr><td><pre>85</pre></td><td><pre><span class="rtrtcoverage-complete">					</span><span>/* Center DU are connected to two primary buses; from SDD point of view it means CAN1 */</span></pre></td></tr>
+<tr><td><pre>86</pre></td><td><pre><span class="rtrtcoverage-complete">					</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">pThis-&gt;_canSubscribers.localLRU-&gt;lruId == LRU_ID_DU_UC</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  pThis-&gt;_canSubscribers.localLRU-&gt;lruId == LRU_ID_DU_UC[covered] needs      TX[covered]=T,FF[covered]=F  pThis-&gt;_canSubscribers.localLRU-&gt;lruId == LRU_ID_DU_LC[covered] needs      FT[covered]=T,FF[covered]=F"> || </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">pThis-&gt;_canSubscribers.localLRU-&gt;lruId == LRU_ID_DU_LC</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>87</pre></td><td><pre><span class="rtrtcoverage-complete">					</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>88</pre></td><td><pre><span class="rtrtcoverage-complete">						lCANRefreshStatus = pThis-&gt;_kccuDataReceptions[lIndex]-&gt;updateKBDStatus(pThis-&gt;_kccuDataReceptions[lIndex], &amp;lKBDStatusMessage, K_SHARED_DATA_MEDIA_CAN1);</span></pre></td></tr>
+<tr><td><pre>89</pre></td><td><pre><span class="rtrtcoverage-complete">					}</span></pre></td></tr>
+<tr><td><pre>90</pre></td><td><pre><span class="rtrtcoverage-complete">					</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>91</pre></td><td><pre><span class="rtrtcoverage-complete">					{</span></pre></td></tr>
+<tr><td><pre>92</pre></td><td><pre><span class="rtrtcoverage-complete">						lCANRefreshStatus = pThis-&gt;_kccuDataReceptions[lIndex]-&gt;updateKBDStatus(pThis-&gt;_kccuDataReceptions[lIndex], &amp;lKBDStatusMessage, K_SHARED_DATA_MEDIA_CAN2);</span></pre></td></tr>
+<tr><td><pre>93</pre></td><td><pre><span class="rtrtcoverage-complete">					}</span></pre></td></tr>
+<tr><td><pre>94</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>95</pre></td><td><pre><span class="rtrtcoverage-complete">				}</span></pre></td></tr>
+<tr><td><pre>96</pre></td><td><pre><span class="rtrtcoverage-complete">			}</span></pre></td></tr>
+<tr><td><pre>97</pre></td><td><pre><span class="rtrtcoverage-complete">			break;</span></pre></td></tr>
+<tr><td><pre>98</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>99</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span class="rtrtcoverage-complete">default:</span></pre></td></tr>
+<tr><td><pre>100</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* case CAN_BUS_LOGIC_ID_FIRST :*/</span></pre></td></tr>
+<tr><td><pre>101</pre></td><td><pre><span class="rtrtcoverage-complete">			{</span></pre></td></tr>
+<tr><td><pre>102</pre></td><td><pre><span class="rtrtcoverage-complete">				</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lKCCUIsCCD == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="1">K_BOOL_TRUE</span><span class="rtrtcoverage-complete">) </span><span>/* KCCU is CCD */</span></pre></td></tr>
+<tr><td><pre>103</pre></td><td><pre><span class="rtrtcoverage-complete">				</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>104</pre></td><td><pre><span class="rtrtcoverage-complete">					lCANRefreshStatus = pThis-&gt;_kccuDataReceptions[lIndex]-&gt;updateCCDStatus(pThis-&gt;_kccuDataReceptions[lIndex], &amp;lCCDStatusMessage, K_SHARED_DATA_MEDIA_CAN1);</span></pre></td></tr>
+<tr><td><pre>105</pre></td><td><pre><span class="rtrtcoverage-complete">				}</span></pre></td></tr>
+<tr><td><pre>106</pre></td><td><pre><span class="rtrtcoverage-complete">				</span><span class="rtrtcoverage-complete">else </span><span>/* KCCU is KBD */</span></pre></td></tr>
+<tr><td><pre>107</pre></td><td><pre><span class="rtrtcoverage-complete">				{</span></pre></td></tr>
+<tr><td><pre>108</pre></td><td><pre><span class="rtrtcoverage-complete">					lCANRefreshStatus = pThis-&gt;_kccuDataReceptions[lIndex]-&gt;updateKBDStatus(pThis-&gt;_kccuDataReceptions[lIndex], &amp;lKBDStatusMessage, K_SHARED_DATA_MEDIA_CAN1);</span></pre></td></tr>
+<tr><td><pre>109</pre></td><td><pre><span class="rtrtcoverage-complete">				}</span></pre></td></tr>
+<tr><td><pre>110</pre></td><td><pre><span class="rtrtcoverage-complete">			}</span></pre></td></tr>
+<tr><td><pre>111</pre></td><td><pre><span class="rtrtcoverage-complete">			break;</span></pre></td></tr>
+<tr><td><pre>112</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>113</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>114</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lCANRefreshStatus == K_SHARED_DATA_STATUS_REFRESH</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>115</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>116</pre></td><td><pre><span class="rtrtcoverage-complete">		lIsMonitoredMessageRefreshed = K_BOOL_TRUE;</span></pre></td></tr>
+<tr><td><pre>117</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>118</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lKCCUIsCCD == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="1">K_BOOL_TRUE</span><span class="rtrtcoverage-complete">) </span><span>/* KCCU is CCD */</span></pre></td></tr>
+<tr><td><pre>119</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>120</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* get locked key ie Kccu failure with cockpit effect */</span></pre></td></tr>
+<tr><td><pre>121</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_isKccuKeyLocked[pCANBusItem-&gt;sourceLruId-FIRST_LRU_ID_KCCU] = lCCDStatusMessage.kccuLockedKeyFlag;</span></pre></td></tr>
+<tr><td><pre>122</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>123</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">else </span><span>/* KCCU is KBD */</span></pre></td></tr>
+<tr><td><pre>124</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>125</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_isKccuKeyLocked[pCANBusItem-&gt;sourceLruId-FIRST_LRU_ID_KCCU] = lKBDStatusMessage.kccuLockedKeyFlag;</span></pre></td></tr>
+<tr><td><pre>126</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>127</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>128</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>129</pre></td><td><pre><span class="rtrtcoverage-complete">	{</span></pre></td></tr>
+<tr><td><pre>130</pre></td><td><pre><span class="rtrtcoverage-complete">		lIsMonitoredMessageRefreshed = K_BOOL_FALSE;</span></pre></td></tr>
+<tr><td><pre>131</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>132</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>133</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span>/* confirmation check not refreshed during 200 ms : */</span></pre></td></tr>
+<tr><td><pre>134</pre></td><td><pre><span class="rtrtcoverage-complete">	pThis-&gt;_confirmationHelper.confirmValue(&amp;(pThis-&gt;_confirmationHelper), pCANBusItem-&gt;isMonitoredMessageRefreshed.confirmationId, lIsMonitoredMessageRefreshed, &amp;(pCANBusItem-&gt;isMonitoredMessageRefreshed.confirmedValue));</span></pre></td></tr>
+<tr><td><pre>135</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>136</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>137</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span>/* refreshed and not already done from the other CAN bus :*/</span></pre></td></tr>
+<tr><td><pre>138</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lKCCUIsCCD == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="1">K_BOOL_TRUE</span><span class="rtrtcoverage-complete">) </span><span>/* KCCU is CCD */</span></pre></td></tr>
+<tr><td><pre>139</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>140</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lIsMonitoredMessageRefreshed == 1[covered] needs      TT[covered]=T,FX[covered]=F  pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisC ...[covered] needs      TT[covered]=T,TF[covered]=F">(</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lIsMonitoredMessageRefreshed == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="1">K_BOOL_TRUE</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lIsMonitoredMessageRefreshed == 1[covered] needs      TT[covered]=T,FX[covered]=F  pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisC ...[covered] needs      TT[covered]=T,TF[covered]=F">) &amp;&amp;</span></pre></td></tr>
+<tr><td><pre>141</pre></td><td><pre><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lIsMonitoredMessageRefreshed == 1[covered] needs      TT[covered]=T,FX[covered]=F  pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisC ...[covered] needs      TT[covered]=T,TF[covered]=F">			(</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisCycle == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="0">K_BOOL_FALSE</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lIsMonitoredMessageRefreshed == 1[covered] needs      TT[covered]=T,FX[covered]=F  pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisC ...[covered] needs      TT[covered]=T,TF[covered]=F">)</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>142</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>143</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isOffInProgress = lCCDStatusMessage.powerOff;</span></pre></td></tr>
+<tr><td><pre>144</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisCycle = K_BOOL_TRUE;</span></pre></td></tr>
+<tr><td><pre>145</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>146</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>147</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>148</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>149</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* NOTHING TO DO */</span></pre></td></tr>
+<tr><td><pre>150</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* Keep OffStatus last value */</span></pre></td></tr>
+<tr><td><pre>151</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>152</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>153</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>154</pre></td><td><pre><span class="rtrtcoverage-complete">	{</span></pre></td></tr>
+<tr><td><pre>155</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lIsMonitoredMessageRefreshed == 1[covered] needs      TT[covered]=T,FX[covered]=F  pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisC ...[covered] needs      TT[covered]=T,TF[covered]=F">(</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lIsMonitoredMessageRefreshed == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="1">K_BOOL_TRUE</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lIsMonitoredMessageRefreshed == 1[covered] needs      TT[covered]=T,FX[covered]=F  pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisC ...[covered] needs      TT[covered]=T,TF[covered]=F">) &amp;&amp;</span></pre></td></tr>
+<tr><td><pre>156</pre></td><td><pre><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lIsMonitoredMessageRefreshed == 1[covered] needs      TT[covered]=T,FX[covered]=F  pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisC ...[covered] needs      TT[covered]=T,TF[covered]=F">			(</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisCycle == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="0">K_BOOL_FALSE</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="modified and multiple conditions:  lIsMonitoredMessageRefreshed == 1[covered] needs      TT[covered]=T,FX[covered]=F  pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisC ...[covered] needs      TT[covered]=T,TF[covered]=F">)</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>157</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>158</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isOffInProgress = lKBDStatusMessage.powerOff;</span></pre></td></tr>
+<tr><td><pre>159</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_offStatus[pCANBusItem-&gt;sourceLruId].isRefreshedThisCycle = K_BOOL_TRUE;</span></pre></td></tr>
+<tr><td><pre>160</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>161</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>162</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>163</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>164</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* NOTHING TO DO */</span></pre></td></tr>
+<tr><td><pre>165</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* Keep OffStatus last value */</span></pre></td></tr>
+<tr><td><pre>166</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>167</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>168</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>169</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span>/* get report from concerned bus : */</span></pre></td></tr>
+<tr><td><pre>170</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">pCANBusLogicId == CAN_BUS_LOGIC_ID_FIRST</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>171</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>172</pre></td><td><pre><span class="rtrtcoverage-complete">		pThis-&gt;_kccuAcquisitionReport[pCANBusItem-&gt;sourceLruId-FIRST_LRU_ID_KCCU].onFirstBus.isRefreshed = lIsMonitoredMessageRefreshed;</span></pre></td></tr>
+<tr><td><pre>173</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>174</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lIsMonitoredMessageRefreshed == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="1">K_BOOL_TRUE</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>175</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>176</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_kccuAcquisitionReport[pCANBusItem-&gt;sourceLruId-FIRST_LRU_ID_KCCU].onFirstBus.isFailed = lKBDStatusMessage.refreshCAN1;</span></pre></td></tr>
+<tr><td><pre>177</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>178</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>179</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>180</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* NOTHING TO DO */</span></pre></td></tr>
+<tr><td><pre>181</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>182</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>183</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">else </span><span>// (pCANBusLogicId == CAN_BUS_LOGIC_ID_SECOND)</span></pre></td></tr>
+<tr><td><pre>184</pre></td><td><pre><span class="rtrtcoverage-complete">	{</span></pre></td></tr>
+<tr><td><pre>185</pre></td><td><pre><span class="rtrtcoverage-complete">		pThis-&gt;_kccuAcquisitionReport[pCANBusItem-&gt;sourceLruId-FIRST_LRU_ID_KCCU].onSecondBus.isRefreshed = lIsMonitoredMessageRefreshed;</span></pre></td></tr>
+<tr><td><pre>186</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">lIsMonitoredMessageRefreshed == </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="1">K_BOOL_TRUE</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>187</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>188</pre></td><td><pre><span class="rtrtcoverage-complete">			pThis-&gt;_kccuAcquisitionReport[pCANBusItem-&gt;sourceLruId-FIRST_LRU_ID_KCCU].onSecondBus.isFailed = lKBDStatusMessage.refreshCAN2;</span></pre></td></tr>
+<tr><td><pre>189</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>190</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>191</pre></td><td><pre><span class="rtrtcoverage-complete">		{</span></pre></td></tr>
+<tr><td><pre>192</pre></td><td><pre><span class="rtrtcoverage-complete">			</span><span>/* NOTHING TO DO */</span></pre></td></tr>
+<tr><td><pre>193</pre></td><td><pre><span class="rtrtcoverage-complete">		}</span></pre></td></tr>
+<tr><td><pre>194</pre></td><td><pre><span class="rtrtcoverage-complete">	}</span></pre></td></tr>
+<tr><td><pre>195</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>196</pre></td><td><pre><span class="rtrtcoverage-complete">    </span><span>/* End of user code */</span></pre></td></tr>
+<tr><td><pre>197</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">return;</span></pre></td></tr>
+<tr><td><pre>198</pre></td><td><pre><span class="rtrtcoverage-complete">}</span></pre></td></tr>
+<tr><td><pre>199</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>200</pre></td><td><pre></pre></td>
+</tr>
+</table></body></html>

@@ -1,0 +1,206 @@
+VE 3.0e CCOV CMCDC #i5 7.0.0.1
+FC "INTERACTIVETESTSELECTOR_ARECONNECTIONSSATISFIED.C" "D:\\A350\\UT\\CLASS_INTERACTIVETESTSELECTOR\\SOURCES\\"
+FD 1361893676
+TC PR RE BS BT BI CO CC
+CE 0 "InteractiveTestSelector_areConnectionsSatisfied" "pThis->_softwareConfiguratio ..." 38 38
+BL 0 simple "InteractiveTestSelector_areConnectionsSatisfied" /then 39 41
+BL 1 simple "InteractiveTestSelector_areConnectionsSatisfied" /else 43 45
+CE 2 "InteractiveTestSelector_areConnectionsSatisfied" "lIndex < DISPLAY_UNITS_COUNT" 48 48
+CE 4 "InteractiveTestSelector_areConnectionsSatisfied" "lIndex != lDisplayUnitLocation" 51 51
+CE 6 "InteractiveTestSelector_areConnectionsSatisfied" "pThis->_systemDataReceiver[ ..." 51 51
+CC 8 2 4 6 3 TTTFFX 1
+BL 2 simple "InteractiveTestSelector_areConnectionsSatisfied" /for/then 52 54
+BL 3 simple "InteractiveTestSelector_areConnectionsSatisfied" /for/else 56 58
+BL 4 simple "InteractiveTestSelector_areConnectionsSatisfied" /for 49 59
+CE 11 "InteractiveTestSelector_areConnectionsSatisfied" "lDisplayUnitLocation ==  ..." 62 62
+CE 13 "InteractiveTestSelector_areConnectionsSatisfied" "lDisplayUnitLocation ==  ..." 62 62
+CC 15 2 11 13 3 TXFTFF 2
+CE 18 "InteractiveTestSelector_areConnectionsSatisfied" "lIndex < (LAST_KCCU_ID -  ..." 65 65
+CE 20 "InteractiveTestSelector_areConnectionsSatisfied" "pThis->_kccuDataReceiver[lIn ..." 68 68
+BL 5 simple "InteractiveTestSelector_areConnectionsSatisfied" /then/for/then 69 71
+BL 6 simple "InteractiveTestSelector_areConnectionsSatisfied" /then/for/else 73 75
+BL 7 simple "InteractiveTestSelector_areConnectionsSatisfied" /then/for 66 76
+CE 22 "InteractiveTestSelector_areConnectionsSatisfied" "((type-cast)0) == pThis-> ..." 79 79
+BL 8 simple "InteractiveTestSelector_areConnectionsSatisfied" /then/then 80 82
+BL 9 simple "InteractiveTestSelector_areConnectionsSatisfied" /then/else 84 86
+BL 10 simple "InteractiveTestSelector_areConnectionsSatisfied" /then 63 87
+BL 11 simple "InteractiveTestSelector_areConnectionsSatisfied" /else 89 91
+CE 24 "InteractiveTestSelector_areConnectionsSatisfied" "((type-cast)0) == pThis-> ..." 94 94
+CE 26 "InteractiveTestSelector_areConnectionsSatisfied" "((type-cast)0) == pThis-> ..." 95 95
+CE 28 "InteractiveTestSelector_areConnectionsSatisfied" "1 == pThis-> ..." 96 96
+CC 30 3 24 26 28 4 TXXFTXFFTFFF 3
+BL 12 simple "InteractiveTestSelector_areConnectionsSatisfied" /then 97 99
+BL 13 simple "InteractiveTestSelector_areConnectionsSatisfied" /else 101 103
+PR 0 return "InteractiveTestSelector_areConnectionsSatisfied" 105 105
+PR 1 proc "InteractiveTestSelector_areConnectionsSatisfied" 32 107
+BL 14 simple "InteractiveTestSelector_areConnectionsSatisfied" / 32 107
+DC 1028285752
+@RIK
+  ENCODING="System"
+  TOKEN="CCOV CMCDC"
+  SRC="INTERACTIVETESTSELECTOR_ARECONNECTIONSSATISFIED.C"
+  DIR="D:\A350\UT\CLASS_INTERACTIVETESTSELECTOR\SOURCES\"
+  DATE=1361893676
+  CHECKSUM=1028285752
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="INTERACTIVETESTSELECTOR_ARECONNECTIONSSATISFIED.C"@@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* (C) Copyright 2010 by THALES Avionics                                                   */@/COMMENT@
+@COMMENT@/* All rights reserved                                                                     */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* This program is the property of THALES Avionics, LE HAILLAN-BORDEAUX FRANCE, and can    */@/COMMENT@
+@COMMENT@/* only be used and copied with the prior written authorisation of THALES Avionics.        */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* Any whole or partial copy of this program in either its original form or in a modified  */@/COMMENT@
+@COMMENT@/* form must mention this copyright and its owner.                                         */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* PROJECT: DGWPSW_A350                                                                    */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* FILE NAME: InteractiveTestSelector_areConnectionsSatisfied.c                            */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+
+@COMMENT@#include "InteractiveTestSelector.h"@/COMMENT@
+
+@COMMENT@#define __CLASS__ 	"InteractiveTestSelector"@/COMMENT@
+@COMMENT@#define __METHOD__ 	"areConnectionsSatisfied"@/COMMENT@
+
+@COMMENT@/* Start of user includes */@/COMMENT@
+@COMMENT@/* End of user includes */@/COMMENT@
+
+
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* METHOD DESCRIPTION: [public][instance method]                                           */@/COMMENT@
+@COMMENT@/* -------------------                                                                     */@/COMMENT@
+@COMMENT@/* Returns K_BOOL_TRUE if all of the mandatory receptacles have been successfully connecte */@/COMMENT@
+@COMMENT@/* d to the required facets                                                                */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+T_boolean @NODE TYPE=FUNCTION NAME="InteractiveTestSelector_areConnectionsSatisfied"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="InteractiveTestSelector_areConnectionsSatisfied"@InteractiveTestSelector_areConnectionsSatisfied@/BRANCH@(InteractiveTestSelector *pThis)
+@BRANCH MARK=TB ID=14 SUM=20@{
+    @COMMENT@/* Start of user code */@/COMMENT@
+	T_boolean lConnectionsSatisfied = K_BOOL_TRUE;
+	T_uint32 lIndex;
+	T_DisplayUnitLocation lDisplayUnitLocation =  INNER_LEFT_DISPLAY_UNIT;
+
+	@DECISION SUM=20+21 ID=0|1@if(@POPUP@pThis->_softwareConfiguration != @ALT@K_NULL@-ALT@((T_ptr)0)@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=0 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=1 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+	@BRANCH MARK=TB ID=0 SUM=20@{
+		lDisplayUnitLocation =  pThis->_softwareConfiguration->whereAmI(pThis->_softwareConfiguration);
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=1 SUM=20@else
+	{
+		lConnectionsSatisfied = K_BOOL_FALSE;
+	}@/BRANCH@@/DECISION@
+
+	@COMMENT@/* For each DU of the system */@/COMMENT@
+	for(lIndex=0;@POPUP@lIndex < DISPLAY_UNITS_COUNT@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=2 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=3 SUM=30@False@/BRANCH@@/POPUP@;lIndex++)
+	@BRANCH MARK=TB ID=4 SUM=20@{
+		@COMMENT@/* If Du index refer to my du */@/COMMENT@
+		@DECISION SUM=20+21 ID=2|3@if (@POPUP@(@POPUP@lIndex != lDisplayUnitLocation@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@) && (@POPUP@pThis->_systemDataReceiver[lIndex] == @ALT@K_NULL@-ALT@((T_ptr)0)@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=6 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=7 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)@-POPUP@modified and multiple conditions:
+  @BRANCH MARK=TE ID=8&10 SUM=31@lIndex != lDisplayUnitLocation@/BRANCH@ needs
+      @BRANCH MARK=TE ID=8 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=10 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=8&9 SUM=31@pThis->_systemDataReceiver[lIndex] == ((type-cast)0)@/BRANCH@ needs
+      @BRANCH MARK=TE ID=8 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=9 SUM=32@TF@/BRANCH@=F@/POPUP@)
+		@BRANCH MARK=TB ID=2 SUM=20@{
+			lConnectionsSatisfied = K_BOOL_FALSE;
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=3 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+
+	@COMMENT@/* IF DU is UC or LC */@/COMMENT@
+	@DECISION SUM=20+21 ID=10|11@if(@POPUP@(@POPUP@lDisplayUnitLocation == UPPER_CENTER_DISPLAY_UNIT@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=11 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=12 SUM=30@False@/BRANCH@@/POPUP@) || (@POPUP@lDisplayUnitLocation == LOWER_CENTER_DISPLAY_UNIT@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=13 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=14 SUM=30@False@/BRANCH@@/POPUP@)@-POPUP@modified and multiple conditions:
+  @BRANCH MARK=TE ID=15&17 SUM=31@lDisplayUnitLocation == UPPER_CENTER_DISPLAY_UNIT@/BRANCH@ needs
+      @BRANCH MARK=TE ID=15 SUM=32@TX@/BRANCH@=T,@BRANCH MARK=TE ID=17 SUM=32@FF@/BRANCH@=F
+  @BRANCH MARK=TE ID=16&17 SUM=31@lDisplayUnitLocation == LOWER_CENTER_DISPLAY_UNIT@/BRANCH@ needs
+      @BRANCH MARK=TE ID=16 SUM=32@FT@/BRANCH@=T,@BRANCH MARK=TE ID=17 SUM=32@FF@/BRANCH@=F@/POPUP@)
+	@BRANCH MARK=TB ID=10 SUM=20@{
+		@COMMENT@/* Check if KCCU interface is available */@/COMMENT@
+		for(lIndex=0;@POPUP@lIndex < @ALT@K_MAX_KCCU_COUNT@-ALT@(LAST_KCCU_ID-FIRST_KCCU_ID+1)@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=18 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=19 SUM=30@False@/BRANCH@@/POPUP@@/ALT@;lIndex++)
+		@BRANCH MARK=TB ID=7 SUM=20@{
+			@COMMENT@/* If Du index refer to my du */@/COMMENT@
+			@DECISION SUM=20+21 ID=5|6@if (@POPUP@pThis->_kccuDataReceiver[lIndex] == @ALT@K_NULL@-ALT@((T_ptr)0)@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=20 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=21 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+			@BRANCH MARK=TB ID=5 SUM=20@{
+				lConnectionsSatisfied = K_BOOL_FALSE;
+			}@/BRANCH@
+			@BRANCH MARK=TB ID=6 SUM=20@else
+			{
+				@COMMENT@/* Nothing to do */@/COMMENT@
+			}@/BRANCH@@/DECISION@
+		}@/BRANCH@
+
+		@COMMENT@/* Check if HCE interface is available */@/COMMENT@
+		@DECISION SUM=20+21 ID=8|9@if (@ALT@K_NULL@-ALT@@POPUP@((T_ptr)0)@/ALT@ == pThis->_hceIdentificationData@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=22 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=23 SUM=30@False@/BRANCH@@/POPUP@)
+		@BRANCH MARK=TB ID=8 SUM=20@{
+			lConnectionsSatisfied = K_BOOL_FALSE;
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=9 SUM=20@else
+		{
+			@COMMENT@/* Nothing to do */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=11 SUM=20@else
+	{
+		@COMMENT@/* Nothing to do */@/COMMENT@
+	}@/BRANCH@@/DECISION@
+
+
+	@DECISION SUM=20+21 ID=12|13@if (@POPUP@(@ALT@K_NULL@-ALT@@POPUP@((T_ptr)0)@/ALT@ == pThis->_errorThrower@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=24 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=25 SUM=30@False@/BRANCH@@/POPUP@) ||
+		(@ALT@K_NULL@-ALT@@POPUP@((T_ptr)0)@/ALT@ == pThis->_localDataReceiver@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=26 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=27 SUM=30@False@/BRANCH@@/POPUP@) ||
+	    (@ALT@K_BOOL_TRUE@-ALT@@POPUP@1@/ALT@ == pThis->_testObserversOverflow@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=28 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=29 SUM=30@False@/BRANCH@@/POPUP@)@-POPUP@modified and multiple conditions:
+  @BRANCH MARK=TE ID=30&33 SUM=31@((type-cast)0) == pThis->_errorThrower@/BRANCH@ needs
+      @BRANCH MARK=TE ID=30 SUM=32@TXX@/BRANCH@=T,@BRANCH MARK=TE ID=33 SUM=32@FFF@/BRANCH@=F
+  @BRANCH MARK=TE ID=31&33 SUM=31@((type-cast)0) == pThis->_localDataReceiver@/BRANCH@ needs
+      @BRANCH MARK=TE ID=31 SUM=32@FTX@/BRANCH@=T,@BRANCH MARK=TE ID=33 SUM=32@FFF@/BRANCH@=F
+  @BRANCH MARK=TE ID=32&33 SUM=31@1 == pThis->_testObserversOverflow@/BRANCH@ needs
+      @BRANCH MARK=TE ID=32 SUM=32@FFT@/BRANCH@=T,@BRANCH MARK=TE ID=33 SUM=32@FFF@/BRANCH@=F@/POPUP@)
+	@BRANCH MARK=TB ID=12 SUM=20@{
+		lConnectionsSatisfied = K_BOOL_FALSE;
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=13 SUM=20@else
+	{
+		@COMMENT@/* Nothing to do */@/COMMENT@
+	}@/BRANCH@@/DECISION@
+
+	@BRANCH MARK=TP ID=0 SUM=1@return lConnectionsSatisfied;@SHORTCUT MARK=TB ID=14@@/BRANCH@
+    @COMMENT@/* End of user code */@/COMMENT@
+}@/BRANCH@@/NODE@
+@/NODE /RIK@

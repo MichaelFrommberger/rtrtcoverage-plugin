@@ -1,0 +1,332 @@
+VE 3.0e CCOV CMCDC #i5 7.0.0.1
+FC "CANMONITOR__MONITORKCCU.C" "D:\\A350\\UT\\CLASS_CANMONITOR\\SOURCES\\"
+FD 1366291159
+TC PR RE BS BT BI CO CC
+CA 0 "CANMonitor__monitorKCCU" "case LRU_ID_KBD_LEFT" 51 51
+CA 1 "CANMonitor__monitorKCCU" "case LRU_ID_KBD_RIGHT" 52 52
+BL 0 simple "CANMonitor__monitorKCCU" /case 52 52
+CA 2 "CANMonitor__monitorKCCU" "default" 56 56
+BL 1 simple "CANMonitor__monitorKCCU" /default 56 56
+CA 3 "CANMonitor__monitorKCCU" "case CAN_BUS_LOGIC_ID_SECOND" 69 69
+BL 2 simple "CANMonitor__monitorKCCU" /case 69 69
+CE 4 "CANMonitor__monitorKCCU" "lKCCUIsCCD == 1" 71 71
+CE 6 "CANMonitor__monitorKCCU" "pThis->_canSubscribers.local ..." 74 74
+CE 8 "CANMonitor__monitorKCCU" "pThis->_canSubscribers.local ..." 74 74
+CC 10 2 6 8 3 TXFTFF 2
+BL 3 simple "CANMonitor__monitorKCCU" /then/then 75 77
+BL 4 simple "CANMonitor__monitorKCCU" /then/else 79 81
+BL 5 simple "CANMonitor__monitorKCCU" /then 72 82
+CE 13 "CANMonitor__monitorKCCU" "pThis->_canSubscribers.local ..." 86 86
+CE 15 "CANMonitor__monitorKCCU" "pThis->_canSubscribers.local ..." 86 86
+CC 17 2 13 15 3 TXFTFF 2
+BL 6 simple "CANMonitor__monitorKCCU" /else/then 87 89
+BL 7 simple "CANMonitor__monitorKCCU" /else/else 91 93
+BL 8 simple "CANMonitor__monitorKCCU" /else 84 95
+CA 20 "CANMonitor__monitorKCCU" "default" 99 99
+BL 9 simple "CANMonitor__monitorKCCU" /default 99 99
+CE 21 "CANMonitor__monitorKCCU" "lKCCUIsCCD == 1" 102 102
+BL 10 simple "CANMonitor__monitorKCCU" /then 103 105
+BL 11 simple "CANMonitor__monitorKCCU" /else 107 109
+CE 23 "CANMonitor__monitorKCCU" "lCANRefreshStatus ==  ..." 114 114
+CE 25 "CANMonitor__monitorKCCU" "lKCCUIsCCD == 1" 118 118
+BL 12 simple "CANMonitor__monitorKCCU" /then/then 119 122
+BL 13 simple "CANMonitor__monitorKCCU" /then/else 124 126
+BL 14 simple "CANMonitor__monitorKCCU" /then 115 127
+BL 15 simple "CANMonitor__monitorKCCU" /else 129 131
+CE 27 "CANMonitor__monitorKCCU" "lKCCUIsCCD == 1" 138 138
+CE 29 "CANMonitor__monitorKCCU" "lIsMonitoredMessageRefreshed ..." 140 140
+CE 31 "CANMonitor__monitorKCCU" "pThis->_offStatus[pCANBusIte ..." 141 141
+CC 33 2 29 31 3 TTTFFX 1
+BL 16 simple "CANMonitor__monitorKCCU" /then/then 142 146
+BL 17 simple "CANMonitor__monitorKCCU" /then/else 148 151
+BL 18 simple "CANMonitor__monitorKCCU" /then 139 152
+CE 36 "CANMonitor__monitorKCCU" "lIsMonitoredMessageRefreshed ..." 155 155
+CE 38 "CANMonitor__monitorKCCU" "pThis->_offStatus[pCANBusIte ..." 156 156
+CC 40 2 36 38 3 TTTFFX 1
+BL 19 simple "CANMonitor__monitorKCCU" /else/then 157 161
+BL 20 simple "CANMonitor__monitorKCCU" /else/else 163 166
+BL 21 simple "CANMonitor__monitorKCCU" /else 154 167
+CE 43 "CANMonitor__monitorKCCU" "pCANBusLogicId ==  ..." 170 170
+CE 45 "CANMonitor__monitorKCCU" "lIsMonitoredMessageRefreshed ..." 174 174
+BL 22 simple "CANMonitor__monitorKCCU" /then/then 175 177
+BL 23 simple "CANMonitor__monitorKCCU" /then/else 179 181
+BL 24 simple "CANMonitor__monitorKCCU" /then 171 182
+CE 47 "CANMonitor__monitorKCCU" "lIsMonitoredMessageRefreshed ..." 186 186
+BL 25 simple "CANMonitor__monitorKCCU" /else/then 187 189
+BL 26 simple "CANMonitor__monitorKCCU" /else/else 191 193
+BL 27 simple "CANMonitor__monitorKCCU" /else 184 194
+PR 0 return "CANMonitor__monitorKCCU" 197 197
+PR 1 proc "CANMonitor__monitorKCCU" 35 198
+BL 28 simple "CANMonitor__monitorKCCU" / 35 198
+DC 877280453
+@RIK
+  ENCODING="System"
+  TOKEN="CCOV CMCDC"
+  SRC="CANMONITOR__MONITORKCCU.C"
+  DIR="D:\A350\UT\CLASS_CANMONITOR\SOURCES\"
+  DATE=1366291159
+  CHECKSUM=877280453
+  SUMS
+   ("&Functions"=0,
+    "-&Exits"=1,
+    "Functions and exits"=0+1),
+   ("&Calls"),
+   ("Statement &blocks"=20,
+    "-&Implicit blocks"=21,
+    "Decisions"=20+21,
+    "&Loops"),
+   ("Basic &conditions"=30,
+    "&Modified conditions"=31,
+    "M&ultiple conditions"=32)
+  ERRORS
+    32="a source object was not linked with the right runtime object (check instrumentation mode)",
+    49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+    50="a composition of conditions reached with an unexpected input vector, contact your vendor"
+NODE TYPE=FILE NAME="CANMONITOR__MONITORKCCU.C"@@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* (C) Copyright 2010 by THALES Avionics                                                   */@/COMMENT@
+@COMMENT@/* All rights reserved                                                                     */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* This program is the property of THALES Avionics, LE HAILLAN-BORDEAUX FRANCE, and can    */@/COMMENT@
+@COMMENT@/* only be used and copied with the prior written authorisation of THALES Avionics.        */@/COMMENT@
+@COMMENT@/*                                                                                         */@/COMMENT@
+@COMMENT@/* Any whole or partial copy of this program in either its original form or in a modified  */@/COMMENT@
+@COMMENT@/* form must mention this copyright and its owner.                                         */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* PROJECT: DGWPSW_A350                                                                    */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* FILE NAME: CANMonitor__monitorKCCU.c                                                    */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+
+@COMMENT@#include "CANMonitor.h"@/COMMENT@
+
+@COMMENT@#define __CLASS__ 	"CANMonitor"@/COMMENT@
+@COMMENT@#define __METHOD__ 	"_monitorKCCU"@/COMMENT@
+
+@COMMENT@/* Start of user includes */@/COMMENT@
+@COMMENT@/* End of user includes */@/COMMENT@
+
+
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+@COMMENT@/* METHOD DESCRIPTION: [private][instance method]                                          */@/COMMENT@
+@COMMENT@/* -------------------                                                                     */@/COMMENT@
+@COMMENT@/* CAN monitoring section related to KCCU subscribers :                                    */@/COMMENT@
+@COMMENT@/* - Retrieve the refresh status of subscribers messages involved in CAN Failure computati */@/COMMENT@
+@COMMENT@/* on.                                                                                     */@/COMMENT@
+@COMMENT@/* - Retrieve Off in progress messages on CAN.                                             */@/COMMENT@
+@COMMENT@/* - Retrieve reports on CAN status messages on CAN.                                       */@/COMMENT@
+@COMMENT@/* *************************************************************************************** */@/COMMENT@
+void @NODE TYPE=FUNCTION NAME="CANMonitor__monitorKCCU"@@BRANCH MARK=TP ID=1 SUM=0@@LINK NAME="CANMonitor__monitorKCCU"@CANMonitor__monitorKCCU@/BRANCH@(CANMonitor *pThis, T_CANBusItem *pCANBusItem, T_CANBusLogicId pCANBusLogicId) 
+@BRANCH MARK=TB ID=28 SUM=20@{
+    @COMMENT@/* Start of user code */@/COMMENT@
+	T_boolean lKCCUIsCCD = K_BOOL_FALSE;
+
+	T_int8 lIndex=0;
+
+	T_KBDStatusMessage lKBDStatusMessage;
+	T_CCDStatusMessage lCCDStatusMessage;
+
+	T_SharedDataStatus lCANRefreshStatus=K_SHARED_DATA_STATUS_UNKNOWN;
+
+	T_boolean lIsMonitoredMessageRefreshed = K_BOOL_FALSE;
+
+
+	@DECISION SUM=20+21 ID=0|1@switch (pCANBusItem->sourceLruId)
+	{
+		@BRANCH NO@@BRANCH MARK=TE ID=0 SUM=30@case LRU_ID_KBD_LEFT:@/BRANCH@@/BRANCH@
+		@BRANCH MARK=TB ID=0 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=1 SUM=30@case LRU_ID_KBD_RIGHT:@/BRANCH@@/BRANCH@
+			lKCCUIsCCD = K_BOOL_FALSE;
+		break;
+
+		@BRANCH MARK=TB ID=1 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=2 SUM=30@default:@/BRANCH@@/BRANCH@
+		@COMMENT@/* case LRU_ID_CCD_LEFT:
+		   case LRU_ID_CCD_RIGHT */@/COMMENT@
+			lKCCUIsCCD = K_BOOL_TRUE;
+		break;
+	}@/BRANCH@@/BRANCH@@/DECISION@
+
+
+	lIndex = pThis->_mapKccu(pThis, pCANBusItem->sourceLruId);
+
+		@DECISION SUM=20+21 ID=2|9@switch (pCANBusLogicId)
+		{
+
+			@BRANCH MARK=TB ID=2 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=3 SUM=30@case CAN_BUS_LOGIC_ID_SECOND :@/BRANCH@@/BRANCH@
+			{
+				@DECISION SUM=20+21 ID=5|8@if (@POPUP@lKCCUIsCCD == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=4 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=5 SUM=30@False@/BRANCH@@/POPUP@@/ALT@) @COMMENT@/* KCCU is CCD */@/COMMENT@
+				@BRANCH MARK=TB ID=5 SUM=20@{
+					@COMMENT@/* Center DU are connected to two primary buses; from SDD point of view it means CAN1 */@/COMMENT@
+					@DECISION SUM=20+21 ID=3|4@if (@POPUP@@POPUP@pThis->_canSubscribers.localLRU->lruId == LRU_ID_DU_UC@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=6 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=7 SUM=30@False@/BRANCH@@/POPUP@ || @POPUP@pThis->_canSubscribers.localLRU->lruId == LRU_ID_DU_LC@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=8 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=9 SUM=30@False@/BRANCH@@/POPUP@@-POPUP@modified and multiple conditions:
+  @BRANCH MARK=TE ID=10&12 SUM=31@pThis->_canSubscribers.localLRU->lruId == LRU_ID_DU_UC@/BRANCH@ needs
+      @BRANCH MARK=TE ID=10 SUM=32@TX@/BRANCH@=T,@BRANCH MARK=TE ID=12 SUM=32@FF@/BRANCH@=F
+  @BRANCH MARK=TE ID=11&12 SUM=31@pThis->_canSubscribers.localLRU->lruId == LRU_ID_DU_LC@/BRANCH@ needs
+      @BRANCH MARK=TE ID=11 SUM=32@FT@/BRANCH@=T,@BRANCH MARK=TE ID=12 SUM=32@FF@/BRANCH@=F@/POPUP@)
+					@BRANCH MARK=TB ID=3 SUM=20@{
+						lCANRefreshStatus = pThis->_kccuDataReceptions[lIndex]->updateCCDStatus(pThis->_kccuDataReceptions[lIndex], &lCCDStatusMessage, K_SHARED_DATA_MEDIA_CAN1);
+					}@/BRANCH@
+					@BRANCH MARK=TB ID=4 SUM=20@else
+					{
+						lCANRefreshStatus = pThis->_kccuDataReceptions[lIndex]->updateCCDStatus(pThis->_kccuDataReceptions[lIndex], &lCCDStatusMessage, K_SHARED_DATA_MEDIA_CAN2);
+					}@/BRANCH@@/DECISION@
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=8 SUM=20@else @COMMENT@/* KCCU is KBD */@/COMMENT@
+				{
+					@COMMENT@/* Center DU are connected to two primary buses; from SDD point of view it means CAN1 */@/COMMENT@
+					@DECISION SUM=20+21 ID=6|7@if (@POPUP@@POPUP@pThis->_canSubscribers.localLRU->lruId == LRU_ID_DU_UC@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=13 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=14 SUM=30@False@/BRANCH@@/POPUP@ || @POPUP@pThis->_canSubscribers.localLRU->lruId == LRU_ID_DU_LC@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=15 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=16 SUM=30@False@/BRANCH@@/POPUP@@-POPUP@modified and multiple conditions:
+  @BRANCH MARK=TE ID=17&19 SUM=31@pThis->_canSubscribers.localLRU->lruId == LRU_ID_DU_UC@/BRANCH@ needs
+      @BRANCH MARK=TE ID=17 SUM=32@TX@/BRANCH@=T,@BRANCH MARK=TE ID=19 SUM=32@FF@/BRANCH@=F
+  @BRANCH MARK=TE ID=18&19 SUM=31@pThis->_canSubscribers.localLRU->lruId == LRU_ID_DU_LC@/BRANCH@ needs
+      @BRANCH MARK=TE ID=18 SUM=32@FT@/BRANCH@=T,@BRANCH MARK=TE ID=19 SUM=32@FF@/BRANCH@=F@/POPUP@)
+					@BRANCH MARK=TB ID=6 SUM=20@{
+						lCANRefreshStatus = pThis->_kccuDataReceptions[lIndex]->updateKBDStatus(pThis->_kccuDataReceptions[lIndex], &lKBDStatusMessage, K_SHARED_DATA_MEDIA_CAN1);
+					}@/BRANCH@
+					@BRANCH MARK=TB ID=7 SUM=20@else
+					{
+						lCANRefreshStatus = pThis->_kccuDataReceptions[lIndex]->updateKBDStatus(pThis->_kccuDataReceptions[lIndex], &lKBDStatusMessage, K_SHARED_DATA_MEDIA_CAN2);
+					}@/BRANCH@@/DECISION@
+
+				}@/BRANCH@@/DECISION@
+			}
+			break;@SHORTCUT MARK=TB ID=2@
+
+			@BRANCH MARK=TB ID=9 SUM=20@@BRANCH NO@@BRANCH MARK=TE ID=20 SUM=30@default:@/BRANCH@@/BRANCH@
+			@COMMENT@/* case CAN_BUS_LOGIC_ID_FIRST :*/@/COMMENT@
+			{
+				@DECISION SUM=20+21 ID=10|11@if (@POPUP@lKCCUIsCCD == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=21 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=22 SUM=30@False@/BRANCH@@/POPUP@@/ALT@) @COMMENT@/* KCCU is CCD */@/COMMENT@
+				@BRANCH MARK=TB ID=10 SUM=20@{
+					lCANRefreshStatus = pThis->_kccuDataReceptions[lIndex]->updateCCDStatus(pThis->_kccuDataReceptions[lIndex], &lCCDStatusMessage, K_SHARED_DATA_MEDIA_CAN1);
+				}@/BRANCH@
+				@BRANCH MARK=TB ID=11 SUM=20@else @COMMENT@/* KCCU is KBD */@/COMMENT@
+				{
+					lCANRefreshStatus = pThis->_kccuDataReceptions[lIndex]->updateKBDStatus(pThis->_kccuDataReceptions[lIndex], &lKBDStatusMessage, K_SHARED_DATA_MEDIA_CAN1);
+				}@/BRANCH@@/DECISION@
+			}
+			break;@SHORTCUT MARK=TB ID=2@
+		}@/BRANCH@@/BRANCH@@/DECISION@;
+
+	@DECISION SUM=20+21 ID=14|15@if (@POPUP@lCANRefreshStatus == K_SHARED_DATA_STATUS_REFRESH@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=23 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=24 SUM=30@False@/BRANCH@@/POPUP@)
+	@BRANCH MARK=TB ID=14 SUM=20@{
+		lIsMonitoredMessageRefreshed = K_BOOL_TRUE;
+
+		@DECISION SUM=20+21 ID=12|13@if (@POPUP@lKCCUIsCCD == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=25 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=26 SUM=30@False@/BRANCH@@/POPUP@@/ALT@) @COMMENT@/* KCCU is CCD */@/COMMENT@
+		@BRANCH MARK=TB ID=12 SUM=20@{
+			@COMMENT@/* get locked key ie Kccu failure with cockpit effect */@/COMMENT@
+			pThis->_isKccuKeyLocked[pCANBusItem->sourceLruId-FIRST_LRU_ID_KCCU] = lCCDStatusMessage.kccuLockedKeyFlag;
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=13 SUM=20@else @COMMENT@/* KCCU is KBD */@/COMMENT@
+		{
+			pThis->_isKccuKeyLocked[pCANBusItem->sourceLruId-FIRST_LRU_ID_KCCU] = lKBDStatusMessage.kccuLockedKeyFlag;
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=15 SUM=20@else
+	{
+		lIsMonitoredMessageRefreshed = K_BOOL_FALSE;
+	}@/BRANCH@@/DECISION@
+
+	@COMMENT@/* confirmation check not refreshed during 200 ms : */@/COMMENT@
+	pThis->_confirmationHelper.confirmValue(&(pThis->_confirmationHelper), pCANBusItem->isMonitoredMessageRefreshed.confirmationId, lIsMonitoredMessageRefreshed, &(pCANBusItem->isMonitoredMessageRefreshed.confirmedValue));
+
+
+	@COMMENT@/* refreshed and not already done from the other CAN bus :*/@/COMMENT@
+	@DECISION SUM=20+21 ID=18|21@if (@POPUP@lKCCUIsCCD == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=27 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=28 SUM=30@False@/BRANCH@@/POPUP@@/ALT@) @COMMENT@/* KCCU is CCD */@/COMMENT@
+	@BRANCH MARK=TB ID=18 SUM=20@{
+		@DECISION SUM=20+21 ID=16|17@if (@POPUP@(@POPUP@lIsMonitoredMessageRefreshed == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=29 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=30 SUM=30@False@/BRANCH@@/POPUP@@/ALT@) &&
+			(@POPUP@pThis->_offStatus[pCANBusItem->sourceLruId].isRefreshedThisCycle == @ALT@K_BOOL_FALSE@-ALT@0@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=31 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=32 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)@-POPUP@modified and multiple conditions:
+  @BRANCH MARK=TE ID=33&35 SUM=31@lIsMonitoredMessageRefreshed == 1@/BRANCH@ needs
+      @BRANCH MARK=TE ID=33 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=35 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=33&34 SUM=31@pThis->_offStatus[pCANBusItem->sourceLruId].isRefreshedThisC ...@/BRANCH@ needs
+      @BRANCH MARK=TE ID=33 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=34 SUM=32@TF@/BRANCH@=F@/POPUP@)
+		@BRANCH MARK=TB ID=16 SUM=20@{
+			pThis->_offStatus[pCANBusItem->sourceLruId].isOffInProgress = lCCDStatusMessage.powerOff;
+			pThis->_offStatus[pCANBusItem->sourceLruId].isRefreshedThisCycle = K_BOOL_TRUE;
+
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=17 SUM=20@else
+		{
+			@COMMENT@/* NOTHING TO DO */@/COMMENT@
+			@COMMENT@/* Keep OffStatus last value */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=21 SUM=20@else
+	{
+		@DECISION SUM=20+21 ID=19|20@if (@POPUP@(@POPUP@lIsMonitoredMessageRefreshed == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=36 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=37 SUM=30@False@/BRANCH@@/POPUP@@/ALT@) &&
+			(@POPUP@pThis->_offStatus[pCANBusItem->sourceLruId].isRefreshedThisCycle == @ALT@K_BOOL_FALSE@-ALT@0@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=38 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=39 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)@-POPUP@modified and multiple conditions:
+  @BRANCH MARK=TE ID=40&42 SUM=31@lIsMonitoredMessageRefreshed == 1@/BRANCH@ needs
+      @BRANCH MARK=TE ID=40 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=42 SUM=32@FX@/BRANCH@=F
+  @BRANCH MARK=TE ID=40&41 SUM=31@pThis->_offStatus[pCANBusItem->sourceLruId].isRefreshedThisC ...@/BRANCH@ needs
+      @BRANCH MARK=TE ID=40 SUM=32@TT@/BRANCH@=T,@BRANCH MARK=TE ID=41 SUM=32@TF@/BRANCH@=F@/POPUP@)
+		@BRANCH MARK=TB ID=19 SUM=20@{
+			pThis->_offStatus[pCANBusItem->sourceLruId].isOffInProgress = lKBDStatusMessage.powerOff;
+			pThis->_offStatus[pCANBusItem->sourceLruId].isRefreshedThisCycle = K_BOOL_TRUE;
+
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=20 SUM=20@else
+		{
+			@COMMENT@/* NOTHING TO DO */@/COMMENT@
+			@COMMENT@/* Keep OffStatus last value */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@@/DECISION@
+
+	@COMMENT@/* get report from concerned bus : */@/COMMENT@
+	@DECISION SUM=20+21 ID=24|27@if (@POPUP@pCANBusLogicId == CAN_BUS_LOGIC_ID_FIRST@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=43 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=44 SUM=30@False@/BRANCH@@/POPUP@)
+	@BRANCH MARK=TB ID=24 SUM=20@{
+		pThis->_kccuAcquisitionReport[pCANBusItem->sourceLruId-FIRST_LRU_ID_KCCU].onFirstBus.isRefreshed = lIsMonitoredMessageRefreshed;
+
+		@DECISION SUM=20+21 ID=22|23@if (@POPUP@lIsMonitoredMessageRefreshed == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=45 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=46 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+		@BRANCH MARK=TB ID=22 SUM=20@{
+			pThis->_kccuAcquisitionReport[pCANBusItem->sourceLruId-FIRST_LRU_ID_KCCU].onFirstBus.isFailed = lKBDStatusMessage.refreshCAN1;
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=23 SUM=20@else
+		{
+			@COMMENT@/* NOTHING TO DO */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@
+	@BRANCH MARK=TB ID=27 SUM=20@else @COMMENT@// (pCANBusLogicId == CAN_BUS_LOGIC_ID_SECOND)@/COMMENT@
+	{
+		pThis->_kccuAcquisitionReport[pCANBusItem->sourceLruId-FIRST_LRU_ID_KCCU].onSecondBus.isRefreshed = lIsMonitoredMessageRefreshed;
+		@DECISION SUM=20+21 ID=25|26@if (@POPUP@lIsMonitoredMessageRefreshed == @ALT@K_BOOL_TRUE@-ALT@1@-POPUP@basic boolean conditions:
+  @BRANCH MARK=TE ID=47 SUM=30@True@/BRANCH@
+  @BRANCH MARK=TE ID=48 SUM=30@False@/BRANCH@@/POPUP@@/ALT@)
+		@BRANCH MARK=TB ID=25 SUM=20@{
+			pThis->_kccuAcquisitionReport[pCANBusItem->sourceLruId-FIRST_LRU_ID_KCCU].onSecondBus.isFailed = lKBDStatusMessage.refreshCAN2;
+		}@/BRANCH@
+		@BRANCH MARK=TB ID=26 SUM=20@else
+		{
+			@COMMENT@/* NOTHING TO DO */@/COMMENT@
+		}@/BRANCH@@/DECISION@
+	}@/BRANCH@@/DECISION@
+
+    @COMMENT@/* End of user code */@/COMMENT@
+	@BRANCH MARK=TP ID=0 SUM=1@return;@SHORTCUT MARK=TB ID=28@@/BRANCH@
+}@/BRANCH@@/NODE@
+
+@/NODE /RIK@

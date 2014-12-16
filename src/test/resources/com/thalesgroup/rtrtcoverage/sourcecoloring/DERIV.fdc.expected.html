@@ -1,0 +1,193 @@
+<html><head></head><body><table class="rtrtcoverage-file">
+<style media="screen" type="text/css">
+.rtrtcoverage-complete {
+  background-color: #ccffcc;}
+.rtrtcoverage-partial {
+  background-color: #ffffcc;}
+.rtrtcoverage-none {
+  background-color: #ffcccc;}
+.rtrtcoverage-hint {
+  border: 1px dashed grey;}
+</style>
+<tr><td><pre>1</pre></td><td><pre><span>/* deriv/deriv.c</span></pre></td></tr>
+<tr><td><pre>2</pre></td><td><pre><span> * </span></pre></td></tr>
+<tr><td><pre>3</pre></td><td><pre><span> * Copyright (C) 2004, 2007 Brian Gough</span></pre></td></tr>
+<tr><td><pre>4</pre></td><td><pre><span> * </span></pre></td></tr>
+<tr><td><pre>5</pre></td><td><pre><span> * This program is free software; you can redistribute it and/or modify</span></pre></td></tr>
+<tr><td><pre>6</pre></td><td><pre><span> * it under the terms of the GNU General Public License as published by</span></pre></td></tr>
+<tr><td><pre>7</pre></td><td><pre><span> * the Free Software Foundation; either version 3 of the License, or (at</span></pre></td></tr>
+<tr><td><pre>8</pre></td><td><pre><span> * your option) any later version.</span></pre></td></tr>
+<tr><td><pre>9</pre></td><td><pre><span> * </span></pre></td></tr>
+<tr><td><pre>10</pre></td><td><pre><span> * This program is distributed in the hope that it will be useful, but</span></pre></td></tr>
+<tr><td><pre>11</pre></td><td><pre><span> * WITHOUT ANY WARRANTY; without even the implied warranty of</span></pre></td></tr>
+<tr><td><pre>12</pre></td><td><pre><span> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span></pre></td></tr>
+<tr><td><pre>13</pre></td><td><pre><span> * General Public License for more details.</span></pre></td></tr>
+<tr><td><pre>14</pre></td><td><pre><span> * </span></pre></td></tr>
+<tr><td><pre>15</pre></td><td><pre><span> * You should have received a copy of the GNU General Public License</span></pre></td></tr>
+<tr><td><pre>16</pre></td><td><pre><span> * along with this program; if not, write to the Free Software</span></pre></td></tr>
+<tr><td><pre>17</pre></td><td><pre><span> * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</span></pre></td></tr>
+<tr><td><pre>18</pre></td><td><pre><span> */</span></pre></td></tr>
+<tr><td><pre>19</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>20</pre></td><td><pre><span>//#include &lt;config.h&gt;</span></pre></td></tr>
+<tr><td><pre>21</pre></td><td><pre><span>#include &lt;stdlib.h&gt;</span></pre></td></tr>
+<tr><td><pre>22</pre></td><td><pre><span>#include &lt;gsl/gsl_math.h&gt;</span></pre></td></tr>
+<tr><td><pre>23</pre></td><td><pre><span>#include &lt;gsl/gsl_errno.h&gt;</span></pre></td></tr>
+<tr><td><pre>24</pre></td><td><pre><span>#include &lt;gsl/gsl_deriv.h&gt;</span></pre></td></tr>
+<tr><td><pre>25</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>26</pre></td><td><pre><span>static void</span></pre></td></tr>
+<tr><td><pre>27</pre></td><td><pre><span class="rtrtcoverage-complete">central_deriv</span><span> (const gsl_function * f, double x, double h,</span></pre></td></tr>
+<tr><td><pre>28</pre></td><td><pre><span>               double *result, double *abserr_round, double *abserr_trunc)</span></pre></td></tr>
+<tr><td><pre>29</pre></td><td><pre><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>30</pre></td><td><pre><span class="rtrtcoverage-complete">  </span><span>/* Compute the derivative using the 5-point rule (x-h, x-h/2, x,</span></pre></td></tr>
+<tr><td><pre>31</pre></td><td><pre><span>     x+h/2, x+h). Note that the central point is not used.  </span></pre></td></tr>
+<tr><td><pre>32</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>33</pre></td><td><pre><span>     Compute the error using the difference between the 5-point and</span></pre></td></tr>
+<tr><td><pre>34</pre></td><td><pre><span>     the 3-point rule (x-h,x,x+h). Again the central point is not</span></pre></td></tr>
+<tr><td><pre>35</pre></td><td><pre><span>     used. */</span></pre></td></tr>
+<tr><td><pre>36</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>37</pre></td><td><pre><span class="rtrtcoverage-complete">  double fm1 = </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="(*((f)-&gt;function))(x - h,(f)-&gt;params)[covered]">GSL_FN_EVAL (f, x - h)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>38</pre></td><td><pre><span class="rtrtcoverage-complete">  double fp1 = </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="(*((f)-&gt;function))(x + h,(f)-&gt;params)[covered]">GSL_FN_EVAL (f, x + h)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>39</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>40</pre></td><td><pre><span class="rtrtcoverage-complete">  double fmh = </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="(*((f)-&gt;function))(x - h / 2,(f)-&gt;params)[covered]">GSL_FN_EVAL (f, x - h / 2)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>41</pre></td><td><pre><span class="rtrtcoverage-complete">  double fph = </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="(*((f)-&gt;function))(x + h / 2,(f)-&gt;params)[covered]">GSL_FN_EVAL (f, x + h / 2)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>42</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>43</pre></td><td><pre><span class="rtrtcoverage-complete">  double r3 = 0.5 * (fp1 - fm1);</span></pre></td></tr>
+<tr><td><pre>44</pre></td><td><pre><span class="rtrtcoverage-complete">  double r5 = (4.0 / 3.0) * (fph - fmh) - (1.0 / 3.0) * r3;</span></pre></td></tr>
+<tr><td><pre>45</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>46</pre></td><td><pre><span class="rtrtcoverage-complete">  double e3 = (</span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (fp1)</span><span class="rtrtcoverage-complete"> + </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (fm1)</span><span class="rtrtcoverage-complete">) * GSL_DBL_EPSILON;</span></pre></td></tr>
+<tr><td><pre>47</pre></td><td><pre><span class="rtrtcoverage-complete">  double e5 = 2.0 * (</span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (fph)</span><span class="rtrtcoverage-complete"> + </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (fmh)</span><span class="rtrtcoverage-complete">) * GSL_DBL_EPSILON + e3;</span></pre></td></tr>
+<tr><td><pre>48</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>49</pre></td><td><pre><span class="rtrtcoverage-complete">  </span><span>/* The next term is due to finite precision in x+h = O (eps * x) */</span></pre></td></tr>
+<tr><td><pre>50</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>51</pre></td><td><pre><span class="rtrtcoverage-complete">  double dy = </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="((fabs (r3 / h)) &gt; (fabs (r5 / h))[basic boolean conditions:  True[covered]  False[covered]] ? (fabs (r3 / h)[covered]) : (fabs (r5 / h)[covered]))">GSL_MAX (fabs (r3 / h), fabs (r5 / h))</span><span class="rtrtcoverage-complete"> *(</span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (x)</span><span class="rtrtcoverage-complete"> / h) * GSL_DBL_EPSILON;</span></pre></td></tr>
+<tr><td><pre>52</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>53</pre></td><td><pre><span class="rtrtcoverage-complete">  </span><span>/* The truncation error in the r5 approximation itself is O(h^4).</span></pre></td></tr>
+<tr><td><pre>54</pre></td><td><pre><span>     However, for safety, we estimate the error from r5-r3, which is</span></pre></td></tr>
+<tr><td><pre>55</pre></td><td><pre><span>     O(h^2).  By scaling h we will minimise this estimated error, not</span></pre></td></tr>
+<tr><td><pre>56</pre></td><td><pre><span>     the actual truncation error in r5. */</span></pre></td></tr>
+<tr><td><pre>57</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>58</pre></td><td><pre><span class="rtrtcoverage-complete">  *result = r5 / h;</span></pre></td></tr>
+<tr><td><pre>59</pre></td><td><pre><span class="rtrtcoverage-complete">  *abserr_trunc = </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> ((r5 - r3) / h)</span><span class="rtrtcoverage-complete">; </span><span>/* Estimated truncation error O(h^2) */</span></pre></td></tr>
+<tr><td><pre>60</pre></td><td><pre><span class="rtrtcoverage-complete">  *abserr_round = </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (e5 / h)</span><span class="rtrtcoverage-complete"> + dy;   </span><span>/* Rounding error (cancellations) */</span></pre></td></tr>
+<tr><td><pre>61</pre></td><td><pre><span class="rtrtcoverage-complete">}</span></pre></td></tr>
+<tr><td><pre>62</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>63</pre></td><td><pre><span>int</span></pre></td></tr>
+<tr><td><pre>64</pre></td><td><pre><span class="rtrtcoverage-complete">gsl_deriv_central</span><span> (const gsl_function * f, double x, double h,</span></pre></td></tr>
+<tr><td><pre>65</pre></td><td><pre><span>                   double *result, double *abserr)</span></pre></td></tr>
+<tr><td><pre>66</pre></td><td><pre><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>67</pre></td><td><pre><span class="rtrtcoverage-complete">  double r_0, round, trunc, error;</span></pre></td></tr>
+<tr><td><pre>68</pre></td><td><pre><span class="rtrtcoverage-complete">  </span><span class="rtrtcoverage-complete">central_deriv</span><span class="rtrtcoverage-complete"> (f, x, h, &amp;r_0, &amp;round, &amp;trunc)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>69</pre></td><td><pre><span class="rtrtcoverage-complete">  error = round + trunc;</span></pre></td></tr>
+<tr><td><pre>70</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>71</pre></td><td><pre><span class="rtrtcoverage-complete">  if (</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[covered]">round &lt; trunc</span><span class="rtrtcoverage-complete"> &amp;&amp; (</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">round &gt; 0</span><span class="rtrtcoverage-complete"> &amp;&amp; </span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">trunc &gt; 0</span><span class="rtrtcoverage-complete">))</span></pre></td></tr>
+<tr><td><pre>72</pre></td><td><pre><span class="rtrtcoverage-complete">    </span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>73</pre></td><td><pre><span class="rtrtcoverage-complete">      double r_opt, round_opt, trunc_opt, error_opt;</span></pre></td></tr>
+<tr><td><pre>74</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>75</pre></td><td><pre><span class="rtrtcoverage-complete">      </span><span>/* Compute an optimised stepsize to minimize the total error,</span></pre></td></tr>
+<tr><td><pre>76</pre></td><td><pre><span>         using the scaling of the truncation error (O(h^2)) and</span></pre></td></tr>
+<tr><td><pre>77</pre></td><td><pre><span>         rounding error (O(1/h)). */</span></pre></td></tr>
+<tr><td><pre>78</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>79</pre></td><td><pre><span class="rtrtcoverage-complete">      double h_opt = h * </span><span class="rtrtcoverage-complete">pow</span><span class="rtrtcoverage-complete"> (round / (2.0 * trunc), 1.0 / 3.0)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>80</pre></td><td><pre><span class="rtrtcoverage-complete">      </span><span class="rtrtcoverage-complete">central_deriv</span><span class="rtrtcoverage-complete"> (f, x, h_opt, &amp;r_opt, &amp;round_opt, &amp;trunc_opt)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>81</pre></td><td><pre><span class="rtrtcoverage-complete">      error_opt = round_opt + trunc_opt;</span></pre></td></tr>
+<tr><td><pre>82</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>83</pre></td><td><pre><span class="rtrtcoverage-complete">      </span><span>/* Check that the new error is smaller, and that the new derivative </span></pre></td></tr>
+<tr><td><pre>84</pre></td><td><pre><span>         is consistent with the error bounds of the original estimate. */</span></pre></td></tr>
+<tr><td><pre>85</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>86</pre></td><td><pre><span class="rtrtcoverage-complete">      if (</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">error_opt &lt; error</span><span class="rtrtcoverage-complete"> &amp;&amp; </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (r_opt - r_0)</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]"> &lt; 4.0 * error</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>87</pre></td><td><pre><span class="rtrtcoverage-complete">        </span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>88</pre></td><td><pre><span class="rtrtcoverage-complete">          r_0 = r_opt;</span></pre></td></tr>
+<tr><td><pre>89</pre></td><td><pre><span class="rtrtcoverage-complete">          error = error_opt;</span></pre></td></tr>
+<tr><td><pre>90</pre></td><td><pre><span class="rtrtcoverage-complete">        }</span></pre></td></tr>
+<tr><td><pre>91</pre></td><td><pre><span class="rtrtcoverage-complete">    }</span></pre></td></tr>
+<tr><td><pre>92</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>93</pre></td><td><pre><span class="rtrtcoverage-complete">  *result = r_0;</span></pre></td></tr>
+<tr><td><pre>94</pre></td><td><pre><span class="rtrtcoverage-complete">  *abserr = error;</span></pre></td></tr>
+<tr><td><pre>95</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>96</pre></td><td><pre><span class="rtrtcoverage-complete">  return GSL_SUCCESS;</span></pre></td></tr>
+<tr><td><pre>97</pre></td><td><pre><span class="rtrtcoverage-complete">}</span></pre></td></tr>
+<tr><td><pre>98</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>99</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>100</pre></td><td><pre><span>static void</span></pre></td></tr>
+<tr><td><pre>101</pre></td><td><pre><span class="rtrtcoverage-complete">forward_deriv</span><span> (const gsl_function * f, double x, double h,</span></pre></td></tr>
+<tr><td><pre>102</pre></td><td><pre><span>               double *result, double *abserr_round, double *abserr_trunc)</span></pre></td></tr>
+<tr><td><pre>103</pre></td><td><pre><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>104</pre></td><td><pre><span class="rtrtcoverage-complete">  </span><span>/* Compute the derivative using the 4-point rule (x+h/4, x+h/2,</span></pre></td></tr>
+<tr><td><pre>105</pre></td><td><pre><span>     x+3h/4, x+h).</span></pre></td></tr>
+<tr><td><pre>106</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>107</pre></td><td><pre><span>     Compute the error using the difference between the 4-point and</span></pre></td></tr>
+<tr><td><pre>108</pre></td><td><pre><span>     the 2-point rule (x+h/2,x+h).  */</span></pre></td></tr>
+<tr><td><pre>109</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>110</pre></td><td><pre><span class="rtrtcoverage-complete">  double f1 = </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="(*((f)-&gt;function))(x + h / 4.0,(f)-&gt;params)[covered]">GSL_FN_EVAL (f, x + h / 4.0)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>111</pre></td><td><pre><span class="rtrtcoverage-complete">  double f2 = </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="(*((f)-&gt;function))(x + h / 2.0,(f)-&gt;params)[covered]">GSL_FN_EVAL (f, x + h / 2.0)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>112</pre></td><td><pre><span class="rtrtcoverage-complete">  double f3 = </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="(*((f)-&gt;function))(x + (3.0 / 4.0) * h,(f)-&gt;params)[covered]">GSL_FN_EVAL (f, x + (3.0 / 4.0) * h)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>113</pre></td><td><pre><span class="rtrtcoverage-complete">  double f4 = </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="(*((f)-&gt;function))(x + h,(f)-&gt;params)[covered]">GSL_FN_EVAL (f, x + h)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>114</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>115</pre></td><td><pre><span class="rtrtcoverage-complete">  double r2 = 2.0*(f4 - f2);</span></pre></td></tr>
+<tr><td><pre>116</pre></td><td><pre><span class="rtrtcoverage-complete">  double r4 = (22.0 / 3.0) * (f4 - f3) - (62.0 / 3.0) * (f3 - f2) +</span></pre></td></tr>
+<tr><td><pre>117</pre></td><td><pre><span class="rtrtcoverage-complete">    (52.0 / 3.0) * (f2 - f1);</span></pre></td></tr>
+<tr><td><pre>118</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>119</pre></td><td><pre><span class="rtrtcoverage-complete">  </span><span>/* Estimate the rounding error for r4 */</span></pre></td></tr>
+<tr><td><pre>120</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>121</pre></td><td><pre><span class="rtrtcoverage-complete">  double e4 = 2 * 20.67 * (</span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (f4)</span><span class="rtrtcoverage-complete"> + </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (f3)</span><span class="rtrtcoverage-complete"> + </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (f2)</span><span class="rtrtcoverage-complete"> + </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (f1)</span><span class="rtrtcoverage-complete">) * GSL_DBL_EPSILON;</span></pre></td></tr>
+<tr><td><pre>122</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>123</pre></td><td><pre><span class="rtrtcoverage-complete">  </span><span>/* The next term is due to finite precision in x+h = O (eps * x) */</span></pre></td></tr>
+<tr><td><pre>124</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>125</pre></td><td><pre><span class="rtrtcoverage-complete">  double dy = </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="((fabs (r2 / h)) &gt; (fabs (r4 / h))[basic boolean conditions:  True[covered]  False[covered]] ? (fabs (r2 / h)[covered]) : (fabs (r4 / h)[covered]))">GSL_MAX (fabs (r2 / h), fabs (r4 / h))</span><span class="rtrtcoverage-complete"> * </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (x / h)</span><span class="rtrtcoverage-complete"> * GSL_DBL_EPSILON;</span></pre></td></tr>
+<tr><td><pre>126</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>127</pre></td><td><pre><span class="rtrtcoverage-complete">  </span><span>/* The truncation error in the r4 approximation itself is O(h^3).</span></pre></td></tr>
+<tr><td><pre>128</pre></td><td><pre><span>     However, for safety, we estimate the error from r4-r2, which is</span></pre></td></tr>
+<tr><td><pre>129</pre></td><td><pre><span>     O(h).  By scaling h we will minimise this estimated error, not</span></pre></td></tr>
+<tr><td><pre>130</pre></td><td><pre><span>     the actual truncation error in r4. */</span></pre></td></tr>
+<tr><td><pre>131</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>132</pre></td><td><pre><span class="rtrtcoverage-complete">  *result = r4 / h;</span></pre></td></tr>
+<tr><td><pre>133</pre></td><td><pre><span class="rtrtcoverage-complete">  *abserr_trunc = </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> ((r4 - r2) / h)</span><span class="rtrtcoverage-complete">; </span><span>/* Estimated truncation error O(h) */</span></pre></td></tr>
+<tr><td><pre>134</pre></td><td><pre><span class="rtrtcoverage-complete">  *abserr_round = </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (e4 / h)</span><span class="rtrtcoverage-complete"> + dy;</span></pre></td></tr>
+<tr><td><pre>135</pre></td><td><pre><span class="rtrtcoverage-complete">}</span></pre></td></tr>
+<tr><td><pre>136</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>137</pre></td><td><pre><span>int</span></pre></td></tr>
+<tr><td><pre>138</pre></td><td><pre><span class="rtrtcoverage-complete">gsl_deriv_forward</span><span> (const gsl_function * f, double x, double h,</span></pre></td></tr>
+<tr><td><pre>139</pre></td><td><pre><span>                   double *result, double *abserr)</span></pre></td></tr>
+<tr><td><pre>140</pre></td><td><pre><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>141</pre></td><td><pre><span class="rtrtcoverage-complete">  double r_0, round, trunc, error;</span></pre></td></tr>
+<tr><td><pre>142</pre></td><td><pre><span class="rtrtcoverage-complete">  </span><span class="rtrtcoverage-complete">forward_deriv</span><span class="rtrtcoverage-complete"> (f, x, h, &amp;r_0, &amp;round, &amp;trunc)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>143</pre></td><td><pre><span class="rtrtcoverage-complete">  error = round + trunc;</span></pre></td></tr>
+<tr><td><pre>144</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>145</pre></td><td><pre><span class="rtrtcoverage-complete">  if (</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">round &lt; trunc</span><span class="rtrtcoverage-complete"> &amp;&amp; (</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">round &gt; 0</span><span class="rtrtcoverage-complete"> &amp;&amp; </span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">trunc &gt; 0</span><span class="rtrtcoverage-complete">))</span></pre></td></tr>
+<tr><td><pre>146</pre></td><td><pre><span class="rtrtcoverage-complete">    </span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>147</pre></td><td><pre><span class="rtrtcoverage-complete">      double r_opt, round_opt, trunc_opt, error_opt;</span></pre></td></tr>
+<tr><td><pre>148</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>149</pre></td><td><pre><span class="rtrtcoverage-complete">      </span><span>/* Compute an optimised stepsize to minimize the total error,</span></pre></td></tr>
+<tr><td><pre>150</pre></td><td><pre><span>         using the scaling of the estimated truncation error (O(h)) and</span></pre></td></tr>
+<tr><td><pre>151</pre></td><td><pre><span>         rounding error (O(1/h)). */</span></pre></td></tr>
+<tr><td><pre>152</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>153</pre></td><td><pre><span class="rtrtcoverage-complete">      double h_opt = h * </span><span class="rtrtcoverage-complete">pow</span><span class="rtrtcoverage-complete"> (round / (trunc), 1.0 / 2.0)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>154</pre></td><td><pre><span class="rtrtcoverage-complete">      </span><span class="rtrtcoverage-complete">forward_deriv</span><span class="rtrtcoverage-complete"> (f, x, h_opt, &amp;r_opt, &amp;round_opt, &amp;trunc_opt)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>155</pre></td><td><pre><span class="rtrtcoverage-complete">      error_opt = round_opt + trunc_opt;</span></pre></td></tr>
+<tr><td><pre>156</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>157</pre></td><td><pre><span class="rtrtcoverage-complete">      </span><span>/* Check that the new error is smaller, and that the new derivative </span></pre></td></tr>
+<tr><td><pre>158</pre></td><td><pre><span>         is consistent with the error bounds of the original estimate. */</span></pre></td></tr>
+<tr><td><pre>159</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>160</pre></td><td><pre><span class="rtrtcoverage-complete">      if (</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]">error_opt &lt; error</span><span class="rtrtcoverage-complete"> &amp;&amp; </span><span class="rtrtcoverage-complete">fabs</span><span class="rtrtcoverage-complete"> (r_opt - r_0)</span><span class="rtrtcoverage-partial rtrtcoverage-hint" title="basic boolean conditions:  True[covered]  False[non-covered]"> &lt; 4.0 * error</span><span class="rtrtcoverage-complete">)</span></pre></td></tr>
+<tr><td><pre>161</pre></td><td><pre><span class="rtrtcoverage-complete">        </span><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>162</pre></td><td><pre><span class="rtrtcoverage-complete">          r_0 = r_opt;</span></pre></td></tr>
+<tr><td><pre>163</pre></td><td><pre><span class="rtrtcoverage-complete">          error = error_opt;</span></pre></td></tr>
+<tr><td><pre>164</pre></td><td><pre><span class="rtrtcoverage-complete">        }</span></pre></td></tr>
+<tr><td><pre>165</pre></td><td><pre><span class="rtrtcoverage-complete">    }</span></pre></td></tr>
+<tr><td><pre>166</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>167</pre></td><td><pre><span class="rtrtcoverage-complete">  *result = r_0;</span></pre></td></tr>
+<tr><td><pre>168</pre></td><td><pre><span class="rtrtcoverage-complete">  *abserr = error;</span></pre></td></tr>
+<tr><td><pre>169</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>170</pre></td><td><pre><span class="rtrtcoverage-complete">  return GSL_SUCCESS;</span></pre></td></tr>
+<tr><td><pre>171</pre></td><td><pre><span class="rtrtcoverage-complete">}</span></pre></td></tr>
+<tr><td><pre>172</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>173</pre></td><td><pre><span>int</span></pre></td></tr>
+<tr><td><pre>174</pre></td><td><pre><span class="rtrtcoverage-complete">gsl_deriv_backward</span><span> (const gsl_function * f, double x, double h,</span></pre></td></tr>
+<tr><td><pre>175</pre></td><td><pre><span>                    double *result, double *abserr)</span></pre></td></tr>
+<tr><td><pre>176</pre></td><td><pre><span class="rtrtcoverage-complete">{</span></pre></td></tr>
+<tr><td><pre>177</pre></td><td><pre><span class="rtrtcoverage-complete">  return </span><span class="rtrtcoverage-complete">gsl_deriv_forward</span><span class="rtrtcoverage-complete"> (f, x, -h, result, abserr)</span><span class="rtrtcoverage-complete">;</span></pre></td></tr>
+<tr><td><pre>178</pre></td><td><pre><span class="rtrtcoverage-complete">}</span></pre></td></tr>
+<tr><td><pre>179</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>180</pre></td><td><pre></pre></td>
+</tr>
+</table></body></html>
