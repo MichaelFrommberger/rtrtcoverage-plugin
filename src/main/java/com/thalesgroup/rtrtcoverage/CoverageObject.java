@@ -393,7 +393,7 @@ public abstract class CoverageObject<SELF extends CoverageObject<SELF>> {
                 className += " red";
             }
             buf.append("<td class='").append(className).append("'");
-            buf.append(" data='").append(dataFormat.format(ratio.getPercentageFloat()));
+            buf.append(" data='").append(dataFormat.format(ratio.getPercentageDouble()));
             buf.append("'>\n");
             printRatioTable(ratio, buf);
             buf.append("</td>\n");
@@ -411,14 +411,14 @@ public abstract class CoverageObject<SELF extends CoverageObject<SELF>> {
      *            the buffer to append
      */
     protected static void printRatioTable(final Ratio ratio, final StringBuilder buf) {
-        String data = dataFormat.format(ratio.getPercentageFloat());
-        String percent = percentFormat.format(ratio.getPercentageFloat());
+        String data = dataFormat.format(ratio.getPercentageDouble());
+        String percent = percentFormat.format(ratio.getPercentageDouble());
         String numerator = intFormat.format(ratio.getNumerator());
         String denominator = intFormat.format(ratio.getDenominator());
         buf.append("<table class='percentgraph' cellpadding='0px' cellspacing='0px'><tr class='percentgraph'>")
         .append("<td width='64px' class='data'>").append(percent).append("%</td>")
         .append("<td class='percentgraph'>")
-        .append("<div class='percentgraph'><div class='greenbar' style='width: ").append(ratio.getPercentageFloat()).append("px;'>")
+        .append("<div class='percentgraph'><div class='greenbar' style='width: ").append(ratio.getPercentageDouble()).append("px;'>")
         .append("<span class='text'>").append(numerator).append("/").append(denominator)
         .append("</span></div></div></td></tr></table>");
     }
@@ -464,15 +464,15 @@ public abstract class CoverageObject<SELF extends CoverageObject<SELF>> {
 
                 for (CoverageObject<SELF> a = obj; a != null; a = a.getPreviousResult()) {
                     NumberOnlyBuildLabel label = new NumberOnlyBuildLabel(a.getBuild());
-                    dsb.add(a.getFunctionAndExitCoverage().getPercentageFloat(), Messages.CoverageObject_Legend_Function(), label);
-                    dsb.add(a.call.getPercentageFloat(), Messages.CoverageObject_Legend_Call(), label);
-                    dsb.add(a.statBlock.getPercentageFloat(), Messages.CoverageObject_Legend_StatBlock(), label);
-                    dsb.add(a.implBlock.getPercentageFloat(), Messages.CoverageObject_Legend_ImplBlock(), label);
-                    dsb.add(a.statBlock.getPercentageFloat() + a.implBlock.getPercentageFloat(), Messages.CoverageObject_Legend_Decision(), label);
-                    dsb.add(a.loop.getPercentageFloat(), Messages.CoverageObject_Legend_Loop(), label);
-                    dsb.add(a.basicCond.getPercentageFloat(), Messages.CoverageObject_Legend_BasicCond(), label);
-                    dsb.add(a.modifCond.getPercentageFloat(), Messages.CoverageObject_Legend_ModifCond(), label);
-                    dsb.add(a.multCond.getPercentageFloat(), Messages.CoverageObject_Legend_MultCond(), label);
+                    dsb.add(a.getFunctionAndExitCoverage().getPercentageDouble(), Messages.CoverageObject_Legend_Function(), label);
+                    dsb.add(a.call.getPercentageDouble(), Messages.CoverageObject_Legend_Call(), label);
+                    dsb.add(a.statBlock.getPercentageDouble(), Messages.CoverageObject_Legend_StatBlock(), label);
+                    dsb.add(a.implBlock.getPercentageDouble(), Messages.CoverageObject_Legend_ImplBlock(), label);
+                    dsb.add(a.statBlock.getPercentageDouble() + a.implBlock.getPercentageDouble(), Messages.CoverageObject_Legend_Decision(), label);
+                    dsb.add(a.loop.getPercentageDouble(), Messages.CoverageObject_Legend_Loop(), label);
+                    dsb.add(a.basicCond.getPercentageDouble(), Messages.CoverageObject_Legend_BasicCond(), label);
+                    dsb.add(a.modifCond.getPercentageDouble(), Messages.CoverageObject_Legend_ModifCond(), label);
+                    dsb.add(a.multCond.getPercentageDouble(), Messages.CoverageObject_Legend_MultCond(), label);
 
                 }
 

@@ -20,7 +20,9 @@ public class RTRTBuildActionTest {
     public void testBuildAction() throws Exception {
 
         final Rule rRule = new Rule() {
-            @Override
+			private static final long serialVersionUID = 1L;
+
+			@Override
             public void enforce(final CoverageReport report,
                     final TaskListener listener) {
                 if (!report.hasCallCoverage()) {
@@ -49,9 +51,9 @@ public class RTRTBuildActionTest {
 
         final HealthReport hr = bAction.getBuildHealth();
         Assert.assertNotNull(hr);
-        Assert.assertEquals(0, hr.getScore());
+        Assert.assertEquals(100, hr.getScore());
         Assert.assertEquals(
-                "Coverage: Functions and Exits 0/0 (0%).Calls 0/0 (0%).Statement Blocks 0/0 (0%).Implicit Blocks 0/0 (0%).Decisions 0/0 (0%).Loops 0/0 (0%).Basic Conditions 0/0 (0%).Modified Conditions 0/0 (0%).Multiple Conditions 0/0 (0%). ",
+                "Coverage: All coverage targets have been met. ",
                 hr.getDescription());
 
     }
@@ -84,9 +86,9 @@ public class RTRTBuildActionTest {
 
         final HealthReport hr = bAction.getBuildHealth();
         Assert.assertNotNull(hr);
-        Assert.assertEquals("Coverage: Calls 0/0 (0%).Implicit Blocks 0/0 (0%).Loops 0/0 (0%). ",
+        Assert.assertEquals("Coverage: All coverage targets have been met. ",
                 hr.getDescription());
-        Assert.assertEquals(0, hr.getScore());
+        Assert.assertEquals(100, hr.getScore());
 
     }
 }

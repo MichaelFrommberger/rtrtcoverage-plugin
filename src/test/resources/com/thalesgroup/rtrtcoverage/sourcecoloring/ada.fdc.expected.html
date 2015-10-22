@@ -1,0 +1,126 @@
+<html><head></head><body><table class="rtrtcoverage-file">
+<style media="screen" type="text/css">
+.rtrtcoverage-complete {
+  background-color: #ccffcc;}
+.rtrtcoverage-partial {
+  background-color: #ffffcc;}
+.rtrtcoverage-none {
+  background-color: #ffcccc;}
+.rtrtcoverage-hint {
+  border: 1px dashed grey;}
+</style>
+<tr><td><pre>1</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>2</pre></td><td><pre><span>------------------------------------------------------------------------</span></pre></td></tr>
+<tr><td><pre>3</pre></td><td><pre><span>--</span></pre></td></tr>
+<tr><td><pre>4</pre></td><td><pre><span>--  Licensed Materials - Property of IBM</span></pre></td></tr>
+<tr><td><pre>5</pre></td><td><pre><span>--  Use Restricted Material of IBM - please refer to the &quot;Samples Code&quot; terms and conditions in the IBM International Program License Agreement (IPLA).</span></pre></td></tr>
+<tr><td><pre>6</pre></td><td><pre><span>--  IBM Rational Test RealTime</span></pre></td></tr>
+<tr><td><pre>7</pre></td><td><pre><span>--  (c) Copyright IBM Corp. 2003-2007 All Rights Reserved.</span></pre></td></tr>
+<tr><td><pre>8</pre></td><td><pre><span>--</span></pre></td></tr>
+<tr><td><pre>9</pre></td><td><pre><span>--  US Governement Users Restricted Rights - Use, duplication or</span></pre></td></tr>
+<tr><td><pre>10</pre></td><td><pre><span>--  disclosure restricted by GSA ADP Schedule Contract with IBM Corp.</span></pre></td></tr>
+<tr><td><pre>11</pre></td><td><pre><span>--</span></pre></td></tr>
+<tr><td><pre>12</pre></td><td><pre><span>------------------------------------------------------------------------</span></pre></td></tr>
+<tr><td><pre>13</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>14</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>15</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>16</pre></td><td><pre><span>package body </span><span>CodeCoverage</span><span> is</span></pre></td></tr>
+<tr><td><pre>17</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>18</pre></td><td><pre><span>-- Global variable</span></pre></td></tr>
+<tr><td><pre>19</pre></td><td><pre><span>selectCase: Types.Switch_t;</span></pre></td></tr>
+<tr><td><pre>20</pre></td><td><pre><span>Global_Detect_While: natural;</span></pre></td></tr>
+<tr><td><pre>21</pre></td><td><pre><span>Table: Types.Table_T;</span></pre></td></tr>
+<tr><td><pre>22</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>23</pre></td><td><pre><span>procedure </span><span>TEST</span><span> is separate;</span></pre></td></tr>
+<tr><td><pre>24</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>25</pre></td><td><pre><span class="rtrtcoverage-complete">function </span><span class="rtrtcoverage-complete">SimpleCondition</span><span class="rtrtcoverage-complete">(x: in integer) return integer is</span></pre></td></tr>
+<tr><td><pre>26</pre></td><td><pre><span class="rtrtcoverage-complete">begin</span></pre></td></tr>
+<tr><td><pre>27</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if (x&lt;0) </span><span class="rtrtcoverage-complete">then</span></pre></td></tr>
+<tr><td><pre>28</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">return (-x);</span></pre></td></tr>
+<tr><td><pre>29</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>30</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">return (x);</span></pre></td></tr>
+<tr><td><pre>31</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">end if;</span></pre></td></tr>
+<tr><td><pre>32</pre></td><td><pre><span class="rtrtcoverage-complete">end SimpleCondition;</span></pre></td></tr>
+<tr><td><pre>33</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>34</pre></td><td><pre><span class="rtrtcoverage-complete">procedure </span><span class="rtrtcoverage-complete">call</span><span class="rtrtcoverage-complete"> is</span></pre></td></tr>
+<tr><td><pre>35</pre></td><td><pre><span>x: integer:=1;</span></pre></td></tr>
+<tr><td><pre>36</pre></td><td><pre><span class="rtrtcoverage-complete">begin</span></pre></td></tr>
+<tr><td><pre>37</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">x:=SimpleCondition(x);</span></pre></td></tr>
+<tr><td><pre>38</pre></td><td><pre><span class="rtrtcoverage-complete">end call;</span></pre></td></tr>
+<tr><td><pre>39</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>40</pre></td><td><pre><span class="rtrtcoverage-complete">function </span><span class="rtrtcoverage-complete">SimpleConditionWithImplicit</span><span class="rtrtcoverage-complete">(x: in integer) return integer is</span></pre></td></tr>
+<tr><td><pre>41</pre></td><td><pre><span class="rtrtcoverage-complete">begin</span></pre></td></tr>
+<tr><td><pre>42</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="implicit else[covered]">if</span><span class="rtrtcoverage-complete"> (x&lt;0) </span><span class="rtrtcoverage-complete">then</span></pre></td></tr>
+<tr><td><pre>43</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">return (-x);</span></pre></td></tr>
+<tr><td><pre>44</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">end if;</span></pre></td></tr>
+<tr><td><pre>45</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">return (x);</span></pre></td></tr>
+<tr><td><pre>46</pre></td><td><pre><span class="rtrtcoverage-complete">end SimpleConditionWithImplicit;</span></pre></td></tr>
+<tr><td><pre>47</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>48</pre></td><td><pre><span class="rtrtcoverage-complete">function </span><span class="rtrtcoverage-complete">AndCondition</span><span class="rtrtcoverage-complete">(x: in integer) return integer is</span></pre></td></tr>
+<tr><td><pre>49</pre></td><td><pre><span class="rtrtcoverage-complete">begin</span></pre></td></tr>
+<tr><td><pre>50</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if ((x&gt;0) and (x&lt;100)) </span><span class="rtrtcoverage-complete">then</span></pre></td></tr>
+<tr><td><pre>51</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">return (x);</span></pre></td></tr>
+<tr><td><pre>52</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>53</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">return 0;</span></pre></td></tr>
+<tr><td><pre>54</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">end if;</span></pre></td></tr>
+<tr><td><pre>55</pre></td><td><pre><span class="rtrtcoverage-complete">end AndCondition;</span></pre></td></tr>
+<tr><td><pre>56</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>57</pre></td><td><pre><span class="rtrtcoverage-complete">function </span><span class="rtrtcoverage-complete">OrCondition</span><span class="rtrtcoverage-complete">(x: in integer) return integer is</span></pre></td></tr>
+<tr><td><pre>58</pre></td><td><pre><span class="rtrtcoverage-complete">begin</span></pre></td></tr>
+<tr><td><pre>59</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">if ((x=1) or (x&gt;10)) </span><span class="rtrtcoverage-complete">then</span></pre></td></tr>
+<tr><td><pre>60</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">return (x);</span></pre></td></tr>
+<tr><td><pre>61</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">else</span></pre></td></tr>
+<tr><td><pre>62</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">return 0;</span></pre></td></tr>
+<tr><td><pre>63</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">end if;</span></pre></td></tr>
+<tr><td><pre>64</pre></td><td><pre><span class="rtrtcoverage-complete">end OrCondition;</span></pre></td></tr>
+<tr><td><pre>65</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>66</pre></td><td><pre><span class="rtrtcoverage-complete">function </span><span class="rtrtcoverage-complete">Sum</span><span class="rtrtcoverage-complete">(x: in integer) return natural is</span></pre></td></tr>
+<tr><td><pre>67</pre></td><td><pre><span>sumValue: natural := 0;</span></pre></td></tr>
+<tr><td><pre>68</pre></td><td><pre><span class="rtrtcoverage-complete">begin</span></pre></td></tr>
+<tr><td><pre>69</pre></td><td><pre><span class="rtrtcoverage-complete">	for idx in reverse 0..(x-1) </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="Logical blocks:  0 loop[covered]  1 loop[covered]  2 loops or more[covered]">loop</span></pre></td></tr>
+<tr><td><pre>70</pre></td><td><pre><span class="rtrtcoverage-complete">		sumValue:=sumValue+(x-idx);</span></pre></td></tr>
+<tr><td><pre>71</pre></td><td><pre><span class="rtrtcoverage-complete">	end loop;</span></pre></td></tr>
+<tr><td><pre>72</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">return (sumValue);</span></pre></td></tr>
+<tr><td><pre>73</pre></td><td><pre><span class="rtrtcoverage-complete">end Sum;</span></pre></td></tr>
+<tr><td><pre>74</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>75</pre></td><td><pre><span class="rtrtcoverage-complete">function </span><span class="rtrtcoverage-complete">CheckCoverageStatement</span><span class="rtrtcoverage-complete">(cond1, cond2, cond3, cond4, cond5: in boolean) return float is</span></pre></td></tr>
+<tr><td><pre>76</pre></td><td><pre><span>retValue: float:=0.0;</span></pre></td></tr>
+<tr><td><pre>77</pre></td><td><pre><span>Index: natural:=0;</span></pre></td></tr>
+<tr><td><pre>78</pre></td><td><pre><span class="rtrtcoverage-complete">begin</span></pre></td></tr>
+<tr><td><pre>79</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span>-- Code to test instrumentation of if instruction and implicit else</span></pre></td></tr>
+<tr><td><pre>80</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="implicit else[covered]">if</span><span class="rtrtcoverage-complete"> (cond1=true) </span><span class="rtrtcoverage-complete">then</span></pre></td></tr>
+<tr><td><pre>81</pre></td><td><pre><span class="rtrtcoverage-complete">		retValue:=1.0;</span></pre></td></tr>
+<tr><td><pre>82</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">end if;</span></pre></td></tr>
+<tr><td><pre>83</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>84</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span>-- Code to test instrumentation of case instruction and implicit default</span></pre></td></tr>
+<tr><td><pre>85</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">case selectCase is</span></pre></td></tr>
+<tr><td><pre>86</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">when Types.CASE_1 =&gt; Detect_switch_case:=set_switch(1);</span></pre></td></tr>
+<tr><td><pre>87</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">when Types.CASE_2 =&gt; Detect_switch_case:=set_switch(2);</span></pre></td></tr>
+<tr><td><pre>88</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">when Types.CASE_3 =&gt; Detect_switch_case:=set_switch(3);</span></pre></td></tr>
+<tr><td><pre>89</pre></td><td><pre><span class="rtrtcoverage-complete">		</span><span class="rtrtcoverage-complete">when others =&gt; Detect_switch_case:=set_switch(4);</span></pre></td></tr>
+<tr><td><pre>90</pre></td><td><pre><span class="rtrtcoverage-complete">	end case;</span></pre></td></tr>
+<tr><td><pre>91</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>92</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span>-- Code to test instrumentation of MCDC</span></pre></td></tr>
+<tr><td><pre>93</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="implicit else[covered]">if</span><span class="rtrtcoverage-complete"> (((cond1 and cond2) or (cond3 and cond4)) and cond5) </span><span class="rtrtcoverage-complete">then</span></pre></td></tr>
+<tr><td><pre>94</pre></td><td><pre><span class="rtrtcoverage-complete">		retValue:=2.0;</span></pre></td></tr>
+<tr><td><pre>95</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">end if;</span></pre></td></tr>
+<tr><td><pre>96</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>97</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span>-- Code to test instrumentation of while instruction</span></pre></td></tr>
+<tr><td><pre>98</pre></td><td><pre><span class="rtrtcoverage-complete">	while (Global_Detect_While/=0) </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="Logical blocks:  0 loop[covered]  1 loop[covered]  2 loops or more[covered]">loop</span></pre></td></tr>
+<tr><td><pre>99</pre></td><td><pre><span class="rtrtcoverage-complete">		Global_Detect_While:=Global_Detect_While-1;</span></pre></td></tr>
+<tr><td><pre>100</pre></td><td><pre><span class="rtrtcoverage-complete">	end loop;</span></pre></td></tr>
+<tr><td><pre>101</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>102</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span>-- Code to test instrumentation of for instruction</span></pre></td></tr>
+<tr><td><pre>103</pre></td><td><pre><span class="rtrtcoverage-complete">	for Index in 1..Max_Index </span><span class="rtrtcoverage-complete rtrtcoverage-hint" title="Logical blocks:  0 loop[covered]  1 loop[covered]  2 loops or more[covered]">loop</span></pre></td></tr>
+<tr><td><pre>104</pre></td><td><pre><span class="rtrtcoverage-complete">		Table(Index):=Index;</span></pre></td></tr>
+<tr><td><pre>105</pre></td><td><pre><span class="rtrtcoverage-complete">	end loop;</span></pre></td></tr>
+<tr><td><pre>106</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>107</pre></td><td><pre><span class="rtrtcoverage-complete">	</span><span class="rtrtcoverage-complete">return (retValue);</span></pre></td></tr>
+<tr><td><pre>108</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>109</pre></td><td><pre><span class="rtrtcoverage-complete">end CheckCoverageStatement;</span></pre></td></tr>
+<tr><td><pre>110</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>111</pre></td><td><pre><span>end CodeCoverage;</span></pre></td></tr>
+<tr><td><pre>112</pre></td><td><pre></pre></td></tr>
+<tr><td><pre>113</pre></td><td><pre></pre></td>
+</tr>
+</table></body></html>

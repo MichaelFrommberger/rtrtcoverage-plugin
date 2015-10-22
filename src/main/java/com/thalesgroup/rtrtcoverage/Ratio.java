@@ -85,13 +85,18 @@ public final class Ratio implements Serializable {
         }
     }
 
+    @Exported
+    public boolean isNA() {
+    	return (denominator == 0);
+    }
     /**
      * Gets the percentage in integer.
      * @return percentage as integer
      */
     @Exported
     public int getPercentage() {
-        return Math.round(getPercentageFloat());
+    	
+        return Math.round(getPercentageDouble());
     }
 
     /**
@@ -99,7 +104,7 @@ public final class Ratio implements Serializable {
      * @return percentage as float
      */
     @Exported
-    public float getPercentageFloat() {
+    public float getPercentageDouble() {
         final int perCent = 100;
         if (denominator <= 0) {
             return 0;

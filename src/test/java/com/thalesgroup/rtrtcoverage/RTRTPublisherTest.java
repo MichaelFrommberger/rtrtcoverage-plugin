@@ -8,8 +8,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.thalesgroup.rtrtcoverage.fdcreader.BranchType;
@@ -128,7 +127,7 @@ public class RTRTPublisherTest {
         Assert.assertEquals(4, fileRate.getNodeRates().size());
         TestRate testRate = null;
         for (TestRate test : fileRate.getTestRates()) {
-            if (test.getTestName().equals("T74")) {
+            if (test.getTestName().equals("T74 \"SACO_RECEIVE_DATA/3\"")) {
                 testRate = test;
                 break;
             }
@@ -147,9 +146,9 @@ public class RTRTPublisherTest {
 
 
         // by test
-
+        testRate = null;
         for (TestRate test : fileRate.getTestRates()) {
-            if (test.getTestName().equals("T13")) {
+            if (test.getTestName().equals("T13 \"SACO_RECEIVE_DATA/1\"")) {
                 testRate = test;
                 break;
             }

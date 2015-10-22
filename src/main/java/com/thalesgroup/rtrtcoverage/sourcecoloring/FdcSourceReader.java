@@ -49,6 +49,10 @@ public class FdcSourceReader {
                 line = line.substring(line.indexOf('@') + 1);
                 break;
             }
+            if (line.startsWith("@@NODE")) {
+                line = line.substring(line.indexOf('@', 2) + 1);
+                break;
+            }
             line = buf.readLine();
         }
         // From that point, the fdc file structure is regular, we can use
@@ -70,6 +74,10 @@ public class FdcSourceReader {
                 // block end: @/TAGNAME@
                 int secondIndex = line.indexOf("@", 2);
                 String type = line.substring(2, secondIndex);
+                // seen in Ada FDC: @/BRANCH /NODE@ iso @/NODE@
+                if (type.contains(" ")) {
+                	type = type.split(" ")[1].substring(1);
+                }
                 if (popupInAlt == currentBlock && type.equals("ALT")) {
                     // special case: deal with POPUP spreading over a ALT block, e.g.:
                     // @ALT@code1@-ALT@altcode1@POPUP@altcode2@/ALT@code2@-POPUP@hint@/POPUP@
@@ -131,12 +139,19 @@ public class FdcSourceReader {
                     //     @POPUP@...@ALT@foo@-ALT@bar@-POPUP@
                     int secondIndex = line.indexOf("@", 2);
                     String type = line.substring(2, secondIndex);
+                	// also seen in Ada FDC: @-TAGNAME OTHERTAG ...@
+                	// ie. an embedded opening tag
+                    if (type.contains(" ")) {
+                    	type = type.split(" ")[0];
+                    	line = "@" + line.substring(line.indexOf(" ", 1) + 1);
+                    } else {
+                        line = line.substring(line.indexOf("@", 1) + 1);
+                    }
                     if (!currentBlock.getType().equals(type)) {
                         currentBlock = currentBlock.getParent();
                     }
                 }
                 currentBlock.changePart();
-                line = line.substring(line.indexOf("@", 1) + 1);
             } else if (line.startsWith("@@")) {
                 // an escaped @ character => a piece of code
                 int index = line.indexOf("@", 2);
