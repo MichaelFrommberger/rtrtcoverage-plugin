@@ -11,8 +11,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.thalesgroup.rtrtcoverage.fdcreader.FdcReader;
@@ -61,6 +60,13 @@ public class SourceColourerTest {
         computeColoring("INTERACTIVETESTSELECTOR_ARECONNECTIONSSATISFIED.FDC",
                 new String[] { "CLASS_INTERACTIVETESTSELECTOR.TIO" },
                 "161d3447", "1a09672d", "INTERACTIVETESTSELECTOR_ARECONNECTIONSSATISFIED.FDC.expected.html");
+    }
+
+    @Test
+    public void testColoring_Ada() throws Exception {
+        computeColoring("ada.fdc",
+                new String[] { "ada.tio" },
+                "4907780d", "3c2b766a", "ada.fdc.expected.html");
     }
 
     private void computeColoring(final String fdc, final String[] tios,

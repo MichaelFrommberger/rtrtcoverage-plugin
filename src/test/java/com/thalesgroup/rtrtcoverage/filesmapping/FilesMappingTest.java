@@ -6,8 +6,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.thalesgroup.rtrtcoverage.tioreader2.TestSuiteTrace;
@@ -16,7 +15,7 @@ import com.thalesgroup.rtrtcoverage.tioreader2.TioReader2;
 public class FilesMappingTest {
 
     @Test
-    public void test1() throws Exception {
+    public void test_C() throws Exception {
 
         // Extract tio data
         List<TestSuiteTrace> traces = new ArrayList<TestSuiteTrace>();
@@ -39,6 +38,33 @@ public class FilesMappingTest {
                 mapping.get("AIRPORTMANAGER_STATIC_GETINSTANCE.C").getAssociedTios().size());
         Assert.assertEquals("CLASS_AIRPORTMANAGER_4.TIO",
                 mapping.get("AIRPORTMANAGER_STATIC_GETINSTANCE.C").getAssociedTios().get(0).getName());
+
+    }
+
+    @Test
+    public void test_Ada() throws Exception {
+        // Extract tio data
+        List<TestSuiteTrace> traces = new ArrayList<TestSuiteTrace>();
+        for (FilePath tioFile : new FilePath(new File(this.getClass().getResource("./ada/tios").getPath())).list("*.tio")) {
+            TioReader2 tioReader = new TioReader2(tioFile.read());
+            TestSuiteTrace tst = tioReader.readTio();
+            tst.setName(tioFile.getName());
+            traces.add(tst);
+        }
+
+        FilesMapping mapping = new FilesMapping();
+        mapping.build(
+                traces,
+                new FilePath(new File(this.getClass().getResource("").getPath())),
+                "ada/**/*_adb.adb",
+                new FilePath(new File(this.getClass().getResource("./ada/tios").getPath())));
+        Assert.assertNotNull(mapping.get("CODECOVERAGE.ADB"));
+        Assert.assertEquals("4907780d", mapping.get("CODECOVERAGE.ADB").getKey());
+        Assert.assertEquals("3c2b766a", mapping.get("CODECOVERAGE.ADB").getCrc());
+        Assert.assertEquals(1,
+                mapping.get("CODECOVERAGE.ADB").getAssociedTios().size());
+        Assert.assertEquals("CODECOVERAGE.TIO",
+                mapping.get("CODECOVERAGE.ADB").getAssociedTios().get(0).getName().toUpperCase());
 
     }
 

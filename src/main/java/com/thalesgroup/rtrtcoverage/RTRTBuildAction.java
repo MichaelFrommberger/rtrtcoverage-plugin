@@ -11,7 +11,6 @@ import java.io.ObjectInputStream;
 import java.io.PrintStream;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 import org.jvnet.localizer.Localizable;
 import org.kohsuke.stapler.StaplerProxy;
@@ -33,11 +32,6 @@ implements HealthReportingAction, StaplerProxy {
      * The owner.
      */
     private final AbstractBuild<?, ?> owner;
-
-    /**
-     * Non-null if the coverage has pass/fail rules.
-     */
-    private final Rule rule;
 
     /**
      * The thresholds that applied when this build was built.
@@ -62,7 +56,6 @@ implements HealthReportingAction, StaplerProxy {
             final GlobalRate globalRate,
             final RTRTHealthReportThresholds newThresholds) {
         this.owner = newOwner;
-        this.rule = newRule;
         this.thresholds = newThresholds;
         this.initRatios(globalRate);
     }
@@ -107,80 +100,18 @@ implements HealthReportingAction, StaplerProxy {
         final int maxScore = 100;
         final int nbRatio = 9;
         int score = maxScore;
-        int percent;
         ArrayList<Localizable> reports = new ArrayList<Localizable>(nbRatio);
-        if (this.getFunctionCoverage() != null && this.getExitCoverage() != null && thresholds.getMaxFunction() > 0) {
-            percent = this.getFunctionAndExitCoverage().getPercentage();
-            if (percent < thresholds.getMaxFunction()) {
-                reports.add(Messages._BuildAction_Functions(this.getFunctionAndExitCoverage(), percent));
-            }
-            score = updateHealthScore(score, thresholds.getMinFunction(),
-                    percent, thresholds.getMaxFunction());
+        if (getFunctionCoverage() != null && getExitCoverage() != null) {
+        	score = updateScoreAndReports(getFunctionAndExitCoverage(), thresholds.getMinFunction(), thresholds.getMaxFunction(), score, reports);
         }
-        if (this.getCallCoverage() != null && thresholds.getMaxCall() > 0) {
-            percent = this.getCallCoverage().getPercentage();
-            if (percent < thresholds.getMaxCall()) {
-                reports.add(Messages._BuildAction_Calls(this.getCallCoverage(), percent));
-            }
-            score = updateHealthScore(score, thresholds.getMinCall(),
-                    percent, thresholds.getMaxCall());
-        }
-        if (this.getStatBlockCoverage() != null && thresholds.getMaxStatBlock() > 0) {
-            percent = this.getStatBlockCoverage().getPercentage();
-            if (percent < thresholds.getMaxStatBlock()) {
-                reports.add(Messages._BuildAction_StatBlocks(this.getStatBlockCoverage(), percent));
-            }
-            score = updateHealthScore(score, thresholds.getMinStatBlock(),
-                    percent, thresholds.getMaxStatBlock());
-        }
-        if (this.getImplBlockCoverage() != null && thresholds.getMaxImplBlock() > 0) {
-            percent = this.getImplBlockCoverage().getPercentage();
-            if (percent < thresholds.getMaxImplBlock()) {
-                reports.add(Messages._BuildAction_ImplBlocks(this.getImplBlockCoverage(), percent));
-            }
-            score = updateHealthScore(score, thresholds.getMinImplBlock(),
-                    percent, thresholds.getMaxImplBlock());
-        }
-        if (this.getDecisionCoverage() != null && thresholds.getMaxDecision() > 0) {
-            percent = this.getDecisionCoverage().getPercentage();
-            if (percent < thresholds.getMaxDecision()) {
-                reports.add(Messages._BuildAction_Decisions(this.getDecisionCoverage(), percent));
-            }
-            score = updateHealthScore(score, thresholds.getMinDecision(),
-                    percent, thresholds.getMaxDecision());
-        }
-        if (this.getLoopCoverage() != null && thresholds.getMaxLoop() > 0) {
-            percent = this.getLoopCoverage().getPercentage();
-            if (percent < thresholds.getMaxLoop()) {
-                reports.add(Messages._BuildAction_Loops(this.getLoopCoverage(), percent));
-            }
-            score = updateHealthScore(score, thresholds.getMinLoop(),
-                    percent, thresholds.getMaxLoop());
-        }
-        if (this.getBasicCondCoverage() != null && thresholds.getMaxBasicCond() > 0) {
-            percent = this.getBasicCondCoverage().getPercentage();
-            if (percent < thresholds.getMaxBasicCond()) {
-                reports.add(Messages._BuildAction_BasicConds(this.getBasicCondCoverage(), percent));
-            }
-            score = updateHealthScore(score, thresholds.getMinBasicCond(),
-                    percent, thresholds.getMaxBasicCond());
-        }
-        if (this.getModifCondCoverage() != null && thresholds.getMaxModifCond() > 0) {
-            percent = this.getModifCondCoverage().getPercentage();
-            if (percent < thresholds.getMaxModifCond()) {
-                reports.add(Messages._BuildAction_ModifConds(this.getModifCondCoverage(), percent));
-            }
-            score = updateHealthScore(score, thresholds.getMinModifCond(),
-                    percent, thresholds.getMaxModifCond());
-        }
-        if (this.getMultCondCoverage() != null && thresholds.getMaxMultCond() > 0) {
-            percent = this.getMultCondCoverage().getPercentage();
-            if (percent < thresholds.getMaxMultCond()) {
-                reports.add(Messages._BuildAction_MultConds(this.getMultCondCoverage(), percent));
-            }
-            score = updateHealthScore(score, thresholds.getMinMultCond(),
-                    percent, thresholds.getMaxMultCond());
-        }
+        score = updateScoreAndReports(getCallCoverage(), thresholds.getMinCall(), thresholds.getMaxCall(), score, reports);
+        score = updateScoreAndReports(getStatBlockCoverage(), thresholds.getMinStatBlock(), thresholds.getMaxStatBlock(), score, reports);
+        score = updateScoreAndReports(getImplBlockCoverage(), thresholds.getMinImplBlock(), thresholds.getMaxImplBlock(), score, reports);
+        score = updateScoreAndReports(getDecisionCoverage(), thresholds.getMinDecision(), thresholds.getMaxDecision(), score, reports);
+        score = updateScoreAndReports(getLoopCoverage(), thresholds.getMinLoop(), thresholds.getMaxLoop(), score, reports);
+        score = updateScoreAndReports(getBasicCondCoverage(), thresholds.getMinBasicCond(), thresholds.getMaxBasicCond(), score, reports);
+        score = updateScoreAndReports(getModifCondCoverage(), thresholds.getMinModifCond(), thresholds.getMaxModifCond(), score, reports);
+        score = updateScoreAndReports(getMultCondCoverage(), thresholds.getMinMultCond(), thresholds.getMaxMultCond(), score, reports);
 
         if (score == maxScore) {
             reports.add(Messages._BuildAction_Perfect());
@@ -200,6 +131,19 @@ implements HealthReportingAction, StaplerProxy {
         return new HealthReport(score,
                 Messages._BuildAction_Description(compilation));
     }
+
+	private int updateScoreAndReports(Ratio coverageRatio, int min, int max,
+			int score, ArrayList<Localizable> reports) {
+		if (coverageRatio != null && !coverageRatio.isNA() && max > 0) {
+			int percent = coverageRatio.getPercentage();
+            if (percent < max) {
+                reports.add(Messages._BuildAction_ModifConds(coverageRatio, percent));
+            }
+            return updateHealthScore(score, min, percent, max);
+        } else {
+        	return score;
+        }
+	}
 
     /**
      * Update the weather reports in hudson.
@@ -353,9 +297,4 @@ implements HealthReportingAction, StaplerProxy {
             final RTRTHealthReportThresholds thresholds) {
         return new RTRTBuildAction(owner, rule, globalRate, thresholds);
     }
-
-    /**
-     * Logger.
-     */
-    private static final Logger OWNLOGGER = Logger.getLogger(RTRTBuildAction.class.getName());
 }

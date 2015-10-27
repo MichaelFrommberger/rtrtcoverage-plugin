@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Parser of *.fdc file.
@@ -31,13 +32,11 @@ public class FdcReader {
         String currentLineString = new String();
         FileCoverageDefinition fileCoverageDef = new FileCoverageDefinition();
         fileCoverageDef.setFdcPath(fdcFile.getRemote());
-        NodeDefinition nodeDef = null;
+        Stack<NodeDefinition> nodes = new Stack<NodeDefinition>();
 
-        boolean isInNode = false;
         boolean isInPopup = false;
         int currentLineNumber = 0;
         int fileStartLineNumber = 0;
-
 
         // Read the *.fdc file only until "@RIK" token
         // No need to read further for the data we want
@@ -56,35 +55,57 @@ public class FdcReader {
                 fileCoverageDef.setSourceName(customSplit(currentLineString).get(1).toUpperCase());
                 fileCoverageDef.setSourceDir(customSplit(currentLineString).get(2));
             }
-            if (currentLineString.startsWith("NODE")) {
+            if ((fileStartLineNumber == 0)
+            		&& (currentLineString.startsWith("NODE")
+            				|| currentLineString.startsWith("@@NODE"))) {
                 fileStartLineNumber = currentLineNumber;
             }
             if (currentLineString.contains("@NODE")) {
-                nodeDef = null;
-                nodeDef = new NodeDefinition();
-                nodeDef.setNodeName(getStringAfterToken(getStringsBetween(currentLineString, "@NODE", "@").get(0), "NAME="));
-                isInNode = true;
+                NodeDefinition nodeDef = new NodeDefinition();
+                String nodeAttributes = getAttributesBetween(currentLineString, "@NODE", "@").get(0);
+                String nodeName = getAttributeValue(nodeAttributes, "NAME=");
+                nodeDef.setNodeName(nodeName);
+                nodes.push(nodeDef);
             }
-            if (isInNode) {
-                if (currentLineString.contains("@BRANCH")) {
-                    for (String str : getStringsBetween(currentLineString, "@BRANCH", "@")) {
+            if (!nodes.isEmpty()) {
+            	if (currentLineString.contains("@-POPUP BRANCH")) {
+                	// special cas for "implicit else" branches
+                    for (String str : getAttributesBetween(currentLineString, "@-POPUP BRANCH", "@")) {
                         IBranchDefinition branch = null;
-                        if (convertToBranchDefinitionType(getStringAfterToken(str, "SUM=")) != BranchType.TE_MODIFIEDS) {
+                        if (convertToBranchDefinitionType(getAttributeValue(str, "SUM=")) != BranchType.TE_MODIFIEDS) {
                             branch = new SingleBranchDefinition();
                         } else {
                             branch = new MultipleBranchDefinition();
                         }
-                        branch.setType(convertToBranchDefinitionType(getStringAfterToken(str, "SUM=")));
-                        branch.setId(getStringAfterToken(str, "ID="));
-                        branch.setMark(getStringAfterToken(str, "MARK="));
+                        branch.setType(convertToBranchDefinitionType(getAttributeValue(str, "SUM=")));
+                        branch.setId(getAttributeValue(str, "ID="));
+                        branch.setMark(getAttributeValue(str, "MARK="));
                         branch.setLineNumber(currentLineNumber - fileStartLineNumber);
-                        nodeDef.addBranchDefinition(branch);
+                        nodes.peek().addBranchDefinition(branch);
+                    }
+                }
+                if (currentLineString.contains("@BRANCH")) {
+                    for (String str : getAttributesBetween(currentLineString, "@BRANCH", "@")) {
+                        IBranchDefinition branch = null;
+                        if (convertToBranchDefinitionType(getAttributeValue(str, "SUM=")) != BranchType.TE_MODIFIEDS) {
+                            branch = new SingleBranchDefinition();
+                        } else {
+                            branch = new MultipleBranchDefinition();
+                        }
+                        branch.setType(convertToBranchDefinitionType(getAttributeValue(str, "SUM=")));
+                        branch.setId(getAttributeValue(str, "ID="));
+                        branch.setMark(getAttributeValue(str, "MARK="));
+                        branch.setLineNumber(currentLineNumber - fileStartLineNumber);
+                        nodes.peek().addBranchDefinition(branch);
                     }
                 }
             }
-            if (currentLineString.contains("@/NODE@")) {
-                fileCoverageDef.addNode(nodeDef);
-                isInNode = false;
+            if (currentLineString.contains("@/NODE@")
+            		|| currentLineString.contains("@/BRANCH /NODE@")
+            		|| currentLineString.contains("@/NODE /RIK@")) {
+            	if (!nodes.isEmpty()) {
+            		fileCoverageDef.addNode(nodes.pop());
+            	}
             }
             currentLineString = bf.readLine();
             if (!isInPopup) {
@@ -145,18 +166,32 @@ public class FdcReader {
     }
 
     /**
-     * @param phrase a branch string (without @BRANCH markers).
-     * @param token the token before the value we want ("ID=", "MARK=", etc)
+     * @param attributesString a branch string (without @BRANCH markers).
+     * @param attributeName the token before the value we want ("ID=", "MARK=", etc)
      * @return the string right after the input token
      */
-    private static String getStringAfterToken(final String phrase, final String token) {
-        String[] splitedPhrase = phrase.split(" ");
-        for (String word : splitedPhrase) {
-            if (word.contains(token)) {
-                return word.substring(token.length()).replaceAll("\"", "");
-            }
-        }
-        return "";
+	private static String getAttributeValue(final String attributesString,
+			final String attributeName) {
+		int idx = attributesString.indexOf(attributeName);
+		if (idx > -1) {
+			int begin = idx + attributeName.length();
+			int end = -1;
+			if (attributesString.startsWith("\"", begin)) {
+				begin ++;
+				// a quoted attribute => reach next quote
+				end = attributesString.indexOf("\"", begin + 1);
+			} else {
+				// a non quoted attribute => reach next space or end of string
+				end = attributesString.indexOf(" ", begin + 1);
+			}
+			if (end < begin) {
+				return attributesString.substring(begin);
+			} else {
+				return attributesString.substring(begin, end);
+			}
+		} else {
+			return "";
+		}
     }
 
     /**
@@ -165,7 +200,7 @@ public class FdcReader {
      * @param token2 the end token.
      * @return a list of all the strings contained between specified tokens.
      */
-    private static List<String> getStringsBetween(final String line, final String token1, final String token2) {
+    private static List<String> getAttributesBetween(final String line, final String token1, final String token2) {
         List<String> strings = new ArrayList<String>();
         int lastIdx = 0;
         lastIdx = line.indexOf(token1, lastIdx);

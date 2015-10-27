@@ -1,0 +1,204 @@
+VE 3.0e ADACOV ADA95COV 7.5.0.3
+FC "CODECOVERAGE.ADB" "E:/TEMP/FDA/TESTSUITEADA/SRC/"
+FD 1224512588
+TC PR RE BS BI BL
+BL 0 simple "CodeCoverage.SimpleCondition(x: in integer) return integer" / 26 32
+PR 0 proc "CodeCoverage.SimpleCondition(x: in integer) return integer" 25 25
+BL 1 simple "CodeCoverage.SimpleCondition(x: in integer) return integer" /then 27 29
+PR 1 return "CodeCoverage.SimpleCondition(x: in integer) return integer" 28 28
+BL 2 simple "CodeCoverage.SimpleCondition(x: in integer) return integer" /else 29 31
+PR 2 return "CodeCoverage.SimpleCondition(x: in integer) return integer" 30 30
+BL 3 simple "CodeCoverage.call" / 36 38
+PR 3 proc "CodeCoverage.call" 34 34
+PR 4 endproc "CodeCoverage.call" 37 37
+BL 4 simple "CodeCoverage.SimpleConditionWithImplicit(x: in integer) return integer" / 41 46
+PR 5 proc "CodeCoverage.SimpleConditionWithImplicit(x: in integer) return integer" 40 40
+BL 5 simple "CodeCoverage.SimpleConditionWithImplicit(x: in integer) return integer" /then 42 44
+PR 6 return "CodeCoverage.SimpleConditionWithImplicit(x: in integer) return integer" 43 43
+BL 6 implicit "CodeCoverage.SimpleConditionWithImplicit(x: in integer) return integer" /else 42 44
+BL 7 simple "CodeCoverage.SimpleConditionWithImplicit(x: in integer) return integer" /seq 44 45
+PR 7 return "CodeCoverage.SimpleConditionWithImplicit(x: in integer) return integer" 45 45
+BL 8 simple "CodeCoverage.AndCondition(x: in integer) return integer" / 49 55
+PR 8 proc "CodeCoverage.AndCondition(x: in integer) return integer" 48 48
+BL 9 simple "CodeCoverage.AndCondition(x: in integer) return integer" /then 50 52
+PR 9 return "CodeCoverage.AndCondition(x: in integer) return integer" 51 51
+BL 10 simple "CodeCoverage.AndCondition(x: in integer) return integer" /else 52 54
+PR 10 return "CodeCoverage.AndCondition(x: in integer) return integer" 53 53
+BL 11 simple "CodeCoverage.OrCondition(x: in integer) return integer" / 58 64
+PR 11 proc "CodeCoverage.OrCondition(x: in integer) return integer" 57 57
+BL 12 simple "CodeCoverage.OrCondition(x: in integer) return integer" /then 59 61
+PR 12 return "CodeCoverage.OrCondition(x: in integer) return integer" 60 60
+BL 13 simple "CodeCoverage.OrCondition(x: in integer) return integer" /else 61 63
+PR 13 return "CodeCoverage.OrCondition(x: in integer) return integer" 62 62
+BL 14 simple "CodeCoverage.Sum(x: in integer) return natural" / 68 73
+PR 14 proc "CodeCoverage.Sum(x: in integer) return natural" 66 66
+BL 15 logical "CodeCoverage.Sum(x: in integer) return natural" /for/0 69 69
+BL 16 logical "CodeCoverage.Sum(x: in integer) return natural" /for/1 69 69
+BL 17 logical "CodeCoverage.Sum(x: in integer) return natural" /for/2+ 69 69
+BL 18 simple "CodeCoverage.Sum(x: in integer) return natural" /for 69 71
+PR 15 return "CodeCoverage.Sum(x: in integer) return natural" 72 72
+BL 19 simple "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" / 78 109
+PR 16 proc "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" 75 75
+BL 20 simple "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /then 80 82
+BL 21 implicit "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /else 80 82
+BL 22 simple "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /case/when 86 86
+BL 23 simple "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /case/when 87 87
+BL 24 simple "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /case/when 88 88
+BL 25 simple "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /case/when_others 89 89
+BL 26 simple "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /then 93 95
+BL 27 implicit "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /else 93 95
+BL 28 logical "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /while/0 98 98
+BL 29 logical "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /while/1 98 98
+BL 30 logical "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /while/2+ 98 98
+BL 31 simple "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /while 98 100
+BL 32 logical "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /for/0 103 103
+BL 33 logical "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /for/1 103 103
+BL 34 logical "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /for/2+ 103 103
+BL 35 simple "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" /for 103 105
+PR 17 return "CodeCoverage.CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" 107 107
+DC 892827741
+@RIK
+ ENCODING="System"
+ TOKEN="ADACOV ADA95COV"
+ SRC="CODECOVERAGE.ADB"
+ DIR="E:/TEMP/FDA/TESTSUITEADA/SRC/"
+ DATE=1224512588
+ CHECKSUM=892827741
+ SUMS  ( "&Functions" =0,
+    "-&Exits" =1,
+    "Functions and exits" =0+1 ),
+  ( "&Calls"  ),
+  ( "Statement &blocks" =20,
+    "-&Implicit blocks" =21,
+    "Decisions" =20+21,
+    "&Loops" =22,
+    "&Asynchronous transfer control"  ),
+  ( "Basic &conditions" ,
+    "&Modified conditions" ,
+    "M&ultiple conditions"  )
+ ERRORS
+  49="a composition of conditions evaluates in an unexpected result, contact your vendor",
+  50="a composition of conditions reached with an unexpected input vector, contact your vendor",
+  51="an element of binary condition evaluates in an unexpected result, contact your vendor"
+@@NODE TYPE=FILE NAME="CodeCoverage.adb"@
+@COMMENT@------------------------------------------------------------------------@/COMMENT@
+@COMMENT@--@/COMMENT@
+@COMMENT@--  Licensed Materials - Property of IBM@/COMMENT@
+@COMMENT@--  Use Restricted Material of IBM - please refer to the "Samples Code" terms and conditions in the IBM International Program License Agreement (IPLA).@/COMMENT@
+@COMMENT@--  IBM Rational Test RealTime@/COMMENT@
+@COMMENT@--  (c) Copyright IBM Corp. 2003-2007 All Rights Reserved.@/COMMENT@
+@COMMENT@--@/COMMENT@
+@COMMENT@--  US Governement Users Restricted Rights - Use, duplication or@/COMMENT@
+@COMMENT@--  disclosure restricted by GSA ADP Schedule Contract with IBM Corp.@/COMMENT@
+@COMMENT@--@/COMMENT@
+@COMMENT@------------------------------------------------------------------------@/COMMENT@
+
+
+
+@NODE TYPE=PACKAGE NAME="CodeCoverage" BRANCH NO@package body @LINK NAME="CODECOVERAGE"@@JUMP NAME="CODECOVERAGE-S"@CodeCoverage@/JUMP@ is
+
+@COMMENT@-- Global variable@/COMMENT@
+selectCase: Types.Switch_t;
+Global_Detect_While: natural;
+Table: Types.Table_T;
+
+@NODE TYPE=PROCEDURE NAME="TEST" BRANCH NO@procedure @JUMP NAME="CODECOVERAGE.TEST-S"@TEST@/JUMP@ is separate;@/BRANCH /NODE@
+
+@NODE TYPE=FUNCTION NAME="SimpleCondition(x: in integer) return integer" BRANCH NO@@BRANCH MARK=TP ID=0 SUM=0@function @LINK NAME="CODECOVERAGE.SIMPLECONDITION(INTEGER)INTEGER"@@JUMP NAME="CODECOVERAGE.SIMPLECONDITION(INTEGER)INTEGER-S"@SimpleCondition@/JUMP@(x: in integer) return integer is@/BRANCH@
+@BRANCH MARK=TB ID=0 SUM=20@begin
+	@DECISION SUM=20+21 ID=1|2@if (x<0) @BRANCH MARK=TB ID=1 SUM=20@then
+		@BRANCH MARK=TP ID=1 SUM=1@return (-x);@SHORTCUT MARK=TB ID=0@@/BRANCH@
+	@/BRANCH@@BRANCH MARK=TB ID=2 SUM=20@else
+		@BRANCH MARK=TP ID=2 SUM=1@return (x);@SHORTCUT MARK=TB ID=0@@/BRANCH@
+	@/BRANCH@end if;@/DECISION@
+end SimpleCondition;@/BRANCH@@/BRANCH /NODE@
+
+@NODE TYPE=PROCEDURE NAME="call" BRANCH NO@@BRANCH MARK=TP ID=3 SUM=0@procedure @LINK NAME="CODECOVERAGE.CALL"@@JUMP NAME="CODECOVERAGE.CALL-S"@call@/JUMP@ is@/BRANCH@
+x: integer:=1;
+@BRANCH MARK=TB ID=3 SUM=20@begin
+	@BRANCH MARK=TP ID=4 SUM=1@x:=SimpleCondition(x);@/BRANCH@
+end call;@/BRANCH@@/BRANCH /NODE@
+
+@NODE TYPE=FUNCTION NAME="SimpleConditionWithImplicit(x: in integer) return integer" BRANCH NO@@BRANCH MARK=TP ID=5 SUM=0@function @LINK NAME="CODECOVERAGE.SIMPLECONDITIONWITHIMPLICIT(INTEGER)INTEGER"@@JUMP NAME="CODECOVERAGE.SIMPLECONDITIONWITHIMPLICIT(INTEGER)INTEGER-S"@SimpleConditionWithImplicit@/JUMP@(x: in integer) return integer is@/BRANCH@
+@BRANCH MARK=TB ID=4 SUM=20@begin
+	@DECISION SUM=20+21 ID=(5|6)|7@@POPUP@if@-POPUP BRANCH MARK=TB ID=6 SUM=21@implicit else@/BRANCH /POPUP@ (x<0) @BRANCH MARK=TB ID=5 SUM=20@then
+		@BRANCH MARK=TP ID=6 SUM=1@return (-x);@SHORTCUT MARK=TB ID=4@@/BRANCH@
+	@/BRANCH@end if;@/DECISION@@BRANCH MARK=TB ID=7 SUM=20@
+	@BRANCH MARK=TP ID=7 SUM=1@return (x);@SHORTCUT MARK=TB ID=4@@/BRANCH@@/BRANCH@
+end SimpleConditionWithImplicit;@/BRANCH@@/BRANCH /NODE@
+
+@NODE TYPE=FUNCTION NAME="AndCondition(x: in integer) return integer" BRANCH NO@@BRANCH MARK=TP ID=8 SUM=0@function @LINK NAME="CODECOVERAGE.ANDCONDITION(INTEGER)INTEGER"@@JUMP NAME="CODECOVERAGE.ANDCONDITION(INTEGER)INTEGER-S"@AndCondition@/JUMP@(x: in integer) return integer is@/BRANCH@
+@BRANCH MARK=TB ID=8 SUM=20@begin
+	@DECISION SUM=20+21 ID=9|10@if ((x>0) and (x<100)) @BRANCH MARK=TB ID=9 SUM=20@then
+		@BRANCH MARK=TP ID=9 SUM=1@return (x);@SHORTCUT MARK=TB ID=8@@/BRANCH@
+	@/BRANCH@@BRANCH MARK=TB ID=10 SUM=20@else
+		@BRANCH MARK=TP ID=10 SUM=1@return 0;@SHORTCUT MARK=TB ID=8@@/BRANCH@
+	@/BRANCH@end if;@/DECISION@
+end AndCondition;@/BRANCH@@/BRANCH /NODE@
+
+@NODE TYPE=FUNCTION NAME="OrCondition(x: in integer) return integer" BRANCH NO@@BRANCH MARK=TP ID=11 SUM=0@function @LINK NAME="CODECOVERAGE.ORCONDITION(INTEGER)INTEGER"@@JUMP NAME="CODECOVERAGE.ORCONDITION(INTEGER)INTEGER-S"@OrCondition@/JUMP@(x: in integer) return integer is@/BRANCH@
+@BRANCH MARK=TB ID=11 SUM=20@begin
+	@DECISION SUM=20+21 ID=12|13@if ((x=1) or (x>10)) @BRANCH MARK=TB ID=12 SUM=20@then
+		@BRANCH MARK=TP ID=12 SUM=1@return (x);@SHORTCUT MARK=TB ID=11@@/BRANCH@
+	@/BRANCH@@BRANCH MARK=TB ID=13 SUM=20@else
+		@BRANCH MARK=TP ID=13 SUM=1@return 0;@SHORTCUT MARK=TB ID=11@@/BRANCH@
+	@/BRANCH@end if;@/DECISION@
+end OrCondition;@/BRANCH@@/BRANCH /NODE@
+
+@NODE TYPE=FUNCTION NAME="Sum(x: in integer) return natural" BRANCH NO@@BRANCH MARK=TP ID=14 SUM=0@function @LINK NAME="CODECOVERAGE.SUM(INTEGER)NATURAL"@@JUMP NAME="CODECOVERAGE.SUM(INTEGER)NATURAL-S"@Sum@/JUMP@(x: in integer) return natural is@/BRANCH@
+sumValue: natural := 0;
+@BRANCH MARK=TB ID=14 SUM=20@begin
+	for idx in reverse 0..(x-1) @BRANCH MARK=TB ID=18 SUM=20@@POPUP@loop@-POPUP@Logical blocks:
+  @BRANCH MARK=TB ID=15 SUM=22@0 loop@/BRANCH@
+  @BRANCH MARK=TB ID=16 SUM=22@1 loop@/BRANCH@
+  @BRANCH MARK=TB ID=17 SUM=22@2 loops or more@/BRANCH /POPUP@
+		sumValue:=sumValue+(x-idx);
+	end loop;@/BRANCH@
+	@BRANCH MARK=TP ID=15 SUM=1@return (sumValue);@SHORTCUT MARK=TB ID=14@@/BRANCH@
+end Sum;@/BRANCH@@/BRANCH /NODE@
+
+@NODE TYPE=FUNCTION NAME="CheckCoverageStatement(cond1, cond2, cond3, cond4, cond5: in boolean) return float" BRANCH NO@@BRANCH MARK=TP ID=16 SUM=0@function @LINK NAME="CODECOVERAGE.CHECKCOVERAGESTATEMENT(BOOLEAN,BOOLEAN,BOOLEAN,BOOLEAN,BOOLEAN)FLOAT"@@JUMP NAME="CODECOVERAGE.CHECKCOVERAGESTATEMENT(BOOLEAN,BOOLEAN,BOOLEAN,BOOLEAN,BOOLEAN)FLOAT-S"@CheckCoverageStatement@/JUMP@(cond1, cond2, cond3, cond4, cond5: in boolean) return float is@/BRANCH@
+retValue: float:=0.0;
+Index: natural:=0;
+@BRANCH MARK=TB ID=19 SUM=20@begin
+	@COMMENT@-- Code to test instrumentation of if instruction and implicit else@/COMMENT@
+	@DECISION SUM=20+21 ID=20|21@@POPUP@if@-POPUP BRANCH MARK=TB ID=21 SUM=21@implicit else@/BRANCH /POPUP@ (cond1=true) @BRANCH MARK=TB ID=20 SUM=20@then
+		retValue:=1.0;
+	@/BRANCH@end if;@/DECISION@
+
+	@COMMENT@-- Code to test instrumentation of case instruction and implicit default@/COMMENT@
+	@DECISION SUM=20+21 ID=22|23|24|25@case selectCase is
+		@BRANCH MARK=TB ID=22 SUM=20@when Types.CASE_1 => Detect_switch_case:=set_switch(1);@/BRANCH@
+		@BRANCH MARK=TB ID=23 SUM=20@when Types.CASE_2 => Detect_switch_case:=set_switch(2);@/BRANCH@
+		@BRANCH MARK=TB ID=24 SUM=20@when Types.CASE_3 => Detect_switch_case:=set_switch(3);@/BRANCH@
+		@BRANCH MARK=TB ID=25 SUM=20@when others => Detect_switch_case:=set_switch(4);@/BRANCH@
+	end case;@/DECISION@
+
+	@COMMENT@-- Code to test instrumentation of MCDC@/COMMENT@
+	@DECISION SUM=20+21 ID=26|27@@POPUP@if@-POPUP BRANCH MARK=TB ID=27 SUM=21@implicit else@/BRANCH /POPUP@ (((cond1 and cond2) or (cond3 and cond4)) and cond5) @BRANCH MARK=TB ID=26 SUM=20@then
+		retValue:=2.0;
+	@/BRANCH@end if;@/DECISION@
+
+	@COMMENT@-- Code to test instrumentation of while instruction@/COMMENT@
+	while (Global_Detect_While/=0) @BRANCH MARK=TB ID=31 SUM=20@@POPUP@loop@-POPUP@Logical blocks:
+  @BRANCH MARK=TB ID=28 SUM=22@0 loop@/BRANCH@
+  @BRANCH MARK=TB ID=29 SUM=22@1 loop@/BRANCH@
+  @BRANCH MARK=TB ID=30 SUM=22@2 loops or more@/BRANCH /POPUP@
+		Global_Detect_While:=Global_Detect_While-1;
+	end loop;@/BRANCH@
+
+	@COMMENT@-- Code to test instrumentation of for instruction@/COMMENT@
+	for Index in 1..Max_Index @BRANCH MARK=TB ID=35 SUM=20@@POPUP@loop@-POPUP@Logical blocks:
+  @BRANCH MARK=TB ID=32 SUM=22@0 loop@/BRANCH@
+  @BRANCH MARK=TB ID=33 SUM=22@1 loop@/BRANCH@
+  @BRANCH MARK=TB ID=34 SUM=22@2 loops or more@/BRANCH /POPUP@
+		Table(Index):=Index;
+	end loop;@/BRANCH@
+
+	@BRANCH MARK=TP ID=17 SUM=1@return (retValue);@SHORTCUT MARK=TB ID=19@@/BRANCH@
+
+end CheckCoverageStatement;@/BRANCH@@/BRANCH /NODE@
+
+end CodeCoverage;@/BRANCH /NODE@
+
+@/NODE /RIK@
