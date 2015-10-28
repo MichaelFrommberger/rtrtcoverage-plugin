@@ -1,6 +1,7 @@
 package com.thalesgroup.rtrtcoverage;
 
 import hudson.Extension;
+import hudson.EnvVars;
 import hudson.FilePath;
 import hudson.Launcher;
 import hudson.model.Action;
