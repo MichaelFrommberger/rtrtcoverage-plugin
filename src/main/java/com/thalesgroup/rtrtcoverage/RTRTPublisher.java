@@ -174,6 +174,14 @@ public class RTRTPublisher extends Recorder {
             throws InterruptedException, IOException {
 
         final PrintStream logger = listener.getLogger();
+        
+        //prod00138477 : expand variables in file fields
+        EnvVars env = build.getEnvironment(listener);
+        String includesTio = env.expand(this.includesTio);
+        String augPattern = env.expand(this.augPattern);
+        String includesFdc = env.expand(this.includesFdc);
+        String tusarExportPathFromWorkspaceDir = env.expand(this.tusarExportPathFromWorkspaceDir);
+        String tusarExportPathFromBuildDir = env.expand(this.tusarExportPathFromBuildDir);
 
         FilePath[] reports = build.getWorkspace().list(includesTio);
 
