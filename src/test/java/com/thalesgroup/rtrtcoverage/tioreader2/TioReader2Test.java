@@ -29,6 +29,16 @@ public class TioReader2Test {
     }
 
     @Test
+    public void testReadFile_withDot() throws TioException {
+        testReadTio("CM_AUTOMATE.tio");
+    }
+
+    @Test
+    public void testReadFile_withDot2() throws TioException {
+        testReadTio("EV_CHANGEADDRESSAIRCRAFT.tio");
+    }
+
+    @Test
     public void test_Ada() throws TioException {
     	TestSuiteTrace testSuiteTrace = testReadTio("ada.tio");
     	// le fichier tio contient 18 blocks de trace "NT"
