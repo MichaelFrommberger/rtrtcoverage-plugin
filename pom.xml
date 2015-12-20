@@ -14,7 +14,7 @@
 	<artifactId>rtrtcoverage</artifactId>
 	<packaging>hpi</packaging>
 	<name>RTRTCoverage plugin</name>
-	<version>2.9-SNAPSHOT</version>
+	<version>2.9</version>
 	<description>RTRT code coverage reports in Hudson/Jenkins.</description>
 	<developers>
 		<developer>
