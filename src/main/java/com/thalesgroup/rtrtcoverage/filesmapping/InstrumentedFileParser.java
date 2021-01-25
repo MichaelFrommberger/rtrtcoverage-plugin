@@ -2,6 +2,8 @@ package com.thalesgroup.rtrtcoverage.filesmapping;
 
 import hudson.FilePath;
 
+import org.apache.commons.io.FilenameUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -52,7 +54,6 @@ public final class InstrumentedFileParser {
                     data = line.split(",", maxData);
                     key = giveCleanAddress(data[1]);
                     crc = giveCleanAddress(data[2]);
-                    break;
                 } else if (line.startsWith("ATW.COVERAGE.LINK_DESC")) {
                 	// Ada file:
                 	// ATW.COVERAGE.LINK_DESC( TRACES'ACCESS, "  d0877094", "  a667b2c3" );
@@ -99,19 +100,19 @@ public final class InstrumentedFileParser {
      */
     private static String getCleanSourceName(final FilePath augFile, final String augPattern, final boolean isAdaFile) {
     	String sourceFileName = augFile.getName().toUpperCase();
+        String extension = FilenameUtils.getExtension(sourceFileName);
+        sourceFileName = FilenameUtils.removeExtension(sourceFileName);
+
     	// strip the instrumented prefix (for Ada files) and suffix (for both C and Ada files)
     	String prefixAda = "ATC_";
     	if (isAdaFile && sourceFileName.startsWith(prefixAda)) {
     		sourceFileName = sourceFileName.substring(prefixAda.length());
     	}
-    	String suffix = augPattern.substring(augPattern.lastIndexOf("*") + 1, augPattern.length()).toUpperCase();
+        String suffix = FilenameUtils.removeExtension(augPattern);
+    	suffix = suffix.substring(suffix.lastIndexOf("*") + 1, suffix.length()).toUpperCase();
     	sourceFileName = sourceFileName.replace(suffix, "");
-    	// Add the file type, depending on the language
-    	if (isAdaFile) {
-    		sourceFileName = sourceFileName +  ".ADB";
-    	} else {
-    		sourceFileName = sourceFileName +  ".C";
-    	}
+        sourceFileName = sourceFileName + "." + extension;
+        
         return sourceFileName;
     }
 
