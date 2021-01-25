@@ -36,7 +36,7 @@ public class FdcReaderTest {
         fileCovDef = reader.read(new FilePath(new File(this.getClass()
                 .getResource("").getPath()
                 + "/CODECOVERAGE.ADB.fdc")));
-        Assert.assertEquals("E:/TEMP/FDA/TESTSUITEADA/SRC", fileCovDef.getSourceDir());
+        Assert.assertEquals("E:\\TEMP\\FDA\\TESTSUITEADA\\SRC", fileCovDef.getSourceDir());
         Assert.assertEquals("CODECOVERAGE.ADB", fileCovDef.getSourceName());
         // il y a 10 noeuds dans le fichier :
         // @NODE TYPE=FILE NAME="CodeCoverage.adb"

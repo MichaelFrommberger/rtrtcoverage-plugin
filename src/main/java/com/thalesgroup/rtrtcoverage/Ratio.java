@@ -24,7 +24,7 @@ public final class Ratio implements Serializable {
      */
     private float numerator = 0;
     /**
-     * The denominator. Must be > 0 if initialized and numerator > 0.
+     * The denominator. Must be &gt; 0 if initialized and numerator &gt; 0.
      */
     private float denominator = 0;
     /**

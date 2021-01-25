@@ -14,7 +14,7 @@ import java.io.Serializable;
  * 50% for any class", and if this rule is violated, the build will be marked as
  * unstable.
  * <p>
- * The rule instances are persisted as a part of {@link Build}, so make sure to
+ * The rule instances are persisted as a part of {@link RTRTBuildAction}, so make sure to
  * make your class serializable. This is so that we can consistently mark
  * coverage results even if the job configuration changes.
  *

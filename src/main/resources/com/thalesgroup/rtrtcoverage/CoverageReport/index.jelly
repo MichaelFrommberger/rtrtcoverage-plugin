@@ -1,59 +1,60 @@
+<?jelly escape-by-default='true'?> 
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-  <l:layout xmlns:e="/com/thalesgroup/rtrtcoverage/tags" norefresh="true" css="/plugin/rtrtcoverage/css/rtrtstyle.css">
-    <st:include it="${it.build}" page="sidepanel.jelly" />
-    <l:main-panel>
-      <h2>${%RTRT Coverage Report}</h2>
-      <div>
-  		<img src="graph" width="400" height="200"/>
-	  </div>
+    <l:layout xmlns:e="/com/thalesgroup/rtrtcoverage/tags" norefresh="true" css="/plugin/rtrtcoverage/css/rtrtstyle.css">
+        <st:include it="${it.build}" page="sidepanel.jelly" />
+        <l:main-panel>
+            <h2>${%RTRT Coverage Report}</h2>
+            <div>
+                <img src="graph" width="400" height="200"/>
+            </div>
 
-      <h3>${%Overall Coverage Summary}</h3>
-      <table border="1px" class="pane">
-    	<j:if test="${it.hasChildren()}">
-  			<tr>
-    		<th>${%name}</th>
-    		<th>${%function}</th>
-    		<th>${%call}</th>
-    		<th>${%statement_blocks}</th>
-    		<th>${%implicit_blocks}</th>
-    		<th>${%decision}</th>
-    		<th>${%loop}</th>
-    		<th>${%basic_condition}</th>
-    		<th>${%modified_condition}</th>
-    		<th>${%multiple_condition}</th>
-  			</tr>
-		</j:if>
-    	<tr>
-      		<td>${%all classes}</td>
-      		${it.printNineCoverageColumns()}
-    	</tr>
-  	  </table>
+            <h3>${%Overall Coverage Summary}</h3>
+            <table border="1px" class="pane">
+                <j:if test="${it.hasChildren()}">
+                    <tr>
+                        <th>${%name}</th>
+                        <th>${%function}</th>
+                        <th>${%call}</th>
+                        <th>${%statement_blocks}</th>
+                        <th>${%implicit_blocks}</th>
+                        <th>${%decision}</th>
+                        <th>${%loop}</th>
+                        <th>${%basic_condition}</th>
+                        <th>${%modified_condition}</th>
+                        <th>${%multiple_condition}</th>
+                    </tr>
+                </j:if>
+                <tr>
+                    <td>${%all classes}</td>
+                    <j:out value="${it.printNineCoverageColumns()}" />
+                </tr>
+            </table>
 
-      <h3>${%Coverage Breakdown by Package}</h3>
-      <table border="1px" class="sortable pane">
-    	<j:if test="${it.hasChildren()}">
-  			<tr>
-    		<th>${%name}</th>
-    		<th>${%function}</th>
-    		<th>${%call}</th>
-    		<th>${%statement_blocks}</th>
-    		<th>${%implicit_blocks}</th>
-    		<th>${%decision}</th>
-       		<th>${%loop}</th>
-    		<th>${%basic_condition}</th>
-    		<th>${%modified_condition}</th>
-    		<th>${%multiple_condition}</th>
-  			</tr>
-		</j:if>
-    	<j:forEach var="c" items="${it.children.values()}">
-      	<tr>
-        	<td class="nowrap ${h.ifThenElse(c.failed,' red','')}" >
-          		<a href="${h.ifThenElse(nolink!=null,null,c.name+'/')}"><st:out value="${c.name}"/></a>
-        	</td>	      
-        	${c.printNineCoverageColumns()}
-      	</tr>
-    	</j:forEach>
-      </table>
-    </l:main-panel>
-  </l:layout>
+            <h3>${%Coverage Breakdown by Package}</h3>
+            <table border="1px" class="sortable pane">
+                <j:if test="${it.hasChildren()}">
+                    <tr>
+                        <th>${%name}</th>
+                        <th>${%function}</th>
+                        <th>${%call}</th>
+                        <th>${%statement_blocks}</th>
+                        <th>${%implicit_blocks}</th>
+                        <th>${%decision}</th>
+                        <th>${%loop}</th>
+                        <th>${%basic_condition}</th>
+                        <th>${%modified_condition}</th>
+                        <th>${%multiple_condition}</th>
+                    </tr>
+                </j:if>
+                <j:forEach var="c" items="${it.children.values()}">
+                    <tr>
+                        <td class="nowrap ${h.ifThenElse(c.failed,' red','')}" >
+                            <a href="${h.ifThenElse(nolink!=null,null,c.name+'/')}"><st:out value="${c.name}"/></a>
+                        </td>	      
+                        <j:out value="${c.printNineCoverageColumns()}" />
+                    </tr>
+                </j:forEach>
+            </table>
+        </l:main-panel>
+    </l:layout>
 </j:jelly>

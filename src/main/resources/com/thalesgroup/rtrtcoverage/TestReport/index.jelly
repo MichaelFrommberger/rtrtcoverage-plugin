@@ -1,3 +1,4 @@
+<?jelly escape-by-default='true'?> 
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
   <l:layout xmlns:e="/com/thalesgroup/rtrtcoverage/tags" norefresh="true" css="/plugin/rtrtcoverage/css/rtrtstyle.css">
     <st:include it="${it.build}" page="sidepanel.jelly" />
@@ -23,7 +24,7 @@
   		</tr>
     	<tr>
       		<td>${it.name}</td>
-      		${it.printNineCoverageColumns()}
+      		<j:out value="${it.printNineCoverageColumns()}" />
     	</tr>
   	  </table>
   	  <j:if test="${it.isSourceCodeLevel()}">
@@ -32,7 +33,7 @@
                 		<h3>${%Source Code}</h3>
                         <div style="overflow-x:scroll;">
                             <table class="source">
-                                ${it.getPaintedSourceFileContent()}
+                                <j:out value="${it.getPaintedSourceFileContent()}" />
                             </table>
                         </div>
                     </j:when>

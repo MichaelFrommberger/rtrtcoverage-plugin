@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Data structure for a test file extracted from a *.tio file NT->NT-1.
+ * Data structure for a test file extracted from a *.tio file NT-&gt;NT-1.
  *
  * @author Bastien Reboulet
  */
@@ -46,9 +46,9 @@ public class TestTrace {
 
     /**
      * @param key
-     *            <=> FT
+     *            &lt;=&gt; FT
      * @param crc
-     *            <=> DC
+     *            &lt;=&gt; DC
      * @return the list of all the file traces matching these key and crc
      */
     public final List<FileTrace> getFileTraces(final String key, final String crc) {

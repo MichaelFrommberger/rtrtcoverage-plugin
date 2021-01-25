@@ -11,7 +11,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import com.thalesgroup.dtkit.util.converter.ConversionException;
+import org.jenkinsci.lib.dtkit.util.converter.ConversionException;
+
 import com.thalesgroup.rtrtcoverage.fileidexport.FileIdentitiesModel;
 import com.thalesgroup.rtrtcoverage.fileidexport.FileIdentitiesModel.FileIdentityModel;
 import com.thalesgroup.rtrtcoverage.tusar.ObjectFactory;

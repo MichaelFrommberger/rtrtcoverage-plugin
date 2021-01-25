@@ -27,7 +27,7 @@ public final class InstrumentedFileParser {
      * @throws IOException a IOException
      */
     public static FileIdentity getFileIdentity(final FilePath augFile, final String augPattern)
-            throws FileIdentificationException, IOException {
+            throws FileIdentificationException, IOException, InterruptedException {
 
         InputStream augStream = augFile.read();
         InputStreamReader augReader = null;

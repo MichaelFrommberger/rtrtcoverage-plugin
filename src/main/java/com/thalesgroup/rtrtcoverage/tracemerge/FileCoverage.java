@@ -54,7 +54,9 @@ public class FileCoverage {
                 } else if (branchDef instanceof MultipleBranchDefinition) {
                     branchCov = new MultipleBranchCoverage(branchDef);
                 }
-                nodeCov.addBranchToGlobalCoverage(branchCov);
+                if (branchCov != null) {
+                    nodeCov.addBranchToGlobalCoverage(branchCov);
+                }
                 nodeByMarkId.put(branchDef.getMarkId(), nodeCov);
             }
             // link multipleCoverage with singles

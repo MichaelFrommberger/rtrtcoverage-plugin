@@ -1,3 +1,4 @@
+<?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:e="/com/thalesgroup/rtrtcoverage/tags">
   <table border="1px" class="sortable pane">
     <e:captionLine />
@@ -6,7 +7,7 @@
         <td class="nowrap ${h.ifThenElse(c.failed,' red','')}" >
           <a href="${h.ifThenElse(nolink!=null,null,c.name+'/')}"><st:out value="${c.name}"/></a>
         </td>	      
-        ${c.printNineCoverageColumns()}
+        <j:out value="${c.printNineCoverageColumns()}" />
       </tr>
     </j:forEach>
   </table>

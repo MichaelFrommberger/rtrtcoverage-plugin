@@ -69,7 +69,7 @@ AggregatedReport<CoverageReport/* dummy */, CoverageReport, SourceFileReport> {
      * coverage => only files are shown.
      */
     private void buildHierarchy() {
-        this.setName("Couverture Globale");
+        this.setName("Overall Coverage Summary");
         this.setSourcePath(null);
         for (FileRate fileRate : globalRate.getFileRates()) {
             SourceFileReport sfr = new SourceFileReport();

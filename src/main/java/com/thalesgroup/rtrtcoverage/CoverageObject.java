@@ -2,6 +2,7 @@ package com.thalesgroup.rtrtcoverage;
 
 import hudson.Util;
 import hudson.model.AbstractBuild;
+import hudson.model.Run;
 import hudson.model.Api;
 import hudson.util.ChartUtil;
 import hudson.util.ChartUtil.NumberOnlyBuildLabel;
@@ -394,11 +395,11 @@ public abstract class CoverageObject<SELF extends CoverageObject<SELF>> {
             }
             buf.append("<td class='").append(className).append("'");
             buf.append(" data='").append(dataFormat.format(ratio.getPercentageDouble()));
-            buf.append("'>\n");
+            buf.append("'>");
             printRatioTable(ratio, buf);
-            buf.append("</td>\n");
+            buf.append("</td>");
         } else {
-            buf.append("<td align=\"center\">none</td>\n");
+            buf.append("<td align=\"center\">none</td>");
         }
     }
 
@@ -411,7 +412,6 @@ public abstract class CoverageObject<SELF extends CoverageObject<SELF>> {
      *            the buffer to append
      */
     protected static void printRatioTable(final Ratio ratio, final StringBuilder buf) {
-        String data = dataFormat.format(ratio.getPercentageDouble());
         String percent = percentFormat.format(ratio.getPercentageDouble());
         String numerator = intFormat.format(ratio.getNumerator());
         String denominator = intFormat.format(ratio.getDenominator());
@@ -449,11 +449,11 @@ public abstract class CoverageObject<SELF extends CoverageObject<SELF>> {
 
         int width = defaultWidth;
         if (w != null) {
-            width = Integer.valueOf(w);
+            width = Integer.parseInt(w);
         }
         int height = defaultHeight;
         if (h != null) {
-            height = Integer.valueOf(h);
+            height = Integer.parseInt(h);
         }
 
         new GraphImpl(this, t, width, height) {
@@ -463,7 +463,8 @@ public abstract class CoverageObject<SELF extends CoverageObject<SELF>> {
                 DataSetBuilder<String, NumberOnlyBuildLabel> dsb = new DataSetBuilder<String, NumberOnlyBuildLabel>();
 
                 for (CoverageObject<SELF> a = obj; a != null; a = a.getPreviousResult()) {
-                    NumberOnlyBuildLabel label = new NumberOnlyBuildLabel(a.getBuild());
+                    Run<?, ?> build = a.getBuild();
+                    NumberOnlyBuildLabel label = new NumberOnlyBuildLabel(build);
                     dsb.add(a.getFunctionAndExitCoverage().getPercentageDouble(), Messages.CoverageObject_Legend_Function(), label);
                     dsb.add(a.call.getPercentageDouble(), Messages.CoverageObject_Legend_Call(), label);
                     dsb.add(a.statBlock.getPercentageDouble(), Messages.CoverageObject_Legend_StatBlock(), label);

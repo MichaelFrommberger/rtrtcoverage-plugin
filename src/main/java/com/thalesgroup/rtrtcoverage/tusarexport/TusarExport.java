@@ -17,7 +17,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import com.thalesgroup.dtkit.util.converter.ConversionException;
+
+import org.jenkinsci.lib.dtkit.util.converter.ConversionException;
+
 import com.thalesgroup.rtrtcoverage.tracemerge.FileCoverage;
 import com.thalesgroup.rtrtcoverage.tracemerge.IBranchCoverage;
 import com.thalesgroup.rtrtcoverage.tracemerge.NodeCoverage;
@@ -138,7 +140,7 @@ public class TusarExport {
                 public int compare(final Line line0, final Line line1) {
                     final int int0 = Integer.parseInt(line0.getNumber());
                     final int int1 = Integer.parseInt(line1.getNumber());
-                    return new Integer(int0).compareTo(int1);
+                    return Integer.valueOf(int0).compareTo(int1);
                 }
             });
             for (final Line line : lines) {
